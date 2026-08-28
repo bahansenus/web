@@ -6,8 +6,8 @@
   --bg-soft: #111a2e;
   --bg-card: #0f1830;
   --border: #1f2b47;
-  --text: #dbe4f3;
-  --text-dim: #8fa1c3;
+  --text: #f1f5fb;              /* near-white titles */
+  --text-dim: #cbd7ea;          /* brighter body text, minimal blue tint */
   --accent: #38bdf8;
   --accent-2: #818cf8;
   --danger: #f87171;
