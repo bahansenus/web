@@ -108,10 +108,7 @@ a:hover { text-decoration: underline; }
 
 /* Cards / grids */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-.card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
-  padding: 18px; transition: border-color 0.15s ease;
-}
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; transition: border-color 0.15s ease; }
 .card:hover { border-color: var(--accent); }
 .card .date {
   font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
@@ -120,6 +117,12 @@ a:hover { text-decoration: underline; }
 .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
 .card p { color: var(--text-dim); font-size: 0.9rem; }
 .card .threat { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; margin-top: 10px; }
+
+/* History / archive list */
+.briefings-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.briefings-list .card { display: flex; flex-direction: column; }
+.briefings-list .card h3 { flex-grow: 1; }
+.briefings-list .card .mono.muted { margin-top: 8px; font-size: 0.8rem; }
 .threat-critical { color: var(--danger); }
 .threat-high { color: var(--warn); }
 .threat-moderate { color: var(--ok); }

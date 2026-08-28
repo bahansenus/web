@@ -5,6 +5,10 @@ briefing pages for the bahansen.us static site.
 Source files: /opt/data/docs/newsletters/Daily Security Intelligence Briefing - YYYY-MM-DD.txt
 Output:       /opt/data/git/website/briefings/YYYY-MM-DD.html
 
+Also writes the two "latest" landing pages:
+  - /opt/data/git/website/index.html        (root landing = latest briefing)
+  - /opt/data/git/website/briefings/latest.html (briefings dir copy, not linked)
+
 The txt format (verified on real briefings):
   Line 1:  "Daily Security Intelligence Briefing — Month DD, YYYY"
   Line 2:  "Executive Threat Brief"
@@ -13,40 +17,48 @@ The txt format (verified on real briefings):
   "TIER 1: PRIORITY TARGETS (MUST-READ)"  -> numbered items with * field labels
   "TIER 2: ESSENTIAL INTELLIGENCE (SUMMARIES & ANALYSIS)"
   "TIER 3: INDUSTRY NOISE & AWARENESS ONLY" -> * bullets
+
+All paths are depth-aware relative (works at /web/ and at domain root).
 """
 import html
 import re
 import sys
-from datetime import datetime
 from pathlib import Path
+
+import site_parts
 
 SRC_DIR = Path("/opt/data/docs/newsletters")
 OUT_DIR = Path("/opt/data/git/website/briefings")
+ROOT_OUT = Path("/opt/data/git/website")
 
-PAGE_TEMPLATE = """<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} — bahansen.us</title>
-  <meta name="description" content="{excerpt}">
-  <link rel="stylesheet" href="/assets/style.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container">
-      <a href="/" class="brand">bahansen<span class="dot">.</span>us</a>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/briefings/">Briefings</a>
-        <a href="/privacy">Privacy</a>
-      </nav>
-    </div>
-  </header>
-
+# Landing-page template: the full briefing body served at the site root.
+LANDING_TEMPLATE = """{head}
+{nav}
   <main class="container">
     <section class="briefing-header">
-      <a href="/briefings/" class="back">← All briefings</a>
+      <h1>{title}</h1>
+      <div class="threat-line {threat_class}">Overall Daily Threat Level: {threat_level}.</div>
+      <p class="muted">{date_label}</p>
+    </section>
+
+    <div class="briefing-body">
+      <div class="brief">{summary}</div>
+      {body}
+    </div>
+
+    <p class="muted" style="margin-top:32px;"><a href="history.html">← View past briefings (History)</a></p>
+  </main>
+{footer}
+</body>
+</html>
+"""
+
+# Per-briefing page template (in briefings/ subdir, depth=1).
+BRIEFING_TEMPLATE = """{head}
+{nav}
+  <main class="container">
+    <section class="briefing-header">
+      <a href="../history.html" class="back">← All briefings</a>
       <h1>{title}</h1>
       <div class="threat-line {threat_class}">Overall Daily Threat Level: {threat_level}.</div>
     </section>
@@ -56,13 +68,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
       {body}
     </div>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <span>© 2026 bahansen.us</span>
-      <span><a href="/privacy">Privacy Policy</a></span>
-    </div>
-  </footer>
+{footer}
 </body>
 </html>
 """
@@ -81,15 +87,12 @@ def threat_class(level: str) -> str:
 
 def parse_briefing(text: str) -> dict:
     """Parse a briefing txt into structured sections."""
-    # normalize line endings, strip BOM
     text = text.replace("\r\n", "\n").replace("\r", "\n").lstrip("\ufeff")
     lines = [l.rstrip() for l in text.split("\n")]
 
     title = lines[0].strip() if lines else ""
-    # Extract date from title: "Daily Security Intelligence Briefing — August 10, 2026"
     date_match = re.search(r"(\w+ \d{1,2}, \d{4})$", title)
 
-    # Threat level
     threat_line = ""
     for l in lines[1:6]:
         if "Overall Daily Threat Level" in l:
@@ -97,7 +100,6 @@ def parse_briefing(text: str) -> dict:
             break
     threat_level = re.sub(r"Overall Daily Threat Level:\s*", "", threat_line).rstrip(".").strip()
 
-    # Locate tier headers
     tier_idx = {"t1": -1, "t2": -1, "t3": -1}
     for i, l in enumerate(lines):
         if "TIER 1:" in l and tier_idx["t1"] < 0:
@@ -107,7 +109,6 @@ def parse_briefing(text: str) -> dict:
         elif "TIER 3:" in l and tier_idx["t3"] < 0:
             tier_idx["t3"] = i
 
-    # Executive summary = lines between threat level and TIER 1
     t1_start = tier_idx["t1"] if tier_idx["t1"] >= 0 else len(lines)
     summary_lines = []
     for l in lines[3: t1_start]:
@@ -118,7 +119,6 @@ def parse_briefing(text: str) -> dict:
         summary_lines.append(l.strip())
     summary = " ".join(summary_lines)
 
-    # Extract tier blocks
     t2_start = tier_idx["t2"] if tier_idx["t2"] >= 0 else len(lines)
     t3_start = tier_idx["t3"] if tier_idx["t3"] >= 0 else len(lines)
 
@@ -142,8 +142,8 @@ def parse_briefing(text: str) -> dict:
         "t3": t3,
     }
 
+
 def render_tier_items(block_lines: list) -> str:
-    """Render tier 1/2 items: numbered headings + * field lines."""
     items = []
     current = None
     for line in block_lines:
@@ -154,7 +154,6 @@ def render_tier_items(block_lines: list) -> str:
         elif line.startswith("*") and current is not None:
             current["fields"].append(line.lstrip("* ").strip())
         else:
-            # continuation / orphan line -> append to last field or title
             if current is not None:
                 if current["fields"]:
                     current["fields"][-1] += " " + line
@@ -165,7 +164,6 @@ def render_tier_items(block_lines: list) -> str:
 
     out = []
     for item in items:
-        # extract field label prefix ("Source & Article Link: ...")
         out.append('<div class="item">')
         out.append(f'<h3>{html.escape(item["title"])}</h3>')
         for field in item["fields"]:
@@ -180,7 +178,6 @@ def render_tier_items(block_lines: list) -> str:
 
 
 def render_tier3(block_lines: list) -> str:
-    """Render tier 3 as bullet list items."""
     out = ['<div class="item">']
     out.append("<h3>Tier 3 — Industry Noise &amp; Awareness Only</h3>")
     for line in block_lines:
@@ -191,8 +188,7 @@ def render_tier3(block_lines: list) -> str:
     return "\n".join(out)
 
 
-def convert_file(path: Path) -> str:
-    data = parse_briefing(path.read_text())
+def render_body(data: dict) -> str:
     t1_html = render_tier_items(data["t1"])
     t2_html = render_tier_items(data["t2"])
     t3_html = render_tier3(data["t3"])
@@ -206,48 +202,69 @@ def convert_file(path: Path) -> str:
         body.append(t2_html)
     if t3_html:
         body.append(t3_html)
+    return "\n".join(body)
 
-    # excerpt for meta description
+
+def convert_file(path: Path, date_str: str) -> None:
+    data = parse_briefing(path.read_text())
+    body = render_body(data)
     excerpt = html.escape(data["summary"][:150])
 
-    return PAGE_TEMPLATE.format(
+    # Per-briefing page (depth 1)
+    page = BRIEFING_TEMPLATE.format(
+        head=site_parts.head(data["title"], excerpt, depth=1),
+        nav=site_parts.nav(depth=1, active="history"),
         title=data["title"],
-        excerpt=excerpt,
         threat_class=data["threat_class"],
         threat_level=data["threat_level"],
         summary=data["summary"],
-        body="\n".join(body),
+        body=body,
+        footer=site_parts.footer(depth=1),
     )
+    out = OUT_DIR / f"{date_str}.html"
+    out.write_text(page)
+    print(f"  briefing: {date_str} -> {out.name} ({len(page)} bytes)")
+
+    # Latest landing page at root (depth 0) — only for the newest date
+    if date_str == max_date_str:
+        landing = LANDING_TEMPLATE.format(
+            head=site_parts.head(data["title"], excerpt, depth=0),
+            nav=site_parts.nav(depth=0),
+            title=data["title"],
+            threat_class=data["threat_class"],
+            threat_level=data["threat_level"],
+            date_label=data["date"],
+            summary=data["summary"],
+            body=body,
+            footer=site_parts.footer(depth=0),
+        )
+        (ROOT_OUT / "index.html").write_text(landing)
+        print(f"  LANDING: {date_str} -> index.html ({len(landing)} bytes)")
+
+
+max_date_str = ""
 
 
 def main():
-    out_dir = OUT_DIR
-    out_dir.mkdir(parents=True, exist_ok=True)
+    global max_date_str
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     pattern = sys.argv[1] if len(sys.argv) > 1 else "*"
     files = sorted(SRC_DIR.glob(f"Daily Security Intelligence Briefing - {pattern}.txt"))
-
-    # Also handle the latest merged HTML briefing if present
-    extra = []
-    if len(sys.argv) > 1 and sys.argv[1] == "2026-08-28":
-        merged = SRC_DIR / "merged-v37-verified-2026-08-28.html"
-        if merged.exists():
-            extra.append(merged)
-
-    count = 0
+    dated = []
     for f in files:
-        date_match = re.search(r"(\d{4}-\d{2}-\d{2})", f.name)
-        if not date_match:
-            print(f"  SKIP (no date in name): {f.name}")
-            continue
-        date_str = date_match.group(1)
-        page = convert_file(f)
-        out = out_dir / f"{date_str}.html"
-        out.write_text(page)
-        print(f"  {date_str}: {len(f.read_text())} bytes src -> {out.name}")
-        count += 1
+        m = re.search(r"(\d{4}-\d{2}-\d{2})", f.name)
+        if m:
+            dated.append((m.group(1), f))
+    if not dated:
+        print("No briefing txt files found")
+        sys.exit(1)
+    max_date_str = max(d[0] for d in dated)
 
-    print(f"Converted {count} briefings to {out_dir}")
+    for date_str, f in dated:
+        convert_file(f, date_str)
+
+    print(f"Done: {len(dated)} briefings -> {OUT_DIR}, landing -> index.html")
 
 
 if __name__ == "__main__":

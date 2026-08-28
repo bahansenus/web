@@ -1,31 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — bahansen.us</title>
-  <meta name="description" content="Privacy policy for bahansen.us, the personal website of Brett Hansen.">
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-  <header class="masthead">
-    <div class="container">
-      <a href="index.html"><img src="assets/logo.jpg" alt="BAHansen.us — Security Intelligence" class="logo"></a>
-    </div>
-  </header>
+#!/usr/bin/env python3
+"""Generate the Privacy page for bahansen.us (root depth)."""
+from pathlib import Path
 
+import site_parts
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="brand">bahansen<span class="dot">.</span>us</a>
-      <nav class="nav">
-        <a href="about.html">About</a>
-        <a href="history.html">History</a>
-        <a href="privacy.html" class="active">Privacy</a>
-      </nav>
-    </div>
-  </header>
+OUT = Path("/opt/data/git/website/privacy.html")
 
+PAGE = """{head}
+{nav}
   <main class="container">
     <section class="briefing-header">
       <h1>Privacy Policy</h1>
@@ -48,12 +30,22 @@
       <p>Questions about this policy can be directed to the site owner via the contact information available on the site.</p>
     </div>
   </main>
-  <footer class="site-footer">
-    <div class="container">
-      <span>© 2026 bahansen.us</span>
-      <span><a href="about.html">About</a> · <a href="history.html">History</a> · <a href="privacy.html">Privacy</a></span>
-    </div>
-  </footer>
-
+{footer}
 </body>
 </html>
+"""
+
+
+def main():
+    page = PAGE.format(
+        head=site_parts.head("Privacy Policy — bahansen.us",
+                             "Privacy policy for bahansen.us, the personal website of Brett Hansen.", depth=0),
+        nav=site_parts.nav(depth=0, active="privacy"),
+        footer=site_parts.footer(depth=0),
+    )
+    OUT.write_text(page)
+    print(f"Wrote {OUT} ({len(page)} bytes)")
+
+
+if __name__ == "__main__":
+    main()
