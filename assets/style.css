@@ -42,6 +42,27 @@ a:hover { text-decoration: underline; }
   display: flex; align-items: center; justify-content: space-between;
   padding-top: 14px; padding-bottom: 14px;
 }
+
+/* Masthead logo banner (cream background to match the logo artwork) */
+.masthead {
+  background: #f0eee4;               /* cream, matches logo background */
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+}
+.masthead .container {
+  display: flex; justify-content: center; align-items: center;
+  max-width: 920px;
+}
+.masthead img.logo {
+  display: block;
+  max-width: 560px;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 640px) {
+  .masthead img.logo { max-width: 100%; }
+}
+
 .brand {
   font-family: var(--mono);
   font-weight: 700;
