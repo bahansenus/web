@@ -1,0 +1,164 @@
+/* bahansen.us — shared stylesheet
+   Design: security/intelligence brief aesthetic, dark technical theme with
+   monospace accents, clean typography. */
+:root {
+  --bg: #0b1220;
+  --bg-soft: #111a2e;
+  --bg-card: #0f1830;
+  --border: #1f2b47;
+  --text: #dbe4f3;
+  --text-dim: #8fa1c3;
+  --accent: #38bdf8;
+  --accent-2: #818cf8;
+  --danger: #f87171;
+  --warn: #fbbf24;
+  --ok: #34d399;
+  --mono: "SFMono-Regular", "JetBrains Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+  position: sticky; top: 0; z-index: 10;
+}
+.site-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px; padding-bottom: 14px;
+}
+.brand {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+.brand .dot { color: var(--accent); }
+.brand:hover { text-decoration: none; }
+.nav { display: flex; gap: 22px; }
+.nav a { color: var(--text-dim); font-size: 0.95rem; }
+.nav a:hover { color: var(--accent); text-decoration: none; }
+.nav a.active { color: var(--text); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+
+/* Hero */
+.hero { padding: 72px 0 48px; }
+.hero .kicker {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: 2.6rem; line-height: 1.15; font-weight: 800; letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero p.lede { font-size: 1.15rem; color: var(--text-dim); max-width: 640px; }
+
+/* Buttons */
+.btn {
+  display: inline-block; padding: 10px 22px; border-radius: 6px;
+  font-weight: 600; font-size: 0.95rem; margin-top: 24px; margin-right: 12px;
+  transition: all 0.15s ease;
+}
+.btn-primary { background: var(--accent); color: #081021; }
+.btn-primary:hover { background: #7dd3fc; text-decoration: none; }
+.btn-ghost { border: 1px solid var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* Sections */
+.section { padding: 40px 0; border-top: 1px solid var(--border); }
+.section h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+.section .sub { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 28px; }
+
+/* Cards / grids */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px; transition: border-color 0.15s ease;
+}
+.card:hover { border-color: var(--accent); }
+.card .date {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+}
+.card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.card p { color: var(--text-dim); font-size: 0.9rem; }
+.card .threat { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; margin-top: 10px; }
+.threat-critical { color: var(--danger); }
+.threat-high { color: var(--warn); }
+.threat-moderate { color: var(--ok); }
+.threat-low { color: var(--ok); }
+
+/* Latest briefing highlight */
+.latest {
+  background: var(--bg-card); border: 1px solid var(--accent); border-radius: 8px;
+  padding: 24px; margin-bottom: 24px;
+}
+.latest .tag {
+  display: inline-block; font-family: var(--mono); font-size: 0.72rem;
+  background: var(--accent); color: #081021; border-radius: 4px;
+  padding: 3px 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px;
+}
+.latest h3 { font-size: 1.25rem; margin-bottom: 6px; }
+.latest .meta { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 10px; }
+.latest .excerpt { color: var(--text-dim); }
+
+/* Briefing page */
+.briefing-header { padding: 48px 0 24px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.briefing-header .back { font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); margin-bottom: 18px; display: block; }
+.briefing-header h1 { font-size: 1.9rem; font-weight: 800; margin-bottom: 8px; }
+.briefing-header .threat-line { font-family: var(--mono); font-size: 0.95rem; margin-bottom: 14px; }
+.briefing-body { max-width: 720px; }
+.briefing-body .brief {
+  background: var(--bg-soft); border-left: 3px solid var(--accent);
+  padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 28px;
+  font-size: 1.02rem; color: var(--text);
+}
+.briefing-body h2 {
+  font-size: 1.15rem; font-weight: 700; margin: 32px 0 14px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  font-family: var(--mono); letter-spacing: 0.5px;
+}
+.briefing-body .item { margin-bottom: 18px; }
+.briefing-body .item h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+.briefing-body .item p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 4px; }
+.briefing-body .item .label { color: var(--accent); font-family: var(--mono); font-size: 0.8rem; font-weight: 700; }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border); margin-top: 64px; padding: 28px 0;
+  color: var(--text-dim); font-size: 0.85rem;
+}
+.site-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+/* Misc */
+.mono { font-family: var(--mono); }
+.muted { color: var(--text-dim); }
+.tag-list { list-style: none; margin: 20px 0 0; }
+.tag-list li { margin-bottom: 10px; }
+.tag-list .tag-label {
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 700; color: var(--accent);
+  display: inline-block; min-width: 110px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.9rem; }
+  .nav { gap: 14px; }
+  .nav a { font-size: 0.85rem; }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Security Intelligence Briefing — July 30, 2026 — bahansen.us</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="brand">bahansen<span class="dot">.</span>us</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/briefings/">Briefings</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="briefing-header">
+      <a href="/briefings/" class="back">← All briefings</a>
+      <h1>Daily Security Intelligence Briefing — July 30, 2026</h1>
+      <div class="threat-line threat-high">Overall Daily Threat Level: HIGH. Primary threat vectors include HollowGraph M365 Calendar Invite Command-and-Control, active malvertising campaigns deploying FakeAgent SectopRAT via claude.ai artifact redirects, and widespread IPMI/BMC password cracking across 24,000+ data center management interfaces (CVE-2013-4786). On the architecture front, MCP released a major stateless protocol update (2026-07-28), while security leaders advocate moving from Zero Trust to "Zero Custody" architectures for autonomous AI agent workflows.</div>
+    </section>
+
+    <div class="briefing-body">
+      <div class="brief"></div>
+      <h2>Tier 1 — Priority Targets (Must-Read)</h2>
+<div class="item">
+<h3>1. FakeAgent Campaign Uses Claude.ai Artifact Redirects to Deploy SectopRAT</h3>
+<p><span class="label">Source &amp; Article Link:</span> Huntress Threat Research / TLDR InfoSec</p>
+<p><span class="label">Technical Severity / Domain:</span> Application &amp; Endpoint Security / High-Critical (29 Organizations Impacted)</p>
+<p><span class="label">Why You Must Read This:</span> Sponsored Bing search ads for &quot;claude desktop app&quot; redirected victims to a genuine claude.ai user-generated artifact URL. The artifact contained JavaScript that forwarded users through claude.ai.download-app[.]us to download a malicious ClaudeDesktop.exe. The executable was actually JetBrains jcef_helper.exe DLL-sideloading a tampered libcef.dll (VMProtect packed) that pulled a .NET SectopRAT payload via EtherHiding from an Ethereum BSC smart contract. A secondary persistence mechanism dropped signed IBM SPSS binaries (sslconf.exe) alongside a malicious tempdir.dll that executed DirectX shader-based AES-256 decryption to defeat sandbox analysis.</p>
+<p><span class="label">Recommended Immediate Action:</span> Block C2 IP 2.24.131[.]246 and BSC contracts; hunt for ClaudeDesktop.exe writes, scheduled tasks under %APPDATA%\Roaming\Microsoft\EdgeUpdate\Install, and Defender exclusions added around software installers. Treat vendor artifact landing pages as untrusted download sources.</p>
+</div>
+<div class="item">
+<h3>2. 24,000+ Data Center IPMI/BMC Hosts Exposed to Offline Password Cracking</h3>
+<p><span class="label">Source &amp; Article Link:</span> Lava Research / TLDR InfoSec</p>
+<p><span class="label">Technical Severity / Domain:</span> Infrastructure &amp; Hardware Security / Critical (CVE-2013-4786)</p>
+<p><span class="label">Why You Must Read This:</span> Internet scanning of UDP port 623 revealed 36,872 exposed Baseboard Management Controller (BMC) interfaces, with 24,650 returning password-derived HMAC-SHA1 hashes during RAKP authentication without requiring successful login. Supermicro factory 10-character passwords (26^10 keyspace) were cracked offline in ~1 hour on an 8-GPU rig, while HPE iLO 8-character hashes were cracked in ~32 seconds. Active exploitation is confirmed, including iLO 4 management consoles defaced with 0.3 BTC ransom demands.</p>
+<p><span class="label">Recommended Immediate Action:</span> Block UDP port 623 at network perimeters, rotate all factory BMC/iLO passwords immediately, disable IPMI 1.5 and Cipher Suite 0/NONE, and restrict management interfaces to an isolated VLAN or VPN.</p>
+</div>
+<div class="item">
+<h3>3. HollowGraph Malware Uses Microsoft 365 Calendar Invites for Covert C2</h3>
+<p><span class="label">Source &amp; Article Link:</span> Patrick Duggan Research / Unsupervised Learning</p>
+<p><span class="label">Technical Severity / Domain:</span> Cloud Security &amp; Threat Hunting / High (Graph API C2)</p>
+<p><span class="label">Why You Must Read This:</span> HollowGraph malware infected 12 enterprise systems and established command-and-control entirely inside Microsoft 365 using calendar invites as the payload transport channel. Because the communication relies on legitimate M365 infrastructure and API calls, traditional network perimeter firewalls and IP blocklists cannot detect or block the C2 traffic.</p>
+<p><span class="label">Recommended Immediate Action:</span> Implement Graph API behavioral logging and audit for unusual calendar event creations or automated attendee updates originating from internal service accounts.</p>
+</div>
+<h2>Tier 2 — Essential Intelligence (Summaries &amp; Analysis)</h2>
+<div class="item">
+<h3>1. From Zero Trust to &quot;Zero Custody&quot; for Autonomous AI Agents</h3>
+<p><span class="label">Domain:</span> AI &amp; Cloud Security Architecture</p>
+<p><span class="label">Subject / Topic Summary:</span> Security analysis argues that Zero Trust model validation is insufficient for AI agents because identity verification cannot prevent prompt injection or in-context hijacking. The proposed &quot;Zero Custody&quot; architecture dictates that agent reasoning loops must hold no secrets or high-privilege credentials directly; instead, external API brokers and security gateways inject tokens and re-identify data only after verifying policy constraints.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>AI reasoning environments should be treated as ephemeral, untrusted compute spaces.</p>
+<p>Credentials, API keys, and raw sensitive data must remain isolated in external broker gateways.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;Zero Trust is insufficient for AI agents because verifying identity does not stop attackers from hijacking behavior through malicious language in context. Zero Custody holds that the reasoning loop should hold nothing that matters, so a compromised agent has empty hands.&quot;</p>
+<p><span class="label">Source:</span> 2am Security / TLDR IT</p>
+</div>
+<div class="item">
+<h3>2. Model Context Protocol (MCP) 2026-07-28 Revision Released</h3>
+<p><span class="label">Domain:</span> AI Infrastructure &amp; Architecture</p>
+<p><span class="label">Subject / Topic Summary:</span> The Model Context Protocol (MCP) received its largest architectural update since launch. The 2026-07-28 revision converts MCP into a completely stateless protocol, enabling remote servers to run on serverless/edge infrastructure and scale horizontally behind standard load balancers.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Eliminates stateful session stickiness requirements for remote MCP server deployments.</p>
+<p>Establishes formal extension specifications for enterprise authentication and auditing.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;MCP 2026-07-28 is the largest update to the protocol since launch... MCP is now stateless, so it can be deployed on serverless and edge infrastructure, or scaled horizontally behind any load balancer.&quot;</p>
+<p><span class="label">Source:</span> MCP Protocol Announcement / TLDR AI</p>
+</div>
+<div class="item">
+<h3>3. Distributed npm Package Cluster Delivers Cross-Platform RAT to Alibaba Developers</h3>
+<p><span class="label">Domain:</span> Supply Chain Security &amp; Malware Analysis</p>
+<p><span class="label">Subject / Topic Summary:</span> Socket discovered an 18-package npm typosquatting cluster impersonating Alibaba&#x27;s @ali scope (smart-config-manager, cloud-config-fetcher, local-config-parser). The packages split loader logic across dependencies and escaped the Node.js VM sandbox via items.constructor.constructor to drop aone-cli, a cross-platform RAT supporting DingTalk lateral movement, file transfer, and encrypted reverse TCP proxying.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Persistence achieved via ~/.zshrc entries, 10-minute macOS Launch Agents, trojanized app.asar files, and Linux /tmp binaries.</p>
+<p><span class="label">Remediation:</span> Treat impacted systems as fully compromised, rotate credentials from clean hardware, and audit for suspicious npm dependencies in internal builds.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;Socket uncovered a three-month stealth campaign involving 18 npm packages that split loader functions across dependencies... escaping the Node.js vm sandbox via items.constructor.constructor to stage a cross-platform RAT.&quot;</p>
+<p><span class="label">Source:</span> Socket Threat Research / TLDR InfoSec</p>
+</div>
+<div class="item">
+<h3>4. Claude Mythos Preview Discovers Cryptographic Flaws in AES &amp; HAWK</h3>
+<p><span class="label">Domain:</span> AI Security &amp; Cryptographic Research</p>
+<p><span class="label">Subject / Topic Summary:</span> Anthropic detailed research where Claude Mythos Preview discovered new lattice symmetries to recover HAWK-256 signature keys and accelerated 7-round AES-128 meet-in-the-middle attacks by 200x–800x compared to prior human research.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Highlights LLM reasoning capabilities in automated mathematical and cryptographic vulnerability discovery.</p>
+<p>Production cryptography (full 10-round AES-128 and HAWK-512/1024) remains secure and unaffected.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;Claude Mythos Preview model found a new lattice symmetry to fully recover HAWK-256 signature keys and cut the cost of a seven-round AES-128 meet-in-the-middle attack by 200 to 800 times.&quot;</p>
+<p><span class="label">Source:</span> Anthropic Research / The Hacker News</p>
+</div>
+<div class="item">
+<h3>5. Microsoft Project Perception Multi-Model Defense Stack</h3>
+<p><span class="label">Domain:</span> Security Leadership &amp; AI Operations</p>
+<p><span class="label">Subject / Topic Summary:</span> Microsoft detailed its Project Perception architecture combining specialized models (MAI-Cyber-1-Flash) with GPT-5.4. The multi-agent stack coordinates automated red-team attack path generation, blue-team investigation, and green-team remediation across M365, Azure, and identity providers.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Public preview begins August 3, 2026 for MDASH customers.</p>
+<p>Demonstrates 96% score on CyberGym benchmark while reducing reasoning costs by ~50%.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;Microsoft&#x27;s Project Perception is an AI cybersecurity system that coordinates red, blue, and green team agents to defend against AI-driven attacks.&quot;</p>
+<p><span class="label">Source:</span> GeekWire / TLDR IT</p>
+</div>
+<div class="item">
+<h3>Tier 3 — Industry Noise &amp; Awareness Only</h3>
+<p>• FENGARDE Open-Source SIEM Release: SIEM parsing 16 logs into OCSF with local Ollama LLM triage (GitHub FENGARDE).</p>
+<p>• Snowflake Cortex AI Gateway Launch: Centralized model governance and cost management gateway for AI agents (VentureBeat).</p>
+<p>• Bank of Baroda Customer Data Leak: Employee email compromise exposed customer ID numbers and loan records (TLDR InfoSec).</p>
+<p>• Origin Energy Australia Breach: Data security incident exposed partial credit card and financial records for ~900k users (TLDR InfoSec).</p>
+<p>• Phishing-as-a-Service AI Kits (TokenLover &amp; YaksaLover): Turnkey AI kits automating M365 BEC and device code phishing (Eye Security).</p>
+<p>• Claude Desktop Screen Recording Skills: Desktop feature converts user screen recordings into reusable agent skills (@ClaudeAI).</p>
+<p>• Cloudflare Open Sources pvcli Privacy Proxy: Apache-2.0 CLI tool for debugging Oblivious HTTP protocols (Cloudflare Blog).</p>
+<p>• DEF CON Bans Smart Glasses: DEF CON 2026 bans camera-equipped smart glasses over recording concerns (The Register).</p>
+</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 bahansen.us</span>
+      <span><a href="/privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

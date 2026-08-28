@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Security Intelligence Briefing — August 7, 2026 — bahansen.us</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="brand">bahansen<span class="dot">.</span>us</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/briefings/">Briefings</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="briefing-header">
+      <a href="/briefings/" class="back">← All briefings</a>
+      <h1>Daily Security Intelligence Briefing — August 7, 2026</h1>
+      <div class="threat-line threat-high">Overall Daily Threat Level: HIGH. Primary threat vectors include a major resurgence of the self-propagating Shai-Hulud / ChainDrop npm supply-chain worm poisoning over 1,280 packages, an Open VSX extension campaign harvesting developer environment metadata across 77 extension packages, and a pre-auth stack buffer overflow in Mercusys routers (CVE-2026-12495). On the telecom and SOC architecture fronts, NIST published CSWP 36F for 5G Initial NAS message encryption, and DNB Cyber Defense Center detailed agentic incident response playbooks built on reactive Python notebooks.</div>
+    </section>
+
+    <div class="briefing-body">
+      <div class="brief"></div>
+      <h2>Tier 1 — Priority Targets (Must-Read)</h2>
+<div class="item">
+<h3>1. Shai-Hulud / ChainDrop npm Worm Resurges, Poisoning 1,280+ Packages via CI Pipelines</h3>
+<p><span class="label">Source &amp; Article Link:</span> HackRead / TLDR InfoSec / Microsoft Security Blog</p>
+<p><span class="label">Technical Severity / Domain:</span> Software Supply Chain Security / Critical (Self-Propagating Worm)</p>
+<p><span class="label">Why You Must Read This:</span> A new variant of the self-propagating Shai-Hulud (ChainDrop) worm has compromised over 1,280 npm packages, including the popular Keyv library. The worm infects package manifests via hijacked GitHub Actions pipeline tokens. A preinstall hook executes Bun to run an obfuscated loader that aggressively harvests AWS credentials, Kubernetes tokens, HashiCorp Vault secrets, npm tokens, and SSH keys from developer workstations and CI runners. The stolen publishing tokens are immediately reused to infect and publish dependent packages automatically.</p>
+<p><span class="label">Recommended Immediate Action:</span> Audit all node dependencies for compromised versions, immediately rotate all CI/CD, AWS, Kubernetes, and Vault credentials on affected systems, and perform manual log audits rather than relying solely on automated vulnerability scanners.</p>
+</div>
+<div class="item">
+<h3>2. 77 Open VSX Extensions Found Exfiltrating Developer Workstation Telemetry</h3>
+<p><span class="label">Source &amp; Article Link:</span> TLDR InfoSec — Open VSX Campaign / Manifold Security</p>
+<p><span class="label">Technical Severity / Domain:</span> Application Security &amp; Developer Tooling / High</p>
+<p><span class="label">Why You Must Read This:</span> Manifold Security uncovered an &quot;evil twin&quot; campaign on the Open VSX extension registry where 77 malicious extensions impersonated legitimate VS Code plugins. While claiming to collect anonymous usage metrics, the extensions exfiltrated OS usernames, workspace file paths, Git commit hashes, and CI/CD environment variables to mangorbit[.]com. The C2 infrastructure utilized DNS TXT record lookups to bypass standard web proxy logging.</p>
+<p><span class="label">Recommended Immediate Action:</span> Block domain mangorbit[.]com at perimeter DNS/firewalls, audit VS Code and Open VSX extension IDs across developer workstations, and restrict extension installation to approved internal registries.</p>
+</div>
+<div class="item">
+<h3>3. Hardware Hacking: Pre-Auth Stack Buffer Overflow on Mercusys MB115-4G Router (CVE-2026-12495)</h3>
+<p><span class="label">Source &amp; Article Link:</span> Rotcee Hardware Research / TLDR InfoSec</p>
+<p><span class="label">Technical Severity / Domain:</span> Embedded &amp; Firmware Security / Critical (Pre-Auth RCE)</p>
+<p><span class="label">Why You Must Read This:</span> Hardware reverse engineering of the Mercusys MB115-4G router identified a pre-authentication vulnerability in /usr/bin/httpd. The http_gdpr_decrypt function copies up to 2,048 bytes of AES-decrypted, attacker-controlled data into a 512-byte stack buffer without bounds checking. Static analysis in Ghidra and Ghidriff confirmed the vulnerability persisted unpatched across firmware versions v1.7.0 through v1.9.0.</p>
+<p><span class="label">Recommended Immediate Action:</span> Upgrade Mercusys MB115-4G routers to firmware v1.11.0 or newer, which adds caller buffer bounds checking, HMAC verification, and transitions login decryption from RSA to ECC.</p>
+</div>
+<div class="item">
+<h3>4. NIST Releases Draft CSWP 36F: 5G Initial Non-Access Stratum (NAS) Message Security</h3>
+<p><span class="label">Source &amp; Article Link:</span> NIST NCCoE 5G White Paper</p>
+<p><span class="label">Technical Severity / Domain:</span> Telecom &amp; Wireless Infrastructure Security / Architectural Guidance</p>
+<p><span class="label">Why You Must Read This:</span> NIST&#x27;s National Cybersecurity Center of Excellence (NCCoE) released draft Cybersecurity White Paper (CSWP) 36F (Initial Non-Access Stratum Message Security). Unlike 4G networks where the initial connection handshake between device and core network (Initial NAS Message) was transmitted in cleartext—leaving devices exposed to IMSI catchers and MitM attacks—5G specifications enable end-to-end encryption and integrity protection for initial NAS payloads.</p>
+<p><span class="label">Recommended Immediate Action:</span> Mobile network operators and 5G enterprise architects should review CSWP 36F guidelines to verify NAS encryption configurations on 5G standalone (SA) cores; public comments close September 7, 2026.</p>
+</div>
+<h2>Tier 2 — Essential Intelligence (Summaries &amp; Analysis)</h2>
+<div class="item">
+<h3>1. Greatness Phishing Service Spoofs RingCentral for M365 Account Hijacking</h3>
+<p><span class="label">Domain:</span> Cloud Security &amp; BEC Defense</p>
+<p><span class="label">Subject / Topic Summary:</span> The Greatness phishing-as-a-service platform bypassed Exchange Online email filters by forging RingCentral voicemail alerts to target organizations that had blanket-whitelisted RingCentral domains. Clicking the lure routed victims through an adversary-in-the-middle (AiTM) proxy to capture MFA-approved session tokens, allowing attackers to replay tokens from VPN endpoints and silently siphon Microsoft 365 data.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Demonstrates that domain-level safe-sender whitelists undermine SPF/DKIM/DMARC authentication and create major exposure gaps.</p>
+<p><span class="label">Remediation:</span> Remove blanket domain whitelists, enforce Conditional Access device posture/location checks, and revoke active sessions for compromised users.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;The Greatness phishing platform recently bypassed email filters by spoofing RingCentral voicemail alerts to target organizations that had blanket-whitelisted the domain... routing victims through an adversary-in-the-middle flow to steal MFA-approved tokens.&quot;</p>
+<p><span class="label">Source:</span> TLDR InfoSec — RingCentral Phish</p>
+</div>
+<div class="item">
+<h3>2. Agentic Incident Response Playbooks using Marimo Reactive Notebooks</h3>
+<p><span class="label">Domain:</span> Incident Response &amp; SOC Engineering</p>
+<p><span class="label">Subject / Topic Summary:</span> DNB Cyber Defense Center built modular incident response workflows using marimo reactive Python notebooks. Paired with a custom translation SDK mapping queries across Splunk, Microsoft Defender, and SQL interfaces, the marimo-pair interface allows human responders and autonomous AI agents to co-execute investigation playbooks interactively.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Reactive notebook state machines enable seamless human-agent collaboration during complex incident triage.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;The DNB Cyber Defense Center&#x27;s incident response team used marimo to build out incident response workflows as modular notebooks... allowing agents to create and execute the same notebooks as human responders.&quot;</p>
+<p><span class="label">Source:</span> DNB Security Engineering / TLDR InfoSec</p>
+</div>
+<div class="item">
+<h3>3. Airlock Digital Announces Agentic AI Application Control &amp; Governance</h3>
+<p><span class="label">Domain:</span> Endpoint Security &amp; AI Governance</p>
+<p><span class="label">Subject / Topic Summary:</span> Airlock Digital announced Agentic AI Control &amp; Governance, expanding its application control suite to provide command-level and session-level visibility into trusted AI agent executions with real-time policy enforcement.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Moves endpoint application control from binary hash allowlisting to session-level behavioral boundaries for autonomous AI agents.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;Airlock Digital extended its application control platform with Agentic AI Control &amp; Governance, adding command- and session-level visibility into trusted AI agent behavior plus real-time policy enforcement.&quot;</p>
+<p><span class="label">Source:</span> HackRead / TLDR InfoSec</p>
+</div>
+<div class="item">
+<h3>Tier 3 — Industry Noise &amp; Awareness Only</h3>
+<p>• English National Ballet CRM Data Breach: CRM system compromise exposed customer contact information without financial data theft (BBC News).</p>
+<p>• AgentHound AI Agent Offensive Security Framework: Open-source framework for fingerprinting, prompt inventorying, and tool-poisoning AI agent infrastructure (GitHub AgentHound).</p>
+<p>• Beignet macOS PIC Shellcode Generator: Open-source utility converting macOS .dylib binaries into position-independent shellcode (GitHub Beignet).</p>
+<p>• Windows Kernel Exploitation HEVD Series: Four-part research series charting the shift from control-flow corruption to Data-Only pool grooming on Windows 11 (HEVD Research).</p>
+<p>• Palo Alto Unit 42 Pass-Ta-Key Passkey Hijacking: Research detailing TPM-assisted passkey extraction from Google Password Manager (Unit 42).</p>
+<p>• Snowflake SaaS Hacker Guilty Plea: Defendant Connor Riley Moucka pleaded guilty to $9.5M cloud extortion campaign affecting 165+ enterprise tenants (DataBreaches.net).</p>
+<p>• White House Voluntary AI Information Sharing Stance: National Cyber Director Sean Cairncross reaffirmed non-regulatory stance on AI model security (CyberScoop).</p>
+<p>• Tails 7.10.1 Emergency Kernel Release: Emergency release patching critical Linux kernel flaw (CVE-2026-64560) affecting Tor Browser anonymity (Linuxiac).</p>
+<p>• OpenAI &amp; WhatsApp Disrupt Cambodian Scam Network: Dismantled Poipet cybercrime ring leveraging ChatGPT for romance and financial fraud (The Hacker News).</p>
+</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 bahansen.us</span>
+      <span><a href="/privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

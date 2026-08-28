@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Security Intelligence Briefing — August 8, 2026 — bahansen.us</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="brand">bahansen<span class="dot">.</span>us</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/briefings/">Briefings</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="briefing-header">
+      <a href="/briefings/" class="back">← All briefings</a>
+      <h1>Daily Security Intelligence Briefing — August 8, 2026</h1>
+      <div class="threat-line threat-high">Overall Daily Threat Level: HIGH. Primary threat vectors include Forescout's discovery of 4,400+ exposed Rockwell PLCs online—including 22 in water utility cities targeted in recent cyberattacks (The Hacker News), an unpatchable "EndlessDoors" C2 backdoor embedded in 100,000+ Zbtlink routers (Decipher), and NatJack connection-tracking table attacks cracking NAT trust assumptions across 13 major vendors (Network World). On the AI security and architecture front, Anthropic released Inference Hooks for Claude Enterprise inline DLP (Claude Blog), while DNB Cyber Defense Center introduced agentic Incident Response notebooks built on marimo (DNB Cyber Defense).</div>
+    </section>
+
+    <div class="briefing-body">
+      <div class="brief"></div>
+      <h2>Tier 1 — Priority Targets (Must-Read)</h2>
+<div class="item">
+<h3>1. Over 4,400 Rockwell PLCs Exposed Online; 22 Found in Attacked Water Utility Cities</h3>
+<p><span class="label">Source &amp; Article Link:</span> The Hacker News / TLDR InfoSec</p>
+<p><span class="label">Technical Severity / Domain:</span> Industrial Control Systems (ICS/SCADA) Security / Critical Infrastructure Risk</p>
+<p><span class="label">Why You Must Read This:</span> Forescout identified 4,400+ internet-facing Rockwell Automation Programmable Logic Controllers (PLCs) globally, including 22 located in US cities whose municipal water utilities suffered recent operational disruptions. Attackers compromised controllers via open Ethernet/IP (port 44818) without exploiting complex zero-days, locking operators out by altering logic and communication settings.</p>
+<p><span class="label">Recommended Immediate Action:</span> Immediately disconnect all ICS/PLC interfaces from direct public internet exposure behind perimeter firewalls or industrial VPNs, and follow Rockwell Advisory SD1790 to clear unauthorized locks.</p>
+</div>
+<div class="item">
+<h3>2. EndlessDoors: Unpatchable C2 Backdoor Discovered in 100,000+ Zbtlink Routers</h3>
+<p><span class="label">Source &amp; Article Link:</span> Decipher / TLDR InfoSec</p>
+<p><span class="label">Technical Severity / Domain:</span> Network &amp; Hardware Supply Chain Security / Critical (Hardware Backdoor)</p>
+<p><span class="label">Why You Must Read This:</span> VulnCheck researchers disclosed an intentional, hardcoded C2 backdoor (&quot;EndlessDoors&quot;) embedded in firmware across 100,000+ active Zbtlink and Wiflyer routers. The backdoor initiates outbound encrypted TCP beacons on port 7000 to bypass NAT and firewalls, granting remote attackers unauthenticated root shell access to the router and connected local networks.</p>
+<p><span class="label">Recommended Immediate Action:</span> Monitor network perimeters for outbound TCP port 7000 beaconing, isolate affected hardware, and physically replace impacted Zbtlink/Wiflyer router units.</p>
+</div>
+<div class="item">
+<h3>3. NatJack Attacks at Black Hat: Cracking NAT Connection-Tracking Trust Assumptions</h3>
+<p><span class="label">Source &amp; Article Link:</span> Network World / TLDR IT</p>
+<p><span class="label">Technical Severity / Domain:</span> Network Protocol Security &amp; Firewall Architecture / High</p>
+<p><span class="label">Why You Must Read This:</span> Research presented at Black Hat 2026 revealed &quot;NatJack,&quot; a new class of network attacks targeting NAT state tables. By abusing stateful packet inspection and connection-tracking (conntrack) table allocation rules, NatJack enables unauthenticated off-path attackers to hijack active TCP/UDP connections, poison DNS responses, or trigger firewall state table exhaustion denial-of-service across 32 enterprise firewall models spanning 13 major networking vendors.</p>
+<p><span class="label">Recommended Immediate Action:</span> Audit enterprise firewall NAT implementations for strict TCP state validation and apply vendor hotfixes for conntrack state table re-use.</p>
+</div>
+<div class="item">
+<h3>4. Claude Enterprise Inference Hooks: Inline DLP &amp; Security Controls for AI Workflows</h3>
+<p><span class="label">Source &amp; Article Link:</span> Claude Engineering Blog / TLDR IT</p>
+<p><span class="label">Technical Severity / Domain:</span> AI Security &amp; Enterprise DLP Architecture / High</p>
+<p><span class="label">Why You Must Read This:</span> Anthropic launched Inference Hooks for Claude Enterprise (public beta). The framework intercepts all model prompts, system messages, and tool-call responses across Claude surfaces (Chat, Claude Code, Cowork, and custom integrations) and routes them through a customer-controlled inline DLP proxy server before processing, enabling real-time PII masking, secret detection, and policy enforcement.</p>
+<p><span class="label">Recommended Immediate Action:</span> Review Anthropic&#x27;s Inference Hook specification to integrate enterprise DLP proxy rules across deployed Claude Workspaces.</p>
+</div>
+<h2>Tier 2 — Essential Intelligence (Summaries &amp; Analysis)</h2>
+<div class="item">
+<h3>1. Agentic Incident Response Notebooks Built with Marimo</h3>
+<p><span class="label">Domain:</span> Incident Response Architecture &amp; AI Automation</p>
+<p><span class="label">Subject / Topic Summary:</span> The DNB Cyber Defense Center developed an incident response workflow engine using marimo reactive Python notebooks. The architecture features a unified cross-platform query SDK translating analyst requests seamlessly across Splunk, Microsoft Defender, and SQL interfaces while enabling human analysts and AI subagents to collaboratively execute, modify, and review reactive investigation cells.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Converts static playbook runbooks into executable, version-controlled Python notebook graphs.</p>
+<p>Provides a shared, programmatic interface where human responders and autonomous AI agents collaborate during live incident response.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;The marimo-pair agentic interface allows AI agents to create, execute, and inspect the same reactive notebooks as human responders, enabling collaborative incident investigation and automated query translation.&quot;</p>
+<p><span class="label">Source:</span> DNB Cyber Defense Center / TLDR InfoSec</p>
+</div>
+<div class="item">
+<h3>2. China Cyberspace Regulator Launches Cybersecurity Review into Palo Alto Networks</h3>
+<p><span class="label">Domain:</span> Security Leadership &amp; Geopolitical Risk</p>
+<p><span class="label">Subject / Topic Summary:</span> China&#x27;s Cyberspace Administration (CAC) initiated a formal cybersecurity investigation into Palo Alto Networks enterprise security products, alleging potential risks to critical infrastructure and national security. The action reflects growing geopolitical restrictions on Western security vendors operating in foreign markets.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Multinational security architectures must account for regional compliance splits and hardware vendor restrictions in Chinese operational regions.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;China&#x27;s cyberspace regulator launched a cybersecurity review of Palo Alto Networks products, citing potential risks to critical infrastructure without identifying specific vulnerabilities.&quot;</p>
+<p><span class="label">Source:</span> TLDR IT / 9to5Google</p>
+</div>
+<div class="item">
+<h3>3. Vanta Stealer: Cross-Platform Python Info-Stealer Targeting Credentials &amp; Tokens</h3>
+<p><span class="label">Domain:</span> Threat Intelligence &amp; Malware Analysis</p>
+<p><span class="label">Subject / Topic Summary:</span> Point Wild dissected Vanta Stealer, a cross-platform Python infostealer compiled via PyInstaller and PyArmor. The malware dynamically downloads modular plugins to extract browser passwords, VPN configurations, and gaming tokens, actively calling Discord APIs to identify high-value administrator accounts before exfiltrating stolen data archives over HTTP.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p><span class="label">Detection Strategy:</span> Block outbound C2 traffic to vanta[.]st and alert on unassigned PyInstaller-compiled binaries initiating unexpected HTTP POST requests.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;Vanta Stealer is a highly obfuscated Python information stealer that uses PyInstaller and PyArmor to evade detection while dynamically downloading modules to harvest browser credentials, VPN configurations, and Discord tokens.&quot;</p>
+<p><span class="label">Source:</span> Point Wild Research / TLDR InfoSec</p>
+</div>
+<div class="item">
+<h3>4. Greatness Phishing Service Spoofs RingCentral to Hijack Microsoft 365 Accounts</h3>
+<p><span class="label">Domain:</span> Cloud IAM &amp; Email Security</p>
+<p><span class="label">Subject / Topic Summary:</span> The Greatness Phishing-as-a-Service (PaaS) platform bypassed email security gateways by spoofing RingCentral voicemail notification emails. Organizations that maintained blanket domain allowlists for RingCentral were compromised despite authentication check failures (SPF/DKIM/DMARC), as victims were routed through Adversary-in-the-Middle (AiTM) reverse proxies that captured MFA tokens.</p>
+<p><span class="label">Key Technical &amp; Strategic Takeaways:</span> </p>
+<p>Blanket domain allowlists in email gateways bypass authentication controls; defenders must enforce strict DMARC alignment on all incoming mail regardless of sender domain reputation.</p>
+<p><span class="label">Essential Direct Quote:</span> &quot;The Greatness phishing platform bypassed email filters by spoofing RingCentral voicemail alerts to target organizations that had blanket-whitelisted the domain... routing victims through an Adversary-in-the-Middle flow to steal MFA tokens.&quot;</p>
+<p><span class="label">Source:</span> TLDR InfoSec / Greatness PaaS Analysis</p>
+</div>
+<div class="item">
+<h3>Tier 3 — Industry Noise &amp; Awareness Only</h3>
+<p>• Numbat &quot;AI-EDR&quot; Agent Visibility Tool: Perplexity open-sourced Numbat, an endpoint agent providing visibility into local AI agent actions, execution blocking, and forensic reconstruction (GitHub Numbat).</p>
+<p>• Agent-Egress-Bench Security Corpus: Open-source test suite evaluating AI agent firewalls across 197 security vectors including prompt injection and tool poisoning (GitHub Repository).</p>
+<p>• Greenlight Claude Refusal Mapping Tool: Utility mapping Claude Code guardrail refusal boundaries during security vulnerability testing (GitHub Repository).</p>
+<p>• Mercusys Router Pre-Auth Stack Overflow (CVE-2026-12495): Pre-auth stack buffer overflow in httpd patched in Mercusys MB115-4G router firmware v1.11.0 (Rotcee Research).</p>
+<p>• Swiss Government SharePoint Breach: Swiss Federal Office of Information Technology patched SharePoint instances following a breach compromising ~200 user credentials (TLDR InfoSec).</p>
+<p>• Ill Bloom Crypto Wallet Draining Campaign: Active wallet-draining campaign exploiting legacy CryptoJS weak-randomness flaws in downstream libraries (Coinspect).</p>
+<p>• Surprise AI Costs Delay Enterprise Deployments: Survey of 396 CIOs reveals 25% of enterprise AI projects delayed due to unexpected infrastructure and token cost overruns (CIO Dive).</p>
+<p>• Google Assistant Mobile Shutdown Date: Google announced Google Assistant will shut down on Android/Wear OS on September 4 in favor of Gemini (9to5Google).</p>
+</div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 bahansen.us</span>
+      <span><a href="/privacy">Privacy Policy</a></span>
+    </div>
+  </footer>
+</body>
+</html>
