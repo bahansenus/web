@@ -67,11 +67,11 @@ LANDING_TEMPLATE = """{head}
 </html>
 """
 
-MERGE_CSS = """    .briefing-body .merged { font-family: Inter, Arial, Helvetica, sans-serif; }
-    .briefing-body .merged h1 { font-size: 1.15rem; font-weight: 700; margin: 26px 0 6px; color: #f1f5fb; line-height: 1.15; }
-    .briefing-body .merged p { margin: 0 0 10px; line-height: 1.4; color: #e6edf5; }
+MERGE_CSS = """    .briefing-body .merged { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    .briefing-body .merged h1 { font-size: 1.15rem; font-weight: 700; margin: 26px 0 6px; color: #e6eaf1; line-height: 1.15; }
+    .briefing-body .merged p { margin: 0 0 10px; line-height: 1.5; color: #d0d7e2; }
     .briefing-body .merged ul { padding-left: 20px; margin: 0 0 12px; list-style: none; }
-    .briefing-body .merged ul li { margin: 0 0 4px 18px; padding: 0; line-height: 1.4; color: #e6edf5; font-size: 0.95rem; }
+    .briefing-body .merged ul li { margin: 0 0 4px 18px; padding: 0; line-height: 1.5; color: #d0d7e2; font-size: 1rem; }
     .briefing-body .merged a { color: #7dd3fc; text-decoration: underline; }
     .briefing-body .merged .tier-marker { font-family: var(--mono); font-weight: 700; letter-spacing: 0.5px; margin-top: 30px; }
 """

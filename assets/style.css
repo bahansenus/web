@@ -6,18 +6,21 @@
   --bg-soft: #111a2e;
   --bg-card: #0f1830;
   --border: #1f2b47;
-  --text: #f1f5fb;              /* near-white titles */
-  --text-dim: #cbd7ea;          /* brighter body text, minimal blue tint */
+  --text: #e6eaf1;              /* comfortable off-white titles (not pure white) */
+  --text-dim: #d0d7e2;          /* soft gray-white body — easy on the eyes */
   --accent: #38bdf8;
   --accent-2: #818cf8;
   --danger: #f87171;
   --warn: #fbbf24;
   --ok: #34d399;
-  --mono: "SFMono-Regular", "JetBrains Mono", Consolas, "Liberation Mono", Menlo, monospace;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Arial, sans-serif;
+  --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Load the site fonts (Inter for body, JetBrains Mono for accents) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 body {
   background: var(--bg);
@@ -30,7 +33,7 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
 /* Header */
 .site-header {
@@ -51,11 +54,11 @@ a:hover { text-decoration: underline; }
 }
 .masthead .container {
   display: flex; justify-content: center; align-items: center;
-  max-width: 920px;
+  max-width: 1180px;
 }
 .masthead img.logo {
   display: block;
-  max-width: 560px;
+  max-width: 640px;
   width: 100%;
   height: auto;
 }
@@ -147,7 +150,7 @@ a:hover { text-decoration: underline; }
 .briefing-header .back { font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); margin-bottom: 18px; display: block; }
 .briefing-header h1 { font-size: 1.9rem; font-weight: 800; margin-bottom: 8px; }
 .briefing-header .threat-line { font-family: var(--mono); font-size: 0.95rem; margin-bottom: 14px; }
-.briefing-body { max-width: 720px; }
+.briefing-body { max-width: 960px; }
 .briefing-body .brief {
   background: var(--bg-soft); border-left: 3px solid var(--accent);
   padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 28px;
