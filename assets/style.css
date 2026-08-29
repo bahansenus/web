@@ -166,6 +166,52 @@ a:hover { text-decoration: underline; }
 .briefing-body .item p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 4px; }
 .briefing-body .item .label { color: var(--accent); font-family: var(--mono); font-size: 0.8rem; font-weight: 700; }
 
+/* Normalized tier content (content/briefings raw format) */
+.brief-summary {
+  background: var(--bg-soft); border-left: 3px solid var(--accent);
+  padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 28px;
+  font-size: 1.02rem; color: var(--text);
+}
+.briefing-body h2.tier {
+  font-size: 1.15rem; font-weight: 700; margin: 32px 0 14px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  font-family: var(--mono); letter-spacing: 0.5px; color: var(--text);
+}
+.tier-item { margin-bottom: 18px; }
+.tier-item h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+.tier-item p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 4px; }
+.tier-item .label { color: var(--accent); font-family: var(--mono); font-size: 0.8rem; font-weight: 700; }
+
+/* Google-Docs merged export (what n8n pushes) — themed, not inline-styled */
+.briefing-body .merged { font-family: var(--sans); }
+.briefing-body .merged h1 {
+  font-size: 1.15rem; font-weight: 700; margin: 26px 0 6px;
+  color: var(--text); line-height: 1.15;
+}
+.briefing-body .merged p { margin: 0 0 10px; line-height: 1.5; color: var(--text-dim); }
+.briefing-body .merged ul { padding-left: 20px; margin: 0 0 12px; list-style: none; }
+.briefing-body .merged ul li {
+  margin: 0 0 4px 18px; padding: 0; line-height: 1.5;
+  color: var(--text-dim); font-size: 1rem;
+}
+.briefing-body .merged a { color: var(--accent); text-decoration: underline; }
+
+/* History page (month / week grouping) */
+.history-month { margin-bottom: 36px; }
+.history-month h2 {
+  font-size: 1.3rem; font-weight: 700; margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--border);
+  font-family: var(--mono); letter-spacing: 0.5px;
+}
+.history-week { font-size: 0.95rem; color: var(--accent-2); margin: 18px 0 8px; font-family: var(--mono); }
+.history-list { list-style: none; margin: 0; }
+.history-list li { margin-bottom: 8px; padding-left: 8px; border-left: 2px solid var(--border); }
+.history-list li:hover { border-left-color: var(--accent); }
+.history-list .date { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); }
+.history-list a { color: var(--text); }
+.history-list a:hover { color: var(--accent); }
+.history-list .threat { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--border); margin-top: 64px; padding: 28px 0;

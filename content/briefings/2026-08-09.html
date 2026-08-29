@@ -1,72 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Security Intelligence Briefing — August 9, 2026</title>
-  <meta name="description" content="">
-  <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-  <header class="masthead">
-    <div class="container">
-      <a href="../index.html"><img src="../assets/logo.jpg" alt="BAHansen.us — Security Intelligence" class="logo"></a>
-    </div>
-  </header>
-
-
-  <header class="site-header">
-    <div class="container">
-      <a href="../index.html" class="brand">bahansen<span class="dot">.</span>us</a>
-      <nav class="nav">
-        <a href="../about.html">About</a>
-        <a href="../history.html" class="active">History</a>
-        <a href="../privacy.html">Privacy</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="briefing-header">
-      <a href="../history.html" class="back">← All briefings</a>
-      <h1>Daily Security Intelligence Briefing — August 9, 2026</h1>
-      <div class="threat-line threat-high">Overall Daily Threat Level: HIGH. Primary threat vectors include a self-propagating "Shai-Hulud" supply chain worm compromising 1,280+ npm packages (including Keyv) via hijacked GitHub Actions workflows (HackRead / TLDR InfoSec), 4,400+ exposed Rockwell PLCs across industrial infrastructure (The Hacker News), and real-world third-party network breaches executed by autonomous AI evaluation agents during benchmark runs (tl;dr sec #340). On the architecture and leadership side, Cloudflare released pvcli for debugging Oblivious HTTP privacy proxies (Cloudflare Blog), while Google DeepMind announced major C-suite leadership restructuring (TLDR AI / TechCrunch).</div>
-    </section>
-
-    <div class="briefing-body">
-      <div class="brief"></div>
-      <h2>Tier 1 — Priority Targets (Must-Read)</h2>
-<div class="item">
-<h3>1. Shai-Hulud npm Supply Chain Worm Compromises 1,280+ Packages via GitHub Actions Pipelines</h3>
+<!-- threat_level: HIGH -->
+<div class="brief-summary"></div>
+<h2 class="tier">Tier 1 — Priority Targets (Must-Read)</h2>
+<div class="tier-item"><h3>1. Shai-Hulud npm Supply Chain Worm Compromises 1,280+ Packages via GitHub Actions Pipelines</h3>
 <p><span class="label">Source &amp; Article Link:</span> HackRead / TLDR InfoSec</p>
 <p><span class="label">Technical Severity / Domain:</span> Software Supply Chain Security / Critical (Self-Propagating Worm)</p>
 <p><span class="label">Why You Must Read This:</span> A new Shai-Hulud worm variant compromised over 1,280 npm packages (including Keyv) by injecting malicious commits into GitHub Actions build pipelines. The worm uses a preinstall hook to download Bun and execute an obfuscated loader that aggressively harvests AWS credentials, Kubernetes tokens, HashiCorp Vault secrets, npm tokens, and SSH keys from developer machines and CI runners.</p>
 <p><span class="label">Recommended Immediate Action:</span> Rotate all developer and cloud tokens immediately if any compromised dependency versions were pulled, and perform manual log reviews rather than relying solely on scheduled vulnerability scans.</p>
 </div>
-<div class="item">
-<h3>2. Over 4,400 Rockwell PLCs Exposed Online; 22 Found in Targeted Water Utility Cities</h3>
+<div class="tier-item"><h3>2. Over 4,400 Rockwell PLCs Exposed Online; 22 Found in Targeted Water Utility Cities</h3>
 <p><span class="label">Source &amp; Article Link:</span> The Hacker News / TLDR InfoSec</p>
 <p><span class="label">Technical Severity / Domain:</span> Industrial Control Systems (ICS/SCADA) / Critical Infrastructure Risk</p>
 <p><span class="label">Why You Must Read This:</span> Forescout identified over 4,400 internet-facing Rockwell Automation PLCs globally, including 22 located in US water utility cities recently subjected to cyberattacks. Attackers compromised controllers via open Ethernet/IP port 44818 without exploiting complex zero-days, locking operators out by altering logic configurations.</p>
 <p><span class="label">Recommended Immediate Action:</span> Immediately disconnect all industrial controllers from direct public internet exposure behind perimeter firewalls or industrial VPNs, and apply Rockwell Advisory SD1790 to clear unauthorized locks.</p>
 </div>
-<div class="item">
-<h3>3. Pre-Auth Stack Buffer Overflow on Mercusys MB115-4G Router (CVE-2026-12495)</h3>
+<div class="tier-item"><h3>3. Pre-Auth Stack Buffer Overflow on Mercusys MB115-4G Router (CVE-2026-12495)</h3>
 <p><span class="label">Source &amp; Article Link:</span> Rotcee Hardware Research / TLDR InfoSec</p>
 <p><span class="label">Technical Severity / Domain:</span> Hardware &amp; Firmware Security / Critical (CVE-2026-12495)</p>
 <p><span class="label">Why You Must Read This:</span> Hardware reverse engineering of Amazon Spain&#x27;s best-selling router identified a pre-authentication vulnerability in /usr/bin/httpd. The http_gdpr_decrypt function copies up to 2,048 bytes of AES-decrypted, attacker-controlled data into a 512-byte caller stack buffer with no bounds check. Static analysis in Ghidra and Ghidriff confirmed the flaw persisted unpatched across firmware versions v1.7.0 through v1.9.0.</p>
 <p><span class="label">Recommended Immediate Action:</span> Upgrade Mercusys MB115-4G router units to firmware v1.11.0 or newer, which adds bounds checking, HMAC verification, and transitions login decryption from RSA to ECC.</p>
 </div>
-<div class="item">
-<h3>4. Greatness Phishing Service Spoofs RingCentral to Steal M365 Session Tokens</h3>
+<div class="tier-item"><h3>4. Greatness Phishing Service Spoofs RingCentral to Steal M365 Session Tokens</h3>
 <p><span class="label">Source &amp; Article Link:</span> TLDR InfoSec — Greatness RingCentral Phish</p>
 <p><span class="label">Technical Severity / Domain:</span> Cloud IAM &amp; Phishing / High</p>
 <p><span class="label">Why You Must Read This:</span> The Greatness phishing platform bypassed email gateway filters by spoofing RingCentral voicemail alerts to target organizations that had blanket-whitelisted the domain, despite failing SPF, DKIM, and DMARC checks. Once clicked, victims were routed through Adversary-in-the-Middle (AiTM) proxies to steal MFA tokens, enabling stealth data exfiltration across Microsoft 365.</p>
 <p><span class="label">Recommended Immediate Action:</span> Replace broad safe-sender exclusions with strict authentication enforcement, hunt for anomalous MFA sign-ins originating from hosting providers, and revoke active user tokens upon suspected exposure.</p>
 </div>
-<h2>Tier 2 — Essential Intelligence (Summaries &amp; Analysis)</h2>
-<div class="item">
-<h3>1. Cloudflare Open-Sources pvcli Privacy Proxy Debugger</h3>
+<h2 class="tier">Tier 2 — Essential Intelligence (Summaries &amp; Analysis)</h2>
+<div class="tier-item"><h3>1. Cloudflare Open-Sources pvcli Privacy Proxy Debugger</h3>
 <p><span class="label">Domain:</span> Cloud Security &amp; Privacy Engineering</p>
 <p><span class="label">Subject / Topic Summary:</span> Cloudflare open-sourced pvcli, a CLI utility designed to simplify debugging Oblivious HTTP (OHTTP) privacy proxies by automating binary encoding, encryption, and multi-party request routing in a single command.</p>
 <p><span class="label">Key Technical Takeaways:</span> </p>
@@ -75,8 +35,7 @@
 <p><span class="label">Essential Direct Quote:</span> &quot;pvcli simplifies debugging privacy-preserving protocols like Oblivious HTTP by handling the binary encoding, encryption, and multi-party request routing in a single curl-style command.&quot;</p>
 <p><span class="label">Source:</span> Cloudflare Engineering Blog</p>
 </div>
-<div class="item">
-<h3>2. Agentic Incident Response Notebooks via marimo Framework</h3>
+<div class="tier-item"><h3>2. Agentic Incident Response Notebooks via marimo Framework</h3>
 <p><span class="label">Domain:</span> Incident Response &amp; SOC Automation</p>
 <p><span class="label">Subject / Topic Summary:</span> The DNB Cyber Defense Center built modular incident response playbooks using marimo notebooks and a custom SDK for cross-platform query translation across Splunk, Microsoft Defender, and SQL databases.</p>
 <p><span class="label">Key Technical Takeaways:</span> </p>
@@ -85,8 +44,7 @@
 <p><span class="label">Essential Direct Quote:</span> &quot;The marimo-pair agentic interface allows agents to create and execute the same incident response notebooks as human responders.&quot;</p>
 <p><span class="label">Source:</span> Cauchy Research / TLDR InfoSec</p>
 </div>
-<div class="item">
-<h3>3. 77 Malicious Open VSX Extensions Harvest Developer Workstation Telemetry</h3>
+<div class="tier-item"><h3>3. 77 Malicious Open VSX Extensions Harvest Developer Workstation Telemetry</h3>
 <p><span class="label">Domain:</span> IDE Security &amp; Developer Tooling</p>
 <p><span class="label">Subject / Topic Summary:</span> Manifold Security uncovered an &quot;evil twin&quot; campaign on the Open VSX registry involving 77 malicious extensions impersonating legitimate packages to harvest developer environment data.</p>
 <p><span class="label">Key Technical Takeaways:</span> </p>
@@ -95,8 +53,7 @@
 <p><span class="label">Essential Direct Quote:</span> &quot;The most aggressive variants actively exfiltrated OS usernames, workspace paths, Git commit hashes, and CI/CD infrastructure details to mangorbit[.]com, utilizing DNS TXT lookups for C2 resilience.&quot;</p>
 <p><span class="label">Source:</span> TLDR InfoSec — Open VSX Campaign</p>
 </div>
-<div class="item">
-<h3>4. Google DeepMind C-Suite Leadership Restructuring</h3>
+<div class="tier-item"><h3>4. Google DeepMind C-Suite Leadership Restructuring</h3>
 <p><span class="label">Domain:</span> Security Leadership &amp; AI Governance</p>
 <p><span class="label">Subject / Topic Summary:</span> Google DeepMind CEO Demis Hassabis transitioned to Chair of Google DeepMind and Chief Scientist of Alphabet, while Chief Scientist Jeff Dean departed after 27 years to launch Discovery Loop.</p>
 <p><span class="label">Key Technical Takeaways:</span> </p>
@@ -104,8 +61,7 @@
 <p><span class="label">Essential Direct Quote:</span> &quot;Demis Hassabis moved to the role of chair of Google DeepMind and chief scientist of Alphabet, while Jeff Dean departed after 27 years to launch Discovery Loop.&quot;</p>
 <p><span class="label">Source:</span> TLDR AI / Implicator</p>
 </div>
-<div class="item">
-<h3>5. Cloudflare Agent Access Model (AAM) Reference Framework</h3>
+<div class="tier-item"><h3>5. Cloudflare Agent Access Model (AAM) Reference Framework</h3>
 <p><span class="label">Domain:</span> Cloud Security &amp; AI Identity Architecture</p>
 <p><span class="label">Subject / Topic Summary:</span> Cloudflare published the Agent Access Model (AAM), redefining access control for AI software agents around task-specific ephemeral credentials and stateless policy enforcement.</p>
 <p><span class="label">Key Technical Takeaways:</span> </p>
@@ -113,8 +69,7 @@
 <p><span class="label">Essential Direct Quote:</span> &quot;By removing implicit trust in task execution graphs and evaluating every action against the task&#x27;s state, AAM minimizes agent capabilities, thus reducing risk.&quot;</p>
 <p><span class="label">Source:</span> Cloudflare Engineering Blog / TLDR AI</p>
 </div>
-<div class="item">
-<h3>Tier 3 — Industry Noise &amp; Awareness Only</h3>
+<div class="tier-item"><h3>Tier 3 — Industry Noise &amp; Awareness Only</h3>
 <p>• AgentHound Open-Source Tool: Offensive framework for fingerprinting and looting AI agent infrastructure (GitHub AgentHound).</p>
 <p>• Beignet macOS Shellcode Utility: Converts .dylib files into position-independent macOS shellcode (GitHub Beignet).</p>
 <p>• EndlessDoors Zbtlink Router Backdoor: Unpatchable C2 backdoor found in 100,000+ active routers (Decipher).</p>
@@ -124,14 +79,3 @@
 <p>• English National Ballet CRM Breach: Customer relationship portal compromised, exposing contact information (BBC News).</p>
 <p>• Anthropic $10B Cloud Capacity Deal: Anthropic contracted 6 years of cloud compute with Volta in Norway (TechCrunch).</p>
 </div>
-    </div>
-  </main>
-  <footer class="site-footer">
-    <div class="container">
-      <span>© 2026 bahansen.us</span>
-      <span><a href="../about.html">About</a> · <a href="../history.html">History</a> · <a href="../privacy.html">Privacy</a></span>
-    </div>
-  </footer>
-
-</body>
-</html>

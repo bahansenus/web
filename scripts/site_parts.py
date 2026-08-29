@@ -21,12 +21,13 @@ def masthead(depth: int = 0) -> str:
 
 # ---------------------------------------------------------------- navigation --
 def nav(depth: int = 0, active: str = "") -> str:
-    """active: one of '' (none), 'about', 'history', 'privacy'"""
+    """active: one of '' (none), 'articles', 'history', 'about', 'privacy'"""
     root = "../" * depth
     links = []
     for href, label, key in (
-        ("about.html", "About", "about"),
+        ("articles.html", "Articles", "articles"),
         ("history.html", "History", "history"),
+        ("about.html", "About", "about"),
         ("privacy.html", "Privacy", "privacy"),
     ):
         cls = ' class="active"' if key == active else ""
@@ -47,7 +48,7 @@ def footer(depth: int = 0) -> str:
     return f'''  <footer class="site-footer">
     <div class="container">
       <span>© 2026 bahansen.us</span>
-      <span><a href="{root}about.html">About</a> · <a href="{root}history.html">History</a> · <a href="{root}privacy.html">Privacy</a></span>
+      <span><a href="{root}articles.html">Articles</a> · <a href="{root}history.html">History</a> · <a href="{root}about.html">About</a> · <a href="{root}privacy.html">Privacy</a></span>
     </div>
   </footer>
 '''
