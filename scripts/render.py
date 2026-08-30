@@ -20,6 +20,7 @@ Theme = assets/style.css (CSS variables) + site_parts.py (layout fragments).
 Change the theme once; every page, past and future, follows it.
 """
 import html as html_mod
+import json
 import re
 import shutil
 import sys
@@ -384,6 +385,80 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
         (OUT / "index.html").write_text(landing)
 
 
+# ---- canonical JSON renderer -------------------------------------------------
+# Renders content/briefings/YYYY-MM-DD.json — pure data, no HTML/formatting.
+# Produces the same .brief-summary / .h2.tier / .tier-item structure the theme
+# already styles, so JSON briefings look identical to normalized HTML ones.
+
+def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
+    title = data.get("title") or f"Daily Security Intelligence Briefing — {date_str}"
+    threat = (data.get("threat_level") or "").upper()
+    summary = data.get("summary", "")
+
+    parts = []
+    if summary:
+        parts.append(f'<div class="brief-summary">{html_mod.escape(summary)}</div>')
+
+    tiers = [
+        ("tier1", "Tier 1 — Priority Targets (Must-Read)"),
+        ("tier2", "Tier 2 — Essential Intelligence (Summaries &amp; Analysis)"),
+        ("tier3", "Tier 3 — Industry Noise &amp; Awareness Only"),
+    ]
+    for key, header in tiers:
+        items = data.get(key) or []
+        if not items:
+            continue
+        if key == "tier3":
+            parts.append(f'<h2 class="tier">{header}</h2>')
+            parts.append('<div class="tier-item">')
+            for it in items:
+                text = it.get("text", "") if isinstance(it, dict) else str(it)
+                if text:
+                    parts.append(f"<p>• {html_mod.escape(text)}</p>")
+            parts.append("</div>")
+        else:
+            parts.append(f'<h2 class="tier">{header}</h2>')
+            for it in items:
+                parts.append('<div class="tier-item">')
+                parts.append(f'<h3>{html_mod.escape(it.get("title", ""))}</h3>')
+                for field in it.get("fields", []):
+                    label = field.get("label", "")
+                    value = field.get("value", "")
+                    if value:
+                        parts.append(
+                            f'<p><span class="label">{html_mod.escape(label)}:</span> {html_mod.escape(value)}</p>'
+                        )
+                parts.append("</div>")
+
+    body = "\n".join(parts)
+    excerpt = (summary or title)[:150].replace('"', "")
+
+    page = BRIEFING_TEMPLATE.format(
+        head=site_parts.head(title, excerpt, depth=1),
+        nav=site_parts.nav(depth=1, active="history"),
+        title=title,
+        threat_class=threat_class(threat),
+        threat_level=threat or "—",
+        body=body,
+        footer=site_parts.footer(depth=1),
+    )
+    out_dir = OUT / "briefings"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"{date_str}.html").write_text(page)
+
+    if date_str == entries_meta[0]["date"]:
+        landing = LANDING_TEMPLATE.format(
+            head=site_parts.head(title, excerpt, depth=0),
+            nav=site_parts.nav(depth=0),
+            title=title,
+            threat_class=threat_class(threat),
+            threat_level=threat or "—",
+            body=body,
+            footer=site_parts.footer(depth=0),
+        )
+        (OUT / "index.html").write_text(landing)
+
+
 def extract_summary(raw: str) -> str:
     m = re.search(r"Overall Daily Threat Level:\s*[A-Z]+\.", raw)
     if not m:
@@ -489,21 +564,43 @@ def main():
     (OUT / "assets").mkdir(parents=True, exist_ok=True)
     copy_static()
 
-    # gather briefing entries
+    # gather briefing entries (both legacy .html and canonical .json; .json wins)
     entries = []
+    seen_dates: set[str] = set()
+    for f in sorted((CONTENT / "briefings").glob("*.json")):
+        date_m = re.search(r"(\d{4}-\d{2}-\d{2})", f.name)
+        if not date_m:
+            continue
+        date_str = date_m.group(1)
+        try:
+            data = json.loads(f.read_text())
+        except Exception:
+            print(f"  SKIP (bad JSON): {f.name}", file=sys.stderr)
+            continue
+        title = data.get("title") or f"Daily Security Intelligence Briefing — {date_str}"
+        threat = (data.get("threat_level") or "").upper()
+        # links/history/feed always point at the rendered .html page
+        entries.append({"date": date_str, "filename": f"{date_str}.html", "title": title, "threat": threat, "kind": "json", "data": data})
+        seen_dates.add(date_str)
     for f in sorted((CONTENT / "briefings").glob("*.html")):
         date_m = re.search(r"(\d{4}-\d{2}-\d{2})", f.name)
         if not date_m:
             continue
         date_str = date_m.group(1)
+        if date_str in seen_dates:
+            print(f"  SKIP (json supersedes): {f.name}")
+            continue
         raw = f.read_text()
         title, threat = extract_title_and_threat(raw, date_str)
-        entries.append({"date": date_str, "filename": f.name, "title": title, "threat": threat})
+        entries.append({"date": date_str, "filename": f"{date_str}.html", "title": title, "threat": threat, "kind": "html", "raw": raw})
     entries.sort(key=lambda e: e["date"], reverse=True)
 
     for e in entries:
-        render_briefing(e["date"], (CONTENT / "briefings" / e["filename"]).read_text(), entries)
-        print(f"  briefing {e['date']}: {e['title'][:50]}")
+        if e["kind"] == "json":
+            render_json_briefing(e["date"], e["data"], entries)
+        else:
+            render_briefing(e["date"], e["raw"], entries)
+        print(f"  briefing {e['date']} ({e['kind']}): {e['title'][:50]}")
 
     # history
     history_html = HISTORY_TEMPLATE.format(
