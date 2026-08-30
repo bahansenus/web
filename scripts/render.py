@@ -186,6 +186,45 @@ def extract_title_and_threat(raw: str, date_str: str) -> tuple:
     return title, threat
 
 
+def _strip_style_attrs(html_text: str) -> str:
+    """Remove every style=\"...\" attribute, tolerating nested double-quotes
+    inside the value (Google Docs emits font-family:\"Poppins\" etc.). Google
+    Docs always places style LAST in the tag and closes the value with `">`,
+    so the closing quote is the last quote before the tag's '>'."""
+    out = []
+    i = 0
+    n = len(html_text)
+    while i < n:
+        if html_text[i] == "<":
+            j = html_text.find(">", i)
+            if j == -1:
+                out.append(html_text[i:])
+                break
+            tag = html_text[i:j+1]
+            new_tag = []
+            k = 0
+            tl = len(tag)
+            while k < tl:
+                m = re.match(r'\s+style\s*=\s*"', tag[k:])
+                if m:
+                    start = k + m.end()  # after the opening quote
+                    # closing quote = last '"' before the tag's '>'
+                    close = tag.rfind('"', start, tl - 1)
+                    if close > start:
+                        k = close + 1   # consume the whole attribute
+                        continue
+                    k = start
+                    continue
+                new_tag.append(tag[k])
+                k += 1
+            out.append("".join(new_tag))
+            i = j + 1
+        else:
+            out.append(html_text[i])
+            i += 1
+    return "".join(out)
+
+
 def clean_merged_body(raw: str) -> str:
     """Strip the Google-Docs inline styles + duplicated headers from a merged body."""
     body = raw
@@ -194,8 +233,8 @@ def clean_merged_body(raw: str) -> str:
     body = re.sub(r"<h1[^>]*>Executive Threat Brief.*?</h1>", "", body, flags=re.S)
     # remove the threat-level paragraph (renderer supplies it)
     body = re.sub(r"<p[^>]*>Overall Daily Threat Level:.*?</p>", "", body, flags=re.S)
-    # strip inline styles (nested-quote safe)
-    body = re.sub(r'\s+style="[^"]*"', "", body)
+    # strip inline styles (nested-quote safe, tag-aware)
+    body = _strip_style_attrs(body)
     body = re.sub(r'<spanRoboto Mono["\']*>', "<span>", body)
     body = re.sub(r"<p>\s*</p>", "", body)
     return body.strip()
