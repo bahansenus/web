@@ -1,22 +1,29 @@
 # n8n → Website Push (GitHub Contents API)
 
 How the n8n newsletter workflow publishes today's briefing to the bahansen.us
-website. The workflow pushes ONE raw content file; GitHub Actions renders the
+website. The workflow pushes ONE canonical JSON file; GitHub Actions renders the
 site and deploys it.
 
 ## Flow
 
 ```
-[Daily Newsletter workflow finishes — merged HTML in memory]
-  → HTTP Request node: PUT /repos/bahansenus/web/contents/content/briefings/YYYY-MM-DD.html
-      headers: Authorization: token <GITHUB_WEB_KEY>
+[Daily Newsletter workflow finishes — Generate (Gemini) structured JSON in memory]
+  → Prep website push (Code): normalize nl → canonical contract → base64
+  → HTTP Request node: PUT /repos/bahansenus/web/contents/content/briefings/YYYY-MM-DD.json
+      headers: Authorization: token ***
       body:    { "message": "feat(newsletter): push briefing YYYY-MM-DD",
-                 "content": "<base64 of merged HTML body>",
+                 "content": "<base64 of canonical JSON string>",
                  "sha": "<existing file sha, if updating>" }
   → git push to main (the API commits directly)
   → GitHub Actions: build_site.py renders → validates → deploys _site/
   → https://bahansenus.github.io/web/ updates automatically
 ```
+
+Since v4.0 (2026-08-30) the pushed artifact is **canonical JSON, not HTML** —
+pure data (title, threat_level, summary, tier1/2/3 with label/value fields).
+The site's own theme renders it; Google's fonts/sizes/structure never touch the
+site. Schema: `docs/briefing-json-contract.md`. Reference normalization:
+`scripts/html_to_json.py`.
 
 ## Credential (n8n)
 
@@ -24,8 +31,8 @@ site and deploys it.
 - Header: `Authorization`
 - Value: `token <GITHUB_WEB_KEY from Bitwarden>`
   - GITHUB_WEB_KEY is secret id `86bdfa75-7f65-4240-b80f-b4b40145874a` in the
-    Home Lab Bitwarden project. Its `value` field is a JSON object; the actual
-    token is the `token`/`github_token` key inside that object.
+    Home Lab Bitwarden project. Its `.value` field **IS the token directly** — a
+    fine-grained PAT, prefix `github_pat_`, 93 chars. NOT nested JSON.
   - n8n note: n8n container mounts only `./data:/home/node/.n8n` — no
     `/opt/data/.env`. Add the credential via the n8n UI (or a one-off
     credentials API call from Hermes). Do NOT store the raw token in the
@@ -34,38 +41,40 @@ site and deploys it.
 ## HTTP Request node config
 
 - Method: **PUT**
-- URL: `https://api.github.com/repos/bahansenus/web/contents/content/briefings/{{$now.toFormat('yyyy-MM-dd')}}.html`
+- URL: `https://api.github.com/repos/bahansenus/web/contents/content/briefings/{{$now.toFormat('yyyy-MM-dd')}}.json`
 - Authentication: `Generic Credential Type` → `GitHub Web Key` (Header Auth)
 - Body (JSON):
   ```json
   {
     "message": "feat(newsletter): push briefing {{$now.toFormat('yyyy-MM-dd')}}",
-    "content": "{{ $json['base64Content'] }}",
+    "content": "{{ $json['content'] }}",
     "sha": "{{ $json['existingSha'] }}"
   }
   ```
-  - `base64Content`: base64 of the merged HTML **body only** (no `<html>/<body>` wrapper).
-    n8n: `{{ Buffer.from(mergedHtmlBody).toString('base64') }}` (Code node first).
+  - `content`: base64 of the **canonical JSON string** (produced by the `Prep
+    website push` Code node from `$('Parse newsletter').first().json.nl`).
   - `existingSha`: only needed when the file already exists (re-push/update). Get
-    it from `GET /repos/bahansenus/web/contents/content/briefings/YYYY-MM-DD.html`
+    it from `GET /repos/bahansenus/web/contents/content/briefings/YYYY-MM-DD.json`
     first, or omit for first push (GitHub returns 201; a second push needs sha).
 
 ## Content file contract
 
-The pushed file at `content/briefings/YYYY-MM-DD.html` must be the raw body:
+The pushed file at `content/briefings/YYYY-MM-DD.json` is **canonical data**:
 
-- **Merged Google-Docs export** (what the newsletter Assemble node produces):
-  inline-styled h1/ul/li markup, `Overall Daily Threat Level: X.` text somewhere
-  near the top. The build strips inline styles; the theme CSS styles it.
-  Optionally prepend `<!-- threat_level: CRITICAL -->` for a clean machine read.
-- OR **normalized tier body**:
-  ```html
-  <!-- threat_level: CRITICAL -->
-  <div class="brief-summary">executive summary text</div>
-  <h2 class="tier">Tier 1 — Priority Targets (Must-Read)</h2>
-  <div class="tier-item"><h3>1. Title</h3><p><span class="label">Source:</span> ...</p></div>
-  ...
-  ```
+```json
+{
+  "date": "2026-08-30",
+  "title": "Daily Security Intelligence Briefing — August 30, 2026",
+  "threat_level": "CRITICAL",
+  "summary": "executive brief, plain text",
+  "tier1": [{ "title": "1. ...", "fields": [{ "label": "...", "value": "..." }] }],
+  "tier2": [...],
+  "tier3": [{ "text": "..." }]
+}
+```
+
+Legacy `.html` briefings (07-28 → 08-29) remain supported by the renderer;
+`.json` supersedes `.html` for the same date. New pushes are always `.json`.
 
 ## Verification
 
