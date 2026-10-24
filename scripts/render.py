@@ -390,6 +390,17 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
 # Produces the same .brief-summary / .h2.tier / .tier-item structure the theme
 # already styles, so JSON briefings look identical to normalized HTML ones.
 
+def _item_link(text: str, url: str) -> str:
+    """Render text as an external link when a valid source URL is present."""
+    u = (url or "").strip()
+    if not u.lower().startswith(("http://", "https://")):
+        return html_mod.escape(text)
+    return (
+        f'<a href="{html_mod.escape(u, quote=True)}" target="_blank" '
+        f'rel="noopener noreferrer">{html_mod.escape(text)}</a>'
+    )
+
+
 def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
     title = data.get("title") or f"Daily Security Intelligence Briefing — {date_str}"
     threat = (data.get("threat_level") or "").upper()
@@ -413,14 +424,15 @@ def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
             parts.append('<div class="tier-item">')
             for it in items:
                 text = it.get("text", "") if isinstance(it, dict) else str(it)
+                url = it.get("url", "") if isinstance(it, dict) else ""
                 if text:
-                    parts.append(f"<p>• {html_mod.escape(text)}</p>")
+                    parts.append(f"<p>• {_item_link(text, url)}</p>")
             parts.append("</div>")
         else:
             parts.append(f'<h2 class="tier">{header}</h2>')
             for it in items:
                 parts.append('<div class="tier-item">')
-                parts.append(f'<h3>{html_mod.escape(it.get("title", ""))}</h3>')
+                parts.append(f'<h3>{_item_link(it.get("title", ""), it.get("url", ""))}</h3>')
                 for field in it.get("fields", []):
                     label = field.get("label", "")
                     value = field.get("value", "")
