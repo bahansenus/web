@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-15",
+  "title": "Daily Security Intelligence Briefing — October 15, 2026",
+  "threat_level": "CRITICAL",
+  "summary": "Active zero-day exploitation targets enterprise edge appliances including Palo Alto PAN-OS and Cisco Secure Email Gateways (CSO Online, The Hacker News), while a global coalition disrupted the Yam Store phishing marketplace responsible for over a billion scam emails (Help Net Security). Concurrently, developer pipelines face increased risk from GhostAction GitHub hijacks and zero-click Claude Code desktop vulnerabilities (Dark Reading).",
+  "tier1": [
+    {
+      "title": "1. Microsoft-Led Coalition Disrupts Global Yam Store Phishing Network",
+      "url": "https://www.helpnetsecurity.com/2026/10/15/microsoft-disrupting-phishing-kits-marketplace-yam-store/",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "Help Net Security"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Global PhaaS Ecosystem / Infrastructure Disruption (Yam Store)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Microsoft, alongside Health-ISAC, international law enforcement, and tech industry partners, dismantled Yam Store (Storm-3119), a massive Chinese-language phishing-as-a-service network. The criminal marketplace provided turnkey cloud accounts and phishing kits that generated over one billion malicious messages targeting 75,000 organizations in 150 countries. The coordinated action disrupted three major kits (CoGUI, Haozi, and Iron Man System) heavily used against healthcare, financial services, and IT sectors."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Audit tenant identity protection rules, enforce FIDO2 phishing-resistant MFA across enterprise accounts, review OAuth application consent policies, and update email gateway detections for Storm-3119/Storm-2990 indicators."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. Palo Alto Networks Patches PAN-OS Root RCE Flaw Under Active Exploitation",
+      "url": "https://www.csoonline.com/article/4235787/attackers-exploit-palo-alto-pan-os-flaw-for-root-access-as-cisa-orders-three-day-fix.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / Perimeter Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Palo Alto Networks released emergency updates for CVE-2026-0322, a high-severity remote code execution flaw in PAN-OS firewall management interfaces. CISA added the zero-day flaw to its Known Exploited Vulnerabilities catalog with a mandatory three-day federal remediation deadline."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Allows authenticated attackers with network access to management interfaces to execute arbitrary commands with root privileges.; CISA mandated federal agencies patch or restrict management interface access by October 17."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The flaw 'enables an authenticated attacker with network access to execution of arbitrary commands with root privileges'."
+        },
+        {
+          "label": "Source",
+          "value": "CSO Online"
+        }
+      ]
+    },
+    {
+      "title": "2. Cisco Warns of Unauthenticated Root RCE Flaw in Secure Email Gateway",
+      "url": "https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Email Security / Network Appliances"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Cisco issued security fixes for CVE-2026-76519, a critical path traversal vulnerability in Cisco Secure Email Gateway actively exploited in the wild. Attackers can transmit crafted email attachments through the gateway to write arbitrary files and execute commands with root privileges."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Requires no authentication; malicious attachment delivery triggers file write and root command execution.; CISA included CVE-2026-76519 in its KEV catalog for immediate enterprise patching."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The attacker sends an email with a crafted attachment through the gateway and, if it succeeds, could then run commands as root."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. High-Risk Vulnerabilities Disclosed in LiteLLM AI Gateway Tool",
+      "url": "https://www.infosecurity-magazine.com/news/high-risk-vulnerabilities-llm-tool/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI Security / Infrastructure"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Security advisories warned of vulnerabilities CVE-2026-35029 and CVE-2026-59823 in LiteLLM, a popular open-source AI gateway used to connect enterprise applications to OpenAI and Anthropic models. The flaws could expose AI application traffic and token credentials to unauthorized access."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "LiteLLM serves as central API routing infrastructure, amplifying the impact of middleware vulnerabilities across connected AI tools.; Organizations using open-source AI gateways should audit external visibility and upgrade to fixed releases."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "CVE-2026-35029 and CVE-2026-59823 affect LiteLLM, which is commonly used by enterprises to connect their AI applications to providers."
+        },
+        {
+          "label": "Source",
+          "value": "Infosecurity Magazine"
+        }
+      ]
+    },
+    {
+      "title": "4. GhostAction Campaign Hijacks 1,900 GitHub Accounts to Target 30k Repositories",
+      "url": "https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Developer Security / Supply Chain"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Researchers at GitGuardian reported a massive escalation in the GhostAction credential-harvesting campaign. The attackers compromised approximately 1,900 GitHub user accounts to scan over 30,000 public repositories and CI/CD pipelines for exposed secrets."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Targeted more than 30,000 repositories across 3,000 organizations to extract thousands of operational secrets.; Highlights automated secret scraping and session token compromise risks within developer CI environments."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "This resulted from compromising the GitHub accounts of about 1,900 users. It attempted to extract 3,174 secrets from public repositories' CI."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "5. Anthropic 'SneakPeek' Zero-Click Bug Threatens Developer Credentials",
+      "url": "https://www.darkreading.com/threat-intelligence/new-anthropic-sneakpeek-silent-zero-click-threat",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Application Security / AI Tooling"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Noma Security identified a zero-click flaw in Claude Code Desktop's preview pane that allows malicious JavaScript embedded in HTML files to execute quietly. The flaw enables adversaries to exfiltrate developer credentials, including SSH keys, AWS secrets, and OAuth tokens."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Previewing an untrusted HTML file in Claude Code Desktop can trigger arbitrary script execution without prompt approval.; Exposes sensitive developer workstation keys and cloud identity tokens to theft."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "A bug in Claude Code Desktop's preview pane can allow adversaries to quietly steal credentials from developers, including SSH private keys, AWS credentials, and Claude OAuth tokens."
+        },
+        {
+          "label": "Source",
+          "value": "Dark Reading"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "DOJ / FBI — Raided DPRK IT worker laptop farms in Texas, charging 14. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-raids-dprk-it-worker-laptop-farms-in-texas-us-nationals-arrested/"
+    },
+    {
+      "text": "UK Legal Aid Agency — Disclosed breach involving stolen legal records dating back to 1978. (The Register)",
+      "url": "https://www.theregister.com/security/2026/10/15/legal-aid-agency-hackers-made-off-with-records-dating-back-to-1978/5303243"
+    },
+    {
+      "text": "OpenAI / FBI — FBI arrested OpenAI engineer for hiding recording device in executive room. (Ars Technica)",
+      "url": "https://arstechnica.com/tech-policy/2026/10/fbi-arrests-openai-engineer-suspected-of-planting-bug-in-conference-room/"
+    },
+    {
+      "text": "Ahsay Backup — Patched AhsayCBS flaws actively exploited to deploy web shells and miners. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html"
+    },
+    {
+      "text": "UK Government — Sanctioned Cryptomus for laundering Russian ransomware and cybercrime proceeds. (Krebs on Security)",
+      "url": "https://krebsonsecurity.com/2026/10/u-k-sanctions-cryptomus-for-ru-money-laundering/"
+    },
+    {
+      "text": "INTERPOL — Police arrested 95 suspects in 17-country CSAM crackdown. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/police-arrests-95-suspects-in-child-sexual-abuse-material-crackdown/"
+    },
+    {
+      "text": "EU Grocery Chains — Suffered cyberattacks on unpatched refrigeration firmware causing food inventory losses. (Dark Reading)",
+      "url": "https://www.darkreading.com/ics-ot-security/eu-grocers-unpatched-fridge-firmware"
+    },
+    {
+      "text": "Ledger — Suspended Asian hardware wallet sales following supply-chain tampering investigation. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/ledger-asks-sellers-across-asia-to-halt-sales-after-supply-chain-attack/"
+    }
+  ]
+}
