@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-13",
+  "title": "Daily Security Intelligence Briefing — September 13, 2026",
+  "threat_level": "HIGH",
+  "summary": "Threat actors are targeting enterprise perimeter devices and cloud identity systems using passkey phishing lures and custom rootkits, while exploitation of critical Check Point VPN flaws is reported as imminent (BleepingComputer, The Hacker News).",
+  "tier1": [],
+  "tier2": [
+    {
+      "title": "1. Attackers Use Passkey Phishing to Hijack Microsoft Cloud Accounts and Exfiltrate Data",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Cloud Security / Identity"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Microsoft disclosed two threat campaigns where actors abused legitimate third-party email delivery infrastructure to distribute over a million scam messages. The attackers leveraged passkey-themed social engineering lures to deceive users, gain unauthorized access to Microsoft cloud environments, and exfiltrate corporate data."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Threat actors leverage trusted third-party email delivery services to bypass traditional email gateway filters.; Social engineering lures are increasingly adopting passkey themes to trick users accustomed to modern authentication workflows."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The first campaign involved sending over a million scam emails... using passkey-themed social engineering to breach cloud environments."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. Dutch NCSC: Critical Check Point VPN Flaws Exploitation Is Imminent",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / Edge Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "The Dutch National Cyber Security Centrum (NCSC) has issued an urgent alert warning that active exploitation of two critical Check Point VPN vulnerabilities is expected imminently. The flaws, tracked as CVE-2026-85102 and CVE-2026-85103, pose significant risk to enterprise remote access infrastructure."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "CVE-2026-85102 and CVE-2026-85103 impact Check Point enterprise VPN gateways.; Security teams are advised to prioritize patching immediately before broad public exploitation begins."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The Dutch Nationaal Cyber Security Centrum (NCSC) is warning of imminent exploitation of two critical flaws in Check Point VPN..."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "3. CISA Adds 5 Actively Exploited Artifactory, ScreenConnect, and RouterOS Flaws to KEV",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CISA added five vulnerabilities to its Known Exploited Vulnerabilities catalog following active in-the-wild exploitation reports. The additions impact developer software, remote access tools, and network hardware, including JFrog Artifactory, ConnectWise ScreenConnect, and MikroTik RouterOS."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Includes CVE-2026-42016, an incorrect authorization vulnerability in Artifactory with an 8.1 CVSS score.; Federal agencies and enterprise security teams face mandatory remediation timelines for these exposed components."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added five security flaws impacting JFrog Artifactory, ConnectWise ScreenConnect, and MikroTik RouterOS to its Known Exploited Vulnerabilities catalog..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. Linux Rootkit Deployed on F5 BIG-IP APM Devices, Cisco FMC Bugs Exploited",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Intelligence / Infrastructure Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Security investigations revealed sophisticated campaigns deploying custom Linux rootkits onto compromised F5 BIG-IP APM gateway appliances for persistent access. Concurrently, attackers continue actively targeting unpatched vulnerabilities in Cisco Firepower Management Center (FMC) installations."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Network perimeter appliances like F5 APM remain top targets for persistent stealth rootkits.; Cisco FMC management interfaces require strict access controls and immediate patch verification."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Linux rootkit deployed on F5 BIG-IP APM devices, Cisco FMC bugs exploited."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "AWS Pizza Bot — Open-source email-style inbox application for background AI agent decision management. (MarkTechPost)"
+    },
+    {
+      "text": "Context Engineering Inside the Harness — Technical breakdown of four mechanisms mitigating context overflow in autonomous agents. (MarkTechPost)"
+    },
+    {
+      "text": "Cognition SWE-2 Model Release — Post-trained coding model matching Fable 5.1 benchmarks at reduced operational costs. (MarkTechPost)"
+    },
+    {
+      "text": "John Deere Self-Repair Testing — Hands-on trial of John Deere self-repair tools highlights ongoing farmer skepticism. (Ars Technica)"
+    },
+    {
+      "text": "NVIDIA cuML and RAPIDS Workflows — Tutorial demonstrating GPU acceleration for scikit-learn machine learning tasks. (MarkTechPost)"
+    },
+    {
+      "text": "Fly Language Model Experiment — Research coupling fruit fly connectome data to LLM shows no benchmark improvement. (MarkTechPost)"
+    },
+    {
+      "text": "GPT-6 Astra Route Generation — Using ChatGPT Work and Astra to generate running routes and GeoJSON outputs. (Simon Willison's Weblog)"
+    },
+    {
+      "text": "Paul Ford on Software Engineering — Reflections on human craft and collaboration amidst rising AI software generation. (Simon Willison's Weblog)"
+    }
+  ]
+}
