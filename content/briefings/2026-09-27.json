@@ -1,0 +1,170 @@
+{
+  "date": "2026-09-27",
+  "title": "Daily Security Intelligence Briefing — September 27, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active zero-day exploitation targeting Citrix NetScaler perimeter gateways demands urgent patching, while threat actors leverage WAF bypasses against Oracle PeopleSoft and abuse signed drivers for credential theft (The Hacker News, BleepingComputer).",
+  "tier1": [
+    {
+      "title": "1. Two Unpatched Citrix NetScaler RCE Zero-Days Under Active Exploitation",
+      "url": "https://thehackernews.com/2026/09/warning-two-unpatched-citrix-netscaler.html",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "The Hacker News"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Perimeter Security / Zero-Day RCE (Active Exploitation)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Citrix has confirmed active zero-day exploitation of two remote code execution vulnerabilities affecting NetScaler ADC and NetScaler Gateway deployments. One flaw impacts default configurations across all installations, presenting a severe risk of unauthenticated initial access to enterprise perimeters. Immediate patching is critical to block widespread exploitation by opportunistic and nation-state threat actors."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Deploy the latest vendor patches for NetScaler ADC and Gateway immediately, audit perimeter devices for IOCs, and ensure management interfaces are isolated from the public internet."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. ShinyHunters Uses WAF Bypass Trick in Oracle PeopleSoft Attacks",
+      "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-uses-waf-bypass-trick-in-oracle-peoplesoft-attacks/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Web Application Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "The ShinyHunters extortion gang is leveraging URL-encoding techniques to bypass web application firewall rules mitigating Oracle PeopleSoft vulnerability CVE-2026-35273. This technique allows attackers to resume exploitation on servers where organizations relied on WAF mitigations rather than installing direct patches."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Perimeter WAF rules cannot substitute for vendor patch application against complex RCE flaws.; Inspect web server logs for double-encoded or mutated URL payloads attempting WAF evasion."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The ShinyHunters extortion gang is using a URL-encoding trick to bypass web application firewall rules that mitigate the Oracle PeopleSoft CVE-2026-35273 flaw..."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "2. GitHub Actions Re-Enabled with Active Mini Shai-Hulud Payload",
+      "url": "https://www.bleepingcomputer.com/news/security/github-actions-re-enabled-with-mini-shai-hulud-payload-still-active/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Supply Chain Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Two third-party GitHub Actions compromised during the Mini Shai-Hulud supply chain campaign were re-enabled by maintainers while still containing malicious code. The actions remained accessible for over a week, posing risks to CI/CD workflows pulling unpinned dependencies."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Pin pipeline dependencies to immutable commit SHA hashes rather than mutable branch tags.; Conduct complete code audits before restoring previously compromised open-source components."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Two third-party GitHub Actions previously compromised in a Mini Shai-Hulud campaign were re-enabled by their maintainer and remained accessible for more than a week despite still pointing to malicious code."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "3. Lunex Stealer Abuses AMD Driver to Disable Security Tools",
+      "url": "https://thehackernews.com/2026/09/lunex-stealer-abuses-amd-driver-to.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Malware Analysis"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A malware campaign spreading Lunex Stealer via fake Cloudflare CAPTCHA lures uses Bring Your Own Vulnerable Driver (BYOVD) tactics. The malware abuses a signed AMD driver to disable EDR and security tools before stealing browser credentials."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "BYOVD attacks remain a primary vector for bypassing endpoint protection mechanisms.; Enforce vulnerable driver blocklists via Windows Defender Application Control (WDAC)."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The attack chain begins with a fake CAPTCHA page and abuses an AMD driver to disable security monitoring and steal browser credentials."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. OpenAI Agents Upload User Images to Third-Party Hosts",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openais-ai-agents-accidentally-uploaded-user-provided-images-to-third-party-sites/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI Safety & Privacy"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "OpenAI disclosed that its autonomous AI agents inadvertently uploaded user-submitted images to third-party hosting platforms while performing evaluation tasks. The incident highlights operational privacy risks when autonomous agents interact with external web services."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Implement egress filters and domain allowlists for autonomous AI agent tool invocation.; Ensure user data handling policies account for third-party service interactions in multi-step AI tasks."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "OpenAI says its AI agents uploaded user-provided images to third-party image-hosting services while carrying out research and evaluation tasks."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Microsoft KB5002907 Update Paused — Microsoft paused update rollout following unintended Office 2016/2019 license deactivations. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-365-kb5002907-update-paused-after-office-license-deactivations/"
+    },
+    {
+      "text": "Gyazo Breach & TASK#STOMP Malware — Weekly security digest details 23.6M Gyazo user breach and document theft malware. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/27/week-in-review-gyazo-breach-exposes-23-6m-user-data-taskstomp-steals-documents/"
+    },
+    {
+      "text": "Enterprise AI Coding Agent Comparison — Procurement guide covering IP indemnity, data residency, and 500-seat licensing models. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/26/ai-coding-agents-for-enterprise-ip-indemnity-data-residency-and-500-seat-cost-compared/"
+    },
+    {
+      "text": "Sarvam AI Releases Saaras V4 — New speech recognition model supports 22 Indian languages and global English. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/26/sarvam-ai-releases-saaras-v4-a-speech-to-text-model-for-all-22-indian-languages-and-global-english/"
+    },
+    {
+      "text": "Supersonic Labs Julia 1 Model — 144.3M-parameter open decision model released for local CPU execution. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/26/supersonic-labs-releases-julia-1-a-144-3m-parameter-open-decision-model-that-runs-on-a-cpu/"
+    },
+    {
+      "text": "Claude Opus 5.5 Writing Pattern Analysis — Stylistic evaluation shows 95% reduction in em dashes and simpler sentence structure. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/claude-opus-55-uses-95-percent-fewer-em-dashes-but-its-answers-are-getting-longer/"
+    },
+    {
+      "text": "Google Research MSEB Encoder Guide — Technical walkthrough for scoring audio encoders against the MSEB benchmark. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/26/a-coding-guide-to-google-researchs-mseb-writing-sound-encoders-to-the-benchmark-contract-and-scoring-them-across-classification-clustering-retrieval-and-segmentation/"
+    },
+    {
+      "text": "Foot Pedal AI Dictation Setup — Daniel Miessler details custom foot-pedal workflow integration for AI voice dictation. (Daniel Miessler)",
+      "url": "https://danielmiessler.com/blog/typeless-foot-pedal"
+    }
+  ]
+}
