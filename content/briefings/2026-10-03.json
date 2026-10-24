@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Immediately patch all internet-facing Microsoft SharePoint instances and audit logs for unauthorized web shell deployment or unexpected external execution."
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/warlock-ransomware-breach-sharepoint-in-water-telecom-operator-attacks/"
     }
   ],
   "tier2": [
@@ -50,7 +51,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/new-max-severity-dell-csm-flaws-give-hackers-admin-privileges/"
     },
     {
       "title": "2. GitLab Warns of Critical RCE Vulnerability in Self-Hosted AI Gateway",
@@ -75,7 +77,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/gitlab-patches-critical-self-hosted-ai.html"
     },
     {
       "title": "3. Microsoft: AI Cuts Post-Compromise Attack Timelines to Minutes",
@@ -100,7 +103,8 @@
           "label": "Source",
           "value": "Infosecurity Magazine"
         }
-      ]
+      ],
+      "url": "https://www.infosecurity-magazine.com/news/microsoft-ai-attack-time-minutes/"
     },
     {
       "title": "4. China-Nexus Antino Backdoor Abuses Outlook and OneDrive for C2",
@@ -125,7 +129,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/antino-backdoor-uses-outlook-and.html"
     },
     {
       "title": "5. Apple Modifies macOS Permissions to Block AI Agent Abuse",
@@ -150,33 +155,42 @@
           "label": "Source",
           "value": "Ars Technica - All content"
         }
-      ]
+      ],
+      "url": "https://arstechnica.com/security/2026/10/apple-changes-full-disk-access-permissions-to-curb-abuse-from-ai-agents/"
     }
   ],
   "tier3": [
     {
-      "text": "Frontline Education Breach — Data breach exposes school district employee SSNs via vendor vulnerability. (BleepingComputer)"
+      "text": "Frontline Education Breach — Data breach exposes school district employee SSNs via vendor vulnerability. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/frontline-education-data-breach-impacts-school-district-employees/"
     },
     {
-      "text": "N0n Ransomware Group — Newly surfaced extortion group claims over a dozen corporate victims. (GRAHAM CLULEY)"
+      "text": "N0n Ransomware Group — Newly surfaced extortion group claims over a dozen corporate victims. (GRAHAM CLULEY)",
+      "url": "https://www.fortra.com/blog/n0n-ransomware-what-you-need-know"
     },
     {
-      "text": "Tren de Aragua Sanctions — US sanctions gang members involved in widespread ATM jackpotting attacks. (BleepingComputer)"
+      "text": "Tren de Aragua Sanctions — US sanctions gang members involved in widespread ATM jackpotting attacks. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/us-sanctions-tren-de-aragua-members-in-atm-jackpotting-crackdown/"
     },
     {
-      "text": "Cloudflare Abuse Protection — Cloudflare launches dashboard to investigate AI-generated fraud and account abuse. (The Cloudflare Blog)"
+      "text": "Cloudflare Abuse Protection — Cloudflare launches dashboard to investigate AI-generated fraud and account abuse. (The Cloudflare Blog)",
+      "url": "https://blog.cloudflare.com/account-abuse-protection-dashboard/"
     },
     {
-      "text": "EDR Browser Telemetry Gaps — Analysis highlights evasion techniques bypassing traditional endpoint telemetry in browsers. (BleepingComputer)"
+      "text": "EDR Browser Telemetry Gaps — Analysis highlights evasion techniques bypassing traditional endpoint telemetry in browsers. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/the-edr-blind-spot-3-ways-browser-attacks-evade-endpoint-telemetry/"
     },
     {
-      "text": "OpenAI Safety Researchers Dismissed — Three researchers fired for policy violations regarding sensitive company data. (The Hacker News)"
+      "text": "OpenAI Safety Researchers Dismissed — Three researchers fired for policy violations regarding sensitive company data. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/openai-parts-ways-with-three-safety.html"
     },
     {
-      "text": "Tech CEO Arrested for Chip Smuggling — US charges executive over $300M illicit Nvidia server shipments to China. (Ars Technica - All content)"
+      "text": "Tech CEO Arrested for Chip Smuggling — US charges executive over $300M illicit Nvidia server shipments to China. (Ars Technica - All content)",
+      "url": "https://arstechnica.com/tech-policy/2026/10/us-arrests-tech-ceo-accused-of-smuggling-300m-in-nvidia-chips-into-china/"
     },
     {
-      "text": "NVIDIA DGX Spark 64GB Release — Nvidia announces desktop Grace Blackwell system for local agent execution. (NVIDIA Blog)"
+      "text": "NVIDIA DGX Spark 64GB Release — Nvidia announces desktop Grace Blackwell system for local agent execution. (NVIDIA Blog)",
+      "url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/"
     }
   ]
 }

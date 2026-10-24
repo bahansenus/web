@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Organizations handling Danish national identity data must enforce secondary authentication controls beyond CPR numbers and monitor for heightened social engineering and credential abuse."
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/denmark-says-attackers-accessed-cpr.html"
     }
   ],
   "tier2": [
@@ -50,7 +51,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/critical-atlassian-flaw-lets.html"
     },
     {
       "title": "2. Dell System Update Path Traversal Allows Remote Root Code Execution",
@@ -75,7 +77,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/06/dell-system-update-vulnerability-cve-2026-86360/"
     },
     {
       "title": "3. Citrix NetScaler Targeted in Wild via Memory Overflow Vulnerability",
@@ -100,7 +103,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/05/cisa-flags-new-exploited-netscaler-flaw-as-attackers-crash-appliances-cve-2026-88779/"
     },
     {
       "title": "4. Microsoft Issues Out-of-Band Fix for Exchange Server Privilege Escalation",
@@ -125,33 +129,42 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/microsoft-exchange-flaw-lets.html"
     }
   ],
   "tier3": [
     {
-      "text": "Google Bug Bounty Pause — Google halts open-source bug bounty rewards after surge in automated invalid reports. (The Hacker News)"
+      "text": "Google Bug Bounty Pause — Google halts open-source bug bounty rewards after surge in automated invalid reports. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/google-pauses-oss-product-bug-bounty.html"
     },
     {
-      "text": "Nikkei Phishing Breach — Publisher Nikkei reports employee email compromise used to launch external phishing. (BleepingComputer)"
+      "text": "Nikkei Phishing Breach — Publisher Nikkei reports employee email compromise used to launch external phishing. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/nikkei-discloses-breaches-of-employees-microsoft-google-email-accounts/"
     },
     {
-      "text": "ClingSTUN Linux Backdoor — Linux malware abuses public STUN servers to convert vulnerable IoT devices into proxies. (CSO Online)"
+      "text": "ClingSTUN Linux Backdoor — Linux malware abuses public STUN servers to convert vulnerable IoT devices into proxies. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4231136/new-linux-malware-turns-vulnerable-iot-devices-into-proxy-nodes.html"
     },
     {
-      "text": "LibreOffice Code Execution — Spreadsheet flaw allows macro-free code execution when Java support is enabled. (The Hacker News)"
+      "text": "LibreOffice Code Execution — Spreadsheet flaw allows macro-free code execution when Java support is enabled. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/libreoffice-and-openoffice-flaws-let.html"
     },
     {
-      "text": "ClickFix Cache Smuggling — Attackers pre-fetch malicious payloads into browser cache disguised as PNG images. (The Hacker News)"
+      "text": "ClickFix Cache Smuggling — Attackers pre-fetch malicious payloads into browser cache disguised as PNG images. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/clickfix-smuggles-payloads-through.html"
     },
     {
-      "text": "RemoveMacAI Utility — CLI tool completely disables Apple Intelligence and removes 12GB of models on macOS 27. (Help Net Security)"
+      "text": "RemoveMacAI Utility — CLI tool completely disables Apple Intelligence and removes 12GB of models on macOS 27. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/05/removemacai-turn-off-apple-intelligence/"
     },
     {
-      "text": "IQVIA $7.8M Privacy Fine — Italian DPA fines IQVIA $7.8M over poor patient health data anonymization. (BleepingComputer)"
+      "text": "IQVIA $7.8M Privacy Fine — Italian DPA fines IQVIA $7.8M over poor patient health data anonymization. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/iqvia-fined-78-million-for-failing-to-properly-anonymize-health-data/"
     },
     {
-      "text": "FBI Contractor Removal — FBI removes Accenture contractor following ShinyHunters PeopleSoft breach. (The Hacker News)"
+      "text": "FBI Contractor Removal — FBI removes Accenture contractor following ShinyHunters PeopleSoft breach. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/fbi-removes-accenture-contractor-after.html"
     }
   ]
 }

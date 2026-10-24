@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/citrix-patches-netscaler-saml-zero-day-exploited-in-attacks/"
     },
     {
       "title": "2. Microsoft Issues Out-of-Band Exchange Server Patch for Mailbox Access Bug (CVE-2026-96940)",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/05/exchange-server-vulnerability-cve-2026-96940/"
     },
     {
       "title": "3. Google Pauses Open-Source Bug Bounty Program Due to AI-Generated Spam",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/google/google-halts-open-source-bug-bounty-program-amid-ai-spam-surge/"
     },
     {
       "title": "4. Rejetto HFS Vulnerability Under Active Attack for Session Forgery and RCE (CVE-2026-61500)",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/attackers-target-rejetto-hfs-flaw-that.html"
     },
     {
       "title": "5. Huntress Telemetry Shows RMM Tool Abuse Present in 45% of Endpoint Incidents",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/05/remote-monitoring-and-management-rmm-abuse/"
     }
   ],
   "tier3": [
     {
-      "text": "ShinyHunters Suspect Detained — Key ShinyHunters member 'Rey' detained in Jordan assisting FBI investigations. (Help Net Security)"
+      "text": "ShinyHunters Suspect Detained — Key ShinyHunters member 'Rey' detained in Jordan assisting FBI investigations. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/05/shinyhunters-member-rey-detained-jordan-fbi/"
     },
     {
-      "text": "Frontline Education Breach — Educational software provider breach exposes K-12 school district staff data. (Infosecurity Magazine)"
+      "text": "Frontline Education Breach — Educational software provider breach exposes K-12 school district staff data. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/frontline-education-breach-k12/"
     },
     {
-      "text": "Apple macOS Full Disk Access — Apple restricting macOS Full Disk Access permissions for autonomous AI agents. (The Hacker News)"
+      "text": "Apple macOS Full Disk Access — Apple restricting macOS Full Disk Access permissions for autonomous AI agents. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/apple-plans-tighter-macos-full-disk.html"
     },
     {
-      "text": "doxx.net ADN Launch — doxx.net launches Agentic Defined Networking beta alongside $38M funding. (Help Net Security)"
+      "text": "doxx.net ADN Launch — doxx.net launches Agentic Defined Networking beta alongside $38M funding. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/05/doxx-net-agentic-defined-networking-platform/"
     },
     {
-      "text": "Cantina apex-flash-1 — Cantina releases open-weights AI model fine-tuned for vulnerability research tasks. (MarkTechPost)"
+      "text": "Cantina apex-flash-1 — Cantina releases open-weights AI model fine-tuned for vulnerability research tasks. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/04/can-an-open-model-do-security-research-cantinas-apex-flash-1-solves-40-of-60-held-out-bug-tasks/"
     },
     {
-      "text": "Keyorix Secrets Manager — Keyorix launches open-source, fully on-premises secrets management binary. (Help Net Security)"
+      "text": "Keyorix Secrets Manager — Keyorix launches open-source, fully on-premises secrets management binary. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/05/keyorix-open-source-on-premise-secrets-management/"
     },
     {
-      "text": "Windows Update KB5124010 Bug — Microsoft confirms Dolby AC-3 audio decoding crashes following September preview update. (BleepingComputer)"
+      "text": "Windows Update KB5124010 Bug — Microsoft confirms Dolby AC-3 audio decoding crashes following September preview update. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-kb5124010-update-crashes-some-games-and-apps/"
     },
     {
-      "text": "OpenAI ChatGPT Ads — OpenAI begins rolling out visual ad placements during ChatGPT image generation. (BleepingComputer)"
+      "text": "OpenAI ChatGPT Ads — OpenAI begins rolling out visual ad placements during ChatGPT image generation. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-will-show-visual-ads-in-chatgpt-while-you-generate-images/"
     }
   ]
 }

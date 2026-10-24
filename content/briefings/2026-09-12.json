@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Immediately deploy the latest Google Chrome and Microsoft Edge security updates across all enterprise endpoints."
         }
-      ]
+      ],
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-87491"
     },
     {
       "title": "2. GitLab CVSS 10.0 Path Traversal Flaw (CVE-2026-85706) Under In-The-Wild Exploitation",
@@ -44,7 +45,8 @@
           "label": "Recommended Immediate Action",
           "value": "Upgrade all self-hosted GitLab CE/EE instances to the latest patched security releases immediately."
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/gitlab-cvss-10-file-read-flaw-draws-in.html"
     },
     {
       "title": "3. OpenAI Agent Swarm Linked to RubyGems Attack and RCE on RubyDoc Infrastructure",
@@ -65,7 +67,8 @@
           "label": "Recommended Immediate Action",
           "value": "Audit software supply chain dependencies, enforce integrity verification on external Ruby packages, and inspect server logs for anomalous API activity."
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/openai-agents-linked-to-rubygems.html"
     }
   ],
   "tier2": [
@@ -92,7 +95,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/artifactory-flaws-chained-in-attacks-deploying-backdoor-malware/"
     },
     {
       "title": "2. ConnectWise Patches ScreenConnect Remote Execution Flaw",
@@ -117,7 +121,8 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4221263/connectwise-patches-critical-screenconnect-authentication-failure-after-five-days-2.html"
     },
     {
       "title": "3. Anthropic Disrupts Threat Actor Abuse and Industrial AI Distillation Campaigns",
@@ -142,7 +147,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html"
     },
     {
       "title": "4. Extortion Gangs Use Passkey and SSO Phishing to Steal M365 Data",
@@ -167,33 +173,42 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/passkey-themed-phishing-attacks-lead-to-microsoft-365-data-theft/"
     }
   ],
   "tier3": [
     {
-      "text": "Cloudflare CASB — Introduces automated event-driven remediation policies for cloud application security. (The Cloudflare Blog)"
+      "text": "Cloudflare CASB — Introduces automated event-driven remediation policies for cloud application security. (The Cloudflare Blog)",
+      "url": "https://blog.cloudflare.com/casb-policies/"
     },
     {
-      "text": "Florida DMV Database Breach — Driver database compromised via stolen police department credentials. (BleepingComputer)"
+      "text": "Florida DMV Database Breach — Driver database compromised via stolen police department credentials. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/florida-confirms-dmv-database-breached-via-stolen-police-account/"
     },
     {
-      "text": "Palo Alto Networks GlobalProtect Updates — Patches medium-severity privilege escalation and certificate validation flaws. (Palo Alto Networks Security Advisories)"
+      "text": "Palo Alto Networks GlobalProtect Updates — Patches medium-severity privilege escalation and certificate validation flaws. (Palo Alto Networks Security Advisories)",
+      "url": "https://security.paloaltonetworks.com/CVE-2026-0298"
     },
     {
-      "text": "Microsoft Teams & M365 Domain Changes — Services migrating to cloud.microsoft, requiring firewall rule updates. (CSO Online)"
+      "text": "Microsoft Teams & M365 Domain Changes — Services migrating to cloud.microsoft, requiring firewall rule updates. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4221275/update-your-firewall-rules-teams-and-copilot-are-changing-address.html"
     },
     {
-      "text": "India STPI Portal Clipboard Attack — Spoofed Cloudflare check page used TerminalFix technique to execute malicious commands. (CSO Online)"
+      "text": "India STPI Portal Clipboard Attack — Spoofed Cloudflare check page used TerminalFix technique to execute malicious commands. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4221243/indias-stpi-serves-terminalfix-style-attack-via-fake-cloudflare-check.html"
     },
     {
-      "text": "Amazon Bedrock AgentCore MCP Apps — AWS extends Model Context Protocol support for building interactive AI host applications. (Artificial Intelligence)"
+      "text": "Amazon Bedrock AgentCore MCP Apps — AWS extends Model Context Protocol support for building interactive AI host applications. (Artificial Intelligence)",
+      "url": "https://aws.amazon.com/blogs/machine-learning/build-interactive-mcp-apps-using-amazon-bedrock-agentcore/"
     },
     {
-      "text": "Anthropic Claude Code Plugin Evals — Adds evaluation framework and CI testing gates for developer skills. (MarkTechPost)"
+      "text": "Anthropic Claude Code Plugin Evals — Adds evaluation framework and CI testing gates for developer skills. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/11/anthropic-adds-plugin-evals-to-claude-code-6-grader-types-a-no-plugin-baseline-and-a-ci-gate-for-skills/"
     },
     {
-      "text": "Python 3.15 Soft-Deprecates re.match() — Soft deprecation added for re.match() in favor of explicit search or fullmatch. (Simon Willison's Weblog)"
+      "text": "Python 3.15 Soft-Deprecates re.match() — Soft deprecation added for re.match() in favor of explicit search or fullmatch. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Sep/11/soft-deprecating-re-match/"
     }
   ]
 }

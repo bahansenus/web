@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4222391/critical-cisco-secure-email-gateway-zero-day-gives-attackers-root-access.html"
     },
     {
       "title": "2. Active Exploitation Targets WSO2 API Manager via JWT Signature Bypass",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/active-exploitation-attempts-target.html"
     },
     {
       "title": "3. CISA Warns of Active Exploitation of Critical ConnectWise ScreenConnect Vulnerability",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-exploiting-critical-screenconnect-flaw/"
     },
     {
       "title": "4. Swarm of OpenAI Autonomous Agents Attacks RubyGems Platform",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4222474/hundreds-of-openai-agents-attack-rubygems-platform.html"
     },
     {
       "title": "5. NIST and CISA Issue IR 8587 Guidance to Stop Cloud Token Theft and Forgery",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/16/nist-cisa-cloud-token-security-guidance/"
     }
   ],
   "tier3": [
     {
-      "text": "Acronis cPanel Plugin Vulnerability — Acronis warns of actively exploited cPanel plugin privilege escalation vulnerability. (The Hacker News)"
+      "text": "Acronis cPanel Plugin Vulnerability — Acronis warns of actively exploited cPanel plugin privilege escalation vulnerability. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/acronis-cpanel-backup-plugin.html"
     },
     {
-      "text": "Google Pixel Modem Zero-Day — Google fixes targeted zero-day privilege escalation flaw in Pixel modem. (BleepingComputer)"
+      "text": "Google Pixel Modem Zero-Day — Google fixes targeted zero-day privilege escalation flaw in Pixel modem. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/google-fixes-actively-exploited-android-zero-day-on-pixel-devices/"
     },
     {
-      "text": "Iranian CHOSEN BRICK Malware — Intelligence agencies warn of Iranian Telegram-controlled spyware targeting dissidents. (Help Net Security)"
+      "text": "Iranian CHOSEN BRICK Malware — Intelligence agencies warn of Iranian Telegram-controlled spyware targeting dissidents. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/16/iranian-hackers-chosen-brick-malware-dissidents-journalists/"
     },
     {
-      "text": "CenterPoint Energy Data Breach — Utility confirms customer data breach following data leak on hacker forum. (Help Net Security)"
+      "text": "CenterPoint Energy Data Breach — Utility confirms customer data breach following data leak on hacker forum. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/16/centerpoint-energy-data-breach-hacker-claims/"
     },
     {
-      "text": "WooCommerce Wholesale Plugin Flaw — Attackers exploit WordPress plugin vulnerability to drop PHP web shells. (The Hacker News)"
+      "text": "WooCommerce Wholesale Plugin Flaw — Attackers exploit WordPress plugin vulnerability to drop PHP web shells. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/attackers-exploit-woocommerce-wholesale.html"
     },
     {
-      "text": "DeepZero Kernel Driver Scanner — Open-source tool released for LLM-assisted hunting of vulnerable Windows drivers. (Help Net Security)"
+      "text": "DeepZero Kernel Driver Scanner — Open-source tool released for LLM-assisted hunting of vulnerable Windows drivers. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/16/vulnerable-windows-drivers-deepzero-open-source/"
     },
     {
-      "text": "N0va Phishing Kit — New phishing kit targets US and EU firms by abusing OAuth authentication flows. (The Hacker News)"
+      "text": "N0va Phishing Kit — New phishing kit targets US and EU firms by abusing OAuth authentication flows. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/n0va-phishkit-targets-us-and-eu.html"
     },
     {
-      "text": "Mandiant Enterprise AI Risks Report — Report highlights rogue AI agent execution risks and cloud cost overruns. (Help Net Security)"
+      "text": "Mandiant Enterprise AI Risks Report — Report highlights rogue AI agent execution risks and cloud cost overruns. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/16/google-mandiant-enterprise-ai-security-risks-report/"
     }
   ]
 }

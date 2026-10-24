@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/warlock-exploits-sharepoint-flaws-to.html"
     },
     {
       "title": "2. China-Aligned TA419 Targets U.S. AI Policy Experts via AitM Phishing",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/china-aligned-ta419-targets-us-ai.html"
     },
     {
       "title": "3. MI5 Issues Alert Over Chinese State Funding of U.K. Academic Research",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/mi5-says-chinas-mss-funded-research.html"
     },
     {
       "title": "4. Google Shifts Federated Learning into TEEs for Verifiable Differential Privacy",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "MarkTechPost"
         }
-      ]
+      ],
+      "url": "https://www.marktechpost.com/2026/10/04/google-research-moves-federated-learning-into-tees-gboard-now-trains-with-externally-verifiable-differential-privacy/"
     },
     {
       "title": "5. Google Gemini Desktop Integration Raises System Permission Concerns on macOS",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/google/google-gemini-could-soon-get-full-access-to-your-macs-files-apps-and-the-web/"
     }
   ],
   "tier3": [
     {
-      "text": "ShinyHunters Suspect Detained — Extortion group suspect 'Rey' detained in Jordan, aiding FBI. (BleepingComputer)"
+      "text": "ShinyHunters Suspect Detained — Extortion group suspect 'Rey' detained in Jordan, aiding FBI. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacker-reportedly-detained-in-jordan-aiding-fbi/"
     },
     {
-      "text": "DTU Breach — Identity system breach exposes data of up to 200,000 users. (BleepingComputer)"
+      "text": "DTU Breach — Identity system breach exposes data of up to 200,000 users. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/danish-university-dtu-breach-exposes-data-of-up-to-200-000-people/"
     },
     {
-      "text": "Help Net Security Weekly Review — Recap covers Microsoft internal analytics flaw and NetScaler 0-day exploitation. (Help Net Security)"
+      "text": "Help Net Security Weekly Review — Recap covers Microsoft internal analytics flaw and NetScaler 0-day exploitation. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/04/week-in-review-researcher-breaks-into-microsoft-analytics-service-netscaler-rce-0-day-exploited/"
     },
     {
-      "text": "Chromium V8 Security Updates — Microsoft publishes advisories for Chromium V8 flaws CVE-2025-2137 and CVE-2025-1920. (MSRC Security Update Guide)"
+      "text": "Chromium V8 Security Updates — Microsoft publishes advisories for Chromium V8 flaws CVE-2025-2137 and CVE-2025-1920. (MSRC Security Update Guide)",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-2137"
     },
     {
-      "text": "Anthropic Voice Data Opt-In — Anthropic prompts Claude users to voluntarily share voice chats for model training. (BleepingComputer)"
+      "text": "Anthropic Voice Data Opt-In — Anthropic prompts Claude users to voluntarily share voice chats for model training. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-asks-claude-users-to-share-voice-data-for-ai-model-training/"
     },
     {
-      "text": "DeepSeek Harness v0.2 Release — DeepSeek releases desktop app preview for open-source agent harness. (MarkTechPost)"
+      "text": "DeepSeek Harness v0.2 Release — DeepSeek releases desktop app preview for open-source agent harness. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/03/deepseek-harness-v0-2-brings-official-desktop-apps-to-its-open-source-agent-harness/"
     },
     {
-      "text": "YARA-X 1.21.0 Update — YARA-X release brings five new improvements and four bug fixes. (SANS Internet Storm Center)"
+      "text": "YARA-X 1.21.0 Update — YARA-X release brings five new improvements and four bug fixes. (SANS Internet Storm Center)",
+      "url": "https://isc.sans.edu/diary/rss/33392"
     },
     {
-      "text": "SANS ISC Honeypot Log Review — Analysis of unusual User-Agent string activity in honeypot logs. (SANS Internet Storm Center)"
+      "text": "SANS ISC Honeypot Log Review — Analysis of unusual User-Agent string activity in honeypot logs. (SANS Internet Storm Center)",
+      "url": "https://isc.sans.edu/diary/rss/33394"
     }
   ]
 }

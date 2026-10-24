@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/attackers-use-passkey-phishing-to.html"
     },
     {
       "title": "2. Dutch NCSC: Critical Check Point VPN Flaws Exploitation Is Imminent",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/dutch-ncsc-critical-check-point-vpn-flaws-exploitation-is-imminent/"
     },
     {
       "title": "3. CISA Adds 5 Actively Exploited Artifactory, ScreenConnect, and RouterOS Flaws to KEV",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/cisa-adds-5-actively-exploited.html"
     },
     {
       "title": "4. Linux Rootkit Deployed on F5 BIG-IP APM Devices, Cisco FMC Bugs Exploited",
@@ -103,33 +106,42 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/13/week-in-review-linux-rootkit-deployed-on-f5-big-ip-apm-devices-cisco-fmc-bugs-exploited/"
     }
   ],
   "tier3": [
     {
-      "text": "AWS Pizza Bot — Open-source email-style inbox application for background AI agent decision management. (MarkTechPost)"
+      "text": "AWS Pizza Bot — Open-source email-style inbox application for background AI agent decision management. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/13/aws-introduces-pizza-bot-an-open-source-inbox-for-background-ai-agents/"
     },
     {
-      "text": "Context Engineering Inside the Harness — Technical breakdown of four mechanisms mitigating context overflow in autonomous agents. (MarkTechPost)"
+      "text": "Context Engineering Inside the Harness — Technical breakdown of four mechanisms mitigating context overflow in autonomous agents. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/12/context-engineering-inside-the-harness-4-mechanisms-that-beat-context-overflow-and-goal-loss-on-long-horizon-tasks/"
     },
     {
-      "text": "Cognition SWE-2 Model Release — Post-trained coding model matching Fable 5.1 benchmarks at reduced operational costs. (MarkTechPost)"
+      "text": "Cognition SWE-2 Model Release — Post-trained coding model matching Fable 5.1 benchmarks at reduced operational costs. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/12/cognition-releases-swe-2-a-kimi-k3-post-trained-coding-model-that-matches-fable-5-1-on-frontiercode-at-64-lower-cost/"
     },
     {
-      "text": "John Deere Self-Repair Testing — Hands-on trial of John Deere self-repair tools highlights ongoing farmer skepticism. (Ars Technica)"
+      "text": "John Deere Self-Repair Testing — Hands-on trial of John Deere self-repair tools highlights ongoing farmer skepticism. (Ars Technica)",
+      "url": "https://arstechnica.com/gadgets/2026/09/i-fixed-a-tractor-using-john-deeres-self-repair-service-farmers-arent-sold-on-it/"
     },
     {
-      "text": "NVIDIA cuML and RAPIDS Workflows — Tutorial demonstrating GPU acceleration for scikit-learn machine learning tasks. (MarkTechPost)"
+      "text": "NVIDIA cuML and RAPIDS Workflows — Tutorial demonstrating GPU acceleration for scikit-learn machine learning tasks. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/12/implementation-of-machine-learning-workflows-with-nvidia-cuml-rapids-gpu-benchmarking-explainability-clustering-and-model-inference/"
     },
     {
-      "text": "Fly Language Model Experiment — Research coupling fruit fly connectome data to LLM shows no benchmark improvement. (MarkTechPost)"
+      "text": "Fly Language Model Experiment — Research coupling fruit fly connectome data to LLM shows no benchmark improvement. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/12/fly-language-model-flm-wires-the-full-fruit-fly-connectome-into-a-frozen-1-2b-llm-and-its-own-controls-show-the-wiring-does-not-help/"
     },
     {
-      "text": "GPT-6 Astra Route Generation — Using ChatGPT Work and Astra to generate running routes and GeoJSON outputs. (Simon Willison's Weblog)"
+      "text": "GPT-6 Astra Route Generation — Using ChatGPT Work and Astra to generate running routes and GeoJSON outputs. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Sep/12/astra-running-routes/"
     },
     {
-      "text": "Paul Ford on Software Engineering — Reflections on human craft and collaboration amidst rising AI software generation. (Simon Willison's Weblog)"
+      "text": "Paul Ford on Software Engineering — Reflections on human craft and collaboration amidst rising AI software generation. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Sep/12/paul-ford/"
     }
   ]
 }

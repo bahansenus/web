@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/adobe-patches-magento-zero-day.html"
     },
     {
       "title": "2. WeChat Zero-Click Worm Takes Over Accounts via Incoming Calls",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/wechat-zero-click-worm-took-over.html"
     },
     {
       "title": "3. FreeIPA Flaw Chain Enables Anonymous Creation of Admin Credentials",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/freeipa-flaw-chain-lets-anonymous.html"
     },
     {
       "title": "4. PREY-0058 Vishing Attacks Target Executives for M365 Access",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/08/vishing-microsoft-365-data-theft-extortion/"
     },
     {
       "title": "5. BigBear 2.0 PhaaS Bypasses MFA Across 250+ Organizations",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4219606/bigbear-2-0-phishing-campaign-hijacks-microsoft-365-sessions-after-mfa.html"
     }
   ],
   "tier3": [
     {
-      "text": "Trezor Breach Expansion — ShipMonk supply chain breach exposes data of 81,000 hardware wallet customers. (BleepingComputer)"
+      "text": "Trezor Breach Expansion — ShipMonk supply chain breach exposes data of 81,000 hardware wallet customers. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/trezor-data-breach-impact-now-reaches-81-000-customers/"
     },
     {
-      "text": "Mathspace Data Breach — Unpatched Metabase reporting vulnerability leads to theft of 1M student and parent records. (Help Net Security)"
+      "text": "Mathspace Data Breach — Unpatched Metabase reporting vulnerability leads to theft of 1M student and parent records. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/08/mathspace-data-breach-metabase-vulnerability/"
     },
     {
-      "text": "APIS Database Exposure — Cloud database default credentials expose 220M traveler records in Vietnam-linked system. (BleepingComputer)"
+      "text": "APIS Database Exposure — Cloud database default credentials expose 220M traveler records in Vietnam-linked system. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/220-million-traveler-records-exposed-in-vietnam-linked-apis-leak/"
     },
     {
-      "text": "MikroTik RouterOS Hijacking — Unauthenticated SSH vulnerability chain actively exploited to hijack internet-exposed MikroTik routers. (Help Net Security)"
+      "text": "MikroTik RouterOS Hijacking — Unauthenticated SSH vulnerability chain actively exploited to hijack internet-exposed MikroTik routers. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/07/mikrotik-routeros-ssh-vulnerabilities-exploited/"
     },
     {
-      "text": "PEEP Post-Exploitation Kit — Malicious Chromium extension bypasses Web Store security checks to establish command execution backdoors. (The Hacker News)"
+      "text": "PEEP Post-Exploitation Kit — Malicious Chromium extension bypasses Web Store security checks to establish command execution backdoors. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/peep-turns-chrome-and-edge-into-post.html"
     },
     {
-      "text": "ClickFix Browser C2 Campaign — Cryptocurrency theft campaign uses Google Visualization API and Sheets for browser C2 injection. (Cisco Talos Blog)"
+      "text": "ClickFix Browser C2 Campaign — Cryptocurrency theft campaign uses Google Visualization API and Sheets for browser C2 injection. (Cisco Talos Blog)",
+      "url": "https://blog.talosintelligence.com/clickfix-moves-into-the-browser/"
     },
     {
-      "text": "N-able Critical RCE Hotfix — N-able issues maximum-severity patch for remote code execution vulnerability CVE-2026-86218. (Infosecurity Magazine)"
+      "text": "N-able Critical RCE Hotfix — N-able issues maximum-severity patch for remote code execution vulnerability CVE-2026-86218. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/nable-hotfix-critical-rce/"
     },
     {
-      "text": "Grindr Privacy Lawsuit Settlement — Dating app pays £26M to settle UK lawsuit over unauthorized HIV status data sharing. (The Hacker News)"
+      "text": "Grindr Privacy Lawsuit Settlement — Dating app pays £26M to settle UK lawsuit over unauthorized HIV status data sharing. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/grindr-to-pay-26-million-to-settle-uk.html"
     }
   ]
 }

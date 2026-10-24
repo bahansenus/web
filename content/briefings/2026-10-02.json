@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/critical-fortimail-zero-day-flaw.html"
     },
     {
       "title": "2. Cisco Fixes Critical Catalyst SD-WAN Manager Authentication Bypass Zero-Day",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "Infosecurity Magazine"
         }
-      ]
+      ],
+      "url": "https://www.infosecurity-magazine.com/news/critical-cisco-catalyst-sdwan/"
     },
     {
       "title": "3. Agentic AI Attack Leverages Zammad Zero-Days to Breach DIVD",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/01/divd-agentic-ai-attack-breach/"
     },
     {
       "title": "4. Pentagon DMDC Data Breach Compromises 3 Million Personnel Records",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/01/pentagon-dmdc-data-breach-3-million-people/"
     },
     {
       "title": "5. EU Cyber Resilience Act Forces Automation of Vulnerability Triage",
@@ -128,30 +132,38 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4229824/eu-cyber-resilience-act-completely-kills-manual-vulnerability-triage.html"
     }
   ],
   "tier3": [
     {
-      "text": "KillSec Ransomware Group — International law enforcement operation dismantles KillSec ransomware infrastructure and arrests key suspects. (Infosecurity Magazine)"
+      "text": "KillSec Ransomware Group — International law enforcement operation dismantles KillSec ransomware infrastructure and arrests key suspects. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/police-target-killsec-ransomware/"
     },
     {
-      "text": "TA419 Phishing Campaign — Chinese state-aligned group impersonates White House officials to phish US AI experts. (Help Net Security)"
+      "text": "TA419 Phishing Campaign — Chinese state-aligned group impersonates White House officials to phish US AI experts. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/02/china-aligned-ta419-phishing-ai-policy-experts/"
     },
     {
-      "text": "Android 17 Advanced Protection — Google restricts accessibility API access to verified tools, blocking malware pathways. (The Hacker News)"
+      "text": "Android 17 Advanced Protection — Google restricts accessibility API access to verified tools, blocking malware pathways. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/10/android-17-advanced-protection-locks.html"
     },
     {
-      "text": "Kiteworks EPG Patch — Kiteworks patches critical code injection flaw affecting Email Protection Gateway appliances. (BleepingComputer)"
+      "text": "Kiteworks EPG Patch — Kiteworks patches critical code injection flaw affecting Email Protection Gateway appliances. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/kiteworks-patches-max-severity-email-protection-gateway-code-injection-vulnerability/"
     },
     {
-      "text": "Microsoft X Account Breach — Attackers hijack official Microsoft X account to promote cryptocurrency pump-and-dump scheme. (BleepingComputer)"
+      "text": "Microsoft X Account Breach — Attackers hijack official Microsoft X account to promote cryptocurrency pump-and-dump scheme. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/microsofts-x-account-hacked-in-crypto-token-pump-and-dump-scheme/"
     },
     {
-      "text": "Autonomous AI Probing — Autonomous AI agents attempt aggressive scanning and exploits against government websites. (BleepingComputer)"
+      "text": "Autonomous AI Probing — Autonomous AI agents attempt aggressive scanning and exploits against government websites. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/autonomous-ai-agents-tried-to-hack-us-canadian-government-websites/"
     },
     {
-      "text": "DeepKeep AI Lens — DeepKeep launches runtime security extension for monitoring software developer coding agents. (Help Net Security)"
+      "text": "DeepKeep AI Lens — DeepKeep launches runtime security extension for monitoring software developer coding agents. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/01/deepkeeps-ai-lens-flags-coding-agent-data-leaks-and-routes-destructive-commands-for-approval/"
     }
   ]
 }

@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Disable `session.upload_progress.enabled` in `php.ini`, upgrade PHP runtimes to version 8.2.35+, 8.3.36+, 8.4.27+, or 8.5.12+, and restart all web server worker processes."
         }
-      ]
+      ],
+      "url": "https://www.theregister.com/security/2026/10/23/theres-a-third-php2shell-bug-but-it-wont-get-an-emergency-fix/5305208"
     },
     {
       "title": "2. LiteLLM Supply Chain Compromise Injects Credential Stealer via PyPI and Docker",
@@ -44,7 +45,8 @@
           "label": "Recommended Immediate Action",
           "value": "Audit environments for `litellm==1.107.0`, immediately rotate exposed cloud credentials and API keys, and pin to verified safe package versions."
         }
-      ]
+      ],
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
     },
     {
       "title": "3. Ruby Patches Onigmo Regex Engine Memory Flaws Driving Critical GitLab RCEs",
@@ -65,7 +67,8 @@
           "label": "Recommended Immediate Action",
           "value": "Upgrade Ruby installations to 4.0.9, 3.4.12, or 3.3.13, and apply all corresponding downstream application and GitLab patches."
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/ruby-fixes-three-regex-engine-bugs.html"
     }
   ],
   "tier2": [
@@ -92,7 +95,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/hackers-breach-enterprise-firewalls-and.html"
     },
     {
       "title": "2. APT41 Leverages BlackX UEFI Bootkit to Bypass Secure Boot in Diplomatic Attacks",
@@ -117,7 +121,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/blackx-uefi-bootkit-bypasses-secure.html"
     },
     {
       "title": "3. Ransomware Affiliates Deploy Autonomous 'Phantom' AI Agent Kill Chain Framework",
@@ -142,7 +147,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html"
     },
     {
       "title": "4. Oracle October CPU Fixes 1,295 Vulnerabilities Across Enterprise Suite",
@@ -167,7 +173,8 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4239850/oracle-patches-1295-security-vulnerabilities-in-october-including-six-scoring-10-0-2.html"
     },
     {
       "title": "5. Hardcoded Sysadmin Passwords in Bp Premier Software Expose Medical Records Across Australia",
@@ -192,33 +199,42 @@
           "label": "Source",
           "value": "Mastodon / Infosec"
         }
-      ]
+      ],
+      "url": "https://infosec.exchange/@threataft/117491383184512600"
     }
   ],
   "tier3": [
     {
-      "text": "Popcorn Time — Researchers remotely disabled vulnerable updater component in abandoned app. (BleepingComputer)"
+      "text": "Popcorn Time — Researchers remotely disabled vulnerable updater component in abandoned app. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/abandoned-popcorn-time-app-exposed-millions-of-device-to-rce-attacks/"
     },
     {
-      "text": "Meta — Judge issues $25B fine over historic Cambridge Analytica privacy violations. (CSO Online)"
+      "text": "Meta — Judge issues $25B fine over historic Cambridge Analytica privacy violations. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4239754/meta-hit-with-25-billion-fine-for-illegally-sharing-user-data-2.html"
     },
     {
-      "text": "Quest Diagnostics — Clinical lab confirms patient data exposed in Quanum LSM breach. (BleepingComputer)"
+      "text": "Quest Diagnostics — Clinical lab confirms patient data exposed in Quanum LSM breach. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/quest-diagnostics-confirms-data-breach-exposed-patient-records/"
     },
     {
-      "text": "US Department of Defense — Pentagon memo warns troops against placing bets on prediction markets. (Ars Technica)"
+      "text": "US Department of Defense — Pentagon memo warns troops against placing bets on prediction markets. (Ars Technica)",
+      "url": "https://arstechnica.com/tech-policy/2026/10/pentagon-memo-on-prediction-markets-says-insider-bets-put-troops-lives-at-risk/"
     },
     {
-      "text": "UK Infrastructure Policy — UK proposes 14-year prison sentences for undersea cable sabotage. (The Record)"
+      "text": "UK Infrastructure Policy — UK proposes 14-year prison sentences for undersea cable sabotage. (The Record)",
+      "url": "https://therecord.media/uk-undersea-cables-sabotage-new-sentencing-guidelines"
     },
     {
-      "text": "Microsoft Teams — Microsoft announces AI-powered contextual phishing detection coming to Teams. (BleepingComputer)"
+      "text": "Microsoft Teams — Microsoft announces AI-powered contextual phishing detection coming to Teams. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-get-ai-powered-context-aware-phishing-detection/"
     },
     {
-      "text": "FCC Security Restrictions — FCC bans commercial devices containing surveillance chips from Huawei HiSilicon. (The Record)"
+      "text": "FCC Security Restrictions — FCC bans commercial devices containing surveillance chips from Huawei HiSilicon. (The Record)",
+      "url": "https://therecord.media/fcc-bans-devices-huawei-surveillance-chips"
     },
     {
-      "text": "Google Privacy Policy — Google updates policy regarding ad personalization and workspace user data. (Ars Technica)"
+      "text": "Google Privacy Policy — Google updates policy regarding ad personalization and workspace user data. (Ars Technica)",
+      "url": "https://arstechnica.com/gadgets/2026/10/updated-google-privacy-policy-says-your-gmail-might-be-used-for-advertising/"
     }
   ]
 }

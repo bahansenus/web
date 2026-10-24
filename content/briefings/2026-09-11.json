@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Upgrade PaperCut NG/MF immediately to maintenance releases 26.0.5, 25.0.13, or 24.1.10, isolate administrative interfaces from the public internet, and audit perimeter logs for automated exploitation indicators."
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/11/ai-agents-papercut-ng-mf-attack-campaign/"
     },
     {
       "title": "2. BlueMoon Exploit Kit Chains Chrome and Windows Zero-Days in Targeted Espionage Attacks",
@@ -44,7 +45,8 @@
           "label": "Recommended Immediate Action",
           "value": "Ensure Chrome browsers are updated to the latest channel release immediately, apply all pending Windows OS updates, and enforce strict web filtering and process sandboxing."
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/new-bluemoon-kit-exploited-windows-and-chrome-zero-day-flaws/"
     }
   ],
   "tier2": [
@@ -71,7 +73,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/gitlab-urges-users-to-patch-max-severity-path-traversal-flaw/"
     },
     {
       "title": "2. Cisco FMC Flaws Exploited by Ransomware Groups and State-Sponsored Actors",
@@ -96,7 +99,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/cisco-fmc-flaws-exploited-to-steal.html"
     },
     {
       "title": "3. Attackers Chain JFrog Artifactory Vulnerabilities to Plant Build Pipeline Backdoors",
@@ -121,7 +125,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/attackers-chain-jfrog-artifactory-flaws.html"
     },
     {
       "title": "4. Passkey-Themed Vishing Scams Target Microsoft 365 Accounts via Personal Phones",
@@ -146,33 +151,42 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4221110/attackers-use-passkey-themed-scams-to-hijack-microsoft-365-accounts.html"
     }
   ],
   "tier3": [
     {
-      "text": "IDScan Cloud Data Breach — Cloud platform breach exposes over 153 million driver's license records. (Help Net Security)"
+      "text": "IDScan Cloud Data Breach — Cloud platform breach exposes over 153 million driver's license records. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/11/idscan-net-data-breach-153-million-drivers-licenses/"
     },
     {
-      "text": "ClickFix Attacks Surge Across Platforms — Fake CAPTCHA overlay attacks trick Windows and Mac users into executing terminal commands. (Ars Technica - All content)"
+      "text": "ClickFix Attacks Surge Across Platforms — Fake CAPTCHA overlay attacks trick Windows and Mac users into executing terminal commands. (Ars Technica - All content)",
+      "url": "https://arstechnica.com/security/2026/09/clickfix-attacks-infecting-pcs-and-macs-are-going-viral/"
     },
     {
-      "text": "Trezor Phishing Campaign via Brevo — Over 347,000 email addresses targeted following third-party email provider breach. (BleepingComputer)"
+      "text": "Trezor Phishing Campaign via Brevo — Over 347,000 email addresses targeted following third-party email provider breach. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/trezor-347-000-users-targeted-in-phishing-attacks-after-brevo-breach/"
     },
     {
-      "text": "Cloudflare Post-Quantum DNSSEC — 1.1.1.1 resolver adds support for ML-DSA-44 post-quantum signature validation. (The Cloudflare Blog)"
+      "text": "Cloudflare Post-Quantum DNSSEC — 1.1.1.1 resolver adds support for ML-DSA-44 post-quantum signature validation. (The Cloudflare Blog)",
+      "url": "https://blog.cloudflare.com/post-quantum-dnssec-1111/"
     },
     {
-      "text": "FBI Releases First Cyber Strategy — New strategy emphasizes proactive operational disruption of cyber threat actors. (Infosecurity Magazine)"
+      "text": "FBI Releases First Cyber Strategy — New strategy emphasizes proactive operational disruption of cyber threat actors. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/fbi-cyber-strategy-disrupting/"
     },
     {
-      "text": "Google Play Early Access Abuse — Bad actors exploit Early Access program to distribute deceptive, unrated apps. (The Hacker News)"
+      "text": "Google Play Early Access Abuse — Bad actors exploit Early Access program to distribute deceptive, unrated apps. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/google-play-early-access-abused-to-push.html"
     },
     {
-      "text": "Mantax Otax Android Strain — New Android malware combines ransomware file encryption with spyware capabilities. (BleepingComputer)"
+      "text": "Mantax Otax Android Strain — New Android malware combines ransomware file encryption with spyware capabilities. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/new-android-malware-encrypts-files-steals-data-and-harasses-victims/"
     },
     {
-      "text": "Windows Server September RDS Bug — Security updates break Remote Desktop Services on Windows Server 2019/2022/2025. (BleepingComputer)"
+      "text": "Windows Server September RDS Bug — Security updates break Remote Desktop Services on Windows Server 2019/2022/2025. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/september-windows-server-updates-break-remote-desktop-services/"
     }
   ]
 }

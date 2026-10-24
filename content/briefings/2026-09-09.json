@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Prioritize emergency testing and deployment for actively exploited flaws (CVE-2026-81963) and critical RCE vulnerabilities affecting infrastructure core components including Windows DNS and DHCP."
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/microsoft-patches-record-974-flaws.html"
     }
   ],
   "tier2": [
@@ -50,7 +51,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/09/google-chrome-cve-2026-87491-zero-day-flaw/"
     },
     {
       "title": "2. F5 BIG-IP APM Malware Injects Memory-Only PHP Web Shells to Evade Scans",
@@ -75,7 +77,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/09/f5-big-ip-apm-rootkit-hides-web-shell-in-memory/"
     },
     {
       "title": "3. SAP Patches Maximum Severity 'Overpass' Memory Corruption Kernel Flaw",
@@ -100,7 +103,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/sap-patches-cvss-100-kernel-flaw.html"
     },
     {
       "title": "4. CISA Adds N-able N-central Pre-Auth RCE (CVE-2026-86218) to KEV Catalog",
@@ -125,7 +129,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/n-able-n-central-pre-auth-rce-flaw.html"
     },
     {
       "title": "5. ChatGPT Hidden Channel Vulnerability Allows Exfiltration of Connected Gmail Data",
@@ -150,33 +155,42 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/chatgpt-flaw-let-planted-prompt-send.html"
     }
   ],
   "tier3": [
     {
-      "text": "ShinyHunters / Florida DMV — Extortion group claims breach of Florida DAVID database containing 200k driver records. (CSO Online)"
+      "text": "ShinyHunters / Florida DMV — Extortion group claims breach of Florida DAVID database containing 200k driver records. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4220193/shinyhunters-claims-florida-dmv-breach-puts-data-on-the-clock.html"
     },
     {
-      "text": "DeepSeek Harness Flaw — Flaw in AI coding agent harness allowed sandboxed agents to disable safety controls. (The Hacker News)"
+      "text": "DeepSeek Harness Flaw — Flaw in AI coding agent harness allowed sandboxed agents to disable safety controls. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/deepseek-harness-flaw-let-ai-agents.html"
     },
     {
-      "text": "Alby Hub Bitcoin Flaw — Critical flaw enabled takeover of internet-exposed self-hosted Lightning bitcoin wallets. (The Hacker News)"
+      "text": "Alby Hub Bitcoin Flaw — Critical flaw enabled takeover of internet-exposed self-hosted Lightning bitcoin wallets. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/alby-hub-critical-flaw-could-let.html"
     },
     {
-      "text": "Plex Exposed Servers — Over 36,000 internet-exposed Plex servers remain unpatched against known vulnerabilities. (BleepingComputer)"
+      "text": "Plex Exposed Servers — Over 36,000 internet-exposed Plex servers remain unpatched against known vulnerabilities. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/over-36-000-plex-servers-unpatched-against-recently-disclosed-flaws/"
     },
     {
-      "text": "cPanel Root Privilege Escalation — Mail privilege flaw allowed authenticated cPanel hosting accounts to gain root access. (The Hacker News)"
+      "text": "cPanel Root Privilege Escalation — Mail privilege flaw allowed authenticated cPanel hosting accounts to gain root access. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/new-cpanel-flaw-lets-hosting-account.html"
     },
     {
-      "text": "US Advisory on AI Model Distillation — CISA, NSA, and FBI warn Chinese firms are extracting US AI capabilities at scale. (Help Net Security)"
+      "text": "US Advisory on AI Model Distillation — CISA, NSA, and FBI warn Chinese firms are extracting US AI capabilities at scale. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/09/china-malicious-ai-knowledge-distillation-against-us-companies/"
     },
     {
-      "text": "Defender ShieldCrash Zero-Day — Researcher releases PoC bypassing previous ShieldBreak patch to gain SYSTEM privileges. (BleepingComputer)"
+      "text": "Defender ShieldCrash Zero-Day — Researcher releases PoC bypassing previous ShieldBreak patch to gain SYSTEM privileges. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/new-microsoft-defender-shieldcrash-zero-day-grants-system-access/"
     },
     {
-      "text": "DoppelCart Fraud Network — Massive scam network uses 119,000 fake online stores to harvest payment cards. (BleepingComputer)"
+      "text": "DoppelCart Fraud Network — Massive scam network uses 119,000 fake online stores to harvest payment cards. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/doppelcart-fraud-network-uses-119-000-fake-shops-to-steal-credit-cards/"
     }
   ]
 }

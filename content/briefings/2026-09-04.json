@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Deploy Google Chrome version 152.0.7977.82 or higher immediately across all enterprise platforms."
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/google-warns-of-new-chrome-zero-day-flaw-exploited-in-attacks/"
     },
     {
       "title": "2. Coder Registry Infrastructure Compromised to Push Malicious Terraform Modules",
@@ -44,7 +45,8 @@
           "label": "Recommended Immediate Action",
           "value": "Audit cloud deployments using Coder registry modules, remove unauthorized module sources, and rotate all infrastructure credentials and API keys."
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/coders-registry-infrastructure-compromised-to-push-malicious-modules/"
     }
   ],
   "tier2": [
@@ -71,7 +73,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/critical-cisco-nexus-9000-flaw-lets.html"
     },
     {
       "title": "2. Over 440,000 Exploit Attempts Target Critical WordPress Plugin Flaws",
@@ -96,7 +99,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/over-440000-exploit-attempts-target.html"
     },
     {
       "title": "3. Thomson Reuters Data Breach Exposes US and Canadian Court Records",
@@ -121,7 +125,8 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/03/thomson-reuters-reveals-breach-that-exposed-u-s-and-canadian-court-records/"
     },
     {
       "title": "4. Chinese APT Group OVERCAST PANDA Backdoors Laptops via Physical USB Access",
@@ -146,7 +151,8 @@
           "label": "Source",
           "value": "VentureBeat"
         }
-      ]
+      ],
+      "url": "https://venturebeat.com/security/china-linked-hackers-backdoored-executives-laptops-via-usb-exploiting-a-fix-companies-had-but-werent-using"
     },
     {
       "title": "5. OpenAI Releases GPT-6 Astra Under Critical Cybersecurity Risk Classification",
@@ -171,33 +177,42 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4218679/openai-launches-gpt-6-astra-its-first-model-to-cross-a-critical-cybersecurity-threshold.html"
     }
   ],
   "tier3": [
     {
-      "text": "OpenAI Daybreak Initiative — OpenAI commits $1 billion to subsidize cyber AI defenses for essential infrastructure. (Infosecurity Magazine)"
+      "text": "OpenAI Daybreak Initiative — OpenAI commits $1 billion to subsidize cyber AI defenses for essential infrastructure. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/openai-pledges-ai-tools-essential/"
     },
     {
-      "text": "Microsoft Teams Anti-Quishing Protection — Microsoft Teams will automatically hide QR codes sent by external users to combat quishing. (Help Net Security)"
+      "text": "Microsoft Teams Anti-Quishing Protection — Microsoft Teams will automatically hide QR codes sent by external users to combat quishing. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/04/microsoft-teams-qr-code-phishing-protection/"
     },
     {
-      "text": "Plex Security Updates — Plex releases urgent updates patching undisclosed vulnerabilities across server and desktop applications. (The Hacker News)"
+      "text": "Plex Security Updates — Plex releases urgent updates patching undisclosed vulnerabilities across server and desktop applications. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/plex-urges-immediate-updates-after.html"
     },
     {
-      "text": "BraZetsu Malware Framework — Python-based malware converts compromised Windows endpoints into commercial inventory for access brokers. (The Hacker News)"
+      "text": "BraZetsu Malware Framework — Python-based malware converts compromised Windows endpoints into commercial inventory for access brokers. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/brazetsu-malware-turns-compromised.html"
     },
     {
-      "text": "G7 Post-Quantum Guidance — G7 urges nations to fast-track national strategies for transitioning to post-quantum cryptography. (Infosecurity Magazine)"
+      "text": "G7 Post-Quantum Guidance — G7 urges nations to fast-track national strategies for transitioning to post-quantum cryptography. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/g7-urges-quantum-safe-cyber-rules/"
     },
     {
-      "text": "Pegasus Spyware Attack in Serbia — NSO Group Pegasus spyware infected a Serbian student activist's iPhone via zero-click iMessage exploit. (Infosecurity Magazine)"
+      "text": "Pegasus Spyware Attack in Serbia — NSO Group Pegasus spyware infected a Serbian student activist's iPhone via zero-click iMessage exploit. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/pegasus-zero-click-exploit/"
     },
     {
-      "text": "French Hospital CNIL Fine — French data regulator fines Hôpital privé de la Loire €500k following breach of 727,000 records. (BleepingComputer)"
+      "text": "French Hospital CNIL Fine — French data regulator fines Hôpital privé de la Loire €500k following breach of 727,000 records. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/french-hospital-fined-500-000-after-breach-exposes-data-of-727-000/"
     },
     {
-      "text": "Nvidia Acquires Hugging Face — Nvidia agrees to purchase AI model platform Hugging Face for $13 billion. (Ars Technica)"
+      "text": "Nvidia Acquires Hugging Face — Nvidia agrees to purchase AI model platform Hugging Face for $13 billion. (Ars Technica)",
+      "url": "https://arstechnica.com/ai/2026/09/nvidia-buys-hugging-face-the-github-of-ai-for-13-billion/"
     }
   ]
 }

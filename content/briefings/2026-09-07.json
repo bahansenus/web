@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/n-able-patches-max-severity-n-central-flaw-amid-ongoing-attacks/"
     },
     {
       "title": "2. Unpatched ConnectWise ScreenConnect Zero-Day Exploited to Spread VBScript Malware",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/connectwise-warns-of-new-screenconnect-flaw-without-patch/"
     },
     {
       "title": "3. Active Exploitation of MikroTik RouterOS SSH Authentication Bypass Flaws",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "SANS Internet Storm Center"
         }
-      ]
+      ],
+      "url": "https://isc.sans.edu/diary/rss/33314"
     },
     {
       "title": "4. Researcher Publishes Privilege Escalation Zero-Day Exploit for CrowdStrike Falcon",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "Infosecurity Magazine"
         }
-      ]
+      ],
+      "url": "https://www.infosecurity-magazine.com/news/crowdstrike-privilege-escalation/"
     },
     {
       "title": "5. French Legal Sector Targeted in €35 Million Business Email Compromise Operation",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "Risky Business"
         }
-      ]
+      ],
+      "url": "https://risky.biz/RBNEWS610/"
     }
   ],
   "tier3": [
     {
-      "text": "Telerik UI RCE PoC — Public PoC exploits patched non-default ASP.NET padding-oracle flaw. (The Hacker News)"
+      "text": "Telerik UI RCE PoC — Public PoC exploits patched non-default ASP.NET padding-oracle flaw. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/telerik-ui-padding-oracle-bug-chained.html"
     },
     {
-      "text": "Intruder Cloud Security Index — Misconfiguration study reveals distinct security risk profiles across cloud providers. (The Hacker News)"
+      "text": "Intruder Cloud Security Index — Misconfiguration study reveals distinct security risk profiles across cloud providers. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/your-cloud-security-checklist-doesnt.html"
     },
     {
-      "text": "Lazarus Cyber Clusters — Report details North Korea's Lazarus group operating via six distinct clusters. (Infosecurity Magazine)"
+      "text": "Lazarus Cyber Clusters — Report details North Korea's Lazarus group operating via six distinct clusters. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/north-korea-lazarus-six-cyber/"
     },
     {
-      "text": "JSCeal Malware — Compiled V8 JavaScript malware steals session cookies to bypass Google auth. (The Hacker News)"
+      "text": "JSCeal Malware — Compiled V8 JavaScript malware steals session cookies to bypass Google auth. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/jsceal-malware-can-bypass-google.html"
     },
     {
-      "text": "Lenovo ID Login Flaw — Authentication vulnerability exposed 5,000 linked Dropbox accounts. (GRAHAM CLULEY)"
+      "text": "Lenovo ID Login Flaw — Authentication vulnerability exposed 5,000 linked Dropbox accounts. (GRAHAM CLULEY)",
+      "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/lenovo-login-system-hackers-dropbox"
     },
     {
-      "text": "Unicode ASCII Smuggling — Phishing campaigns use invisible Unicode characters to bypass email filters. (BleepingComputer)"
+      "text": "Unicode ASCII Smuggling — Phishing campaigns use invisible Unicode characters to bypass email filters. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/attackers-conceal-phishing-lures-using-invisible-unicode-characters/"
     },
     {
-      "text": "ToolHive MCP Runtime — Stacklok releases open-source containerized runtime for Model Context Protocol servers. (Help Net Security)"
+      "text": "ToolHive MCP Runtime — Stacklok releases open-source containerized runtime for Model Context Protocol servers. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/07/toolhive-open-source-mcp-server-security/"
     },
     {
-      "text": "IDScan Class Action — Victims file lawsuits against IDScan following driver's license data breach. (Infosecurity Magazine)"
+      "text": "IDScan Class Action — Victims file lawsuits against IDScan following driver's license data breach. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/multiple-class-action-lawsuits/"
     }
   ]
 }

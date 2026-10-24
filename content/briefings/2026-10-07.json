@@ -23,7 +23,8 @@
           "label": "Recommended Immediate Action",
           "value": "Audit organizational reliance on affected ccTLDs, verify Domain Name System CAA records, and search Certificate Transparency logs for unrecognized certificates issued under corporate domain names."
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/07/google-unauthorized-https-certificates-cctld-hijacks/"
     }
   ],
   "tier2": [
@@ -50,7 +51,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/atlassian-data-center-flaw-draws.html"
     },
     {
       "title": "2. FBI Warns FortiBleed Active After Harvesting 86,644 Fortinet Credentials",
@@ -75,7 +77,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/10/fbi-warns-fortibleed-remains-active.html"
     },
     {
       "title": "3. Encrypted Instructions Trick Copilot CLI Into Exfiltrating Secrets",
@@ -100,7 +103,8 @@
           "label": "Source",
           "value": "CSO Online"
         }
-      ]
+      ],
+      "url": "https://www.csoonline.com/article/4231763/encrypted-instructions-trick-copilot-cli-to-spill-dev-secrets.html"
     },
     {
       "title": "4. SonicWall Fixes Max Severity SSRF Flaw in SMA1000 Gateways",
@@ -125,7 +129,8 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-max-severity-ssrf-flaw-in-sma1000-gateways/"
     },
     {
       "title": "5. Rogue OpenAI Agents Made Unauthorized Edits and Traffic Floods on Wikimedia",
@@ -150,33 +155,42 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/10/06/openai-rogue-agents-wikimedia-wikipedia/"
     }
   ],
   "tier3": [
     {
-      "text": "Pwn2Own Ireland — Ethical hackers exploit 32 zero-days on competition day one. (BleepingComputer)"
+      "text": "Pwn2Own Ireland — Ethical hackers exploit 32 zero-days on competition day one. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-32-zero-days-on-first-day-of-pwn2own-ireland/"
     },
     {
-      "text": "ASOS — Retailer confirms data breach after rogue in-app customer notification. (Help Net Security)"
+      "text": "ASOS — Retailer confirms data breach after rogue in-app customer notification. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/asos-data-breach-app-notification/"
     },
     {
-      "text": "OpenSSH — Release 10.6 adds post-quantum signature support and AI bug fixes. (Help Net Security)"
+      "text": "OpenSSH — Release 10.6 adds post-quantum signature support and AI bug fixes. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/openssh-10-6-released/"
     },
     {
-      "text": "Anthropic — Expands Claude Cyber Verification Program for vetted defensive researchers. (Help Net Security)"
+      "text": "Anthropic — Expands Claude Cyber Verification Program for vetted defensive researchers. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/anthropic-expands-cyber-verification-program/"
     },
     {
-      "text": "Cloudflare — Warns administrators of global DNS Root Key Signing Key rollover. (The Cloudflare Blog)"
+      "text": "Cloudflare — Warns administrators of global DNS Root Key Signing Key rollover. (The Cloudflare Blog)",
+      "url": "https://blog.cloudflare.com/root-ksk-2024-rollover/"
     },
     {
-      "text": "ClickFix Campaign — Social engineering campaign stages VBScript payloads directly in browser cache. (Infosecurity Magazine)"
+      "text": "ClickFix Campaign — Social engineering campaign stages VBScript payloads directly in browser cache. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/clickfix-vbscript-browser-cache/"
     },
     {
-      "text": "X.Org Server — Patches 12 vulnerabilities, including nine code execution flaws. (Help Net Security)"
+      "text": "X.Org Server — Patches 12 vulnerabilities, including nine code execution flaws. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/x-org-server-fixed-vulnerabilities/"
     },
     {
-      "text": "Advantest — Semiconductor manufacturer confirms personal data exposed in ransomware breach. (BleepingComputer)"
+      "text": "Advantest — Semiconductor manufacturer confirms personal data exposed in ransomware breach. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/advantest-confirms-personal-information-stolen-in-ransomware-attack/"
     }
   ]
 }

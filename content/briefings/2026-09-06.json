@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/unpatched-magento-and-adobe-commerce.html"
     },
     {
       "title": "2. Attackers Hijack MikroTik Routers Through Internet-Exposed SSH Without Authentication",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/attackers-hijack-mikrotik-routers.html"
     },
     {
       "title": "3. Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html"
     },
     {
       "title": "4. Critical VMware Workstation and Fusion Flaw Lets VM Admins Execute Host Code",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/critical-vmware-workstation-and-fusion.html"
     },
     {
       "title": "5. Over 5,400 Hacked Sites Serve ClickFix Payloads Stored on the Blockchain",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "BleepingComputer"
         }
-      ]
+      ],
+      "url": "https://www.bleepingcomputer.com/news/security/over-5-400-hacked-sites-serve-clickfix-payloads-stored-on-the-blockchain/"
     }
   ],
   "tier3": [
     {
-      "text": "REVSTEALER Malware Modules — Four post-infection programs disable Defender and Windows Update for cryptomining. (The Hacker News)"
+      "text": "REVSTEALER Malware Modules — Four post-infection programs disable Defender and Windows Update for cryptomining. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/four-revstealer-linked-modules-disable.html"
     },
     {
-      "text": "Trezor / ShipMonk Data Breach — Third-party shipping provider breach exposes order history of 67,000 customers. (The Hacker News)"
+      "text": "Trezor / ShipMonk Data Breach — Third-party shipping provider breach exposes order history of 67,000 customers. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/trezor-says-shipmonk-breach-exposed.html"
     },
     {
-      "text": "Anthropic Claude Infostealers — Anthropic locks user sessions compromised by infostealers harvested from endpoint devices. (Help Net Security)"
+      "text": "Anthropic Claude Infostealers — Anthropic locks user sessions compromised by infostealers harvested from endpoint devices. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/06/week-in-review-claude-accounts-compromised-through-infostealer-patch-tuesday-forecast/"
     },
     {
-      "text": "OpenAI AI Alignment Reflection — Jakub Pachocki advocates for stronger safeguards and international coordination for AI. (OpenAI News)"
+      "text": "OpenAI AI Alignment Reflection — Jakub Pachocki advocates for stronger safeguards and international coordination for AI. (OpenAI News)",
+      "url": "https://openai.com/index/an-alien-mind"
     },
     {
-      "text": "GitHub Project HydraFusion — Research preview introduces multi-model runtime orchestration in Copilot CLI. (MarkTechPost)"
+      "text": "GitHub Project HydraFusion — Research preview introduces multi-model runtime orchestration in Copilot CLI. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/05/github-introduces-project-hydrafusion-runtime-multi-model-orchestration-that-builds-a-workflow-per-coding-task-in-copilot-cli/"
     },
     {
-      "text": "UC Berkeley CUA-Lite — Open platform unifies sandboxes, evaluation, and RL for computer-use agents. (MarkTechPost)"
+      "text": "UC Berkeley CUA-Lite — Open platform unifies sandboxes, evaluation, and RL for computer-use agents. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/05/uc-berkeley-researchers-release-cua-lite-an-open-platform-unifying-sandboxes-data-evaluation-and-rl-for-computer-use-agents/"
     },
     {
-      "text": "Nous Research Hermes Desktop — Simplified single-click local LLM hardware setup introduced in Hermes Desktop. (MarkTechPost)"
+      "text": "Nous Research Hermes Desktop — Simplified single-click local LLM hardware setup introduced in Hermes Desktop. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/05/nous-research-hermes-desktop-one-click-local-model-setup/"
     },
     {
-      "text": "Perplexity GPU Embedding Stack — Technical architectural breakdown of GPU serving infrastructure behind pplx-embed. (MarkTechPost)"
+      "text": "Perplexity GPU Embedding Stack — Technical architectural breakdown of GPU serving infrastructure behind pplx-embed. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/05/perplexity-details-its-gpu-embedding-stack-how-ivy-tulip-and-rose-serve-pplx-embed/"
     }
   ]
 }
