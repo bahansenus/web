@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-18",
+  "title": "Daily Security Intelligence Briefing — October 18, 2026",
+  "threat_level": "HIGH",
+  "summary": "Threat actors executed a major supply-chain compromise targeting ConnectWise Cloud Backup application identities to breach downstream customer Microsoft 365 tenants (BleepingComputer, The Hacker News). Meanwhile, Drupal issued emergency patches for critical RCE vulnerabilities ahead of anticipated public exploitation (BleepingComputer).",
+  "tier1": [
+    {
+      "title": "1. Hackers breach Microsoft 365 tenants via ConnectWise supply-chain attack",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-breach-microsoft-365-tenants-via-connectwise-supply-chain-attack/",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "BleepingComputer"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Cloud Identity / Supply Chain Compromise"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Threat actors compromised multiple application identities associated with ConnectWise Cloud Backup (formerly SkyKick), obtaining administrative access into customer Microsoft 365 tenants across managed service providers. ConnectWise disabled seven affected application IDs to halt further unauthorized access. This trusted cross-tenant identity abuse poses high risk to downstream enterprise M365 environments."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Audit Entra ID / Microsoft 365 sign-in and audit logs for application ID 506e08f9-6e9a-4da4-942b-a099a03644ae and related ConnectWise identities, revoke compromised consent tokens, and review administrative activity."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. Drupal patches critical RCE flaws, warns exploits may emerge soon",
+      "url": "https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaws-warns-exploits-may-emerge-soon/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Web Application Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Drupal released emergency security updates addressing two critical remote code execution vulnerabilities in supported versions of the CMS. Although active exploitation has not yet been observed, maintainers warn that public exploit payloads could surface quickly."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Apply official Drupal security patches immediately across all supported site installations.; Monitor web application firewall logs for suspicious request patterns targeting Drupal core modules."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Drupal has patched two critical vulnerabilities that could allow attackers to execute code remotely on websites running any supported version of the content management system."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "2. PhantomBuffer: Effective EDR Evasion Through Stealth Injection",
+      "url": "https://www.reddit.com/r/netsec/comments/1x8rwjz/phantombuffer_effective_edr_evasion_through/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Endpoint Defense & Evasion"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Security researchers detailed PhantomBuffer, an EDR evasion technique utilizing SendMessage with WM_SETTEXT for process injection. By avoiding traditional APIs like VirtualAllocEx and WriteProcessMemory, the method bypasses standard API hooking mechanisms used by security agents."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Defenders should update behavioral detection rules to monitor anomalous inter-process window messages.; Highlights reliance on non-standard Windows APIs to bypass baseline EDR memory inspection."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "PhantomBuffer EDR evasion uses stealth injection via SendMessage with WM_SETTEXT to effective bypass EDR... Unlike traditional edr bypass techniques, it does not use the VirtualAllocEx and WriteProcessMemory APIs."
+        },
+        {
+          "label": "Source",
+          "value": "Technical Information Security Content & Discussion"
+        }
+      ]
+    },
+    {
+      "title": "3. Week in review: Hidden implant in Ledger wallets linked to $93M theft, 1,500+ npm packages exposed",
+      "url": "https://www.helpnetsecurity.com/2026/10/18/week-in-review-hidden-implant-in-ledger-wallets-linked-to-93m-theft-1500-npm-packages-exposed/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Intelligence & Supply Chain"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A weekly security review highlights physical hardware implants identified in Ledger cryptocurrency wallets connected to $93M in thefts, alongside an outbreak of over 1,500 malicious packages targeting the npm registry."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Hardware supply chain tampering remains a sophisticated threat vector for cryptocurrency assets.; Developers must implement automated package vetting to guard against npm supply chain attacks."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Hidden implant in Ledger wallets linked to $93M theft, 1,500+ npm packages exposed"
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Google Harness2 — Open-source recursive framework for optimizing AI agent code performance. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/18/google-harness2-recursive-agent-harnessing-framework/"
+    },
+    {
+      "text": "NVIDIA Structured Data Models — Tutorial on zero-training tabular predictions using PyTorch pretrained models. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/17/how-to-make-zero-training-tabular-predictions-with-nvidia-structured-data-models/"
+    },
+    {
+      "text": "Voxel51 3.0 — Multimodal data platform release focused on sensor data for Physical AI. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/17/voxel51-3-0-physical-ai-data-platform/"
+    },
+    {
+      "text": "Kyutai REKI Model — 2.4B VLA model released for efficient robot manipulation memory. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/17/meet-kyutai-reki-the-2-4b-vla-model-bringing-efficient-memory-to-robot-manipulation/"
+    },
+    {
+      "text": "Meta Muse Spark Open — Analysis of Meta's latest open-weight model frontier performance advances. (Interconnects AI)",
+      "url": "https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open"
+    },
+    {
+      "text": "NVIDIA RTX Spark Laptops — NVIDIA announces commercial launch of Blackwell RTX laptops starting at $2,399. (NVIDIA Blog)",
+      "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-windows-laptops-celebration/"
+    },
+    {
+      "text": "NCSC CTO Weekly Summary — Weekly overview of cybersecurity developments from the NCSC CTO. (For [Blue|Purple] Teams in Cyber Defence)",
+      "url": "https://www.reddit.com/r/blueteamsec/comments/1x8h75p/cto_at_ncsc_summary_week_ending_october_18th/"
+    },
+    {
+      "text": "document.currentScript Pattern — Web development technique for self-replacing inline scripts during render. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Oct/17/document-currentscript/"
+    }
+  ]
+}
