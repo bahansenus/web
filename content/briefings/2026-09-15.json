@@ -1,0 +1,160 @@
+{
+  "date": "2026-09-15",
+  "title": "Daily Security Intelligence Briefing — September 15, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active zero-day exploitation targets Cisco Secure Email Gateway appliances for root RCE, while APT groups leverage Chrome-Windows zero-day chains and automated campaigns scan for exposed cloud credentials in Vite servers (The Hacker News, Help Net Security).",
+  "tier1": [],
+  "tier2": [
+    {
+      "title": "1. Cisco Secure Email Gateway Flaw Exploited in Wild for Root RCE",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / CVE-2026-76461"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Cisco issued patches for a critical SQL injection zero-day (CVE-2026-76461, CVSS 9.8) in AsyncOS for Cisco Secure Email Gateway. Threat actors have been actively exploiting the vulnerability in the wild to execute arbitrary commands with root privileges."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Apply AsyncOS updates immediately to all affected Cisco Secure Email Gateway instances.; Inspect email gateway logs using Cisco's published indicators of compromise to detect potential unauthorized access."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The vulnerability, tracked as CVE-2026-76461, carries a CVSS score of 9.8 out of a maximum of 10.0."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. China-Linked Hackers Exploit Chrome-Windows Zero-Day Chain",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Intelligence / APT Campaigns"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Threat group UTA0560 executed spear-phishing campaigns leveraging a zero-day exploit chain across Google Chrome and Microsoft Windows. The activity targeted non-governmental organizations to deploy a custom JavaScript backdoor named GRIMWEDGE."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Verify complete patching of both desktop web browsers and underlying host Windows OS updates.; Enhance endpoint detection for anomalous script execution launched via browser processes."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Volexity, which is tracking the threat cluster under the moniker UTA0560, said the activity targeted multiple non-governmental organizations."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. Mass-Scanning Campaign Target Vite Dev Servers for Cloud Credentials",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Cloud Security / Credential Theft"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "F5 Labs discovered an automated mass-scanning effort reaching internet-exposed Vite development servers. Cybercriminals exploit exposed server instances and environment state files to exfiltrate AWS and Azure authentication credentials."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Ensure development web servers are bound exclusively to localhost and restricted from public internet access.; Immediately rotate cloud access keys and API secrets exposed in developer environment files."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The first is an automated effort aimed at internet-exposed Vite development servers that's designed to steal cloud credentials..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. LiteSpeed Enterprise Flaw Enables Shared Hosting Root Takeover",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / Privilege Escalation"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A high-severity flaw in LiteSpeed Web Server Enterprise allows a low-privileged hosting tenant to escalate privileges to root on shared hosting platforms. cPanel warned that attackers could compromise adjacent customer accounts on the same machine."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Update LiteSpeed Enterprise installations across multi-tenant web servers immediately.; Audit shared hosting host logs for unexpected local privilege escalation attempts."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "An attacker with one of those hosting accounts could exploit the flaw to access or alter other sites and the server itself..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "5. HBO Max Reddit Account Compromised in ClickFix Malvertising Attack",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Social Engineering / Infostealer Malware"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Attackers hijacked the verified u/hbomax Reddit account to run trusted advertisements leading to ClickFix social engineering prompts. The fake prompts tricked Windows and macOS users into executing terminal scripts that dropped infostealer malware."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Enforce strict multi-factor authentication on corporate social media and ad account portals.; Train users to recognize ClickFix prompts requiring manual command-line execution."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "ClickFix has been rising in popularity... It's a social engineering technique that cons victims into running malicious scripts."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Microsoft Emergency RDS Fix — Microsoft releases out-of-band security fixes for Remote Desktop Services vulnerabilities. (Infosecurity Magazine)"
+    },
+    {
+      "text": "Sysdig Marimo RCE Analysis — Sysdig documents attackers moving from Marimo notebook RCE to SSH bastion in seconds. (The Hacker News)"
+    },
+    {
+      "text": "Black Axe Extradition — Five leaders of Black Axe cybercrime syndicate extradited to US on fraud charges. (BleepingComputer)"
+    },
+    {
+      "text": "AT&T SIM-Swap Sentencing — Former telecom employee sentenced to 16 months prison for assisting SIM-swap gang. (GRAHAM CLULEY)"
+    },
+    {
+      "text": "Microsoft AI Conduct Rules — Microsoft publishes draft Humanist AI Code of Conduct for public safety consultation. (Help Net Security)"
+    },
+    {
+      "text": "OneTrust AI Report — Report shows 74% enterprise AI adoption, highlighting widespread shadow AI usage. (Help Net Security)"
+    },
+    {
+      "text": "US Orbital Weapons — US military publicly confirms active deployment of space control weapons in orbit. (Ars Technica - All content)"
+    },
+    {
+      "text": "Excel Patch Issue — Microsoft confirms KB5002914 update breaks standard copy and paste in Excel. (BleepingComputer)"
+    }
+  ]
+}
