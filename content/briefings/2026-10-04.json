@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-04",
+  "title": "Daily Security Intelligence Briefing — October 04, 2026",
+  "threat_level": "MODERATE",
+  "summary": "Threat actors are actively exploiting Microsoft SharePoint flaws to deliver ransomware, while China-nexus group TA419 targets AI policy experts via AitM credential phishing (The Hacker News).",
+  "tier1": [],
+  "tier2": [
+    {
+      "title": "1. Warlock Threat Group Weaponizes SharePoint Vulnerabilities to Deploy Ransomware",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerabilities & Threat Intelligence"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "China-linked threat actor Warlock is actively exploiting Microsoft SharePoint vulnerabilities to target critical infrastructure, government, and education entities. Attackers disable endpoint security software before deploying ransomware across compromised environments."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Campaigns specifically target organizations in Portuguese- and Spanish-speaking regions.; Security teams must verify SharePoint patching levels and alert on security service termination events."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "In the observed activity, the threat actor exploited SharePoint flaws to disable security software and ultimately deliver ransomware."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. China-Aligned TA419 Targets U.S. AI Policy Experts via AitM Phishing",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Cyber Espionage & Phishing"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "China-nexus threat group TA419 is conducting adversary-in-the-middle (AitM) credential phishing against AI policy researchers at US think tanks, universities, and legal firms. The lures impersonate prominent AI scholars and Anthropic personnel to capture Microsoft credentials and bypass MFA."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "AitM proxying allows threat actors to capture session tokens and bypass standard MFA implementations.; Spear-phishing lures heavily leverage AI policy personas and research themes."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The campaigns have impersonated prominent economists and AI policymakers, as well as a prominent Anthropic employee..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. MI5 Issues Alert Over Chinese State Funding of U.K. Academic Research",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Insider Threat & Espionage"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "MI5 warned that over 100 U.K.-linked academics participated in research projects covertly funded by China's Ministry of State Security via the China General Technology Research Institute. The intelligence effort seeks to acquire dual-use tech insights for Beijing."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "State intelligence services use front organizations and grant programs to fund academic research.; Universities are advised to strengthen due diligence for foreign research grant sources."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The primary purpose of the China General Technology Research Institute is to fund research on behalf of Beijing's state security service."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. Google Shifts Federated Learning into TEEs for Verifiable Differential Privacy",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Data Protection & AI Architecture"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Google Research updated its Federated Learning (FL) framework by moving central aggregation into Trusted Execution Environments (TEEs). The architecture provides cryptographic proof of differential privacy guarantees for edge-trained models such as Gboard."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "TEEs isolate aggregation workloads to protect individual user gradient uploads from server-side inspection.; Delivers verifiable central differential privacy assurances against side-channel and reconstruction attacks."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The research team claims externally verifiable central differential privacy guarantees for FL for the first time."
+        },
+        {
+          "label": "Source",
+          "value": "MarkTechPost"
+        }
+      ]
+    },
+    {
+      "title": "5. Google Gemini Desktop Integration Raises System Permission Concerns on macOS",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI Security & System Privileges"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Upcoming Google Gemini integration on macOS will request extensive system permissions, enabling the agent to access local files, run applications, and browse the web autonomously without requiring per-action prompt confirmation."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Broad autonomous file and execution privileges expand potential impact from indirect prompt injection.; Enterprise IT administrators should establish policies regarding local AI agent filesystem access."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Google's Gemini could soon access any file on your macOS device, open apps, browse the web, and perform actions without asking for permission every time."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "ShinyHunters Suspect Detained — Extortion group suspect 'Rey' detained in Jordan, aiding FBI. (BleepingComputer)"
+    },
+    {
+      "text": "DTU Breach — Identity system breach exposes data of up to 200,000 users. (BleepingComputer)"
+    },
+    {
+      "text": "Help Net Security Weekly Review — Recap covers Microsoft internal analytics flaw and NetScaler 0-day exploitation. (Help Net Security)"
+    },
+    {
+      "text": "Chromium V8 Security Updates — Microsoft publishes advisories for Chromium V8 flaws CVE-2025-2137 and CVE-2025-1920. (MSRC Security Update Guide)"
+    },
+    {
+      "text": "Anthropic Voice Data Opt-In — Anthropic prompts Claude users to voluntarily share voice chats for model training. (BleepingComputer)"
+    },
+    {
+      "text": "DeepSeek Harness v0.2 Release — DeepSeek releases desktop app preview for open-source agent harness. (MarkTechPost)"
+    },
+    {
+      "text": "YARA-X 1.21.0 Update — YARA-X release brings five new improvements and four bug fixes. (SANS Internet Storm Center)"
+    },
+    {
+      "text": "SANS ISC Honeypot Log Review — Analysis of unusual User-Agent string activity in honeypot logs. (SANS Internet Storm Center)"
+    }
+  ]
+}
