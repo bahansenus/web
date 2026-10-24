@@ -1,0 +1,160 @@
+{
+  "date": "2026-09-08",
+  "title": "Daily Security Intelligence Briefing — September 08, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active zero-day exploitation of Adobe Commerce (StyleSmuggler) and targeted executive help-desk vishing attacks (PREY-0058) bypassing M365 MFA represent the primary active threat vectors today (CSO Online, Help Net Security).",
+  "tier1": [],
+  "tier2": [
+    {
+      "title": "1. Adobe Commerce Zero-Day 'StyleSmuggler' Under Active Exploitation",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Application Security / Zero-Day"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Attackers are actively exploiting a maximum-severity zero-day vulnerability (CVE-2026-75650, CVSS 10.0) in Adobe Commerce and Magento Open Source. Codenamed StyleSmuggler, the flaw allows unauthenticated attackers to execute arbitrary code and establish persistent backdoors by abusing Magento's Style properties."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Unauthenticated CVSS 10.0 flaw allows full system takeover on vulnerable e-commerce servers.; Attackers bypass existing web application security controls by abusing Magento Style property parsing to deploy PHP webshells and Rust backdoors."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "When the attack succeeds, a backdoor background process is established..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. WeChat Zero-Click Worm Takes Over Accounts via Incoming Calls",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Mobile Security / Zero-Click Vulnerabilities"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Security firm Calif developed a zero-click worm capable of hijacking WeChat accounts across iOS and Android devices via incoming calls. The vulnerability requires no user interaction or answer from the recipient, though the attacker must already be in the victim's contact list."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Zero-click call-handling flaw enables complete account takeover without caller interaction.; Propagation relies on existing contact connections, allowing automated worm-like spreading across user networks."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The person being called does not have to answer or touch their phone for it to work, but the caller must already be one of their WeChat contacts."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. FreeIPA Flaw Chain Enables Anonymous Creation of Admin Credentials",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Identity Infrastructure / Privilege Escalation"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Red Hat disclosed a critical vulnerability chain affecting FreeIPA and 389 Directory Server. An unauthenticated client with no prior history in the domain can forge a Kerberos identity and leverage an LDAP database flaw to add itself directly to the domain administrators group."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Flaw chain permits unauthenticated attackers to gain domain admin privileges across Linux environments.; Requires chaining a FreeIPA identity creation bug with a secondary flaw in 389 Directory Server."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "A flaw in FreeIPA lets a client that has never logged in create a Kerberos identity of its own choosing in the directory and end up in the administrators group..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. PREY-0058 Vishing Attacks Target Executives for M365 Access",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Cloud & Identity Security / Extortion"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Arctic Wolf is tracking an active campaign where threat actors impersonate internal IT help desks to vish corporate executives. Attackers steal M365 session tokens and route authentications through residential proxies to bypass location controls and conduct data theft and extortion."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Specifically targets directors and executives via phone-based social engineering to bypass MFA.; Stolen session tokens are combined with residential proxy networks to mask anomalous login activity."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "IT help-desk vishing calls, stolen session tokens, and sign-ins routed through residential proxies are behind a wave of data theft and extortion..."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    },
+    {
+      "title": "5. BigBear 2.0 PhaaS Bypasses MFA Across 250+ Organizations",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Identity Security / Phishing-as-a-Service"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CloudSEK uncovered BigBear 2.0, an updated phishing-as-a-service framework targeting Microsoft 365 environments. Operating via Adversary-in-the-Middle (AitM) relays, the service has stolen over 5,000 authenticated session cookies after users complete MFA prompts."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "AitM phishing architecture successfully bypasses standard multi-factor authentication controls.; Over 5,000 enterprise session cookies harvested across at least 258 organizations."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The panel contained 5,000+ Microsoft credentials... harvested after victims complete multifactor authentication."
+        },
+        {
+          "label": "Source",
+          "value": "CSO Online"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Trezor Breach Expansion — ShipMonk supply chain breach exposes data of 81,000 hardware wallet customers. (BleepingComputer)"
+    },
+    {
+      "text": "Mathspace Data Breach — Unpatched Metabase reporting vulnerability leads to theft of 1M student and parent records. (Help Net Security)"
+    },
+    {
+      "text": "APIS Database Exposure — Cloud database default credentials expose 220M traveler records in Vietnam-linked system. (BleepingComputer)"
+    },
+    {
+      "text": "MikroTik RouterOS Hijacking — Unauthenticated SSH vulnerability chain actively exploited to hijack internet-exposed MikroTik routers. (Help Net Security)"
+    },
+    {
+      "text": "PEEP Post-Exploitation Kit — Malicious Chromium extension bypasses Web Store security checks to establish command execution backdoors. (The Hacker News)"
+    },
+    {
+      "text": "ClickFix Browser C2 Campaign — Cryptocurrency theft campaign uses Google Visualization API and Sheets for browser C2 injection. (Cisco Talos Blog)"
+    },
+    {
+      "text": "N-able Critical RCE Hotfix — N-able issues maximum-severity patch for remote code execution vulnerability CVE-2026-86218. (Infosecurity Magazine)"
+    },
+    {
+      "text": "Grindr Privacy Lawsuit Settlement — Dating app pays £26M to settle UK lawsuit over unauthorized HIV status data sharing. (The Hacker News)"
+    }
+  ]
+}
