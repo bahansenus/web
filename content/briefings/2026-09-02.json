@@ -1,0 +1,182 @@
+{
+  "date": "2026-09-02",
+  "title": "Daily Security Intelligence Briefing — September 02, 2026",
+  "threat_level": "HIGH",
+  "summary": "Attacker operations intensify across infrastructure and edge devices, headlined by BGP hijacking of cloud management software updates and zero-day exploitation in SonicWall SMA 1000 appliances (Ars Technica, BleepingComputer).",
+  "tier1": [
+    {
+      "title": "1. BGP Hijack Impersonates Update Infrastructure to Infect Hosting Networks",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "Ars Technica"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Network Infrastructure / BGP Hijack & Supply Chain Poisoning"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Threat actors successfully executed a BGP routing hijack against the update infrastructure of Virtualizor, a widespread cloud VPS management platform used across data centers and web hosting providers. By manipulating BGP routing, attackers intercepted update requests and served malicious payloads directly to managing servers across real hosting networks. This represents an ecosystem-wide supply chain attack directly targeting core data center operations."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Enforce strict RPKI route origin validation at network boundaries, mandate cryptographic signature verification on automated software updates, and audit cloud management nodes for unauthorized software modifications."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. SonicWall SMA 1000 Appliances Targeted with Chained Zero-Day Exploits",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / Edge Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "SonicWall released emergency updates for two zero-day vulnerabilities in its SMA 1000 series SSL VPN appliances currently being actively exploited in remote code execution chains. The flaws include a pre-authentication SSRF (CVE-2026-83548) rated CVSS 10.0 paired with an arbitrary file write flaw."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Apply SonicWall patches immediately across all SMA 1000 series remote access gateways.; Review appliance traffic and outbound connectivity for signs of unauthorized file uploads or shell activity."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "SonicWall warned customers that threat actors are chaining two new SMA1000 zero-day vulnerabilities in remote code execution attacks."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "2. Global Coalition Dismantles 23-Year-Old Sality Botnet Infrastructure",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Intelligence / Botnet Operations"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "International law enforcement agencies alongside CrowdStrike and Shadowserver completed a sinkhole operation shutting down the Sality peer-to-peer botnet. Active since 2003, the botnet infected over 15,000 hosts before its P2P command-and-control network was severed."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Operation severed P2P routing mechanisms to prevent operators from delivering new malicious payloads.; Highlights the durability of legacy P2P malware and the necessity of coordinated public-private disruptions."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The operation cut Sality’s operator off from every infected machine still under their control."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    },
+    {
+      "title": "3. Sangoma Switchvox Flaw CVE-2026-9586 Exploited to Deploy Reverse Shells",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / Enterprise VoIP"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Attackers are actively exploiting a critical SQL injection vulnerability in Sangoma Switchvox VoIP platforms to achieve unauthenticated remote code execution. Successful exploitation allows threat actors to drop reverse shells and establish persistent network footholds."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Restrict external WAN access to VoIP management interfaces.; Update Sangoma Switchvox SMB Edition systems to the latest patched firmware."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The vulnerability in question is CVE-2026-9586, a critical unauthenticated SQL injection vulnerability in Sangoma Switchvox SMB Edition that can allow attackers to remotely execute arbitrary code."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. FBI Investigates Service Selling 153M+ Stolen Driver's License Records",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Data Protection / Identity Theft"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A dark web storefront launched offering over 153 million digital driver's license scans from US and Canadian residents. Evidence suggests the trove was compromised from a major identity verification vendor that processes documents for commercial platforms."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Identity verification vendor breaches pose massive secondary fraud risks for client enterprises.; Organizations must audit identity document retention policies and third-party data processing safety."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Based on interviews with individuals whose licenses are available for purchase on this service, it appears to be siphoning images collected by a widely-used identity verification company."
+        },
+        {
+          "label": "Source",
+          "value": "Krebs on Security"
+        }
+      ]
+    },
+    {
+      "title": "5. FBI Warns of Ongoing OAuth Consent Phishing Against High-Profile Targets",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Cloud Security / Phishing Strategy"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "The FBI IC3 issued an alert regarding targeted OAuth consent phishing campaigns operating since late 2025. Attackers trick executives and key personnel into granting malicious OAuth apps persistent API permissions to access corporate emails and files without password theft."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Disable unverified third-party OAuth app consent capabilities for non-admin users.; Audit existing cloud tenant application permissions for excessive scope assignments."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The FBI IC3 says the activity, which uses a technique called OAuth consent phishing, has been ongoing since late 2025."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Aesto Health — Data breach exposes sensitive records of 9.5 million patients. (BleepingComputer)"
+    },
+    {
+      "text": "Langflow RCE Exploitation — Unauthenticated flaw in open-source AI framework exploited for key theft. (BleepingComputer)"
+    },
+    {
+      "text": "GeoNetwork RCE Chain — Unauthenticated flaw chain patched in open-source government geoportal backends. (The Hacker News)"
+    },
+    {
+      "text": "Extradited Russian Hacker — US charges suspect over 2016 campaign infecting 80,000 freelancers. (The Hacker News)"
+    },
+    {
+      "text": "Exposed MS Exchange — 22,000 unpatched Exchange servers exposed online to auth bypass. (BleepingComputer)"
+    },
+    {
+      "text": "Anthropic Enterprise Safeguards — New architecture enables zero data retention alongside cloud misuse detection. (Help Net Security)"
+    },
+    {
+      "text": "OWASP GenAI Security 2026 — OWASP unveils 2026 Top 10 LLM risks and agent standards. (OWASP Gen AI Security Project)"
+    },
+    {
+      "text": "Sift Secret Scanner — Open-source CLI tool released to scan M365 and Slack secrets. (Help Net Security)"
+    }
+  ]
+}
