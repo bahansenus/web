@@ -1,0 +1,218 @@
+{
+  "date": "2026-09-26",
+  "title": "Daily Security Intelligence Briefing — September 26, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active mass exploitation targeting Oracle PeopleSoft ERP software globally alongside emergency shutdown advisories for Kiteworks secure file transfer systems signal severe enterprise risk vectors (The Hacker News, BleepingComputer).",
+  "tier1": [
+    {
+      "title": "1. Attackers Bypass WAFs to Exploit Oracle PeopleSoft Flaw and Deploy Web Shells",
+      "url": "https://thehackernews.com/2026/09/attackers-bypass-wafs-to-exploit-oracle.html",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "The Hacker News"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Enterprise Software / CVE-2026-35273 (Mass Exploitation)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Google issued an urgent warning regarding renewed, widespread exploitation of an unauthenticated remote code execution vulnerability in Oracle PeopleSoft across multiple sectors globally. Threat actors linked to ShinyHunters are deploying Web Application Firewall bypass techniques to drop web shells on compromised servers. Because PeopleSoft houses mission-critical HR and financial data across thousands of organizations, unauthenticated remote access creates immense systemic risk."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Audit web server logs for WAF bypass anomalies and web shell drops, and apply Oracle's official security patch for CVE-2026-35273 immediately."
+        }
+      ]
+    },
+    {
+      "title": "2. Kiteworks urges 6-hour server shutdown over potential zero-day attacks",
+      "url": "https://www.bleepingcomputer.com/news/security/kiteworks-urges-6-hour-server-shutdown-over-potential-zero-day-attacks/",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "BleepingComputer"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Secure File Transfer / Zero-Day Threat"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Secure file-transfer provider Kiteworks (formerly Accellion) instructed its enterprise customer base globally to shut down servers temporarily after federal intelligence authorities warned of an imminent attack campaign. The precautionary measure aims to shield organizations from potential zero-day exploitation targeting high-value sensitive files. Managed file transfer systems remain top-tier targets for ransomware syndicates and extortion actors seeking bulk data access."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Follow Kiteworks emergency guidance to isolate or shut down managed file transfer appliances until software mitigations or patches are released."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. SharePoint RCE and MikroTik RouterOS Flaws Actively Exploited in the Wild",
+      "url": "https://thehackernews.com/2026/09/sharepoint-rce-and-mikrotik-routeros.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Enterprise Vulnerabilities"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CISA added Microsoft SharePoint Server (CVE-2026-65660) and MikroTik RouterOS flaws to its Known Exploited Vulnerabilities catalog. Microsoft confirmed reliable evidence of real-world attacks exploiting the SharePoint code injection vulnerability to achieve remote code execution."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "CISA added CVE-2026-65660 (SharePoint RCE) to the KEV catalog following active in-the-wild exploitation.; On-premise SharePoint servers must be updated immediately to prevent unauthorized command execution."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "As of 9/25/2026, Microsoft had reliable evidence of observed attacks against exploitation of this vulnerability."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. Zero-Click Vulnerabilities in Salesforce Agentforce Expose Wider AI Agent Risk",
+      "url": "https://www.infosecurity-magazine.com/news/vulnerabilities-salesforce-ai/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI & Cloud Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Security researchers uncovered 'SalesBleed', a set of zero-click vulnerabilities in Salesforce Agentforce AI agents. The flaws allow remote prompt injection and unauthorized exfiltration of sensitive CRM database records via DNS queries without user interaction."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Zero-click prompt injection enables untrusted inputs to instruct AI agents to exfiltrate enterprise data.; Agentic workflows operating with elevated database privileges introduce unmonitored execution vectors into production CRMs."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The 'SalesBleed' set of weaknesses in Salesforce's Agentforce agents exposed CRM data to attackers via prompt injection and DNS exfiltration."
+        },
+        {
+          "label": "Source",
+          "value": "Infosecurity Magazine"
+        }
+      ]
+    },
+    {
+      "title": "3. ShinyHunters hacked Clop leak site using Grav CMS path traversal flaw",
+      "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacked-clop-leak-site-using-grav-cms-path-traversal-flaw/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Intelligence"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "The Clop ransomware group was forced to relocate its data leak site to a new Tor location after threat actor group ShinyHunters hacked and defaced the server. The breach exploited an unauthenticated path traversal flaw in the Grav CMS software hosting the portal."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Ransomware infrastructure remains susceptible to exploitation through standard public CMS vulnerabilities.; Conflict between rival cybercrime groups continues to expose backend threat actor operational assets."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The Clop ransomware gang has moved its data leak site to a new Tor address after confirming its previous server was compromised and defaced..."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "4. PamStealer macOS Malware Adds Live C2 Payload Decryption and Multi-Layer Persistence",
+      "url": "https://thehackernews.com/2026/09/pamstealer-macos-malware-adds-live-c2.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Endpoint Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Threat researchers identified an updated variant of PamStealer malware targeting macOS users. The new version utilizes JavaScript for Automation (JXA) droppers combined with server-side decryption keys, preventing static payload analysis until live C2 communication occurs."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "PamStealer requires live C2 server key exchange to reconstruct its primary payload dynamically.; Attackers continue leveraging macOS JXA scripting features to bypass conventional endpoint detection controls."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Where earlier variants embedded their payload key material, the latest artifacts ensure that the main payload can only be recovered using a server-side decryption chain."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "5. Threat detection dashboards are masking security coverage gaps",
+      "url": "https://www.helpnetsecurity.com/2026/09/25/threat-detections-coverage-gaps-report/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Security Operations"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "An analysis of nearly 15,000 active detection rules across SIEM, EDR, and cloud tools revealed that 47% fail to fire during simulated adversary testing. Security teams relying strictly on dashboard indicators face significant blind spots in active threat detection."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "47% of deployed detection rules fail to trigger when subjected to real-world attack techniques.; Organizations must complement metric dashboards with automated breach and attack simulation to validate detection posture."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "A detection rule can show up as deployed on a coverage dashboard and still never fire when an attacker uses the technique it was built to catch."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Elementor — Cross-site request forgery vulnerability allows unauthenticated admin account creation. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/elementor-csrf-flaw-lets-attackers-take.html"
+    },
+    {
+      "text": "ClickFix Campaign — Documentation placeholder domain third-party[.]com hijacked to deliver PowerShell malware. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4226782/documentation-placeholder-domain-used-in-clickfix-attacks.html"
+    },
+    {
+      "text": "Telecom Extortion — US soldier sentenced to 70 months for hacking AT&T and Verizon databases. (Krebs on Security)",
+      "url": "https://krebsonsecurity.com/2026/09/u-s-soldier-gets-70-months-in-prison-for-att-verizon-extortions/"
+    },
+    {
+      "text": "GitLab — Issue creation email addresses expose long-lived tokens that permit repository modification. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4226741/gitlab-issue-emails-only-security-is-obscurity-2.html"
+    },
+    {
+      "text": "GitHub Actions — Previously compromised actions-cool repositories reactivated briefly delivering Mini Shai-Hulud malware. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/compromised-github-actions-came-back.html"
+    },
+    {
+      "text": "CISA — Unveils election security strategy targeting voter databases ahead of 2026 midterms. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/cisa-election-security-midterms/"
+    },
+    {
+      "text": "Cloudflare — Launches Turnstile Spin for automated, agent-mediated CAPTCHA security configuration. (The Cloudflare Blog)",
+      "url": "https://blog.cloudflare.com/turnstile-spin/"
+    },
+    {
+      "text": "Aikido Security — Releases Altar-1 open-weight 328GB LLM for local autonomous security testing. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/25/aikido-security-releases-altar-1-an-open-weight-security-model-pruned-from-glm-5-3-to-328-gb/"
+    }
+  ]
+}
