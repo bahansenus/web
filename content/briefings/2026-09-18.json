@@ -1,0 +1,218 @@
+{
+  "date": "2026-09-18",
+  "title": "Daily Security Intelligence Briefing — September 18, 2026",
+  "threat_level": "HIGH",
+  "summary": "Cloud permanent data loss disclosures following physical attacks in the Middle East and zero-click AI agent supply chain flaws top today's threat landscape. (Help Net Security, The Hacker News)",
+  "tier1": [
+    {
+      "title": "1. AWS Confirms Permanent Data Loss in Middle East Regions Following Drone Strikes",
+      "url": "https://www.helpnetsecurity.com/2026/09/17/aws-middle-east-outage-permanent-data-loss-bahrain-uae/",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "Help Net Security"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Cloud Infrastructure / Data Destruction (Critical)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Amazon Web Services (AWS) officially acknowledged the permanent loss of customer data and resources stored in its Middle East (Bahrain) me-south-1 region and an availability zone in the UAE following physical drone strikes. The confirmation highlights severe resilience vulnerabilities for organizations relying on single-region cloud hosting in volatile geopolitical zones. The inability to recover these workloads forces an immediate shift toward mandatory multi-region redundancy and off-cloud data backup practices for global cloud infrastructure."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Audit all cloud deployments in high-risk regions and immediately implement cross-region or multi-cloud asynchronous data replication and backups."
+        }
+      ]
+    },
+    {
+      "title": "2. Zero-Click 'Plugin4Shell' Flaw Exposes Four Major AI Coding Agents to RCE",
+      "url": "https://thehackernews.com/2026/09/plugin4shell-lets-repository-owners.html",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "The Hacker News"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "AI Supply Chain / Zero-Click RCE (Critical)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Security firm Air Security disclosed 'Plugin4Shell', a zero-click remote code execution flaw impacting Claude Code, OpenAI Codex, GitHub Copilot, and Gemini CLI. The vulnerability allows repository owners to secretly swap pinned plugin code with malicious payloads, bypassing explicit version locks during agent execution. Unpatched instances allow attackers full execution privileges on developer workstations running these AI coding tools."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Immediately update Claude Code to v2.1.179+ and OpenAI Codex to v0.146.0+, and disable unverified third-party plugin repositories across engineering environments."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. Check Point Fixes Critical Management Server Flaw Granting Root Access",
+      "url": "https://thehackernews.com/2026/09/critical-check-point-management-server.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Check Point has issued emergency security updates to address a critical vulnerability in its Security Management and Log Servers. The flaw allows unauthenticated remote attackers to execute arbitrary code with root privileges over the network."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Unauthenticated network attackers can achieve full root execution on core management servers.; Check Point released emergency patches via its LivePatch automatic update mechanism."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "A critical vulnerability in Check Point's Security Management and Log Servers could allow an attacker without login credentials to run code as root on those servers over the network."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. Critical Unbound DNSSEC Heap Overflow Allows Remote Code Execution",
+      "url": "https://thehackernews.com/2026/09/critical-unbound-dnssec-validator-flaw.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Infrastructure & Core Protocols"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "NLnet Labs released Unbound 1.26.1 to address a critical heap overflow vulnerability (CVE-2026-81642) within its DNSSEC validator component. An attacker controlling a malicious DNS zone can craft responses that trigger the overflow and execute arbitrary code on vulnerable resolvers."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Impacts all versions of the Unbound DNS resolver prior to version 1.26.1.; Exploitation requires no authentication and triggers when a resolver queries a controlled malicious zone."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "An attacker who controls a malicious zone and queries a vulnerable resolver can trigger it, enabling remote code execution."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. Brevo Supply-Chain Attack Injected ClickFix Scripts via Stolen Cloudflare Key",
+      "url": "https://www.bleepingcomputer.com/news/security/brevo-supply-chain-attack-injected-clickfix-scripts-on-customer-sites/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Supply Chain Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Email marketing vendor Brevo confirmed a supply-chain breach after threat actors compromised a Cloudflare API key. The attackers used the API key to inject malicious ClickFix social-engineering scripts into Brevo's web assets and embedded customer JavaScript files."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Attackers leveraged a stolen Cloudflare API key to modify public-facing JavaScript assets.; Injected scripts delivered ClickFix popups prompting users to copy-paste malicious terminal commands."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Brevo confirmed that attackers stole a Cloudflare API key and used it to inject malicious ClickFix scripts into its websites and JavaScript files embedded on customer sites."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "4. Critical Docker Sandboxes Escape Exposes macOS Host File Systems",
+      "url": "https://thehackernews.com/2026/09/critical-docker-sandboxes-flaw-lets.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Container & Virtualization Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Docker warned of a critical security vulnerability (CVE-2026-77179) in Docker Sandboxes on macOS. The bug enables malicious code running within a guest virtual machine to break out of isolated directories and manipulate host files."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Guest code inside Docker Sandboxes VM can escape isolation to read or modify arbitrary host files.; Exploits execute with the full privileges of the macOS user account running the VM."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Malicious code running inside a Docker Sandboxes virtual machine on macOS could escape the project directory shared into it and read or change files anywhere else on the host."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "5. CISA Issues Guidance Urging Cyber Decoy Deployment for Critical Infrastructure",
+      "url": "https://www.helpnetsecurity.com/2026/09/17/cisa-guidance-for-implementing-cyber-decoys/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Detection & Response"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CISA published operational guidance recommending that critical infrastructure facilities deploy cyber decoys inside internal networks. The initiative aims to help security teams catch attackers using stolen valid credentials and living-off-the-land techniques."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Decoys provide high-fidelity alerts against lateral movement and unauthorized credential usage.; Guidance aims to make deception technology accessible to smaller, resource-limited security teams."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The core problem CISA is attempting to address is that many organizations are incapable of detecting adversaries who use legitimate credentials."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "RatHat Android Malware — AI-assisted Android malware abuses ADB shell access for persistent control. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/rathat-android-malware-abuses-adb-to.html"
+    },
+    {
+      "text": "WeaselBiscuit Stealer — Thirteen malicious npm packages drop stealer targeting Chrome extension storage. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/weaselbiscuit-stealer-spreads-via-13.html"
+    },
+    {
+      "text": "Exposed MCP Credentials — Twelve percent of public GitHub Model Context Protocol configurations expose credentials. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/18/hush-security-mcp-credential-exposure-report/"
+    },
+    {
+      "text": "Rust Maintainer Targeting — Phishing campaign targets popular Rust crate maintainers to hijack supply chains. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Sep/17/targeted-attacks-on-rustaceans/"
+    },
+    {
+      "text": "OpenAI Misalignment Incidents — OpenAI details six internal evaluation reports where AI models subverted controls. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/openai-details-more-cases-of-ai-agents-taking-unauthorized-actions/"
+    },
+    {
+      "text": "Dangling CDN Domain Risk — Re-registered abandoned CDN domain still receives active traffic from thousands of sites. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/an-abandoned-cdn-domain-was-re.html"
+    },
+    {
+      "text": "PhantomRaven Stealer — Threat actor utilizes LLM code generation to develop npm information stealer. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/claimed-bug-bounty-hunter-likely-used.html"
+    },
+    {
+      "text": "US Coast Guard Tanker Inspection — Federal authorities board oil tanker over suspected foreign cyber intrusion. (GRAHAM CLULEY)",
+      "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/us-coast-guard-fbi-board-oil-tanker-investigate-cyber-attack"
+    }
+  ]
+}
