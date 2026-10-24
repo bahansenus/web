@@ -1,0 +1,160 @@
+{
+  "date": "2026-09-06",
+  "title": "Daily Security Intelligence Briefing — September 06, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active zero-day exploitation targets Adobe Commerce and Magento stores via the StyleSmuggler flaw, while unauthenticated SSH attacks compromise exposed MikroTik routers. JetBrains users face mandatory credential rotations following a TeamCity breach affecting Cadence (The Hacker News, Sansec, CERT Polska).",
+  "tier1": [],
+  "tier2": [
+    {
+      "title": "1. Unpatched Magento and Adobe Commerce Zero-Day Exploited to Backdoor Online Stores",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "E-Commerce / Vulnerability Management"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Dutch e-commerce security firm Sansec disclosed an unpatched zero-day vulnerability in Magento Open Source and Adobe Commerce dubbed StyleSmuggler. Threat actors began actively exploiting the flaw on September 4 to execute arbitrary code without authentication and install backdoors on e-commerce web servers."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Unpatched zero-day StyleSmuggler allows unauthenticated remote code execution on Adobe Commerce and Magento.; Attackers are actively deploying backdoors on vulnerable e-commerce platforms."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Sansec, which discovered the flaw and named it StyleSmuggler, said attacks started on September 4."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. Attackers Hijack MikroTik Routers Through Internet-Exposed SSH Without Authentication",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Network Infrastructure / Access Control"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CERT Polska issued a warning regarding ongoing attacks targeting internet-exposed SSH remote-access services on MikroTik routers. Attackers are obtaining full administrative control without authenticating, with confirmed malicious activity dating back to at least September 2."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Internet-exposed SSH on MikroTik routers allows attackers to gain admin control without credentials.; Administrators should immediately restrict external access to device management ports."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Attackers are exploiting MikroTik routers with their Secure Shell (SSH) remote-access service, which is reachable from the internet, to gain full administrative control without authentication..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Supply Chain / Credential Compromise"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "JetBrains reported a security breach affecting its Cadence environment following the exploitation of a critical TeamCity vulnerability. Threat actors extracted secrets and credentials, prompting JetBrains to urge all Cadence users to immediately revoke and rotate all associated credentials and secrets."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Unpatched TeamCity flaw was exploited to breach JetBrains Cadence infrastructure.; Users must rotate all secrets and AWS credentials associated with Cadence executions."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Cadence users should immediately revoke or rotate all credentials and secrets that may have been used to run their Cadence executions..."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. Critical VMware Workstation and Fusion Flaw Lets VM Admins Execute Host Code",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Virtualization / Privilege Escalation"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Broadcom released security patches for an integer-overflow vulnerability (CVE-2026-59346, CVSS 9.3) in VMware Workstation and Fusion. The bug enables local attackers with elevated privileges inside a virtual machine to escape guest isolation and execute arbitrary code on the host operating system."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "CVE-2026-59346 allows elevated VM users to escape guest environments to execute code on the host.; Patches are now available across affected VMware Workstation and Fusion releases."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The vulnerability, tracked as CVE-2026-59346 (CVSS score: 9.3), is an integer-overflow vulnerability that a local attacker with elevated privileges can exploit to run arbitrary code."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "5. Over 5,400 Hacked Sites Serve ClickFix Payloads Stored on the Blockchain",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Web Security / Social Engineering"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A large-scale cybercriminal campaign has compromised over 5,400 small-business websites to distribute ClickFix social engineering lures. The attackers are hosting malicious payloads within smart contracts on the BNB Smart Chain (BSC) to bypass traditional web takedown efforts."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Threat actors host social engineering payloads inside smart contracts on the BNB Smart Chain.; Over 5,400 compromised websites serve the malicious prompts to site visitors."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "A massive cybercriminal operation is leveraging thousands of compromised small-business websites to deliver ClickFix payloads stored in smart contracts on the BNB Smart Chain (BSC)."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "REVSTEALER Malware Modules — Four post-infection programs disable Defender and Windows Update for cryptomining. (The Hacker News)"
+    },
+    {
+      "text": "Trezor / ShipMonk Data Breach — Third-party shipping provider breach exposes order history of 67,000 customers. (The Hacker News)"
+    },
+    {
+      "text": "Anthropic Claude Infostealers — Anthropic locks user sessions compromised by infostealers harvested from endpoint devices. (Help Net Security)"
+    },
+    {
+      "text": "OpenAI AI Alignment Reflection — Jakub Pachocki advocates for stronger safeguards and international coordination for AI. (OpenAI News)"
+    },
+    {
+      "text": "GitHub Project HydraFusion — Research preview introduces multi-model runtime orchestration in Copilot CLI. (MarkTechPost)"
+    },
+    {
+      "text": "UC Berkeley CUA-Lite — Open platform unifies sandboxes, evaluation, and RL for computer-use agents. (MarkTechPost)"
+    },
+    {
+      "text": "Nous Research Hermes Desktop — Simplified single-click local LLM hardware setup introduced in Hermes Desktop. (MarkTechPost)"
+    },
+    {
+      "text": "Perplexity GPU Embedding Stack — Technical architectural breakdown of GPU serving infrastructure behind pplx-embed. (MarkTechPost)"
+    }
+  ]
+}
