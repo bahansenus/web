@@ -1,6 +1,6 @@
 {
   "date": "2026-09-15",
-  "title": "Daily Security Intelligence Briefing — September 15, 2026",
+  "title": "Daily Security Intelligence Briefing \u2014 September 15, 2026",
   "threat_level": "HIGH",
   "summary": "Active zero-day exploitation targets Cisco Secure Email Gateway appliances for root RCE, while APT groups leverage Chrome-Windows zero-day chains and automated campaigns scan for exposed cloud credentials in Vite servers (The Hacker News, Help Net Security).",
   "tier1": [],
@@ -28,7 +28,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/cisco-secure-email-gateway-flaw.html"
     },
     {
       "title": "2. China-Linked Hackers Exploit Chrome-Windows Zero-Day Chain",
@@ -53,7 +54,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/china-linked-hackers-exploit-chrome.html"
     },
     {
       "title": "3. Mass-Scanning Campaign Target Vite Dev Servers for Cloud Credentials",
@@ -78,7 +80,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/mass-scanning-campaign-exploits-vite.html"
     },
     {
       "title": "4. LiteSpeed Enterprise Flaw Enables Shared Hosting Root Takeover",
@@ -103,7 +106,8 @@
           "label": "Source",
           "value": "The Hacker News"
         }
-      ]
+      ],
+      "url": "https://thehackernews.com/2026/09/litespeed-enterprise-flaw-could-let-one.html"
     },
     {
       "title": "5. HBO Max Reddit Account Compromised in ClickFix Malvertising Attack",
@@ -128,33 +132,42 @@
           "label": "Source",
           "value": "Help Net Security"
         }
-      ]
+      ],
+      "url": "https://www.helpnetsecurity.com/2026/09/15/hbo-max-reddit-account-clickfix-infostealer-malware/"
     }
   ],
   "tier3": [
     {
-      "text": "Microsoft Emergency RDS Fix — Microsoft releases out-of-band security fixes for Remote Desktop Services vulnerabilities. (Infosecurity Magazine)"
+      "text": "Microsoft Emergency RDS Fix \u2014 Microsoft releases out-of-band security fixes for Remote Desktop Services vulnerabilities. (Infosecurity Magazine)",
+      "url": "https://www.infosecurity-magazine.com/news/microsoft-releases-emergency-patch/"
     },
     {
-      "text": "Sysdig Marimo RCE Analysis — Sysdig documents attackers moving from Marimo notebook RCE to SSH bastion in seconds. (The Hacker News)"
+      "text": "Sysdig Marimo RCE Analysis \u2014 Sysdig documents attackers moving from Marimo notebook RCE to SSH bastion in seconds. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/human-attacker-exploits-marimo-rce.html"
     },
     {
-      "text": "Black Axe Extradition — Five leaders of Black Axe cybercrime syndicate extradited to US on fraud charges. (BleepingComputer)"
+      "text": "Black Axe Extradition \u2014 Five leaders of Black Axe cybercrime syndicate extradited to US on fraud charges. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/black-axe-gang-members-extradited-to-us-face-cybercrime-charges/"
     },
     {
-      "text": "AT&T SIM-Swap Sentencing — Former telecom employee sentenced to 16 months prison for assisting SIM-swap gang. (GRAHAM CLULEY)"
+      "text": "AT&T SIM-Swap Sentencing \u2014 Former telecom employee sentenced to 16 months prison for assisting SIM-swap gang. (GRAHAM CLULEY)",
+      "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/former-at-t-worker-jailed-sim-swap"
     },
     {
-      "text": "Microsoft AI Conduct Rules — Microsoft publishes draft Humanist AI Code of Conduct for public safety consultation. (Help Net Security)"
+      "text": "Microsoft AI Conduct Rules \u2014 Microsoft publishes draft Humanist AI Code of Conduct for public safety consultation. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/15/microsoft-ai-safety-rules-humanist-ai-code-of-conduct/"
     },
     {
-      "text": "OneTrust AI Report — Report shows 74% enterprise AI adoption, highlighting widespread shadow AI usage. (Help Net Security)"
+      "text": "OneTrust AI Report \u2014 Report shows 74% enterprise AI adoption, highlighting widespread shadow AI usage. (Help Net Security)",
+      "url": "https://www.helpnetsecurity.com/2026/09/15/onetrust-enterprise-ai-governance-trends-report/"
     },
     {
-      "text": "US Orbital Weapons — US military publicly confirms active deployment of space control weapons in orbit. (Ars Technica - All content)"
+      "text": "US Orbital Weapons \u2014 US military publicly confirms active deployment of space control weapons in orbit. (Ars Technica - All content)",
+      "url": "https://arstechnica.com/space/2026/09/for-the-first-time-the-us-military-confirms-it-has-deployed-weapons-in-orbit/"
     },
     {
-      "text": "Excel Patch Issue — Microsoft confirms KB5002914 update breaks standard copy and paste in Excel. (BleepingComputer)"
+      "text": "Excel Patch Issue \u2014 Microsoft confirms KB5002914 update breaks standard copy and paste in Excel. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-september-kb5002914-security-update-breaks-excel-copy-and-paste/"
     }
   ]
 }
