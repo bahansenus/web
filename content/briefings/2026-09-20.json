@@ -1,0 +1,166 @@
+{
+  "date": "2026-09-20",
+  "title": "Daily Security Intelligence Briefing — September 20, 2026",
+  "threat_level": "HIGH",
+  "summary": "North Korean threat group WaterPlum compromised over 30,000 devices worldwide in a major cryptocurrency theft campaign, while new research demonstrates prompt-forcing attacks against browser-integrated AI agents (BleepingComputer, Help Net Security).",
+  "tier1": [
+    {
+      "title": "1. North Korean WaterPlum Hackers Infect 30,000 Devices Worldwide",
+      "url": "https://www.bleepingcomputer.com/news/security/north-korean-waterplum-hackers-infected-30-000-devices-worldwide/",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "BleepingComputer"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Cybercrime / Nation-State Campaign (WaterPlum)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "A joint law enforcement advisory revealed that North Korean threat group WaterPlum infected over 30,000 devices globally between December 2025 and July 2026. The operation successfully exfiltrated and laundered more than $10.7 million in cryptocurrency to DPRK state accounts. The massive scale of infected endpoints highlights widespread distribution channels and persistent consumer/enterprise risk."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Audit networks for indicators of compromise associated with WaterPlum malware variants and enforce strict cryptocurrency wallet security controls."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. BragJack attacks hijack AI browser agents through malicious extensions",
+      "url": "https://www.bleepingcomputer.com/news/security/bragjack-attacks-hijack-ai-browser-agents-through-malicious-extensions/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI Security / Extension Exploitation"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Security researcher Gal Weizman disclosed BragJack, a proof-of-concept attack that uses malicious browser extensions to hijack AI assistants across Chrome, Edge, Opera Neon, Perplexity Comet, and Claude in Chrome. The 'Prompt Forcing' vulnerability earned $20,000 in bug bounties and assigned two CVEs."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Malicious extensions can inject forced prompts to manipulate browser-based AI assistant behavior.; Affects popular AI web integrations including Perplexity Comet and Claude's Chrome extension."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "BragJack, a proof-of-concept attack from Forever Security's Gal Weizman, hijacks the AI assistants in Chrome, Edge, Opera Neon, Perplexity Comet, and Claude in Chrome using one malicious extension."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "2. ShinyHunters hacks Clop leak site, threatens to extort ransomware gang",
+      "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Threat Intelligence / Ransomware Infrastructure"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Extortion group ShinyHunters compromised the data leak site of the Clop ransomware gang, defacing its Tor infrastructure. ShinyHunters claims to have exfiltrated internal server data and private keys for Clop's onion service, attempting to extort the rival ransomware operators."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Ransomware infrastructure remains vulnerable to compromise and defacement by competing criminal actors.; Loss of onion service private keys renders Clop's leak site infrastructure fully compromised."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The ShinyHunters extortion gang breached the Clop (aka Cl0p) ransomware operation's data leak site, defacing the Tor site and allegedly stealing server data and the private keys for its onion service."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "3. An undercover Google analyst infiltrated a notorious supply-chain hacking gang",
+      "url": "https://arstechnica.com/security/2026/09/an-undercover-google-analyst-infiltrated-a-notorious-supply-chain-hacking-gang/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Supply Chain Security / Threat Intelligence"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "An undercover investigation revealed how a Google analyst infiltrated TeamPCP, a threat group responsible for compromising hundreds of open-source packages and hijacking developer accounts. TeamPCP deployed a Dune-themed self-spreading worm to automate software supply-chain attacks prior to recent arrests in Australia."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "TeamPCP leveraged automated worm components to compromise open-source repositories at scale.; Undercover intelligence gathering enabled defenders to map threat actor techniques before law enforcement action."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "It tainted hundreds of open-source programs with its malware, stole developer accounts to perpetuate that software supply-chain hacking, and even released a Dune-themed self-spreading worm to automate the process..."
+        },
+        {
+          "label": "Source",
+          "value": "Ars Technica - All content"
+        }
+      ]
+    },
+    {
+      "title": "4. Week in review: Cisco patches exploited email gateway 0-day, Revolut breach",
+      "url": "https://www.helpnetsecurity.com/2026/09/20/week-in-review-cisco-patches-exploited-email-gateway-0-day-revolut-breach/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management / Breach Response"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A weekly review highlighting Cisco emergency patches for an actively exploited zero-day vulnerability in its email security gateways, alongside new details regarding a recent breach at Revolut where attackers spoofed government email domains to extract customer records."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Active zero-day exploitation targets Cisco email gateways, requiring immediate patch deployment.; Government domain impersonation remains a high-impact vector for financial institution social engineering."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Someone impersonating a government agency, using an email address on that agency’s domain, obtained sensitive customer records from Revolut."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "Identity Visibility in 2026 — Overview of IAM visibility best practices and cloud identity management. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/identity-visibility-in-2026-foundation.html"
+    },
+    {
+      "text": "OpenClaw 2026.9.5 Release — Open-source personal AI agent adds atomic updates and hot reloading. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/19/openclaw-releases-2026-9-5/"
+    },
+    {
+      "text": "TypeSafe AI Jev — Non-LLM transformer system returning typed decisions directly to software. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/19/typesafe-ai-releases-jev/"
+    },
+    {
+      "text": "Alibaba Qwen3.8-LiveTranslate — Real-time speech translation model reduces latency to 2.3 seconds across 60 languages. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/09/19/alibaba-qwen-team-releases-qwen3-8-livetranslate/"
+    },
+    {
+      "text": "datasette-auth-github 1.0 — Plugin update fixing short-lived session cookie expiration issues. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Sep/19/datasette-auth-github/"
+    },
+    {
+      "text": "datasette-explain 0.2.2 — Datasette plugin update enabling query explain plans on read-only pages. (Simon Willison's Weblog)",
+      "url": "https://simonwillison.net/2026/Sep/20/datasette-explain/"
+    },
+    {
+      "text": "Interconnects AI: Recursive Self-Improvement Analysis — Perspective on concurrent agent workflows and recursive AI progress expectations. (Interconnects AI)",
+      "url": "https://www.interconnects.ai/p/where-i-stand-on-rsi"
+    }
+  ]
+}
