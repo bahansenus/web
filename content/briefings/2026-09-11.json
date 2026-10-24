@@ -1,0 +1,178 @@
+{
+  "date": "2026-09-11",
+  "title": "Daily Security Intelligence Briefing — September 11, 2026",
+  "threat_level": "HIGH",
+  "summary": "Threat actors are rapidly scaling attacks via autonomous AI agent campaigns targeting PaperCut servers and zero-day exploit chains (BlueMoon) against Windows and Chrome. Concurrently, state-sponsored and ransomware actors are actively exploiting critical flaws in Cisco FMC and JFrog Artifactory to breach enterprise networks and CI/CD pipelines (Help Net Security, BleepingComputer, The Hacker News).",
+  "tier1": [
+    {
+      "title": "1. AI Agents Exploited PaperCut Flaws to Breach 395 Organizations Worldwide",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "Help Net Security"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Application Security / Active Autonomous Mass Exploitation"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "A threat actor created an exploit for PaperCut print management software and handed execution over to autonomous AI agents, resulting in automated breaches across 440 instances in 395 organizations in 48 countries. This represents one of the first documented cases of AI agents autonomously executing full-scale intrusion workflows in the wild without direct human intervention. The speed and scale of the automated campaign mark a fundamental shift in offensive threat capabilities."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Upgrade PaperCut NG/MF immediately to maintenance releases 26.0.5, 25.0.13, or 24.1.10, isolate administrative interfaces from the public internet, and audit perimeter logs for automated exploitation indicators."
+        }
+      ]
+    },
+    {
+      "title": "2. BlueMoon Exploit Kit Chains Chrome and Windows Zero-Days in Targeted Espionage Attacks",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "BleepingComputer"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "OS & Browser Security / Active Zero-Day Chain"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Cyber-espionage groups have been observed deploying a novel exploit kit dubbed BlueMoon that chains four separate zero-day and recent vulnerabilities across Google Chrome and Microsoft Windows. Threat actors use spear-phishing campaigns to deliver payload chains that achieve remote code execution and full system compromise by weaponizing patch gaps. The attack demonstrates sophisticated multi-stage browser-to-OS privilege escalation techniques against enterprise targets."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Ensure Chrome browsers are updated to the latest channel release immediately, apply all pending Windows OS updates, and enforce strict web filtering and process sandboxing."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. GitLab Urges Immediate Patching for Max-Severity Path Traversal Vulnerability",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Application Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "GitLab issued an urgent security update addressing CVE-2026-85706, a critical path traversal vulnerability rated at maximum severity (CVSS 10.0). The flaw allows unauthenticated remote attackers to read or write arbitrary files on affected server instances. Organizations running self-hosted GitLab Community and Enterprise editions must apply the patch immediately to prevent server takeover."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "CVE-2026-85706 enables unauthenticated remote file reads and writes on self-hosted instances.; Patches are available across affected Community Edition (CE) and Enterprise Edition (EE) release tracks."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "GitLab urged users on Thursday to patch their servers immediately against a maximum-severity path traversal vulnerability tracked as CVE-2026-85706."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "2. Cisco FMC Flaws Exploited by Ransomware Groups and State-Sponsored Actors",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Network Infrastructure"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Three distinct threat actors, including Qilin ransomware affiliates and state-sponsored espionage units, are actively exploiting two vulnerabilities in Cisco Secure Firewall Management Center (FMC). The vulnerabilities, including CVE-2026-20079 (CVSS 10.0 authentication bypass), allow attackers to bypass login screens, steal enterprise credentials, and gain footholds inside corporate networks."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "CVE-2026-20079 allows unauthenticated remote attackers to bypass authentication on the FMC web interface.; Ransomware gangs and state-aligned actors are actively abusing FMC access to dump administrative credentials."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Cisco has revealed that three distinct threat clusters linked to ransomware and state-sponsored attacks have been exploiting two recently patched Secure Firewall Management Center (FMC) vulnerabilities."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. Attackers Chain JFrog Artifactory Vulnerabilities to Plant Build Pipeline Backdoors",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Software Supply Chain"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Cloud security researchers observed threat actors chaining two vulnerabilities in self-hosted JFrog Artifactory instances between August and September. Unpatched repositories were targeted to bypass authentication, elevate access to full administrative control, and insert backdoor access into software build pipelines."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Attackers chained multiple Artifactory flaws (CVE-2026-42016, CVE-2026-42018, CVE-2026-82329) to achieve admin takeover.; Targeted self-hosted instances were leveraged to inject malicious code into downstream build environments."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Attackers have chained two flaws in JFrog Artifactory, the repository that software build pipelines pull from, to take administrator control of self-hosted servers and plant backdoors."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. Passkey-Themed Vishing Scams Target Microsoft 365 Accounts via Personal Phones",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Identity & Access Management"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Microsoft Security Research warned of active cloud intrusion campaigns where attackers call or text employees on personal mobile numbers, impersonating internal IT helpdesk personnel under the guise of enrolling passkeys. Victims are directed to Adversary-in-the-Middle (AiTM) phishing portals that capture session tokens to access M365 environments."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Threat actors bypass corporate channels by contacting employees directly on personal phone numbers.; Social engineering lures exploit passkey adoption trust to route users into AiTM proxy sites."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Attackers are using passkey-themed social engineering to trick employees into giving them access to their Microsoft accounts."
+        },
+        {
+          "label": "Source",
+          "value": "CSO Online"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "IDScan Cloud Data Breach — Cloud platform breach exposes over 153 million driver's license records. (Help Net Security)"
+    },
+    {
+      "text": "ClickFix Attacks Surge Across Platforms — Fake CAPTCHA overlay attacks trick Windows and Mac users into executing terminal commands. (Ars Technica - All content)"
+    },
+    {
+      "text": "Trezor Phishing Campaign via Brevo — Over 347,000 email addresses targeted following third-party email provider breach. (BleepingComputer)"
+    },
+    {
+      "text": "Cloudflare Post-Quantum DNSSEC — 1.1.1.1 resolver adds support for ML-DSA-44 post-quantum signature validation. (The Cloudflare Blog)"
+    },
+    {
+      "text": "FBI Releases First Cyber Strategy — New strategy emphasizes proactive operational disruption of cyber threat actors. (Infosecurity Magazine)"
+    },
+    {
+      "text": "Google Play Early Access Abuse — Bad actors exploit Early Access program to distribute deceptive, unrated apps. (The Hacker News)"
+    },
+    {
+      "text": "Mantax Otax Android Strain — New Android malware combines ransomware file encryption with spyware capabilities. (BleepingComputer)"
+    },
+    {
+      "text": "Windows Server September RDS Bug — Security updates break Remote Desktop Services on Windows Server 2019/2022/2025. (BleepingComputer)"
+    }
+  ]
+}
