@@ -1,0 +1,147 @@
+{
+  "date": "2026-09-19",
+  "title": "Daily Security Intelligence Briefing — September 19, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active exploitation of a critical pre-authentication RCE in Orkes Conductor and new Linux kernel vulnerabilities added to CISA KEV drive immediate patching priorities (The Hacker News). Concurrently, Microsoft remediated a CVSS 10.0 auth-bypass flaw in Azure AI Foundry while researchers uncovered zero-click supply chain risks in AI coding agents (The Hacker News, CSO Online).",
+  "tier1": [],
+  "tier2": [
+    {
+      "title": "1. Critical Pre-Auth RCE in Orkes Conductor Workflow Platform Exploited in the Wild",
+      "url": "https://thehackernews.com/2026/09/critical-pre-auth-rce-in-orkes.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Application Security / Remote Code Execution"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Fortinet researchers detected active exploitation of CVE-2026-58138 impacting the Orkes Conductor workflow platform. The vulnerability allows unauthenticated attackers to execute arbitrary remote code on vulnerable servers."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Affects Orkes Conductor versions 3.21.21 prior to 3.30.2 with CVSS scores up to 9.8.; Requires immediate updating to patched versions as active exploitation is confirmed."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Orkes Conductor 3.21.21 before 3.30.2 contains an unauthenticated remote code execution vulnerability that allows remote attackers to execute arbitrary code."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. Microsoft Patches CVSS 10.0 Privilege Escalation Flaw in Azure AI Foundry",
+      "url": "https://thehackernews.com/2026/09/microsoft-patches-cvss-100-azure-ai.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Cloud Security / Authentication Bypass"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Microsoft resolved a maximum-severity flaw (CVE-2026-85889) in Azure AI Foundry stemming from missing authentication controls. Because the fix was deployed directly to cloud services, administrators do not need to take manual action."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Carried a maximum CVSS 10.0 rating due to network-based unauthenticated privilege escalation.; Remediated platform-side by Microsoft without requiring tenant deployment."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Missing authentication for critical function in Azure AI Foundry allows an unauthorized attacker to elevate privileges over a network."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. CISA Adds Three Actively Exploited Linux Kernel Vulnerabilities to KEV Catalog",
+      "url": "https://thehackernews.com/2026/09/cisa-flags-three-linux-kernel.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Operating System / Kernel Vulnerabilities"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CISA added three Linux kernel flaws to its Known Exploited Vulnerabilities catalog following evidence of active exploitation. The addition coincides with public exploit releases for several local root kernel bugs."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Includes CVE-2025-39682, a CVSS 9.8 vulnerability in the TLS receive path.; Federal agencies and enterprise admins must patch Linux kernel instances within BOD deadlines."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added three security flaws impacting the Linux kernel to its Known Exploited Vulnerabilities (KEV) catalog."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. Zero-Click RCE Vulnerability Discovered Across Popular AI Coding Agents",
+      "url": "https://www.csoonline.com/article/4223909/a-zero-click-rce-flaw-in-ai-coding-agents-could-have-exposed-enterprise-systems-2.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI Security / Supply Chain"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Major AI development tools including OpenAI Codex, Claude Code, Gemini CLI, and GitHub Copilot were exposed to a zero-click remote code execution flaw. Attackers could substitute marketplace extensions to compromise local developer environments."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Attacker manipulates online marketplace resolution to swap trusted extensions with malicious binaries.; Requires zero interaction from the developer once the coding assistant fetches the plugin."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Popular AI coding agents were vulnerable to a zero-click attack that enabled attackers to execute malicious code, even without developer interaction."
+        },
+        {
+          "label": "Source",
+          "value": "CSO Online"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "CrowdSec GitHub Breach — TanStack supply chain compromise exposed 170 private repositories. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/crowdsec-says-tanstack-npm-attack-led.html"
+    },
+    {
+      "text": "SolarWinds ARM Patch — High-severity hard-coded key flaw CVE-2026-28326 fixed to prevent RCE. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/solarwinds-patches-arm-hard-coded-key.html"
+    },
+    {
+      "text": "Gyazo Breach — Server vulnerability exploitation resulted in theft of 23.6M user records. (BleepingComputer)",
+      "url": "https://www.bleepingcomputer.com/news/security/gyazo-server-flaw-exploited-to-steal-236-million-user-records/"
+    },
+    {
+      "text": "WordPress Core Flaw — Patched Click2Shell flaw forces unauthorized theme installations via link. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/new-wordpress-click2shell-flaw-forces.html"
+    },
+    {
+      "text": "GhostCode Phishing Kit — Campaign abuses Microsoft 365 OAuth device authorization flow for account takeovers. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4223898/ghostcode-attackers-abuse-device-codes-to-take-over-microsoft-365-accounts-2.html"
+    },
+    {
+      "text": "CISA Weekly Bulletin End — CISA discontinues routine vulnerability bulletin, shifting emphasis to binding operational directives. (CSO Online)",
+      "url": "https://www.csoonline.com/article/4223933/cisa-is-ending-its-monthly-vulnerability-bulletin.html"
+    },
+    {
+      "text": "Claude Used in Security Research — Researchers chained bugs via Claude Opus 5 to reach internal OpenAI repos. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html"
+    },
+    {
+      "text": "Transparent Tribe APT — Pakistan-linked group deploys new Rust backdoors leveraging GitHub for C2. (The Hacker News)",
+      "url": "https://thehackernews.com/2026/09/transparent-tribe-deploys-new-rust.html"
+    }
+  ]
+}
