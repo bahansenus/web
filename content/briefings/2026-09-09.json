@@ -1,0 +1,182 @@
+{
+  "date": "2026-09-09",
+  "title": "Daily Security Intelligence Briefing — September 09, 2026",
+  "threat_level": "HIGH",
+  "summary": "Microsoft has released a record-shattering Patch Tuesday fixing 974 vulnerabilities including two actively exploited zero-days, while Google patched an active V8 Chrome zero-day and threat actors deployed memory-only rootkits on F5 BIG-IP appliances. (The Hacker News, Help Net Security)",
+  "tier1": [
+    {
+      "title": "1. Microsoft September 2026 Patch Tuesday: Record 974 CVEs Fixed, Including 2 Active Zero-Days",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "The Hacker News"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "OS & Enterprise Infra / 974 CVEs (2 Active Zero-Days, 110+ Critical)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Microsoft released its largest security update to date, addressing 974 vulnerabilities across Windows, SQL Server, Exchange, and Office environments. The update fixes two zero-days actively exploited in the wild—including CVE-2026-81963 in the Windows Update Stack—and over 110 critical remote code execution and privilege escalation vulnerabilities. The unprecedented volume creates a major testing and deployment workload for enterprise defender teams globally."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Prioritize emergency testing and deployment for actively exploited flaws (CVE-2026-81963) and critical RCE vulnerabilities affecting infrastructure core components including Windows DNS and DHCP."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. Google Patches Actively Exploited Chrome V8 Zero-Day (CVE-2026-87491)",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Browser Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Google released emergency updates for Chrome to fix an out-of-bounds write vulnerability in the V8 JavaScript engine that is being actively exploited in the wild. This marks the seventh zero-day vulnerability patched in Google Chrome during 2026."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Enables arbitrary memory manipulation in the V8 engine during standard web browsing.; Affects Google Chrome desktop releases across Windows, macOS, and Linux."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Google is aware that an exploit for CVE-2026-87491 exists in the wild."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    },
+    {
+      "title": "2. F5 BIG-IP APM Malware Injects Memory-Only PHP Web Shells to Evade Scans",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Network Appliance Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Sophos detailed advanced post-exploitation activity on F5 BIG-IP Access Policy Manager (APM) devices where attackers deploy a Linux rootkit. Instead of writing files to disk, the malware injects a PHP web shell directly into memory when Apache loads legitimate APM scripts."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "File integrity monitors and traditional disk scanners return clean results.; Compromising access policy managers gives attackers persistent access into enterprise internal networks."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The implant delivers a familiar outcome – an execution path for the attacker – while bypassing the file integrity monitors."
+        },
+        {
+          "label": "Source",
+          "value": "Help Net Security"
+        }
+      ]
+    },
+    {
+      "title": "3. SAP Patches Maximum Severity 'Overpass' Memory Corruption Kernel Flaw",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Enterprise Software"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "SAP addressed CVE-2026-44756 ('Overpass'), a CVSS 10.0 vulnerability in the SAP Kernel Extended Passport (EPP) processing module. Unauthenticated remote attackers can exploit memory corruption to execute arbitrary code with full kernel privileges."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Carries a maximum CVSS 10.0 severity due to unauthenticated remote code execution capabilities.; Widespread impact across underlying SAP business deployments relying on core SAP Kernel binaries."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The vulnerability could have a severe impact on the confidentiality, integrity, and availability of the application."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "4. CISA Adds N-able N-central Pre-Auth RCE (CVE-2026-86218) to KEV Catalog",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Managed Services / RMM"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CISA added a critical CVSS 10.0 pre-authentication remote code execution flaw in N-able N-central management software to its Known Exploited Vulnerabilities catalog. Threat actors are actively exploiting unpatched management servers to breach MSP networks."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Pre-authentication RCE grants unauthenticated attackers complete control over management consoles.; Federal Civilian Executive Branch agencies must patch or disconnect vulnerable instances immediately."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The vulnerability in question is CVE-2026-86218 (CVSS score: 10.0), which has been described as a pre-auth RCE."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "5. ChatGPT Hidden Channel Vulnerability Allows Exfiltration of Connected Gmail Data",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI & Application Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Check Point Research demonstrated a vulnerability in ChatGPT where malicious instructions passed via untrusted input or cross-session hidden channels could force ChatGPT to read connected Gmail account data and exfiltrate it to an attacker-controlled session without user interaction."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Demonstrates indirect prompt injection risk in agentic LLM tool integrations.; Passes hidden instructions across sessions to quietly transfer sensitive user email contents."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "A single instruction planted in a ChatGPT conversation could cause ChatGPT to quietly work for an attacker while answering the user's question as usual."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "ShinyHunters / Florida DMV — Extortion group claims breach of Florida DAVID database containing 200k driver records. (CSO Online)"
+    },
+    {
+      "text": "DeepSeek Harness Flaw — Flaw in AI coding agent harness allowed sandboxed agents to disable safety controls. (The Hacker News)"
+    },
+    {
+      "text": "Alby Hub Bitcoin Flaw — Critical flaw enabled takeover of internet-exposed self-hosted Lightning bitcoin wallets. (The Hacker News)"
+    },
+    {
+      "text": "Plex Exposed Servers — Over 36,000 internet-exposed Plex servers remain unpatched against known vulnerabilities. (BleepingComputer)"
+    },
+    {
+      "text": "cPanel Root Privilege Escalation — Mail privilege flaw allowed authenticated cPanel hosting accounts to gain root access. (The Hacker News)"
+    },
+    {
+      "text": "US Advisory on AI Model Distillation — CISA, NSA, and FBI warn Chinese firms are extracting US AI capabilities at scale. (Help Net Security)"
+    },
+    {
+      "text": "Defender ShieldCrash Zero-Day — Researcher releases PoC bypassing previous ShieldBreak patch to gain SYSTEM privileges. (BleepingComputer)"
+    },
+    {
+      "text": "DoppelCart Fraud Network — Massive scam network uses 119,000 fake online stores to harvest payment cards. (BleepingComputer)"
+    }
+  ]
+}
