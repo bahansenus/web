@@ -4,7 +4,7 @@ All paths are depth-aware relative paths so the site works both at the GitHub
 Pages project URL (/web/) and later at the custom domain root (bahansen.us).
 
 Depth conventions:
-  - root pages (index, about, history, privacy) are at the site root: depth=0
+  - root pages (index, about, privacy) are at the site root: depth=0
   - briefing pages live in briefings/: depth=1
 """
 from pathlib import Path
@@ -26,7 +26,6 @@ def nav(depth: int = 0, active: str = "") -> str:
     links = []
     for href, label, key in (
         ("articles.html", "Articles", "articles"),
-        ("history.html", "History", "history"),
         ("about.html", "About", "about"),
         ("privacy.html", "Privacy", "privacy"),
     ):
@@ -48,7 +47,7 @@ def footer(depth: int = 0) -> str:
     return f'''  <footer class="site-footer">
     <div class="container">
       <span>© 2026 bahansen.us</span>
-      <span><a href="{root}articles.html">Articles</a> · <a href="{root}history.html">History</a> · <a href="{root}about.html">About</a> · <a href="{root}privacy.html">Privacy</a></span>
+      <span><a href="{root}articles.html">Articles</a> · <a href="{root}about.html">About</a> · <a href="{root}privacy.html">Privacy</a></span>
     </div>
   </footer>
 '''
