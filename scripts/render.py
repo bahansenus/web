@@ -24,7 +24,13 @@ import json
 import re
 import shutil
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+try:
+    from zoneinfo import ZoneInfo
+    LOCAL_TZ = ZoneInfo("America/New_York")
+except Exception:  # pragma: no cover
+    LOCAL_TZ = timezone.utc
 from pathlib import Path
 
 import site_parts
@@ -41,6 +47,7 @@ LANDING_TEMPLATE = """{head}
     <section class="briefing-header">
       <h1>{title}</h1>
       <div class="threat-line {threat_class}">Overall Daily Threat Level: {threat_level}.</div>
+      {publine}
     </section>
 
     <div class="briefing-body">
@@ -61,6 +68,7 @@ BRIEFING_TEMPLATE = """{head}
       <a href="../history.html" class="back">← All briefings</a>
       <h1>{title}</h1>
       <div class="threat-line {threat_class}">Overall Daily Threat Level: {threat_level}.</div>
+      {publine}
     </section>
 
     <div class="briefing-body">
@@ -254,6 +262,27 @@ def parse_date(date_str: str) -> datetime | None:
         return None
 
 
+def parse_published(data) -> datetime | None:
+    """The real publish moment, in America/New_York, when the artifact records one."""
+    raw = data.get("published_at") if isinstance(data, dict) else None
+    if not raw:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+    except Exception:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    try:
+        return dt.astimezone(LOCAL_TZ)
+    except Exception:
+        return dt
+
+
+def format_published(dt) -> str:
+    return dt.strftime("%A, %B %-d, %Y · %-I:%M %p %Z")
+
+
 # ---- history -----------------------------------------------------------------
 
 def build_history(entries: list) -> str:
@@ -303,6 +332,8 @@ def render_history_item(e: dict, is_latest: bool) -> str:
         date_label = datetime.strptime(e["date"], "%Y-%m-%d").strftime("%b %-d, %Y")
     except Exception:
         date_label = e["date"]
+    if e.get("published"):
+        date_label += " · " + e["published"].strftime("%-I:%M %p %Z")
     tc = threat_class(e.get("threat", ""))
     return HISTORY_ITEM.format(
         date_label=date_label,
@@ -321,7 +352,10 @@ def build_feed(entries: list) -> str:
     items = []
     for e in entries:
         dt = parse_date(e["date"])
-        pub = dt.strftime("%a, %d %b %Y 00:00:00 +0000") if dt else ""
+        if e.get("published"):
+            pub = e["published"].strftime("%a, %d %b %Y %H:%M:%S %z")
+        else:
+            pub = dt.strftime("%a, %d %b %Y 00:00:00 +0000") if dt else ""
         link = f"https://bahansenus.github.io/web/briefings/{e['filename']}"
         items.append(f"""    <item>
       <title>{html_mod.escape(e['title'])}</title>
@@ -364,6 +398,7 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
         title=title,
         threat_class=threat_class(threat),
         threat_level=threat or "—",
+        publine="",
         body=body,
         footer=site_parts.footer(depth=1),
     )
@@ -379,6 +414,7 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
             title=title,
             threat_class=threat_class(threat),
             threat_level=threat or "—",
+            publine="",
             body=body,
             footer=site_parts.footer(depth=0),
         )
@@ -405,6 +441,9 @@ def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
     title = data.get("title") or f"Daily Security Intelligence Briefing — {date_str}"
     threat = (data.get("threat_level") or "").upper()
     summary = data.get("summary", "")
+    pub = parse_published(data)
+    publine = (f'<div class="muted" style="margin-top:8px;">Published {format_published(pub)}</div>'
+               if pub else "")
 
     parts = []
     if summary:
@@ -451,6 +490,7 @@ def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
         title=title,
         threat_class=threat_class(threat),
         threat_level=threat or "—",
+        publine=publine,
         body=body,
         footer=site_parts.footer(depth=1),
     )
@@ -465,6 +505,7 @@ def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
             title=title,
             threat_class=threat_class(threat),
             threat_level=threat or "—",
+            publine=publine,
             body=body,
             footer=site_parts.footer(depth=0),
         )
@@ -592,7 +633,7 @@ def main():
         title = data.get("title") or f"Daily Security Intelligence Briefing — {date_str}"
         threat = (data.get("threat_level") or "").upper()
         # links/history/feed always point at the rendered .html page
-        entries.append({"date": date_str, "filename": f"{date_str}.html", "title": title, "threat": threat, "kind": "json", "data": data})
+        entries.append({"date": date_str, "filename": f"{date_str}.html", "title": title, "threat": threat, "kind": "json", "data": data, "published": parse_published(data)})
         seen_dates.add(date_str)
     for f in sorted((CONTENT / "briefings").glob("*.html")):
         date_m = re.search(r"(\d{4}-\d{2}-\d{2})", f.name)
@@ -604,7 +645,7 @@ def main():
             continue
         raw = f.read_text()
         title, threat = extract_title_and_threat(raw, date_str)
-        entries.append({"date": date_str, "filename": f"{date_str}.html", "title": title, "threat": threat, "kind": "html", "raw": raw})
+        entries.append({"date": date_str, "filename": f"{date_str}.html", "title": title, "threat": threat, "kind": "html", "raw": raw, "published": None})
     entries.sort(key=lambda e: e["date"], reverse=True)
 
     for e in entries:
