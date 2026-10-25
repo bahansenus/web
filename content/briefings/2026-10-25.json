@@ -1,0 +1,193 @@
+{
+  "date": "2026-10-25",
+  "published_at": "2026-10-25T12:00:32.892Z",
+  "title": "Daily Security Intelligence Briefing — October 25, 2026",
+  "threat_level": "HIGH",
+  "summary": "Active zero-day exploitation targeting Citrix NetScaler edge appliances and global mass scanning of PHP2Shell vulnerabilities dominate today's threat landscape. CISA has also mandated urgent patching for actively exploited flaws in Arista VeloCloud Orchestrators and Collabora Online. (ThreatAft, Help Net Security, CISA)",
+  "tier1": [
+    {
+      "title": "1. NetScaler Dual Zero-Days Exploited in the Wild Prior to Disclosure",
+      "url": "https://infosec.exchange/@threataft/117500398460346347",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "ThreatAft"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Network Security / CVE-2026-88771 & CVE-2026-88772 (Active Exploitation)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Attackers actively exploited two zero-day vulnerabilities in Citrix NetScaler ADC and Gateway appliances for three weeks prior to public disclosure, compromising over 100 enterprise environments. CVE-2026-88771 allows unauthenticated root execution via log manipulation within 24 hours of triggering, while CVE-2026-88772 provides direct unauthenticated root access via a DTLS heap overflow on default VPN vservers. Both flaws affect the entire fleet without requiring specific configurations, making them high-priority perimeter risks."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Immediately update NetScaler ADC and Gateway instances to version 14.1-73.46 or later, and audit device logs from the past 30 days for unexpected log entries or crashes in the ns_monuploadd_err.pl process."
+        }
+      ]
+    },
+    {
+      "title": "2. Widespread PHP2Shell Mass Exploitation and Secondary RCE Disclosures",
+      "url": "https://www.helpnetsecurity.com/2026/10/25/week-in-review-php-vulnerabilities-patched-exploited-palo-alto-globalprotect-vpn-flaw/",
+      "fields": [
+        {
+          "label": "Source & Article Link",
+          "value": "Help Net Security"
+        },
+        {
+          "label": "Technical Severity / Domain",
+          "value": "Web Infrastructure / CVE-2026-109618, CVE-2026-109619 & CVE-2026-115560 (Mass Exploitation)"
+        },
+        {
+          "label": "Why You Must Read This",
+          "value": "Mass scanning and exploitation attempts for PHP2Shell remote code execution vulnerabilities were observed days before official vendor patch release, impacting web hosting environments globally. Additionally, a secondary unpatched RCE vector (CVE-2026-115560) involving PHP session upload progress and serialization mismatches was disclosed shortly after. While specific configuration prerequisites bound full weaponization, millions of automated exploit packets are hitting exposed web infrastructure."
+        },
+        {
+          "label": "Recommended Immediate Action",
+          "value": "Apply the latest PHP security updates immediately, audit web application servers for newly created web shells deployed prior to patching, and set session.upload_progress.enabled = Off in php.ini where applicable."
+        }
+      ]
+    }
+  ],
+  "tier2": [
+    {
+      "title": "1. CISA Adds Collabora CODE Server and Arista VeloCloud Flaws to KEV Catalog",
+      "url": "https://thehackernews.com/2026/10/cisa-flags-two-actively-exploited.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Vulnerability Management"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "CISA added CVE-2026-110447 (Collabora Online CODE Server OS command injection) and CVE-2026-114625 (Arista VeloCloud Orchestrator SQL injection) to its Known Exploited Vulnerabilities catalog. Threat actors are actively using the Collabora flaw to plant web shells on Nextcloud servers, while Arista VeloCloud SQLi attacks have been traced to Japanese IP addresses."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Collabora CODE server vulnerability allows unauthenticated command injection even when the server process is stopped.; Federal Civilian Executive Branch (FCEB) agencies face an immediate patching deadline for both flaws."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Attackers are actively exploiting CVE-2026-110447 to backdoor Nextcloud environments with web shells."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "2. Node.js and Cloud Proxies Exposed to RCE via Brotli Decoder Flaw",
+      "url": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Application & Library Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A critical memory corruption vulnerability (CVE-2026-111497) in Google's C-based Brotli decoder allows attackers to write past buffer bounds via crafted compressed payloads. The vulnerability cascades across downstream runtimes and reverse proxies that bundle Brotli, including Node.js, Bun, Envoy, and Istio."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Imperva demonstrated remote code execution against unpatched Node.js applications receiving malformed compressed HTTP data.; Fixes require updating individual bundled dependencies across Node.js (22.23.4 / 24.22.1), Bun (1.4.4), and Python brotli packages."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "Crafted compressed data overwrites past the buffer end leading to crash, memory leak, or remote code execution."
+        },
+        {
+          "label": "Source",
+          "value": "The Hacker News"
+        }
+      ]
+    },
+    {
+      "title": "3. BlackX UEFI Bootkit Exploits Legacy Baton Drop Flaw to Bypass Secure Boot",
+      "url": "https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "Endpoint & Firmware Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "A newly identified UEFI bootkit dubbed BlackX was discovered bypassing Secure Boot during espionage operations by abusing the known Baton Drop vulnerability. Once established, BlackX drops a kernel driver engineered to disable EDR and antivirus tools, specifically targeting Kaspersky and Avast security software."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Demonstrates continued threat actor reliance on unpatched or legacy UEFI vulnerabilities to achieve persistent boot-level execution.; Disables security agent driver checks early in the OS boot sequence before defense mechanisms initialize."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "BlackX loaded a malicious driver designed to interfere with security solutions from Kaspersky and Avast."
+        },
+        {
+          "label": "Source",
+          "value": "BleepingComputer"
+        }
+      ]
+    },
+    {
+      "title": "4. Autonomous AI Attack Agent 'Skynet' Caught Hijacking External Models in Honeypot",
+      "url": "https://www.theregister.com/security/2026/10/24/autonomous-attack-agent-in-skynet-mode-hijacks-other-models-to-carry-out-its-evil-deeds/5305215",
+      "fields": [
+        {
+          "label": "Domain",
+          "value": "AI & Emerging Tech Security"
+        },
+        {
+          "label": "Subject / Topic Summary",
+          "value": "Symantec security researchers captured an autonomous attack agent in an AI honeypot that actively hijacked exposed third-party AI models to execute up to 100,000 attack steps without human interaction. Separately, OpenAI announced plans to air-gap frontier model training due to risks involving VM escapes and unauthorized cross-sandbox communications."
+        },
+        {
+          "label": "Key Technical & Strategic Takeaways",
+          "value": "Attacker instruction sets enable autonomous reconnaissance, lateral movement, and exploit execution across connected LLM tools.; Highlights the rising threat of autonomous agent-on-agent hijacking and untrusted model output execution."
+        },
+        {
+          "label": "Essential Direct Quote",
+          "value": "The agent was configured to run up to 100,000 steps without human approval by taking control of exposed models."
+        },
+        {
+          "label": "Source",
+          "value": "The Register"
+        }
+      ]
+    }
+  ],
+  "tier3": [
+    {
+      "text": "JETS Limited Jamaica — Payment operator administrative system breach exposed historical card numbers. (Infosec Exchange)",
+      "url": "https://infosec.exchange/@beyondmachines1/117500733323033139"
+    },
+    {
+      "text": "Oneonta City Schools — School district closed for two days following network encryption ransomware attack. (Infosec Exchange)",
+      "url": "https://infosec.exchange/@beyondmachines1/117500497261374798"
+    },
+    {
+      "text": "AWS eMudhra Bulletin — AWS issues security bulletin regarding eMudhra CA key recovery issues. (Infosec Exchange)",
+      "url": "https://infosec.exchange/@securityfeed/117500711326514947"
+    },
+    {
+      "text": "Australia Connected Vehicle Regulations — Australia proposes adopting UN R155/R156 standards for vehicle cybersecurity. (Infosec Exchange)",
+      "url": "https://infosec.exchange/@samoczi/117500675566807660"
+    },
+    {
+      "text": "Cognition Devin Plugin — Cognition open-sources AI skills for automated patching of PHP2Shell and GitLab flaws. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/"
+    },
+    {
+      "text": "Microsoft Agensh Framework — Microsoft open-sources decentralized harness scaling up to 1,024 coding agents. (MarkTechPost)",
+      "url": "https://www.marktechpost.com/2026/10/24/microsoft-agensh-multi-agent-harness-1024-agents/"
+    },
+    {
+      "text": "Anthropic Sandbox-Runtime — Anthropic releases lightweight OS-level restriction tool for sandboxing AI command execution. (Infosec Exchange)",
+      "url": "https://infosec.exchange/@cyberworldops/117496481193434886"
+    },
+    {
+      "text": "LiteLLM Supply Chain Incident — Leaked master key led to compromised GitHub repository and poisoned PyPI package release. (Infosec Exchange)",
+      "url": "https://infosec.exchange/@cloud/117499950298332756"
+    }
+  ]
+}
