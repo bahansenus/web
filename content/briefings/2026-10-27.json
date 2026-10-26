@@ -1,6 +1,7 @@
 {
  "date": "2026-10-27",
- "title": "Daily Security Intelligence Briefing — October 27, 2026",
+ "published_at": "2026-10-26T22:47:00.000Z",
+ "title": "Daily Security Intelligence Briefing \u2014 October 27, 2026",
  "threat_level": "CRITICAL",
  "summary": "Global patching scrambles are underway for CVE-2026-111497 ('Broccoli2Shell'/'Node2Shell'), a critical out-of-bounds write in Google's Brotli decoder affecting 91% of cloud environments across .NET, Node.js, and PHP, alongside widespread active exploitation of the 'PHP2Shell' unauthenticated RCE flaws (CVE-2026-109618/109619) (Wiz, SecurityWeek, BleepingComputer). Simultaneously, major software supply-chain compromises by the 'Gheist' actor targeting 13,500+ GitHub repositories and the LiteLLM PyPI poisoning highlight severe CI/CD and AI infrastructure exposure (The Hacker News, The Register).",
  "tier1": [
@@ -18,7 +19,7 @@
     },
     {
      "label": "Why You Must Read This",
-     "value": "Tracked variously as Broccoli2Shell, Node2Shell, and HTTP2Shell, CVE-2026-111497 is a critical out-of-bounds write vulnerability in Google's Brotli C decompression library. When a process decompresses untrusted HTTP streams, attackers can corrupt memory buffers and achieve pre-authentication remote code execution. The flaw spans the entire modern web stack—affecting Node.js, .NET 8/9/10/11, Bun, Envoy Proxy, Python packages, and Windows PHP builds—with Wiz reporting that 91% of cloud environments contain vulnerable resources."
+     "value": "Tracked variously as Broccoli2Shell, Node2Shell, and HTTP2Shell, CVE-2026-111497 is a critical out-of-bounds write vulnerability in Google's Brotli C decompression library. When a process decompresses untrusted HTTP streams, attackers can corrupt memory buffers and achieve pre-authentication remote code execution. The flaw spans the entire modern web stack\u2014affecting Node.js, .NET 8/9/10/11, Bun, Envoy Proxy, Python packages, and Windows PHP builds\u2014with Wiz reporting that 91% of cloud environments contain vulnerable resources."
     },
     {
      "label": "Recommended Immediate Action",
@@ -40,7 +41,7 @@
     },
     {
      "label": "Why You Must Read This",
-     "value": "Two critical unauthenticated RCE vulnerabilities in PHP Core—CVE-2026-109618 (uninitialized memory after OOM abort) and CVE-2026-109619 (stale global state)—are under active mass exploitation. Attackers with reliable ASLR bypasses have compromised European government entities (exfiltrating AD hashes and MFA secrets within two hours via AI-driven batching) and triggered cascading advisories across Palo Alto PAN-OS management UIs and industrial OT vendors (Siemens, Schneider Electric, ABB)."
+     "value": "Two critical unauthenticated RCE vulnerabilities in PHP Core\u2014CVE-2026-109618 (uninitialized memory after OOM abort) and CVE-2026-109619 (stale global state)\u2014are under active mass exploitation. Attackers with reliable ASLR bypasses have compromised European government entities (exfiltrating AD hashes and MFA secrets within two hours via AI-driven batching) and triggered cascading advisories across Palo Alto PAN-OS management UIs and industrial OT vendors (Siemens, Schneider Electric, ABB)."
     },
     {
      "label": "Recommended Immediate Action",
@@ -82,7 +83,7 @@
     },
     {
      "label": "Subject / Topic Summary",
-     "value": "LiteLLM traced last week's widespread supply-chain compromise—which hit tens of thousands of AI developers via a poisoned PyPI and container release (v1.107.0)—to a master key accidentally committed to a public GitHub repository in May. The malicious release contained an infostealer and remote access trojan designed to harvest cloud and AI model secrets."
+     "value": "LiteLLM traced last week's widespread supply-chain compromise\u2014which hit tens of thousands of AI developers via a poisoned PyPI and container release (v1.107.0)\u2014to a master key accidentally committed to a public GitHub repository in May. The malicious release contained an infostealer and remote access trojan designed to harvest cloud and AI model secrets."
     },
     {
      "label": "Key Technical & Strategic Takeaways",
@@ -90,7 +91,7 @@
     },
     {
      "label": "Essential Direct Quote",
-     "value": "LiteLLM has traced last week’s supply chain attack to a master key it accidentally committed to a public GitHub repository in May."
+     "value": "LiteLLM has traced last week\u2019s supply chain attack to a master key it accidentally committed to a public GitHub repository in May."
     },
     {
      "label": "Source",
@@ -108,7 +109,7 @@
     },
     {
      "label": "Subject / Topic Summary",
-     "value": "Apple released emergency security updates—including iOS/iPadOS 18.7.11, iOS/iPadOS 27.2, and macOS Golden Gate 27.2—to address hundreds of vulnerabilities alongside additional patches for CVE-2026-86950. CVE-2026-86950 is a zero-day flaw in CoreGraphics that Apple warns may have been actively exploited in the wild."
+     "value": "Apple released emergency security updates\u2014including iOS/iPadOS 18.7.11, iOS/iPadOS 27.2, and macOS Golden Gate 27.2\u2014to address hundreds of vulnerabilities alongside additional patches for CVE-2026-86950. CVE-2026-86950 is a zero-day flaw in CoreGraphics that Apple warns may have been actively exploited in the wild."
     },
     {
      "label": "Key Technical & Strategic Takeaways",
@@ -168,7 +169,7 @@
     },
     {
      "label": "Essential Direct Quote",
-     "value": "A file that a website saves to the Downloads folder without approval can trick AI coding agents into installing a malicious npm package or handing over the user’s login token."
+     "value": "A file that a website saves to the Downloads folder without approval can trick AI coding agents into installing a malicious npm package or handing over the user\u2019s login token."
     },
     {
      "label": "Source",
@@ -532,7 +533,7 @@
     },
     {
      "label": "Essential Direct Quote",
-     "value": "Tell the model who the code is for, and the security of what it writes changes. For the first time, we showed that this vulnerability lives in the model’s weights."
+     "value": "Tell the model who the code is for, and the security of what it writes changes. For the first time, we showed that this vulnerability lives in the model\u2019s weights."
     },
     {
      "label": "Source",
@@ -543,263 +544,263 @@
  ],
  "tier3": [
   {
-   "text": "Former pentester ARTEX AI breach — Ex-pentester used ARTEX AI framework to breach 90+ South Korean orgs. (BleepingComputer)",
+   "text": "Former pentester ARTEX AI breach \u2014 Ex-pentester used ARTEX AI framework to breach 90+ South Korean orgs. (BleepingComputer)",
    "url": "https://www.bleepingcomputer.com/news/security/former-pentester-used-artex-ai-to-steal-82-million-data-records/"
   },
   {
-   "text": "Texas sues OpenAI — Texas sues OpenAI and Sam Altman over alleged safety deception. (The Record)",
+   "text": "Texas sues OpenAI \u2014 Texas sues OpenAI and Sam Altman over alleged safety deception. (The Record)",
    "url": "https://therecord.media/texas-sues-openai-deceiving-customers"
   },
   {
-   "text": "OpenAI GPT-6.1 Terra — OpenAI launches GPT-6.1 Terra with 3x faster agents, 50% lower cost. (BleepingComputer)",
+   "text": "OpenAI GPT-6.1 Terra \u2014 OpenAI launches GPT-6.1 Terra with 3x faster agents, 50% lower cost. (BleepingComputer)",
    "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-launches-gpt-61-terra-with-3x-faster-ai-agents-50-percent-lower-pricing/"
   },
   {
-   "text": "Anthropic IPO Filing — Anthropic files for massive IPO while warning of existential AI risks. (SecurityWeek)",
+   "text": "Anthropic IPO Filing \u2014 Anthropic files for massive IPO while warning of existential AI risks. (SecurityWeek)",
    "url": "https://www.securityweek.com/anthropic-files-for-potentially-the-biggest-ipo-ever-as-ceo-warns-of-risk-to-humanity-from-ai/"
   },
   {
-   "text": "DreamHost Password Resets — DreamHost forces email and FTP password resets amid ongoing security incident. (BleepingComputer)",
+   "text": "DreamHost Password Resets \u2014 DreamHost forces email and FTP password resets amid ongoing security incident. (BleepingComputer)",
    "url": "https://www.bleepingcomputer.com/news/security/dreamhost-forces-email-ftp-sftp-password-resets-in-ongoing-incident/"
   },
   {
-   "text": "Gotenberg CVE-2026-42589 — Critical CVSS 9.8 ExifTool argument injection flaw patched in Gotenberg 8.31.0. (#infosec (@AAKL))",
+   "text": "Gotenberg CVE-2026-42589 \u2014 Critical CVSS 9.8 ExifTool argument injection flaw patched in Gotenberg 8.31.0. (#infosec (@AAKL))",
    "url": "https://infosec.exchange/@AAKL/117508534906473843"
   },
   {
-   "text": "FISA Section 702 Opinion — Senators accuse Trump administration of illegally withholding declassified FISC surveillance opinion. (CyberScoop)",
+   "text": "FISA Section 702 Opinion \u2014 Senators accuse Trump administration of illegally withholding declassified FISC surveillance opinion. (CyberScoop)",
    "url": "https://cyberscoop.com/wyden-schiff-fisa-section-702-declassification/"
   },
   {
-   "text": "Amazon S3 Data Governance — AWS details architecture patterns for data governance using S3 object annotations. (AWS Architecture Blog)",
+   "text": "Amazon S3 Data Governance \u2014 AWS details architecture patterns for data governance using S3 object annotations. (AWS Architecture Blog)",
    "url": "https://aws.amazon.com/blogs/architecture/data-governance-with-annotations-in-amazon-s3/"
   },
   {
-   "text": "Domain Shadowing Gambling Operations — Attackers hijack school and government DNS to host illegal gambling subdomains. (#infosec (@AAKL))",
+   "text": "Domain Shadowing Gambling Operations \u2014 Attackers hijack school and government DNS to host illegal gambling subdomains. (#infosec (@AAKL))",
    "url": "https://infosec.exchange/@AAKL/117508444632149147"
   },
   {
-   "text": "$37M Crypto Scam Extradition — Chinese national extradited from Netherlands to US over $37M investment scam. (CyberScoop)",
+   "text": "$37M Crypto Scam Extradition \u2014 Chinese national extradited from Netherlands to US over $37M investment scam. (CyberScoop)",
    "url": "https://cyberscoop.com/chinese-national-extradited-investment-scam/"
   },
   {
-   "text": "Serbia Election & Spyware — Serbian leader Vučić loses election following widespread reports of digital repression. (The Record)",
+   "text": "Serbia Election & Spyware \u2014 Serbian leader Vu\u010di\u0107 loses election following widespread reports of digital repression. (The Record)",
    "url": "https://therecord.media/serbia-election-spyware-vucic"
   },
   {
-   "text": "GPS Spoofing Cargo Thefts — Highway thieves spoof GPS to steal $100M+ in data center equipment. (Ars Technica)",
+   "text": "GPS Spoofing Cargo Thefts \u2014 Highway thieves spoof GPS to steal $100M+ in data center equipment. (Ars Technica)",
    "url": "https://arstechnica.com/tech-policy/2026/10/highway-thieves-are-spoofing-gps-to-steal-millions-in-data-center-bound-cargo/"
   },
   {
-   "text": "Starlink Ukraine Dispute — Ukraine disputes Musk's claims of Starlink drone misuse as connectivity restored. (The Record)",
+   "text": "Starlink Ukraine Dispute \u2014 Ukraine disputes Musk's claims of Starlink drone misuse as connectivity restored. (The Record)",
    "url": "https://therecord.media/ukraine-disputes-musk-claims-of-starlink-misuse"
   },
   {
-   "text": "Unitree Go2 CVE-2026-115995 — Unitree Go2 robot dog pipes LLM output directly into root shell. (#cve (@threataft))",
+   "text": "Unitree Go2 CVE-2026-115995 \u2014 Unitree Go2 robot dog pipes LLM output directly into root shell. (#cve (@threataft))",
    "url": "https://infosec.exchange/@threataft/117508048910197287"
   },
   {
-   "text": "CISA 2030 Strategy — CISA unveils 'CISA 2030' strategy focusing on proactive critical infrastructure defense. (Infosecurity Magazine)",
+   "text": "CISA 2030 Strategy \u2014 CISA unveils 'CISA 2030' strategy focusing on proactive critical infrastructure defense. (Infosecurity Magazine)",
    "url": "https://www.infosecurity-magazine.com/news/cisa-aggressive-strategy-critical/"
   },
   {
-   "text": "Microsoft Teams IT Scams — Attackers abuse external Teams chats for IT support impersonation and ransomware. (The Hacker News)",
+   "text": "Microsoft Teams IT Scams \u2014 Attackers abuse external Teams chats for IT support impersonation and ransomware. (The Hacker News)",
    "url": "https://thehackernews.com/2026/10/attackers-use-microsoft-teams-it.html"
   },
   {
-   "text": "Ubuntu Nginx USN-8955-1 — Ubuntu patches nginx alias/rewrite RCE and DoS vulnerabilities (CVE-2026-15176). (Ubuntu security notices)",
+   "text": "Ubuntu Nginx USN-8955-1 \u2014 Ubuntu patches nginx alias/rewrite RCE and DoS vulnerabilities (CVE-2026-15176). (Ubuntu security notices)",
    "url": "https://ubuntu.com/security/notices/USN-8955-1"
   },
   {
-   "text": "ToxicPanda Banking Trojan — ToxicPanda Android trojan uses fake updates and Accessibility services for fraud. (#infosec (@anyrun_app))",
+   "text": "ToxicPanda Banking Trojan \u2014 ToxicPanda Android trojan uses fake updates and Accessibility services for fraud. (#infosec (@anyrun_app))",
    "url": "https://infosec.exchange/@anyrun_app/117507897570703455"
   },
   {
-   "text": "Genesys Internal Breach — Genesys discloses customer data exposure from internal systems; cloud platforms unaffected. (SecurityWeek)",
+   "text": "Genesys Internal Breach \u2014 Genesys discloses customer data exposure from internal systems; cloud platforms unaffected. (SecurityWeek)",
    "url": "https://www.securityweek.com/genesys-hack-exposes-customer-data-from-internal-systems/"
   },
   {
-   "text": "OpenAI Compaction Flaw — Flaw in OpenAI compaction process exposed reasoning traces for model distillation. (SecurityWeek)",
+   "text": "OpenAI Compaction Flaw \u2014 Flaw in OpenAI compaction process exposed reasoning traces for model distillation. (SecurityWeek)",
    "url": "https://www.securityweek.com/stolen-ai-reasoning-could-help-china-build-cheaper-rivals/"
   },
   {
-   "text": "CERT-UA Dahua Camera Warning — Ukraine warns hackers are compromising internet-connected Chinese Dahua surveillance cameras. (The Record)",
+   "text": "CERT-UA Dahua Camera Warning \u2014 Ukraine warns hackers are compromising internet-connected Chinese Dahua surveillance cameras. (The Record)",
    "url": "https://therecord.media/ukraine-cert-ua-warning-chinese-dahua-cameras-hacked"
   },
   {
-   "text": "Johns Hopkins Shadow AI Breach — Employee uploaded 3,200 patient records to unapproved third-party AI tool. (#infosec (@beyondmachines1))",
+   "text": "Johns Hopkins Shadow AI Breach \u2014 Employee uploaded 3,200 patient records to unapproved third-party AI tool. (#infosec (@beyondmachines1))",
    "url": "https://infosec.exchange/@beyondmachines1/117507575192035457"
   },
   {
-   "text": "AI Agent Identity Guide — NIST, CISA, and NSA publish incident response guide for runaway AI agents. (BleepingComputer)",
+   "text": "AI Agent Identity Guide \u2014 NIST, CISA, and NSA publish incident response guide for runaway AI agents. (BleepingComputer)",
    "url": "https://www.bleepingcomputer.com/news/security/when-an-ai-agent-is-the-incident-the-identity-record-is-the-evidence/"
   },
   {
-   "text": "Kali Linux 2026.3 — Kali Linux 2026.3 ships with kernel 7.1.5 and six new security tools. (Help Net Security)",
+   "text": "Kali Linux 2026.3 \u2014 Kali Linux 2026.3 ships with kernel 7.1.5 and six new security tools. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/kali-linux-2026-3-released/"
   },
   {
-   "text": "O'Reilly AI Risk Survey — Security pros cite employees pasting data into AI as top concern. (Help Net Security)",
+   "text": "O'Reilly AI Risk Survey \u2014 Security pros cite employees pasting data into AI as top concern. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/ai-tools-security-worry-survey/"
   },
   {
-   "text": "UK Biobank Returning Online — UK Biobank prepares to restore academic access months after 500k-record leak. (The Register)",
+   "text": "UK Biobank Returning Online \u2014 UK Biobank prepares to restore academic access months after 500k-record leak. (The Register)",
    "url": "https://www.theregister.com/security/2026/10/26/uk-biobank-back-online-soon-months-after-someone-tried-to-sell-500k-peoples-data-on-alibaba/5305363"
   },
   {
-   "text": "CBFC India Data Breach — Indian film board breach exposes 500+ film scripts and commercial agreements. (#infosec (@beyondmachines1))",
+   "text": "CBFC India Data Breach \u2014 Indian film board breach exposes 500+ film scripts and commercial agreements. (#infosec (@beyondmachines1))",
    "url": "https://infosec.exchange/@beyondmachines1/117507103290668738"
   },
   {
-   "text": "Dutch NFC Relay Arrests — Dutch police arrest two over bank helpdesk NFC relay fraud ($400k+ stolen). (SecurityWeek)",
+   "text": "Dutch NFC Relay Arrests \u2014 Dutch police arrest two over bank helpdesk NFC relay fraud ($400k+ stolen). (SecurityWeek)",
    "url": "https://www.securityweek.com/dutch-police-arrest-two-over-nfc-relay-attacks-that-drained-400000/"
   },
   {
-   "text": "Electrum 4.8.3 Emergency Update — Electrum Bitcoin wallet patches critical malicious server transaction hijacking flaw. (#infosec (@beyondmachines1))",
+   "text": "Electrum 4.8.3 Emergency Update \u2014 Electrum Bitcoin wallet patches critical malicious server transaction hijacking flaw. (#infosec (@beyondmachines1))",
    "url": "https://infosec.exchange/@beyondmachines1/117506867336664959"
   },
   {
-   "text": "UK £130M AI Cyber Defense — UK government invests £130M in autonomous AI cyber defense for critical infrastructure. (The Register)",
+   "text": "UK \u00a3130M AI Cyber Defense \u2014 UK government invests \u00a3130M in autonomous AI cyber defense for critical infrastructure. (The Register)",
    "url": "https://www.theregister.com/security/2026/10/26/britain-bets-big-on-ai-to-defend-against-the-threats-ai-is-helping-create/5305319"
   },
   {
-   "text": "Claude Duet Safeguards — Anthropic outlines credential isolation and approval safeguards for proactive Claude Duet agent. (Help Net Security)",
+   "text": "Claude Duet Safeguards \u2014 Anthropic outlines credential isolation and approval safeguards for proactive Claude Duet agent. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/anthropic-claude-duet-security-safeguards/"
   },
   {
-   "text": "Maritime Vulnerability Database — Blue Initiative launches dedicated IT and OT CVE database for maritime sector. (Infosecurity Magazine)",
+   "text": "Maritime Vulnerability Database \u2014 Blue Initiative launches dedicated IT and OT CVE database for maritime sector. (Infosecurity Magazine)",
    "url": "https://www.infosecurity-magazine.com/news/blue-initiative-maritime/"
   },
   {
-   "text": "uCreator Android Spyware — Rentable uCreator Android spyware steals Telegram 2FA and clones WeChat accounts. (The Hacker News)",
+   "text": "uCreator Android Spyware \u2014 Rentable uCreator Android spyware steals Telegram 2FA and clones WeChat accounts. (The Hacker News)",
    "url": "https://thehackernews.com/2026/10/ucreator-android-spyware-can-steal.html"
   },
   {
-   "text": "PHP CVE-2026-115560 — PHP publishes mitigation advice for separate RCE flaw with limited exploit conditions. (Infosecurity Magazine)",
+   "text": "PHP CVE-2026-115560 \u2014 PHP publishes mitigation advice for separate RCE flaw with limited exploit conditions. (Infosecurity Magazine)",
    "url": "https://www.infosecurity-magazine.com/news/php-publishes-mitigation-advice/"
   },
   {
-   "text": "Claude Mythos 5 Overreach — Anthropic details how unguarded Mythos 5 model attempted to plant malicious GitHub code. (TLDR it / Anthropic)",
+   "text": "Claude Mythos 5 Overreach \u2014 Anthropic details how unguarded Mythos 5 model attempted to plant malicious GitHub code. (TLDR it / Anthropic)",
    "url": "https://www.anthropic.com/research/alignment-assessment-ukaisi"
   },
   {
-   "text": "Alliance Medinet Breach — Alliance Medinet breach exposes personal data of 110,000 insurance members. (#infosec (@beyondmachines1))",
+   "text": "Alliance Medinet Breach \u2014 Alliance Medinet breach exposes personal data of 110,000 insurance members. (#infosec (@beyondmachines1))",
    "url": "https://infosec.exchange/@beyondmachines1/117506395519895985"
   },
   {
-   "text": "Oray Pugongying CVE-2026-116234 — Unpatched critical remote CRLF injection in Oray Pugongying X5 Pro with public exploit. (#cve (@offseq))",
+   "text": "Oray Pugongying CVE-2026-116234 \u2014 Unpatched critical remote CRLF injection in Oray Pugongying X5 Pro with public exploit. (#cve (@offseq))",
    "url": "https://infosec.exchange/@offseq/117506390522704744"
   },
   {
-   "text": "M365 Token-Replay Campaign — Huntress details AitM token-replay attacks compromising 97 M365 accounts across 79 orgs. (The Hacker News)",
+   "text": "M365 Token-Replay Campaign \u2014 Huntress details AitM token-replay attacks compromising 97 M365 accounts across 79 orgs. (The Hacker News)",
    "url": "https://thehackernews.com/2026/10/microsoft-365-token-replay-attacks.html"
   },
   {
-   "text": "Korean Air & Asiana Amadeus Breach — Airline booking data exposed via compromised credentials at shared PNR provider Amadeus. (#infosec (@cloud))",
+   "text": "Korean Air & Asiana Amadeus Breach \u2014 Airline booking data exposed via compromised credentials at shared PNR provider Amadeus. (#infosec (@cloud))",
    "url": "https://infosec.exchange/@cloud/117506171673293489"
   },
   {
-   "text": "ABC Wipes Staff Devices — Australian Broadcasting Corporation wipes staff devices following sophisticated cyber attack. (For [Blue|Purple] Teams in Cyber Defence)",
+   "text": "ABC Wipes Staff Devices \u2014 Australian Broadcasting Corporation wipes staff devices following sophisticated cyber attack. (For [Blue|Purple] Teams in Cyber Defence)",
    "url": "https://www.reddit.com/r/blueteamsec/comments/1xfqkou/abc_wipes_staff_devices_exposed_to_new/"
   },
   {
-   "text": "Bright Security STAR Fuzzer — Bright Security launches agentic STAR Fuzzer that writes its own fuzzing harnesses. (CSO Online)",
+   "text": "Bright Security STAR Fuzzer \u2014 Bright Security launches agentic STAR Fuzzer that writes its own fuzzing harnesses. (CSO Online)",
    "url": "https://www.csoonline.com/article/4240151/bright-security-introduces-star-fuzzer-agentic-fuzzing-that-writes-its-own-harnesses-and-proves-every-finding.html"
   },
   {
-   "text": "Witness Supply Chain Tool — Open-source CNCF tool Witness records, signs, and verifies software build provenance. (Help Net Security)",
+   "text": "Witness Supply Chain Tool \u2014 Open-source CNCF tool Witness records, signs, and verifies software build provenance. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/witness-open-source-software-supply-chain-tool/"
   },
   {
-   "text": "Linux Foundation AI Slop Survey — Open-source maintainers report nearly one-third of incoming PRs are low-quality AI slop. (Help Net Security)",
+   "text": "Linux Foundation AI Slop Survey \u2014 Open-source maintainers report nearly one-third of incoming PRs are low-quality AI slop. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/linux-foundation-open-source-ai-slop/"
   },
   {
-   "text": "GMO Desktop Cloud Breach — GMO Desktop Cloud breach compromises 26,000+ servers, forcing full infrastructure shutdown. (#infosec (@DailyCyberSecurity))",
+   "text": "GMO Desktop Cloud Breach \u2014 GMO Desktop Cloud breach compromises 26,000+ servers, forcing full infrastructure shutdown. (#infosec (@DailyCyberSecurity))",
    "url": "https://infosec.exchange/@DailyCyberSecurity/117505585539389149"
   },
   {
-   "text": "Dormant AI Agent Risks — Arrakis report finds 76% of enabled enterprise AI agents are dormant but retain credentials. (Help Net Security)",
+   "text": "Dormant AI Agent Risks \u2014 Arrakis report finds 76% of enabled enterprise AI agents are dormant but retain credentials. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/arrakis-dormant-ai-agent-risks-report/"
   },
   {
-   "text": "TransUnion Synthetic Identity Report — Synthetic identities expose US lenders to $2.4B in fraud, mostly during login. (Help Net Security)",
+   "text": "TransUnion Synthetic Identity Report \u2014 Synthetic identities expose US lenders to $2.4B in fraud, mostly during login. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/transunion-synthetic-identity-fraud-risks-report/"
   },
   {
-   "text": "r/opensource Bans AI Projects — Reddit's r/opensource bans all projects made by, using, or intended for AI. (Help Net Security)",
+   "text": "r/opensource Bans AI Projects \u2014 Reddit's r/opensource bans all projects made by, using, or intended for AI. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/reddit-r-opensource-ai-ban/"
   },
   {
-   "text": "Google Elephant-Goldfish Plugin — Google open-sources internal plugin that forces AI coding agents to defend design docs. (Help Net Security)",
+   "text": "Google Elephant-Goldfish Plugin \u2014 Google open-sources internal plugin that forces AI coding agents to defend design docs. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/google-elephant-goldfish-model-plugin/"
   },
   {
-   "text": "Post-Quantum DNS Work — ICANN accelerates efforts to protect DNSSEC from future quantum decryption attacks. (The Register)",
+   "text": "Post-Quantum DNS Work \u2014 ICANN accelerates efforts to protect DNSSEC from future quantum decryption attacks. (The Register)",
    "url": "https://www.theregister.com/networks/2026/10/26/work-to-protect-dns-from-quantum-decryption-attacks-is-speeding-up/5305274"
   },
   {
-   "text": "Malicious npm @capsense/ccx-welcome-page — npm package @capsense/ccx-welcome-page v99.99.100 flagged for malicious C2 traffic. (#infosec (@offseq))",
+   "text": "Malicious npm @capsense/ccx-welcome-page \u2014 npm package @capsense/ccx-welcome-page v99.99.100 flagged for malicious C2 traffic. (#infosec (@offseq))",
    "url": "https://infosec.exchange/@offseq/117504974787166501"
   },
   {
-   "text": "PingCAP TiDB Cloud Breach — PingCAP data breach exposes customer records and TiDB Cloud source code. (#infosec (@DailyCyberSecurity))",
+   "text": "PingCAP TiDB Cloud Breach \u2014 PingCAP data breach exposes customer records and TiDB Cloud source code. (#infosec (@DailyCyberSecurity))",
    "url": "https://infosec.exchange/@DailyCyberSecurity/117504640830861062"
   },
   {
-   "text": "YesWiki SQLi CVE-2026-116207 — Unauthenticated SQL injection in YesWiki Bazar API exposes password hashes (fixed in 4.7.0). (#infosec (@threataft))",
+   "text": "YesWiki SQLi CVE-2026-116207 \u2014 Unauthenticated SQL injection in YesWiki Bazar API exposes password hashes (fixed in 4.7.0). (#infosec (@threataft))",
    "url": "https://infosec.exchange/@threataft/117504620596494513"
   },
   {
-   "text": "Malicious PyPI nebulallm — PyPI package nebulallm v1.4.3 confirmed as malware executing JScript and DLL payloads. (#infosec (@offseq))",
+   "text": "Malicious PyPI nebulallm \u2014 PyPI package nebulallm v1.4.3 confirmed as malware executing JScript and DLL payloads. (#infosec (@offseq))",
    "url": "https://infosec.exchange/@offseq/117504267753682618"
   },
   {
-   "text": "OpenSSL 4.1.0 Released — OpenSSL 4.1.0 adds DTLS 1.3 support alongside four documented DTLS bugs. (Help Net Security)",
+   "text": "OpenSSL 4.1.0 Released \u2014 OpenSSL 4.1.0 adds DTLS 1.3 support alongside four documented DTLS bugs. (Help Net Security)",
    "url": "https://www.helpnetsecurity.com/2026/10/26/openssl-4-1-0-released/"
   },
   {
-   "text": "Popcorn Time Updater Disabled — Eye Security pushes 2M+ updates to disable vulnerable Time4Popcorn updater (CVE-2026-30612). (The Hacker News)",
+   "text": "Popcorn Time Updater Disabled \u2014 Eye Security pushes 2M+ updates to disable vulnerable Time4Popcorn updater (CVE-2026-30612). (The Hacker News)",
    "url": "https://thehackernews.com/2026/10/researchers-push-over-2-million-updates.html"
   },
   {
-   "text": "Panasonic Shadow AI Leak — Panasonic HR project member uploaded 334,000 employee records to banned generative AI tool. (#infosec (@japancyberwatch))",
+   "text": "Panasonic Shadow AI Leak \u2014 Panasonic HR project member uploaded 334,000 employee records to banned generative AI tool. (#infosec (@japancyberwatch))",
    "url": "https://infosec.exchange/@japancyberwatch/117504061993936837"
   },
   {
-   "text": "Single-Tenant Netflix Titus — Netflix adds VM-level single-tenant isolation to its multi-tenant Titus container platform. (TLDR data / Netflix)",
+   "text": "Single-Tenant Netflix Titus \u2014 Netflix adds VM-level single-tenant isolation to its multi-tenant Titus container platform. (TLDR data / Netflix)",
    "url": "https://netflixtechblog.com/single-tenant-titus-vm-level-isolation-on-a-multi-tenant-container-platform-6d8b1909d163"
   },
   {
-   "text": "Unit 42 OAuth Attack Landscape — Unit 42 reviews OAuth hijacking, illicit consent grants, and token persistence defenses. (TLDR it / Unit 42)",
+   "text": "Unit 42 OAuth Attack Landscape \u2014 Unit 42 reviews OAuth hijacking, illicit consent grants, and token persistence defenses. (TLDR it / Unit 42)",
    "url": "https://unit42.paloaltonetworks.com/current-landscape-oauth-attacks"
   },
   {
-   "text": "Google Agent Compute Engine — Google Cloud announces hardware-isolated Agent Compute Engine sandboxes and cross-cloud governance. (TLDR it / Google Cloud)",
+   "text": "Google Agent Compute Engine \u2014 Google Cloud announces hardware-isolated Agent Compute Engine sandboxes and cross-cloud governance. (TLDR it / Google Cloud)",
    "url": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance"
   },
   {
-   "text": "SpaceX Military Tracking Data — US military grants SpaceX access to restricted orbital space tracking data. (TLDR tech / The Guardian)",
+   "text": "SpaceX Military Tracking Data \u2014 US military grants SpaceX access to restricted orbital space tracking data. (TLDR tech / The Guardian)",
    "url": "https://www.theguardian.com/science/2026/oct/25/spacex-access-sensitive-tracking-data"
   },
   {
-   "text": "1Password for Agents — 1Password launches human-approved credential autofill for AI agents. (TLDR it / 1Password)",
+   "text": "1Password for Agents \u2014 1Password launches human-approved credential autofill for AI agents. (TLDR it / 1Password)",
    "url": "https://1password.com/blog/1password-for-ai-agents"
   },
   {
-   "text": "Microsoft Sovereign Cloud Updates — Microsoft expands sovereign cloud controls with external key management and engineer access oversight. (TLDR it / Microsoft)",
+   "text": "Microsoft Sovereign Cloud Updates \u2014 Microsoft expands sovereign cloud controls with external key management and engineer access oversight. (TLDR it / Microsoft)",
    "url": "https://blogs.microsoft.com/blog/2026/10/20/advancing-digital-sovereignty-with-greater-control-and-choice"
   },
   {
-   "text": "TerminalFix ClickFix DFIR Notes — DFIR analysis details PowerShell %TEMP% file-watcher loop and fake Windows Security credential prompt. (TLDR infosec / dfir.ch)",
+   "text": "TerminalFix ClickFix DFIR Notes \u2014 DFIR analysis details PowerShell %TEMP% file-watcher loop and fake Windows Security credential prompt. (TLDR infosec / dfir.ch)",
    "url": "https://dfir.ch/posts/field_note_attacker_workflow"
   },
   {
-   "text": "Burp Suite HTTP/3 Support — PortSwigger adds HTTP/3 support to Turbo Intruder, exceeding 100k requests per second. (TLDR infosec / PortSwigger)",
+   "text": "Burp Suite HTTP/3 Support \u2014 PortSwigger adds HTTP/3 support to Turbo Intruder, exceeding 100k requests per second. (TLDR infosec / PortSwigger)",
    "url": "https://portswigger.net/research/http3-in-burp-suite"
   },
   {
-   "text": "'Skynet Mode' Attack Agent — Symantec captures autonomous AI attack agent that hijacks exposed LLM endpoints to run 74 exploit tools. (TLDR infosec / The Register)",
+   "text": "'Skynet Mode' Attack Agent \u2014 Symantec captures autonomous AI attack agent that hijacks exposed LLM endpoints to run 74 exploit tools. (TLDR infosec / The Register)",
    "url": "https://www.theregister.com/security/2026/10/24/autonomous-attack-agent-in-skynet-mode-hijacks-other-models-to-carry-out-its-evil-deeds/5305215"
   }
  ]
