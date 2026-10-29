@@ -37,6 +37,7 @@ import site_parts
 
 REPO = Path(__file__).resolve().parent.parent
 CONTENT = REPO / "content"
+SITE_BASE = "https://bahansen.us"  # public origin; never the github.io project URL
 OUT = REPO / "_site"
 
 # ---- templates ---------------------------------------------------------------
@@ -356,7 +357,7 @@ def build_feed(entries: list) -> str:
             pub = e["published"].strftime("%a, %d %b %Y %H:%M:%S %z")
         else:
             pub = dt.strftime("%a, %d %b %Y 00:00:00 +0000") if dt else ""
-        link = f"https://bahansenus.github.io/web/briefings/{e['filename']}"
+        link = f"{SITE_BASE}/briefings/{e['filename']}"
         items.append(f"""    <item>
       <title>{html_mod.escape(e['title'])}</title>
       <link>{link}</link>
@@ -368,9 +369,9 @@ def build_feed(entries: list) -> str:
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bahansen.us — Daily Security Intelligence Briefing</title>
-    <link>https://bahansenus.github.io/web/</link>
+    <link>{SITE_BASE}/</link>
     <description>The Daily Security Intelligence Briefing from bahansen.us — tiered security intelligence for busy operators.</description>
-    <atom:link href="https://bahansenus.github.io/web/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="{SITE_BASE}/feed.xml" rel="self" type="application/rss+xml"/>
 {chr(10).join(items)}
   </channel>
 </rss>
