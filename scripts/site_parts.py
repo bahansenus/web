@@ -67,7 +67,8 @@ def head(title: str, description: str, depth: int = 0, extra_css: str = "", incl
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content="{description}">
-{css}</head>
+{css}  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "a8a92e414eea41ea82210fe9f5da308f"}}'></script>
+</head>
 <body>
 {mh}
 '''
