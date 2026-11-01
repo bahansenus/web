@@ -1,0 +1,621 @@
+{
+ "date": "2026-11-01",
+ "published_at": "2026-11-01T13:01:18.318Z",
+ "title": "Daily Security Intelligence Briefing — November 01, 2026",
+ "threat_level": "HIGH",
+ "summary": "The FBI officially attributed the historic $6.43 billion Binance heist to North Korea's TraderTraitor group (The Hacker News), while defenders face an unpatched pre-auth Linux kernel TCP flaw with AI-generated root exploits (Infosec Exchange) and active exploitation chains across Ivanti Connect Secure, GitLab, and WordPress Core (BleepingComputer, ThreatAft).",
+ "tier1": [
+  {
+   "title": "1. FBI Links North Korea's TraderTraitor to Record $6.43 Billion Binance Crypto Heist",
+   "url": "https://thehackernews.com/2026/11/fbi-links-north-koreas-tradertraitor-to.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cryptocurrency / Nation-State Attribution (DPRK / UNC4899)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "The FBI, USSS, and IRS-CI officially attributed the record-breaking $6.43 billion virtual asset theft from Binance to North Korea's TraderTraitor (also tracked as Jade Sleet, Slow Pisces, and UNC4899). Initiated via a single compromised DevOps laptop, this marks the largest single cryptocurrency heist in history and represents a massive financial windfall for DPRK state-sponsored operations. The scale of the heist fundamentally shifts risk calculations for Web3 custody and DevOps endpoint security across the global financial sector."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Enforce hardware-backed, phishing-resistant MFA and strict zero-trust network segmentation for all DevOps and privileged engineering endpoints; isolate production key-signing infrastructure from developer workstations."
+    }
+   ]
+  },
+  {
+   "title": "2. Linux Kernel Pre-Auth TCP Handshake Use-After-Free (CVE-2026-98432)",
+   "url": "https://infosec.exchange/@cloud/117538342633140705",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "#cve"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Linux Kernel / CVE-2026-98432 (CVSS 9.8 Pre-Auth RCE)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "CVE-2026-98432 is a critical use-after-free vulnerability in the Linux kernel IPv4 TCP connection setup, reachable remotely prior to authentication. While patched upstream on October 15 and in Debian, major enterprise distributions including Ubuntu and RHEL 8/9/10 remain unpatched. Crucially, Anthropic revealed that its Claude AI model successfully constructed a working remote root exploit targeting servers with multipath TCP (MPTCP) listeners—a feature enabled by default in Go 1.24+ applications."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Apply upstream kernel patches immediately where available (e.g., Debian 6.12.113-1); on unpatched Ubuntu and RHEL hosts, drop incoming TCP packets carrying IPv4 options at the network perimeter and audit for active MPTCP listeners using 'ss -Mlnp'."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Northflank security breach leads to abuse of customers' AI API keys",
+   "url": "https://www.bleepingcomputer.com/news/security/northflank-security-breach-leads-to-abuse-of-customers-ai-api-keys/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & PaaS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Cloud application hosting platform Northflank suffered a security breach linked to the 'Black October' campaign targeting AI developer platforms. Attackers were able to decrypt customer environment variables and abuse stored AI provider API keys, prompting an urgent call for credential rotation."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Rotate all environment secrets, database credentials, and AI API keys stored within Northflank immediately.; Avoid storing long-lived, un-scoped API keys in PaaS build and deploy environments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Cloud application hosting platform Northflank is warning customers to rotate all credentials and secrets stored on its platform after a security breach led to unauthorized use of customers' AI API keys."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "2. CVSS 10.0 LXD, MicroCloud Flaw Lets Attackers Impersonate Trusted Clients Without a Private Key",
+   "url": "https://thehackernews.com/2026/11/critical-lxd-and-microcloud-flaw-cvss.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Virtualization & Cloud Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical authentication bypass flaw (CVSS 10.0) in Canonical's LXD and MicroCloud allows remote attackers to log in as a trusted client without possessing the corresponding private key. Attackers only need network access to the HTTPS API and the target client's public certificate to gain full access to the cluster and its virtual machines."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Update LXD and MicroCloud installations to the latest patched releases from Canonical immediately.; Restrict network access to LXD and MicroCloud HTTPS management APIs to strictly authorized administrative subnets."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A critical flaw in Canonical's LXD and MicroCloud let an attacker log in as a trusted client without holding that client's private key."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "3. CISA Adds Two Exploited Ivanti Connect Secure Flaws to KEV Catalog",
+   "url": "https://infosec.exchange/@cloud/117538822742675040",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Appliance & Perimeter Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added CVE-2026-111357 and CVE-2026-118527 to its Known Exploited Vulnerabilities catalog after threat actor UTA0576 chained them with CVE-2026-104935 to achieve unauthenticated root access on Ivanti Connect Secure appliances. Rather than deploying web shells, the attackers focused on harvesting credentials, Active Directory metadata, and BitLocker recovery keys."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade Ivanti Connect Secure appliances to versions 25.1.1.3 or 22.8R2.6 immediately.; Hunt for unauthorized access to AD metadata and rotate exposed BitLocker recovery keys and domain credentials."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CISA added two Ivanti Connect Secure flaws to KEV: UTA0576 chained them with CVE-2026-104935 (auth bypass + RCE + LPE) for unauthenticated root."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "4. How We Took Over ChatGPT Accounts via Preview Sandbox Escape",
+   "url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & AI Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers at Parameter Labs disclosed a high-severity vulnerability in ChatGPT's HTML Previews (formerly Canvas) feature that allowed shared links to execute arbitrary attacker code within a victim's logged-in origin. The exploit bypassed iframe sandboxing via an insecure MathLive postMessage listener to access signed-in APIs and read private user chats."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Ensure sandboxed iframes rendering untrusted AI output strictly validate postMessage origins and sanitize DOM inputs.; No user action is required as OpenAI remediated the vulnerability within eight days of disclosure."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The Preview frame escaped its sandbox via a MathLive postMessage listener that accepted HTML from any sender, then called ChatGPT's signed-in APIs to list and read private chats."
+    },
+    {
+     "label": "Source",
+     "value": "Simon Willison's Weblog"
+    }
+   ]
+  },
+  {
+   "title": "5. New Android SMS of Death exploit can remotely crash unpatched phones",
+   "url": "https://www.bleepingcomputer.com/news/security/new-android-sms-of-death-exploit-can-remotely-crash-unpatched-phones/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Mobile Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A proof-of-concept exploit has been released for CVE-2026-58882, a zero-click Android vulnerability dubbed 'SMS of Death.' By sending an 8-byte WAP Push message to port 2948, attackers can trigger a NegativeArraySizeException in com.android.phone, dropping active calls (including emergency calls) and forcing unpatched devices into reboot loops."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Deploy the October 2026 Android security updates across managed enterprise mobile fleets (Android 14–17).; Phase out or isolate legacy Android 12 and 13 devices that remain exposed to remote cellular denial-of-service."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A security researcher has released a proof-of-concept exploit for a recently patched Android vulnerability, dubbed 'SMS of Death' and tracked as CVE-2026-58882, that lets attackers remotely disrupt cellular service or crash phones."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "6. Hackers Steal About $2.7 Million From Polymarket Traders via Hijacked DebugBear Script",
+   "url": "https://thehackernews.com/2026/11/hackers-steal-about-27-million-from.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain & Web3 Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers compromised a third-party page-speed monitoring script from DebugBear loaded on prediction market Polymarket, using it to liquidate signed-in traders' positions and drain funds. Approximately $2.7 million was stolen across 726 wallets before the malicious script was removed."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Implement Subresource Integrity (SRI) hashes and strict Content Security Policy (CSP) rules for all third-party JavaScript dependencies.; Isolate high-risk transaction signing workflows from third-party analytics and performance monitoring scripts."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Malicious code on the website of prediction market Polymarket sold some signed-in traders' positions and moved their funds to the hackers on October 29."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "7. CISA Warns of Active Exploitation of Maximum-Severity GitLab Regex Compiler Flaw",
+   "url": "https://infosec.exchange/@beyondmachines1/117536356144199939",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "DevSecOps & CI/CD"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA issued an alert regarding active in-the-wild exploitation of a maximum-severity remote code execution vulnerability in GitLab's CI/CD regular expression compiler. Unauthenticated or low-privileged attackers can exploit the flaw to achieve full server takeover and exfiltrate source code and secrets."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade self-hosted GitLab instances immediately to patched versions (19.2.9 or later).; Audit CI/CD job logs and runner activity for signs of unauthorized command execution."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "GitLab addressed several critical vulnerabilities, including an actively exploited RCE flaw in its CI/CD regular expression compiler."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "8. CISA Adds Fragnesia Linux Kernel Flaw to KEV Catalog Following PHP2Shell Chain Reports",
+   "url": "https://infosec.exchange/@beyondmachines1/117537299855038841",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added the 'Fragnesia' Linux kernel vulnerability (CVE-2026-46300) to its KEV catalog after observing threat actors chaining it with the PHP2Shell vulnerability to achieve remote root access. The flaw allows local attackers to overwrite in-memory system files and escalate privileges to full administrative control."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Prioritize kernel patching for CVE-2026-46300 on all internet-facing Linux web servers and industrial appliances.; Ensure PHP environments are patched against PHP2Shell to break the initial access vector of the exploit chain."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CISA added the Fragnesia Linux kernel flaw (CVE-2026-46300) to its KEV catalog after reports of it being chained with PHP2Shell for remote root access."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "9. WordPress Core Upgrade Race Condition (CVE-2026-119977) Sees Mass Exploitation Attempts",
+   "url": "https://infosec.exchange/@threataft/117536674908446533",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Web Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "WordPress Core versions 4.7 through 7.x suffer from an unauthenticated race condition (CVE-2026-119977, CVSS 8.1) during the core upgrade process, where files are unpacked into a predictable staging directory. Attackers hitting setup-config.php during this seconds-long window can achieve remote code execution, with Wordfence blocking over 62,000 attacks within 24 hours of patch release."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Update WordPress Core to the latest patched version immediately.; Block external access to wp-content/upgrade/ directories via web server configuration or WAF rules."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Unauthenticated attacker hits setup-config.php during the seconds-long window = code execution path. Wordfence blocked 62,969 attempts in 24 hours after the patch dropped."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "10. Drupal Flags Commerce Core Flaw (CVE-2026-118539) as Actively Exploited",
+   "url": "https://infosec.exchange/@adrianhollister/117540484220120021",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "E-Commerce & Web Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Drupal maintainers warned that CVE-2026-118539, an authorization bypass flaw in Drupal Commerce Core, is under active exploitation in the wild. The vulnerability allows anonymous visitors to tamper with orders—marking unpaid orders as paid or altering shipping costs to $0.01—affecting configurations dating back to May 2020."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade Drupal Commerce Core to version 3.3.13 or 8.x-2.41 immediately.; Audit recent e-commerce order logs and payment gateway reconciliations for fraudulent fulfillment."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CVE-2026-118539 lets an anonymous visitor mark orders paid with no payment behind them, or ship goods at $0.01."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "11. NetamLoader Malware Targets Government Windows 10 Systems in Asia via .NET Injection",
+   "url": "https://thehackernews.com/2026/11/netamloader-malware-targets-government.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & APT"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Kaspersky researchers uncovered a sophisticated espionage campaign targeting custom government Windows 10 builds across Asia. The attack chain deploys 'NetamLoader,' a previously undocumented .NET assembly-loading framework that utilizes in-memory injection to evade endpoint detection."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Monitor for anomalous .NET CLR loading in non-standard processes on government and enterprise Windows endpoints.; Implement strict application allowlisting on specialized or custom OS builds."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The activity, detailed by Kaspersky this week, targeted a custom Windows 10 build used exclusively by government entities in Asia and involves the deployment of a previously undocumented .NET assembly-loading framework."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "12. Chainalysis Confirms Intruder Accessed Internal Tools Using Offensive Agentic Techniques",
+   "url": "https://infosec.exchange/@cyberseckyle/117538121750909803",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Incident Response & AI Threats"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Blockchain analytics firm Chainalysis disclosed a security incident in which an intruder accessed internal tools and exfiltrated customer names, email addresses, user IDs, and roles. The company noted the attacker utilized 'offensive agentic techniques,' though customer investigation content and session tokens remained unaffected."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Verify any unexpected account prompts or support outreach purporting to come from Chainalysis via known out-of-band channels.; Update detection engineering models to account for high-speed, automated reconnaissance driven by offensive AI agents."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Chainalysis confirms an intruder accessed internal tools and some customer names, emails, user IDs and roles. It describes 'offensive agentic techniques,' but technical details remain limited."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "13. Moldova Government Data Breach Exposes Records of 750,000 Citizens",
+   "url": "https://infosec.exchange/@beyondmachines1/117535649763908223",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Public Sector & Critical Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A sophisticated cyberattack against Moldova's government IT infrastructure exploited unauthenticated services to exfiltrate personal data belonging to 750,000 citizens. The intrusion, suspected to involve foreign state actors and AI-assisted tooling, forced the temporary shutdown of dozens of digital public services."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Continuously scan and eliminate unauthenticated API endpoints across public-facing government infrastructure.; Enforce strict rate-limiting and anomaly detection to counter automated data exfiltration."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A sophisticated cyberattack on Moldova's government infrastructure exploited unauthenticated services to exfiltrate personal data linked to 750,000 citizens."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "14. WAVLINK Router Cluster Hit by Four Critical CVEs With Public Exploits and Zero Patches",
+   "url": "https://infosec.exchange/@threataft/117540460205650278",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "IoT & Network Hardware"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Four critical vulnerabilities—including two CVSS 10.0 flaws (CVE-2026-120195 and CVE-2026-120198)—have been disclosed in WAVLINK routers with public exploit code available and no vendor patches. Attackers can bypass authentication entirely by sending a spoofed 'IP-FROM: 127.0.0.1' header or inject commands via the setup wizard and /protocol.csp."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Isolate WAVLINK routers from untrusted networks and disable remote WAN management immediately.; Consider replacing affected WAVLINK SOHO hardware if vendor patches are not forthcoming."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CVE-2026-120195 (10.0): unauthenticated command injection via the setup wizard state. CVE-2026-120198 (10.0): send IP-FROM: 127.0.0.1, skip login entirely."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "15. Cloud Exposure Index 2026: 484,142 Open Buckets Mapped",
+   "url": "https://www.reddit.com/r/netsec/comments/1xkbgw0/cloud_exposure_index_2026_484142_open_buckets/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud Security Posture"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers mapped 484,142 publicly listable cloud storage buckets across AWS S3, Azure, GCS, DigitalOcean Spaces, and Alibaba OSS, indexing 18 billion files without opening contents. The scan revealed 80,495 exposed .env configuration files, two-thirds of which were created within the last year."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enforce organization-wide 'Block Public Access' policies across all cloud storage providers by default.; Implement automated CI/CD secret scanning to prevent developers from deploying .env files to public object storage."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "484,142 publicly listable cloud buckets, 18 billion files, 80,495 .env files and two thirds of them written this year."
+    },
+    {
+     "label": "Source",
+     "value": "Technical Information Security Content & Discussion"
+    }
+   ]
+  },
+  {
+   "title": "16. Microsoft Edge Ingents Chromium Patches for Over 40 Memory Corruption and UAF Flaws",
+   "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118320",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Browser Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft released a batch of security advisories (CVE-2026-118304 through CVE-2026-118359, plus CVE-2026-91732) addressing dozens of Chromium vulnerabilities in Microsoft Edge. The flaws include multiple high-severity use-after-free and memory corruption bugs across V8, Skia, WebRTC, WebAudio, and PDFium."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Ensure enterprise browser management policies force automatic updates and browser restarts for Microsoft Edge and Google Chrome.; Monitor endpoint compliance to verify Chromium-based browsers are running the latest late-October/November patch levels."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Microsoft Edge (Chromium-based) ingests Chromium, which addresses this vulnerability."
+    },
+    {
+     "label": "Source",
+     "value": "MSRC Security Update Guide"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Northstar Security — Exits stealth with $7M to map toxic risk combinations. (SecurityWeek)",
+   "url": "https://www.securityweek.com/northstar-security-exits-stealth-with-7m-to-expose-toxic-risk-combinations/"
+  },
+  {
+   "text": "Logstotal — Open-source self-hosted multi-engine Sigma detection tool for event logs. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xkznim/logstotal_selfhosted_multiengine_sigma_detection/"
+  },
+  {
+   "text": "Gitea v28.3.0 — Maintenance release improving webhook notifications and runner token caching. (Release notes from gitea)",
+   "url": "https://github.com/go-gitea/gitea/releases/tag/v28.3.0"
+  },
+  {
+   "text": "IPWeb Botnet — Analysis of how malware-infected TVs build residential proxy networks. (#infosec)",
+   "url": "https://infosec.exchange/@r1cksec/117540567631579209"
+  },
+  {
+   "text": "VOLTA Infostealer — Research on AI model-driven victim prioritization in VOLTA malware. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xkyk6c/appraisal_by_ai_modeldriven_victim_prioritization/"
+  },
+  {
+   "text": "OneNote File Extraction — SANS ISC diary on extracting embedded files from .one documents. (SANS Internet Storm Center, InfoCON: green)",
+   "url": "https://isc.sans.edu/diary/rss/33478"
+  },
+  {
+   "text": "waf-dojo — Hands-on AWS WAF training game released for blue teams. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xkygk8/wafdojo_handson_aws_waf_training_game/"
+  },
+  {
+   "text": "Canton of Vaud Breach — Swiss education IT platform breach exposes data of 41,500 users. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117540366955390327"
+  },
+  {
+   "text": "Help Net Security Weekly Review — Recap covering r/opensource AI ban, Binance theft, and Brotli flaw. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/01/week-in-review-binance-hit-by-6-3-billion-theft-impact-of-brotli-vulnerability/"
+  },
+  {
+   "text": "Brazil Court Prompt Injection — Lawyers fined $16,000 for hiding white-on-white prompt injection in filing. (#infosec)",
+   "url": "https://pouet.chapril.org/@dallo/117540359290668940"
+  },
+  {
+   "text": "Nace AI Drex Max v1 — Open-sources 27B decision model running locally on Apple Silicon. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/01/nace-ai-open-sources-drex-max-v1-local-inference/"
+  },
+  {
+   "text": "DeepSeek dsh-superagent — Open-sources MIT-licensed router-worker coding agent for GitHub repos. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/01/deepseek-dsh-superagent-router-worker-coding-agent/"
+  },
+  {
+   "text": "Hermes Agent Canary — NousResearch releases hermes-agent v0.22.5 canary build. (Release notes from hermes-agent)",
+   "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261101T064348Z"
+  },
+  {
+   "text": "2026-W44 Threat Roundup — Weekly summary highlighting China's Vapor Panda AI pentesting framework. (#infosec)",
+   "url": "https://infosec.exchange/@threatnoir/117539714084477150"
+  },
+  {
+   "text": "CVE-2026-93977 & CVE-2026-93976 — Unpatched low-severity XSS flaws disclosed in code-projects Assessment Management. (#cve)",
+   "url": "https://mastodon.social/@hugovalters/117539497676985184"
+  },
+  {
+   "text": "CVE-2026-120192 in Presenton — Medium-severity unauthenticated info disclosure in Presenton patched in 0.9.12-beta. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117538949289256528"
+  },
+  {
+   "text": "D-Link DIR-505 EOL Flaws — CVSS 10.0 TFTP overflow (CVE-2026-120189) hits device EOL since 2015. (#cve)",
+   "url": "https://infosec.exchange/@threataft/117538758374206214"
+  },
+  {
+   "text": "Japan IPA Breach Guidance — Overview of Japanese consumer rights and passkey guidance following 50+ breaches. (#infosec)",
+   "url": "https://infosec.exchange/@japancyberwatch/117538424561725210"
+  },
+  {
+   "text": "HorusEye v2.3 — Free tool maps Active Directory attack paths to find choke points. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xkp5ev/i_built_a_free_tool_that_finds_the_one_ad_change/"
+  },
+  {
+   "text": "French Data Breaches — Cyberattacks hit Terre de Son, Verrières-en-Forez, and French pharmacies. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117538200473286963"
+  },
+  {
+   "text": "Colin Percival Essay — Tarsnap author reflects on 2005 RSA side-channel responsible disclosure. (#infosec)",
+   "url": "https://fosstodon.org/@krinkle/117537922916577105"
+  },
+  {
+   "text": "Jpom CVE-2026-120201 — VulnCheck discloses unauthenticated admin access and RCE in Jpom. (#infosec)",
+   "url": "https://infosec.exchange/@cyberseckyle/117537816554929451"
+  },
+  {
+   "text": "LOLRMM VS Code Tunnels — Guidance on blocking unauthorized VS Code remote tunnels on servers. (#infosec)",
+   "url": "https://infosec.exchange/@josehelps/117537755712134627"
+  },
+  {
+   "text": "fashion 1.7.0 — Tool update unpacks modified UPX headers on macOS Mach-O binaries. (#infosec)",
+   "url": "https://infosec.exchange/@noar/117537479461179886"
+  },
+  {
+   "text": "AJ-Report CVE-2026-120209 — Hard-coded JWT signing secret in AJ-Report enables unauthenticated RCE. (#infosec)",
+   "url": "https://infosec.exchange/@cyberseckyle/117537440936482813"
+  },
+  {
+   "text": "WordPress Plugin CVE Batch — Routine CVE alerts for Shield Security, WPO365, W3 Total Cache, and Ninja Forms. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117537402529765243"
+  },
+  {
+   "text": "Del Monte Foods Breach — Discloses ransomware breach by Payouts King exposing 1.2TB of data. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117537063926554339"
+  },
+  {
+   "text": "ipsw v3.1.740 — Apple firmware analysis CLI tool releases new update. (#infosec)",
+   "url": "https://mastobot.ping.moi/@Bobe_bot/117536588698701345"
+  },
+  {
+   "text": "ScanMalware Updates — Adds JavaScript library release line search and file analysis cards. (#infosec)",
+   "url": "https://infosec.exchange/@scanmalware/117536587917664438"
+  },
+  {
+   "text": "NCSC CTO Weekly Summary — UK NCSC CTO summary for the week ending November 1st. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xkc6ks/cto_at_ncsc_summary_week_ending_november_1st/"
+  },
+  {
+   "text": "Reddit Login Wall — Reddit announces plans to lock content behind logins to fight scrapers. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/reddit-to-lock-content-behind-logins-to-fight-scrapers/"
+  },
+  {
+   "text": "INTAX Ransomware Claim — Rhysida group claims 1.27TB data theft including 600,000 tax returns. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117535885627140342"
+  },
+  {
+   "text": "LearnDash CVE-2026-119096 — Unpatched auth bypass in Uncanny Toolkit for LearnDash WordPress plugin. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117535882180909769"
+  },
+  {
+   "text": "InferD Honeypot — Academic paper introduces a honeypot framework for AI inference infrastructure. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xkasz1/261039807_inferd_a_honeypot_framework_for_ai/"
+  },
+  {
+   "text": "Kernel UAF to Root #2 — eShard blog post detailing Linux kernel use-after-free exploitation techniques. (#infosec)",
+   "url": "https://infosec.exchange/@alexandreborges/117535770388147116"
+  },
+  {
+   "text": "TryHackMe Bug Hunting Guide — Sponsored guide on learning cybersecurity and bug hunting in the AI era. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/from-beginner-to-bug-hunter-learning-cybersecurity-in-the-ai-era/"
+  },
+  {
+   "text": "ISP Router Public Hotspots — Overview of how ISPs isolate virtual access points on customer gateways. (#infosec)",
+   "url": "https://infosec.exchange/@thecybersecguru/117535669579051515"
+  }
+ ]
+}
