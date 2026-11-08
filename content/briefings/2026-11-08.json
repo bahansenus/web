@@ -1,0 +1,629 @@
+{
+ "date": "2026-11-08",
+ "published_at": "2026-11-08T13:01:53.369Z",
+ "title": "Daily Security Intelligence Briefing — November 08, 2026",
+ "threat_level": "HIGH",
+ "summary": "Today's threat landscape is dominated by rapid in-the-wild exploitation of the 'SSHole' OpenSSH flaw (CVE-2026-123158) on musl-based Linux systems and a critical CWE-639 vulnerability in Microsoft Entra Device Registration (CVE-2026-109469). Significant enterprise compromises are also unfolding, including a $133M supply-chain heist against French bank Crédit Mutuel Arkéa and active exploitation of SonicWall SSL-VPN MFA bypass (CVE-2026-19868) (ThreatNoir, BleepingComputer, 0x3e4).",
+ "tier1": [
+  {
+   "title": "1. OpenSSH 'SSHole' (CVE-2026-123158) Exploited Within Hours of Disclosure",
+   "url": "https://infosec.exchange/@threatnoir/117579350336403681",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "#infosec / ThreatNoir"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Infrastructure / CVE-2026-123158 (Active Exploitation)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "A critical vulnerability in OpenSSH, dubbed 'SSHole' (CVE-2026-123158), is under active, widespread exploitation just hours after public disclosure. The flaw specifically impacts Alpine Linux and other musl-libc-based distributions, allowing unauthenticated remote attackers to gain root access. Given the ubiquity of Alpine Linux in containerized and cloud-native environments globally, the blast radius across modern infrastructure is massive."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Immediately patch OpenSSH across all Alpine Linux and musl-based container images and hosts, and restrict public SSH exposure via network access controls."
+    }
+   ]
+  },
+  {
+   "title": "2. Critical Vulnerability in Microsoft Entra Device Registration (CVE-2026-109469)",
+   "url": "https://cyberplace.social/@0x3e4/117577009171057187",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "#cve / 0x3e4"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cloud Identity / CVE-2026-109469 (CVSS 10.0)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Microsoft has disclosed a maximum-severity (CVSS 10.0) vulnerability in Microsoft Entra Device Registration stemming from an authorization bypass through user-controlled key (CWE-639). Because Entra ID underpins identity and device trust across a vast majority of enterprise cloud environments, a flaw in device registration threatens core tenant access controls and conditional access policies globally."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Review the Microsoft Security Response Center (MSRC) advisory for CVE-2026-109469, ensure cloud tenant mitigations are applied, and audit Entra device registration logs for anomalous enrollments."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Hackers Pull Off $133 Million French Bank Heist via Service Provider",
+   "url": "https://www.bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain / Financial"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "French cooperative bank Crédit Mutuel Arkéa (€211.5B in assets) suffered a major cyberattack originating from a compromised third-party service provider's platform. Threat actors leveraged the bank's own account to execute fraudulent transfers totaling €118M ($133M), which were subsequently cashed out as USDC and USDT stablecoins."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Third-party service providers with privileged access to core financial routing remain a premier vector for high-value heists.; Customer accounts were not directly compromised, but the bank had to suspend certain systems to contain the fraudulent transfers."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "French cooperative bank Crédit Mutuel Arkéa was targeted in a cyberattack that enabled fraudulent transactions of up to $133 million, forcing it to respond by suspending certain systems."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "2. SonicOS SSL-VPN Auth Bypass Exploited in the Wild (CVE-2026-19868)",
+   "url": "https://infosec.exchange/@cloud/117577961347773549",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security / Vulnerability"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "SonicWall is warning of active exploitation of CVE-2026-19868 (CVSS 7.1/7.5), an authentication bypass in SonicOS SSL-VPN. Attackers possessing valid credentials for an alternate authentication method can bypass SAML checks entirely, including SAML-enforced multi-factor authentication."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Added to CISA KEV with a federal remediation deadline of November 20, 2026.; No workaround exists; administrators must upgrade to SonicOS 7.3.4-7013 or 8.2.3-8015 immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "An attacker with valid credentials for an alternate auth method skips SAML checks, including SAML-enforced MFA. Exploited in the wild, added to CISA KEV."
+    },
+    {
+     "label": "Source",
+     "value": "#cve / cloud"
+    }
+   ]
+  },
+  {
+   "title": "3. Critical Unauthenticated RCE in Ruby on Rails Active Storage (GHSA-f3w6-w445-fwh9)",
+   "url": "https://infosec.exchange/@threatnoir/117580490997786752",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Ruby on Rails Active Storage contains a critical unauthenticated vulnerability (CVSS 9.8) that permits attackers to write arbitrary files or read sensitive data, leading to remote code execution. All Rails applications utilizing Active Storage are affected."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Exploitation requires no authentication and impacts default Active Storage implementations.; Development teams should apply the latest Rails security patches immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Ruby on Rails Active Storage contains a critical unauthenticated vulnerability (GHSA-f3w6-w445-fwh9, CVSS 9.8) allowing attackers to write arbitrary files or read sensitive data, leading to RCE."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / ThreatNoir"
+    }
+   ]
+  },
+  {
+   "title": "4. Debian and Ubuntu APT Flaw Lets MitM Swap Verified Packages for Root (CVE-2026-109518)",
+   "url": "https://fosstodon.org/@sigint/117577816837980855",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "OS Security / Linux"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A vulnerability in the APT package manager (CVE-2026-109518) allows a Machine-in-the-Middle (MitM) attacker controlling HTTP traffic to swap verified packages during download retries. Successful exploitation grants root privileges on affected Debian and Ubuntu systems."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Systems relying on plain HTTP mirrors over untrusted networks are directly exposed during package retry operations.; Patch APT immediately and transition repository configurations to strictly use HTTPS mirrors."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CVE-2026-109518 lets a MitM who controls HTTP traffic swap verified packages during download retries and get root."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / sigint"
+    }
+   ]
+  },
+  {
+   "title": "5. Claude Code's 'Don't Ask Again' File Exposes Secrets in 1,122 Public GitHub Repos",
+   "url": "https://infosec.exchange/@cloud/117576992776636706",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security / Secrets Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Research from Apiiro reveals that 104,185 public copies of Claude Code's `.claude/settings.local.json` file have been committed to GitHub, with 1,122 containing at least one plaintext secret. Selecting 'Yes, and don't ask again' in the coding agent saves approved commands verbatim, including embedded API keys and passwords."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "AI coding agents frequently store state and command history in local hidden files that developers inadvertently commit.; Organizations must update global `.gitignore` templates to exclude `.claude/` directories and rotate any exposed credentials."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "'Yes, and don't ask again' saves approved commands verbatim, secrets included, in plaintext. Git excludes don't help once committed — rotate first."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / cloud"
+    }
+   ]
+  },
+  {
+   "title": "6. Critical SAML Auth Bypass and Session Hijacking in OpenAM (CVE-2026-123550 & CVE-2026-123551)",
+   "url": "https://infosec.exchange/@offseq/117579293253305531",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Identity & Access Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "OpenIdentityPlatform OpenAM versions prior to 16.1.4 suffer from two critical vulnerabilities: CVE-2026-123550 allows remote authentication bypass via forged SAML assertions, and CVE-2026-123551 enables unauthenticated attackers to hijack admin sessions by stealing tokens via the notification WebSocket."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Both flaws put Single Sign-On (SSO) environments and administrative accounts at immediate risk of full takeover.; Administrators must upgrade OpenAM instances to version 16.1.4 or later immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CRITICAL: CVE-2026-123550 in OpenIdentityPlatform OpenAM (<16.1.4) allows remote auth bypass via forged SAML assertions. Admin accounts & SSO at risk!"
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / OffSeq"
+    }
+   ]
+  },
+  {
+   "title": "7. Active Exploitation of CVE-2026-114713 in UnrealIRCd",
+   "url": "https://fosstodon.org/@unrealircd/117580475994278164",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Services / Vulnerability"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The UnrealIRCd project warns that threat actors are actively attempting to exploit CVE-2026-114713 across internet-facing IRC servers. Operators are urged to apply hot-patches or upgrade immediately."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "In-the-wild exploitation is underway targeting unpatched UnrealIRCd installations.; Hot-patching is available for operators who cannot immediately perform a full version upgrade."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "We are now seeing attempts by bad guys to actively exploit CVE-2026-114713 in UnrealIRCd on the internet. If you have not hot-patched or upgraded, do so ASAP!"
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / unrealircd"
+    }
+   ]
+  },
+  {
+   "title": "8. C3RB3R Ransomware Mass-Encrypting Synology NAS and Exploiting Node2Shell (CVE-2026-111497)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquqab/c3rb3r_ransomware_massencrypting_internetexposed/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Ransomware / Vulnerability"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Reports indicate that the C3RB3R ransomware operation is conducting mass-encryption campaigns against internet-exposed Synology NAS devices alongside active exploitation of the Node2Shell vulnerability (CVE-2026-111497)."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Internet-exposed NAS appliances remain high-priority targets for automated ransomware deployment.; Ensure NAS management interfaces are removed from public internet access and patch Node2Shell vulnerabilities."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "C3RB3R Ransomware Mass-Encrypting Internet-Exposed Synology NAS and Active Exploitation of Node2Shell (CVE-2026-111497)"
+    },
+    {
+     "label": "Source",
+     "value": "For [Blue|Purple] Teams in Cyber Defence"
+    }
+   ]
+  },
+  {
+   "title": "9. Chainalysis Confirms Data Breach Exposing Customer Credentials and Active Tokens",
+   "url": "https://infosec.exchange/@cloud/117578942638481580",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Data Breach / Crypto"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Blockchain analytics firm Chainalysis confirmed a security breach that exposed customer names, usernames, password hashes, a small number of plaintext passwords, and active authentication tokens. In response, the company forced password resets, rotated API keys, and temporarily suspended its KYT monitoring and address-screening services."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Customers of Chainalysis must immediately rotate API keys and audit recent account activity for unauthorized queries.; The suspension of KYT and screening services highlights the operational impact of token exposure at critical crypto compliance providers."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Chainalysis confirmed a breach exposing customer names, usernames, password hashes and active authentication tokens — a few passwords leaked in plaintext."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / cloud"
+    }
+   ]
+  },
+  {
+   "title": "10. Deep Dive Into PHP2Shell: Use-After-Free Memory Flaws Enable RCE in PHP",
+   "url": "https://www.reddit.com/r/netsec/comments/1xqlw37/i_spent_countless_nights_digging_into_php2shell/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Exploit Research / Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Security researchers published a technical deep dive into 'PHP2Shell', detailing how `PHP_SESSION_UPLOAD_PROGRESS` and Out-of-Memory conditions trigger use-after-free memory corruption in PHP internals, leading to remote code execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "The vulnerability leverages complex memory manipulation via session upload progress mechanisms.; Defenders should monitor `PHP_SESSION_UPLOAD_PROGRESS` usage and watch for upstream PHP patches."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "We had a few basic hints: something related to PHP_SESSION_UPLOAD_PROGRESS, some kind of Out of Memory condition... PHP2Shell analysis uncovers HIGH severity risk in PHP: use-after-free memory flaws enable RCE."
+    },
+    {
+     "label": "Source",
+     "value": "Technical Information Security Content & Discussion"
+    }
+   ]
+  },
+  {
+   "title": "11. ARTEX AI Hacking Framework Exposed on 1,465 Public Servers alongside Cobalt Strike",
+   "url": "https://mastodon.social/@schuler/117576417874447605",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence / Offensive AI"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Censys and security researchers report that the Chinese-made ARTEX AI hacking framework has grown into a widespread threat ecosystem, with over 800 to 1,465 instances exposed on public servers. Roughly 11% of these hosts also run Cobalt Strike or other C2 frameworks, and 32 open directories were found leaking post-exploitation kits."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "ARTEX has been linked to breaches at South Korean banks and automated secret-harvesting on GitHub.; Threat actors are consolidating AI-driven offensive tooling and traditional C2 frameworks on shared infrastructure."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "About 11% of exposed ARTEX instances also run other attack tools like Cobalt Strike and C2 frameworks, suggesting operators are consolidating their infrastructure on shared hosts."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / schuler"
+    }
+   ]
+  },
+  {
+   "title": "12. Critical Integer Overflow in imgproxy ICO Loader (CVE-2026-123614)",
+   "url": "https://infosec.exchange/@offseq/117579647215017361",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security / Vulnerability"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Versions 4.0.0 through 4.0.15 of imgproxy contain a critical integer overflow vulnerability (CVE-2026-123614, CVSS 9.8) in the ICO image loader. Processing specially crafted images can trigger application crashes or remote code execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Image processing pipelines exposed to untrusted user uploads are prime targets for RCE via malformed media headers.; Upgrade imgproxy instances to version 4.0.16 or higher immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "imgproxy 4.0.0 – 4.0.15 hit by CRITICAL CVE-2026-123614: Integer overflow in ICO loader allows RCE or crashes via crafted images. Upgrade to 4.0.16+ ASAP!"
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / OffSeq"
+    }
+   ]
+  },
+  {
+   "title": "13. SMBC Consumer Finance and SMBC Bank Suffer Breaches Exposing 547,000 Records",
+   "url": "https://infosec.exchange/@beyondmachines1/117580241716591351",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Data Breach / Financial"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Japanese financial institutions SMBC Consumer Finance and SMBC Bank disclosed two separate data breaches involving unauthorized access to a loan guarantee system and a third-party email distribution service. The incidents exposed personal and financial data belonging to over 547,000 individuals."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Third-party communication and auxiliary financial systems continue to drive large-scale data exposure in the banking sector.; Follows a broader trend in Japan where breaches cascade multiple levels deep down vendor supply chains."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "SMBC Consumer Finance and SMBC Bank reported two separate data breaches involving unauthorized access to a loan guarantee system and a third-party email distribution service, exposing the personal and financial data of over 547,000 individuals."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / beyondmachines1"
+    }
+   ]
+  },
+  {
+   "title": "14. T-Mobile Confirms Data Breach Affecting 47.8 Million People",
+   "url": "https://infosec.exchange/@theperimetersite/117579684403591658",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Data Breach / Telecom"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Telecommunications giant T-Mobile confirmed a massive data breach impacting 47.8 million individuals. Further technical details regarding the initial access vector and specific data types exposed are being tracked."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Telecom providers remain high-value targets for bulk PII harvesting.; Affected consumers should monitor for targeted smishing and SIM-swapping attempts."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "T-Mobile confirmed this morning that a data breach has affected just under 48 million people. Specifically, the number is 47.8 million."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec / theperimetersite"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Zlib 1.4 Released — Zlib 1.4 released containing more than a dozen security fixes. (#infosec / thedarktangent)",
+   "url": "https://defcon.social/@thedarktangent/117579824515870851"
+  },
+  {
+   "text": "Gnosis Pay Data Breach — Compromised credentials exposed consumer card personal and transaction details. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117580477680225793"
+  },
+  {
+   "text": "WordPress Pie Register Vulnerability (CVE-2026-96961) — Missing auth checks allow unauthenticated plugin reset or table destruction. (#infosec / OffSeq)",
+   "url": "https://infosec.exchange/@offseq/117580355064681976"
+  },
+  {
+   "text": "Sveltejs devalue CVEs — Multiple CVE alerts (CVE-2026-123562 to 123565) disclosed for sveltejs devalue. (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117580351400648503"
+  },
+  {
+   "text": "ZcashFoundation Zebra CVEs — Multiple vulnerabilities disclosed in ZcashFoundation zebra node software. (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117580347447125154"
+  },
+  {
+   "text": "Vikunja CVEs Disclosed — Security advisories issued for go-vikunja (CVE-2026-123520, 123522, 123531). (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117580343479370594"
+  },
+  {
+   "text": "IBM API Connect Patch Batch — Dozens of CVEs disclosed and patched across IBM API Connect. (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117579171121650098"
+  },
+  {
+   "text": "DataEase Vulnerabilities — CVE-2026-123990 and CVE-2026-123991 published for DataEase. (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117580339532613468"
+  },
+  {
+   "text": "OpenBMB Internet of Agents CVE — Vulnerability CVE-2026-123963 disclosed in OpenBMB Internet of Agents. (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117580339531860546"
+  },
+  {
+   "text": "BYOD Ransomware Claims Twitter — Ransomware group BYOD published a blog post claiming Twitter compromise. (#infosec / CTI_FYI)",
+   "url": "https://infosec.exchange/@CTI_FYI/117580504845638390"
+  },
+  {
+   "text": "Destello Ransomware Claims MAPFRE Brasil — Destello ransomware group added MAPFRE Brasil to its leak site. (#infosec / CTI_FYI)",
+   "url": "https://infosec.exchange/@CTI_FYI/117580266193550955"
+  },
+  {
+   "text": "Windows Sandbox MCP Server — Open-source MCP server and CLI tool for automating Windows Sandbox. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquxpr/mcp_server_and_cli_for_automating_the_windows/"
+  },
+  {
+   "text": "Operation Snowball AI Intrusion — Case study analyzing an autonomous AI intrusion campaign. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquwvo/operation_snowball_inside_an_autonomous_ai/"
+  },
+  {
+   "text": "Arid Gopher / Arid Viper Attribution — Threat intel linking Arid Gopher malware samples to Arid Viper. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquvh4/we_assess_with_high_confidence_that_the_sample_is/"
+  },
+  {
+   "text": "$129M Fraud Scheme Arrests — Three foreign nationals charged in $129M corporate fraud scheme. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquu7b/three_foreign_nationals_arrested_and_charged_with/"
+  },
+  {
+   "text": "Malicious Ruby Gem Poisons AI Tools — Shai-Hulud descendant surfaces in Ruby gem stealing credentials. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xqut9r/shaihulud_descendant_surfaces_in_malicious_ruby/"
+  },
+  {
+   "text": "GODDESS OF VICTORY: NIKKE Launcher Alert — Players advised to run security checks after PC launcher issue. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xqus6j/goddess_of_victory_nikke_if_you_have_launched_the/"
+  },
+  {
+   "text": "Black October Downstream Breaches — Post-mortem lessons learned from cascading third-party breaches in October. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquqiv/black_october_lessons_from_the_downstream_breaches/"
+  },
+  {
+   "text": "IT Security Incident at TUM — Technical University of Munich discloses an IT security incident. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xqunz3/it_security_incident_at_tum/"
+  },
+  {
+   "text": "Plex2Shell QNAP Remediation FAQ — Check and remediation guidance for QNAP NAS users regarding Plex2Shell. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xquniq/plex2shell_check_and_remediation_faq_for_qnap_nas/"
+  },
+  {
+   "text": "Tracking Lazarus TraderTraitor Infrastructure — Methodology for tracking Lazarus Group via certificates and historical records. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xqulyp/tracking_lazarus_group_tradertraitor/"
+  },
+  {
+   "text": "Help Net Security Week in Review — Roundup covering European retail refrigeration attacks and AI agent policies. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/08/week-in-review-refrigeration-cyberattacks-hit-european-retailers-again-patch-tuesday-forecast/"
+  },
+  {
+   "text": "FCC Licensing System Offline After Leak — Technical glitches exposed 170 confidential FM translator applications. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117579769860964382"
+  },
+  {
+   "text": "Japan Supply Chain Breaches Analysis — Overview of how 2026 breaches cascaded three levels down vendor chains. (#infosec / japancyberwatch)",
+   "url": "https://infosec.exchange/@japancyberwatch/117579709042391491"
+  },
+  {
+   "text": "Infomaniak Architecture Profile — Analysis of Swiss cloud provider Infomaniak's non-E2EE infrastructure. (#infosec / vsx)",
+   "url": "https://infosec.exchange/@vsx/117579587735853202"
+  },
+  {
+   "text": "Nous Research Arete-27B Release — Fine-tuned Qwen3.8-27B model reduces state propaganda framing to 0.9%. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/07/nous-research-arete-27b-qwen3-8-27b-propaganda-fine-tune/"
+  },
+  {
+   "text": "India SBOM and Patch Rules — Overview of SEBI, RBI, and CERT-In SBOM and patching regulations. (#infosec / stackurity)",
+   "url": "https://infosec.exchange/@stackurity/117578878262795369"
+  },
+  {
+   "text": "Amazon EKS 1.34 End of Life — Guidance on preparing for Amazon EKS 1.34 EOL on December 2. (#infosec / stackurity)",
+   "url": "https://infosec.exchange/@stackurity/117578646971664971"
+  },
+  {
+   "text": "Motorola GrapheneOS Support — Motorola announces its first smartphone device supporting GrapheneOS. (#infosec / sanjaymenon)",
+   "url": "https://mastodon.social/@sanjaymenon/117578234675029852"
+  },
+  {
+   "text": "Datasette Firefox Link Prefetch Fix — Datasette stops serving rel=next HTTP headers to prevent unintended Firefox prefetching. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/7/link-rel-next/"
+  },
+  {
+   "text": "Revolut Phishing Texts Post-Breach — Targeted phishing SMS campaigns emerge days after Revolut data breach. (#infosec / Bahay)",
+   "url": "https://social.vivaldi.net/@Bahay/117577859777449114"
+  },
+  {
+   "text": "Germany Counters GPS Spoofing — German defense agencies seek technologies to counter satellite navigation manipulation. (#infosec / techandcoffee)",
+   "url": "https://techhub.social/@techandcoffee/117577796465623561"
+  },
+  {
+   "text": "XCPE Android TV Botnet Takedown — Japanese police and US legal action disrupt 1.3M-device XCPE proxy botnet. (#infosec / japancyberwatch)",
+   "url": "https://infosec.exchange/@japancyberwatch/117577795110189055"
+  },
+  {
+   "text": "Post-Quantum FIDO2 Firmware for RP2040 — Open-source RP2040 FIDO2 firmware implementing ML-DSA-87 and ML-KEM-1024. (#infosec / cloud)",
+   "url": "https://infosec.exchange/@cloud/117577476212406739"
+  },
+  {
+   "text": "Ceplin Triage CLI Released — Open-source CLI tool for chaining OSINT lookups during security triage. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xqhvx1/ceplin_a_cli_for_cybersecurity_triage/"
+  },
+  {
+   "text": "WordPress BlockSpare Auth Bypass (CVE-2026-1242) — Logic flaw lets Subscriber-level users create arbitrary WordPress posts. (#cve / hugovalters)",
+   "url": "https://mastodon.social/@hugovalters/117577207041416222"
+  },
+  {
+   "text": "How Phishing Exploits Branded Search — Analysis of SEO poisoning and cloaking techniques in search results. (#infosec / sedatpehlivanturk)",
+   "url": "https://infosec.exchange/@sedatpehlivanturk/117577030932717675"
+  },
+  {
+   "text": "Doctor Anywhere Telemedicine Breach — Singaporean telemedicine platform reports breach exposing user personal and bank data. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117576938719568979"
+  },
+  {
+   "text": "Equipple School App Breach — Northern Ireland school app breach exposes data of 50,000 users. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117576702778824808"
+  },
+  {
+   "text": "Strands Agents RCE Bug Bounty Disclosure — Unescaped consent prompt HTML enables OS command injection in Strands Agents. (#cve / RedPacketSecurity)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117576701933477881"
+  },
+  {
+   "text": "Burda Style Data Breach — Fashion magazine Burda Style discloses customer data breach following cyberattack. (#infosec / infonewscyber)",
+   "url": "https://infosec.exchange/@infonewscyber/117576656348444529"
+  },
+  {
+   "text": "Vibe Coding vs Engineering — Daniel Miessler contrasts AI-assisted engineering with uncomprehending vibe coding. (Daniel Miessler)",
+   "url": "https://danielmiessler.com/blog/vibe-coding-isnt-using-ai"
+  },
+  {
+   "text": "Qilin Ransomware Claims AXE-EXPERTS — French business services firm AXE-EXPERTS listed by Qilin ransomware. (#infosec / infonewscyber)",
+   "url": "https://infosec.exchange/@infonewscyber/117576518494210489"
+  },
+  {
+   "text": "Queens Public Library Ransomware Attack — Ransomware disables Wi-Fi and checkout systems across 66 library branches. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117576466833333035"
+  },
+  {
+   "text": "Smartbox Suffers Intrusion — French gift box company Smartbox reports security intrusion ahead of holidays. (#infosec / infonewscyber)",
+   "url": "https://infosec.exchange/@infonewscyber/117576380663405924"
+  },
+  {
+   "text": "Mindbloom Provider Group Health Breach — Breach exposes patient diagnoses and treatment plans at Mindbloom. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117576230941936010"
+  },
+  {
+   "text": "Fraunhofer VVdeC Memory Advisories — Multiple heap UAF and OOB read flaws disclosed in Fraunhofer VVdeC. (#cve / sigdevel)",
+   "url": "https://infosec.exchange/@sigdevel/117576099933344367"
+  },
+  {
+   "text": "Norad Grants Portal Breach — Attackers used 27 compromised accounts to access data of 20,000 users. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117575759044333844"
+  },
+  {
+   "text": "CTM360 Exposes Fake Gift Card Scams — Report details affiliate-driven fake gift card scams impersonating major brands. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/ctm360-exposes-fake-gift-card-scams-exploiting-trusted-brands/"
+  },
+  {
+   "text": "DigiCert Data Breach Follow-up — Commentary on Certificate Authority DigiCert's recently reported data breach. (#infosec / security_crawler_carl)",
+   "url": "https://infosec.exchange/@security_crawler_carl/117575532320780593"
+  },
+  {
+   "text": "Good Smile Company Skimming Attack — Online store exploit exposes payment details of 2,800 customers. (#infosec / beyondmachines1)",
+   "url": "https://infosec.exchange/@beyondmachines1/117575523141690580"
+  },
+  {
+   "text": "MedusaLocker Claims DIAN Colombia — Unverified ransomware claim by MedusaLocker targeting Colombian agency DIAN. (#infosec / Matchbook3469)",
+   "url": "https://infosec.exchange/@Matchbook3469/117575465528593275"
+  }
+ ]
+}
