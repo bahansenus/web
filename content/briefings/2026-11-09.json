@@ -1,0 +1,697 @@
+{
+ "date": "2026-11-09",
+ "published_at": "2026-11-09T13:01:51.885Z",
+ "title": "Daily Security Intelligence Briefing — November 09, 2026",
+ "threat_level": "HIGH",
+ "summary": "Threat actors are actively exploiting the 'SSHole' authentication bypass in OpenSSH on musl-based Linux systems (SecurityWeek) and a SAML MFA bypass in SonicWall SSL-VPNs (Help Net Security), while U.S. agencies warn of physical-impact attacks targeting industrial refrigeration controllers (The Hacker News).",
+ "tier1": [
+  {
+   "title": "1. Hackers Exploiting ‘SSHole’ Authentication Bypass in OpenSSH",
+   "url": "https://www.securityweek.com/hackers-exploiting-sshole-authentication-bypass-in-openssh/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "SecurityWeek"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Infrastructure / CVE-2026-123158 (Active Exploitation)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Threat actors—initially botnets and cryptominers—are actively exploiting the 'SSHole' authentication bypass vulnerability (CVE-2026-123158) in OpenSSH on Alpine Linux and other musl libc-based distributions. The flaw allows remote attackers to bypass password authentication, including on accounts configured for key-only access, simply by submitting passwords exceeding 256 characters. Given the ubiquity of Alpine Linux in containerized cloud environments, exposed SSH services face immediate risk of unauthenticated root compromise."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Upgrade OpenSSH to version 10.6p2 or apply distribution-specific emergency patches across all Alpine and musl-based Linux containers and hosts immediately; restrict SSH network exposure."
+    }
+   ]
+  },
+  {
+   "title": "2. U.S. Agencies Warn Refrigeration Controller Attacks Could Cause Fires and Inventory Losses",
+   "url": "https://thehackernews.com/2026/11/us-agencies-warn-refrigeration.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "OT & Critical Infrastructure / Active Campaign (Global Cold-Chain)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "U.S. government agencies have issued an urgent warning that threat actors are actively targeting industrial refrigeration and cold-chain monitoring systems globally. Attackers are exploiting unpatched or internet-accessible controllers to remotely alter configurations and force units into continuous heating cycles. These attacks pose severe physical risks, including fire hazards, equipment destruction, and massive spoilage across food and pharmaceutical supply chains."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Remove all industrial refrigeration and cold-chain controllers from public internet access, place OT networks behind strict firewalls with MFA-enforced VPNs, and audit controller firmware and settings."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Exploited SonicWall SSL-VPN flaw lets attackers bypass SAML-enforced MFA (CVE-2026-19868)",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/exploited-sonicwall-ssl-vpn-flaw-lets-attackers-bypass-saml-enforced-mfa-cve-2026-19868/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Perimeter Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "SonicWall patched an actively exploited authentication enforcement flaw (CVE-2026-19868, CVSS 7.5) in SonicOS SSL-VPN that allows attackers with valid credentials for an alternate authentication method to bypass SAML-enforced MFA. CISA has added the vulnerability to its Known Exploited Vulnerabilities (KEV) catalog, noting no workarounds exist."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Exploitable on SonicOS SSL-VPN appliances when SAML authentication is enabled.; Administrators must apply SonicWall firmware updates immediately as no configuration workarounds exist."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "SonicWall has fixed an exploited SonicOS SSL-VPN vulnerability (CVE-2026-19868) that may allow attackers with valid credentials to bypass SAML-enforced multi-factor authentication."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "2. $133 million stolen from French bank via exploited service provider",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/credit-mutuel-arkea-cyberattack-133-million/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain & Financial Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers stole approximately $133 million from French cooperative banking group Crédit Mutuel Arkéa by compromising a third-party service provider. The threat actors used the bank's own account to wire funds to external institutions before converting the stolen assets into cryptocurrency."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Third-party service providers remain a critical vector for high-value financial heist operations.; Blockchain analysis tracked over $100 million of the stolen fiat after its conversion into crypto."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers siphoned an estimated $133 million from Crédit Mutuel Arkéa by using the bank’s own account to wire money to other banks, from where it was possibly converted into cryptocurrency."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "3. Google DeepMind’s AI Agents Make 1024-Bit RSA Keys Cheaper to Attack",
+   "url": "https://www.securityweek.com/google-deepminds-ai-agents-make-1024-bit-rsa-keys-cheaper-to-attack/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cryptography & AI"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Google DeepMind researchers collaborated with cryptographers to use AI agents to optimize attacks against 1024-bit RSA keys. The agents successfully reduced the computational cost required to forge RSA-1024 signatures and identified more efficient methods for key factorization."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "AI agents can discover algorithmic optimizations that accelerate cryptanalysis against legacy standards.; Organizations still relying on deprecated 1024-bit RSA keys face an accelerating timeline of practical compromise."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Working with cryptographers, DeepMind’s AI agents cut the cost of forging RSA-1024 signatures and found a cheaper way to factor keys."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "4. Trio accused of using deepfake CEOs and bogus lawyers to scam businesses out of $129 million",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/deepfake-ceo-fraud-129-million-indictment/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Fraud & Social Engineering"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The U.S. Department of Justice indicted three individuals for orchestrating a $129 million business email compromise and social engineering scheme. The attackers utilized deepfakes of company CEOs alongside impersonated legal counsel to deceive employees into executing unauthorized wire transfers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Deepfake audio and video are actively scaling the efficacy and payout size of executive impersonation fraud.; Out-of-band verification protocols must not rely solely on voice or video recognition for high-value financial authorizations."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Three men allegedly used deepfakes of company CEOs and law firm attorneys to trick employees into wiring more than $129 million to accounts the group controlled, the Justice Department said."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "5. An average of 8 minutes is all hackers need to log in with stolen credentials",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/elastic-businesses-remote-access-attacks-report/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & IAM"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "An Elastic Security Threat Command report analyzing 27 confirmed infostealer incidents revealed that attackers logged in using stolen credentials an average of eight minutes post-infection. The report also highlighted threat actors abusing AI applications to execute commands and leveraging signed RMM tools for persistence."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "An 8-minute median time-to-exploitation demands automated session revocation and phishing-resistant MFA.; AI agents holding credentials and internet access represent a rapidly emerging attack surface on endpoints."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers used stolen credentials to log in an average of eight minutes after infection across 27 confirmed infostealer cases, according to a report from Elastic Security Threat Command."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "6. AI doesn’t have to go rogue to break the world",
+   "url": "https://cyberscoop.com/ai-hacking-risks-loopholes-bruce-schneier-defcon-keynote-op-ed/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Policy"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Bruce Schneier outlines three dimensions of AI hacking: humans hacking AI systems, humans using AI to hack other systems, and autonomous AI agents finding and exploiting loopholes in systems without malicious intent. He warns that the third category poses the most destabilizing systemic risk."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Autonomous AI optimization can exploit technical and regulatory loopholes at machine speed without needing 'rogue' intent.; Defensive architectures must account for non-malicious, goal-driven AI agents stressing systemic boundaries."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "There are three aspects: people hacking AI systems, people using AI to hack other systems, and AIs hacking systems on their own, not even maliciously."
+    },
+    {
+     "label": "Source",
+     "value": "CyberScoop"
+    }
+   ]
+  },
+  {
+   "title": "7. Your LLM Writes Good SQL. That's Not the Same as Safe SQL",
+   "url": "https://www.infoworld.com/article/4244721/your-llm-writes-good-sql-thats-not-the-same-as-safe-sql.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Data & Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Text-to-SQL LLMs frequently generate syntactically accurate queries that bypass business context and data access policies, leading to unauthorized data exposure. Benchmarking across 900 queries showed that enforcing policy-aware validation—such as row filtering and column masking—in code prior to execution eliminated leaks with minimal latency overhead."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Access control and row/column security policies cannot be entrusted to LLM prompts.; Deterministic, code-level query validation adds only ~6.5 ms latency while preventing unauthorized data retrieval."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Accurate text-to-SQL can still expose unauthorized data when generated queries ignore business context and access policies."
+    },
+    {
+     "label": "Source",
+     "value": "TLDR data"
+    }
+   ]
+  },
+  {
+   "title": "8. Claude Code has been storing developer passwords in plain text files, which in some cases have ended up on Github",
+   "url": "https://mastodon.social/@ajsadauskas/117584923236909985",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security & DevSecOps"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Anthropic's Claude Code 'don't ask again' feature was found saving developer passwords, API keys, and SSH logins in plaintext within `.claude/settings.local.json` files. Over 1,000 public GitHub repositories have inadvertently exposed these local configuration files containing sensitive credentials."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Audit developer workstations and repositories for `.claude/settings.local.json` files and add `.claude/` to global `.gitignore` templates.; Rotate any secrets, API keys, or SSH credentials that were passed through Claude Code's persistent permission prompts."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Claude Code's 'don't ask again' feature saved passwords, API keys and SSH logins in plain text to .claude/settings.local.json files exposed across more than 1000 public GitHub repositories."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "9. Amadeus Vulnerability Exposes Passenger Booking Data Across Multiple Airlines",
+   "url": "https://infosec.exchange/@beyondmachines1/117585902698160159",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain & Aviation Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Travel technology giant Amadeus confirmed a data breach impacting multiple major carriers, including Cathay Pacific and Japan Airlines, after a vulnerability exposed passenger booking records over a three-year period. While no financial data was accessed, airlines such as Qantas are investigating potential customer impact."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Shared aviation reservation backbones create concentrated supply-chain exposure for global passenger PII.; Long-lived vulnerabilities in booking APIs require continuous anomaly detection beyond basic perimeter defenses."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Amadeus confirmed a data breach affecting multiple airlines, including Cathay Pacific and Japan Airlines, after a vulnerability exposed passenger booking data for three years."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "10. QNAP warns that exploited Plex2Shell vulnerabilities in Plex Media Server 1.43.2 hit QNAP NAS users",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117585958664024497",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "QNAP issued an advisory warning that the actively exploited 'Plex2Shell' vulnerabilities (CVE-2026-96656) in Plex Media Server 1.43.2 are impacting QNAP NAS devices. Threat actors are targeting unpatched instances primarily to deploy cryptominers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "QNAP NAS administrators running Plex Media Server must update to version 1.43.3.10861 or later immediately.; Exposed media server plugins on NAS appliances frequently bypass core OS hardening."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "QNAP warns that exploited Plex2Shell vulnerabilities in Plex Media Server 1.43.2 hit QNAP NAS users. Update to 1.43.3.10861 and check for compromise."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "11. Nitori, Japan's largest furniture and home goods chain, says up to 37.62 million records may have leaked",
+   "url": "https://infosec.exchange/@japancyberwatch/117585862812696252",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Data Breaches"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Japanese retail giant Nitori disclosed a major data breach affecting up to 37.62 million customer records, marking the fourth-largest breach in Japan in 2026. Attackers maintained unauthorized access from mid-October until November 6, exposing member details and online mall order records, though payment card data and passwords were not impacted."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "E-commerce integrations with external online malls expand the scope of customer record exposure.; Dwell time of roughly three weeks allowed mass exfiltration of tens of millions of retail profiles."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Nitori, Japan's largest furniture and home goods chain, says up to 37.62 million records may have leaked, the fourth-largest breach disclosed in Japan this year."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "12. Iris Plaza Breach May Have Exposed Data of 7.7 Million Customers",
+   "url": "https://www.securityweek.com/iris-plaza-breach-may-have-exposed-data-of-7-7-million-customers/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud Security & Data Breaches"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Japanese manufacturer Iris Ohyama took its Iris Plaza e-commerce platform offline after discovering attackers compromised a third-party cloud service. The breach potentially exposed names, addresses, emails, dates of birth, and encrypted passwords for 7.7 million customers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Third-party cloud storage misconfigurations and compromises continue to drive multi-million-record retail breaches.; No payment card details were stored in the affected external cloud environment."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Hackers compromised an external cloud service used by the shopping platform and may have stolen personal information from it."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "13. Red Hat OpenShift Container Platform 4.21.42 patches CRITICAL flaws: kernel IPv4 memory handling (CVE-2026-98432)",
+   "url": "https://infosec.exchange/@offseq/117584247875502427",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & Container Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Red Hat released OpenShift Container Platform 4.21.42 to address critical vulnerabilities, including a Linux kernel IPv4 memory handling flaw (CVE-2026-98432, CVSS 9.8) and an out-of-bounds write in the Brotli decoder. Administrators are urged to update container images and host RPMs."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "CVE-2026-98432 carries a 9.8 Critical severity score in the Linux kernel IPv4 stack.; OpenShift cluster operators should prioritize node and image upgrades to 4.21.42."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Red Hat OpenShift Container Platform 4.21.42 patches CRITICAL flaws: kernel IPv4 memory handling (CVE-2026-98432) & Brotli decoder OOB write."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "14. Wirken: Open-source AI agent gateway",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/wirken-open-source-ai-agent-gateway/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security Architecture"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Wirken has been released as an open-source security gateway designed to sit between messaging applications and autonomous AI agents. Operating on a zero-trust assumption that any agent can be compromised via prompt injection in emails or chats, Wirken restricts downstream command execution and secret access."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Architectural isolation via an intermediary gateway mitigates the blast radius of indirect prompt injection.; Agents with access to untrusted inputs (email/chat) should not hold direct, unmediated privileges to execute commands."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Wirken is an open-source gateway that sits between messaging apps and AI agents. It assumes any agent can be turned against its owner and limits what a compromised one can reach."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "15. 0sec Labs Open-Sources 0, an AI Security Harness With Web UI, CLI and MCP",
+   "url": "https://www.marktechpost.com/2026/11/08/0sec-labs-open-sources-0-ai-security-harness/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Security Tooling & AppSec"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Zurich-based 0sec Labs open-sourced '0', an AI security harness supporting vulnerability investigations, code review, penetration testing, reverse engineering, and automated fix generation. The tool can be operated via a local browser console, headless CLI, or Model Context Protocol (MCP) server."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Provides a unified, open-source (MIT/Apache-2.0) harness for orchestrating offensive and defensive AI security workflows.; Native MCP server integration allows developers to plug automated security analysis directly into existing coding agents."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Zurich-based 0sec Labs has released 0, an open-source AI security harness. It runs vulnerability investigations, code review, pentesting, reverse engineering and fix generation."
+    },
+    {
+     "label": "Source",
+     "value": "MarkTechPost"
+    }
+   ]
+  },
+  {
+   "title": "16. Microsoft 365 Copilot now bundles Anthropic's Claude alongside OpenAI",
+   "url": "https://infosec.exchange/@adrianhollister/117585753370685741",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud Governance & Privacy"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft 365 Copilot has integrated Anthropic's Claude models alongside OpenAI, though the feature is disabled by default for EU, EFTA, and UK tenants. Enabling the integration routes inference requests to Anthropic's US infrastructure outside the EU Data Boundary, regardless of the selected Azure region."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "European CISOs and DPOs must update Data Protection Impact Assessments (DPIAs) before enabling Claude in M365 Copilot.; Activating third-party model providers in M365 can silently bypass regional data residency guarantees."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "For European customers one detail matters most: the Claude integration is off by default in the EU, EFTA and UK, and switching it on moves requests outside the EU Data Boundary."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Italy Foreign Minister Data Leak — PM Meloni blames pro-Russian hackers for leaking Foreign Minister's data. (SecurityWeek)",
+   "url": "https://www.securityweek.com/italys-meloni-blames-pro-russian-hackers-for-leak-of-foreign-ministers-data-on-the-dark-web/"
+  },
+  {
+   "text": "AI Security Conference Recap — Bruce Schneier categorizes AI security research after attending [un]prompted conference. (Schneier on Security)",
+   "url": "https://www.schneier.com/blog/archives/2026/11/ai-security.html"
+  },
+  {
+   "text": "Golden Dome Missile Defense — Incoming Democratic Congress likely to scale back Golden Dome initiative. (Ars Technica - All content)",
+   "url": "https://arstechnica.com/space/2026/11/new-democratic-congress-will-likely-strip-the-gilding-from-trumps-golden-dome/"
+  },
+  {
+   "text": "Amplifon Americas Data Breach — Breach exposes health, insurance, and SSN data of 1.3M people. (SecurityWeek)",
+   "url": "https://www.securityweek.com/amplifon-americas-data-breach-impacts-1-3-million/"
+  },
+  {
+   "text": "DFM Global News Roundup — Covers Mumbai scam phones, VPN bypasses, and UK device labels. (Digital Forensics Magazine)",
+   "url": "https://digitalforensicsmagazine.com/news_roundup_9th_november_2026/"
+  },
+  {
+   "text": "Frontline Education Data Breach — August breach impacted over 3 million school staff and students. (SecurityWeek)",
+   "url": "https://www.securityweek.com/3-million-people-hit-by-frontline-education-data-breach/"
+  },
+  {
+   "text": "Homer Donut Shellcode Fork — Open-source evasive fork of Donut loads Windows PE from memory. (#infosec)",
+   "url": ""
+  },
+  {
+   "text": "Malwarebytes Claude Connector — Product showcase of Malwarebytes scam detection connector for Claude chat. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/product-showcase-malwarebytes-claude-scam-detection/"
+  },
+  {
+   "text": "Weekly Malware Loader Surge — DonutLoader, AgentTesla, and ReverseLoader activity surged over the past week. (#infosec)",
+   "url": "https://infosec.exchange/@anyrun_app/117585759165158784"
+  },
+  {
+   "text": "FATF Targets Scam Compounds — Anti-money laundering watchdog proposes new measures to disrupt scam compounds. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/aml-watchdog-fatf-scam-compounds/"
+  },
+  {
+   "text": "Chengdu Feiyuxing Command Injection — Critical unauthenticated OS command injection (CVE-2026-124580) has public exploit, no patch. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117585663499489154"
+  },
+  {
+   "text": "Email Security Architecture Opinion — Column comparing static email security rule sets to Napoleonic code. (CSO Online)",
+   "url": "https://www.csoonline.com/article/4245807/the-code-and-the-court-why-your-email-security-thinks-like-napoleon.html"
+  },
+  {
+   "text": "n8n 2.46.7 and 2.47.3 — Maintenance releases fixing workflow migration ownership and execution resume limits. (Release notes from n8n)",
+   "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.47.3"
+  },
+  {
+   "text": "7 Tips for Defensive Agility — Best practices for building adaptable, automated cybersecurity defense operations. (CSO Online)",
+   "url": "https://www.csoonline.com/article/4240628/7-tips-for-achieving-defensive-agility.html"
+  },
+  {
+   "text": "NVIDIA Korean Startup Investments — NVIDIA announces planned investments and sovereign AI partnerships in South Korea. (NVIDIA Blog)",
+   "url": "https://blogs.nvidia.com/blog/korean-startup-investments-msit/"
+  },
+  {
+   "text": "Dark Web Threat Roundup — SOCRadar tracks alleged US bank dump, Peru leak, and Spencer's breach. (SOCRadar)",
+   "url": "https://socradar.io/blog/dark-web-us-bank-peru-spencers-zoominfo/"
+  },
+  {
+   "text": "Intelbras Switch Auth Bypass — Critical authentication bypass (CVE-2026-124577) in Intelbras switches; patch to 1.00.74. (#cve)",
+   "url": "https://infosec.exchange/@offseq/117585309721176470"
+  },
+  {
+   "text": "OpenAI Bugging Suspect Plea — Former OpenAI engineer pleads not guilty to planting covert recording device. (The Hacker News)",
+   "url": "https://thehackernews.com/2026/11/former-openai-engineer-pleads-not.html"
+  },
+  {
+   "text": "SGS France Automotive Data Leak — Hacker claims theft of 22.7M French motorist records from SGS chains. (#infosec)",
+   "url": "https://infosec.exchange/@cloud/117583744644694839"
+  },
+  {
+   "text": "Weekly CISA KEV Additions — CISA added three WordPress vulnerabilities to KEV catalog between Nov 2-8. (#infosec)",
+   "url": "https://infosec.exchange/@cyberworldops/117585111172621166"
+  },
+  {
+   "text": "NEC WebSAM WinShare RCE — Critical unauthenticated heap overflow (CVE-2026-113364) enables SYSTEM RCE; no patch yet. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117584955724342608"
+  },
+  {
+   "text": "Barracuda MSP Customer Report — Survey shows companies seeking MSPs doubt their internal attack detection capabilities. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/09/barracuda-msp-cybersecurity-services-expectations-report/"
+  },
+  {
+   "text": "Multiple OpenEMR Vulnerabilities — Batch of CVE alerts published for OpenEMR healthcare software. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117584835279458557"
+  },
+  {
+   "text": "Korea Agentic AI with NVIDIA — Hyundai and AIM Intelligence explore NVIDIA OpenShell for secure AI agents. (NVIDIA Blog)",
+   "url": "https://blogs.nvidia.com/blog/korea-secure-agentic-ai/"
+  },
+  {
+   "text": "Linux Kernel AI Patch Flood — Linus Torvalds notes AI-prompted bug patch flood may have peaked. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/09/linus-torvalds-sees-signs-ai-prompted-patch-flood-has-peaked/5308345"
+  },
+  {
+   "text": "D-Link DIR-878 Heap Overflow — Critical unpatched RCE flaw (CVE-2026-124560) hits unsupported D-Link DIR-878 routers. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117584601767635455"
+  },
+  {
+   "text": "Collapsing AI PR Descriptions — Simon Willison recommends hiding verbose AI-generated PR descriptions in details tags. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/9/details-summary/"
+  },
+  {
+   "text": "Risky Bulletin News Podcast — Podcast covers EU politician doxing, deepfake arrests, SonicWall, and SSHole. (Risky Business)",
+   "url": "https://risky.biz/RBNEWS631/"
+  },
+  {
+   "text": "Redis 8.0 End of Life — Reminder that Redis 8.0 reaches end of life on December 1, 2026. (#infosec)",
+   "url": "https://infosec.exchange/@stackurity/117584309747040975"
+  },
+  {
+   "text": "Huawei 100% Chinese PC — Huawei launches Qingyun HM650 desktop built entirely with domestic Chinese components. (The Register)",
+   "url": "https://www.theregister.com/systems/2026/11/09/huawei-says-its-made-a-100-percent-chinese-pc/5308335"
+  },
+  {
+   "text": "DynamiApps Privilege Escalation — Critical privilege escalation flaw (CVE-2026-119506) in DynamiApps Frontend Admin plugin. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117583894071030101"
+  },
+  {
+   "text": "Offensive AI Packages List — Community-curated list of 18 offensive AI packages for defenders to monitor. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xrdq1c/we_put_together_a_list_of_18_offensive_ai/"
+  },
+  {
+   "text": "Feng Office SSRF Vulnerability — Authenticated SSRF flaw (CVE-2026-124500) in Feng Office has public exploit. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117583489329620298"
+  },
+  {
+   "text": "Debian/Ubuntu APT CVE Hunting — Follow-up guide on hunting indicators for actively exploited APT CVE-2026-109518. (#infosec)",
+   "url": "https://fosstodon.org/@sigint/117583479208748258"
+  },
+  {
+   "text": "SQLite Extensions: C vs Rust — Comparison of building a SQLite number parsing extension in C versus Rust. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/8/sqlite-parse-number-c-vs-rust/"
+  },
+  {
+   "text": "Weekly Ransomware Victim Report — CTI.FYI tracked 257 darknet ransomware disclosures from Nov 1 to Nov 8. (#infosec)",
+   "url": "https://infosec.exchange/@CTI_FYI/117582830731699264"
+  },
+  {
+   "text": "TU Munich Cyberattack — Technical University of Munich hit by cyberattack exposing user passwords. (#infosec)",
+   "url": "https://social.tchncs.de/@beandev/117582789737645715"
+  },
+  {
+   "text": "Hickory-DNS CVE Alerts — Multiple CVE alerts (CVE-2026-123570 to 123573) published for hickory-dns. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117582672472369454"
+  },
+  {
+   "text": "ASD Essential Eight Evolution — Sponsored interview discussing the transition from Essential Eight to ASD's Essentials. (Risky Business)",
+   "url": "https://risky.biz/RBNEWSSI150/"
+  },
+  {
+   "text": "Chainalysis Breach Confirmation — Chainalysis confirms exposure of usernames, password hashes, and auth tokens. (#infosec)",
+   "url": "https://infosec.exchange/@cloud/117582310554068687"
+  },
+  {
+   "text": "WorkOS Oct 30 Incident Update — Follow-up discussion regarding WorkOS's October 30th data security incident. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xr57go/workos_update_for_october_30th_2026_data_security/"
+  },
+  {
+   "text": "Barracuda ESG Pre-Auth Flaws — Follow-up warning on Barracuda ESG pre-auth flaws CVE-2026-116606 and CVE-2026-111560. (#infosec)",
+   "url": "https://infosec.exchange/@theperimetersite/117582023798290475"
+  },
+  {
+   "text": "Mirae Asset Securities Breach — South Korean brokerage confirms breach affecting 39,000 customers and employees. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117581893190478327"
+  },
+  {
+   "text": "Eclipse Mosquitto Pre-Auth RCE — Write-up on exploiting pre-auth RCE in Eclipse Mosquitto on Home Assistant Green. (Technical Information Security Content & Discussion)",
+   "url": "https://www.reddit.com/r/netsec/comments/1xr33yo/pwning_home_assistant_green_preauth_rce_in/"
+  },
+  {
+   "text": "Asahi Linux License Change — Asahi Linux transitions from MIT to GPLv2-or-later citing LLM-rewritten code copying. (#infosec)",
+   "url": "https://infosec.exchange/@cyberseckyle/117581848784738556"
+  },
+  {
+   "text": "DigiCert Archive Exposure Post-Mortem — February 2025 migration left DigiCert customer archive exposed without VPN or MFA. (#infosec)",
+   "url": "https://infosec.exchange/@adrianhollister/117581620881664940"
+  },
+  {
+   "text": "SvelteJS Devalue CVE Alerts — Vulnerability alerts CVE-2026-123566 and CVE-2026-123569 issued for sveltejs devalue. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117581493715384775"
+  },
+  {
+   "text": "SonicWall EoL GMS Flaws — Critical unauthenticated file read (CVE-2026-109593) in EoL SonicWall GMS won't be patched. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117581421386388181"
+  },
+  {
+   "text": "DataSuckers Suspects Arrested — Three suspects arrested for Dodo Pizza breach stemming from GitHub credentials. (#infosec)",
+   "url": "https://infosec.exchange/@cloud/117581342037352265"
+  },
+  {
+   "text": "Trendyol Kafka-Konsumer DoS — Oversized record triggers persistent crash loop (CVE-2026-124465); upgrade to 2.6.18. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117581188959199913"
+  },
+  {
+   "text": "Cloudflare Radar Zero Wire — Cloudflare launches Zero Wire on Radar featuring read-only agent assessment prompts. (#cve)",
+   "url": "https://universeodon.com/@Ciberjohn/117581165900050166"
+  },
+  {
+   "text": "WordPress Secure Custom Fields XSS — High-severity stored XSS (CVE-2026-97195) in Secure Custom Fields plugin <6.9.8. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117581062838607530"
+  },
+  {
+   "text": "Sussex County Prosecutor Breach — July network intrusion potentially exposed SSNs and driver's license data. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117580949504733593"
+  },
+  {
+   "text": "LLM Data Cleaning Knowledge Dependence — Study shows LLMs overwrite valid table data with memorized facts during cleaning. (TLDR data)",
+   "url": "https://arxiv.org/abs/2611.08106"
+  },
+  {
+   "text": "Anthropic Agent Memory Components — Anthropic details 'dreaming' technique where Claude refines memory notes across sessions. (TLDR data)",
+   "url": "https://www.anthropic.com/research/components-of-agent-memory"
+  },
+  {
+   "text": "Apache Spark 4.3.0 and Hop 2.20 — Spark 4.3.0 adds stateful real-time streaming; Hop 2.20 adds native Iceberg support. (TLDR data)",
+   "url": "https://spark.apache.org/releases/spark-release-4-3-0.html"
+  }
+ ]
+}
