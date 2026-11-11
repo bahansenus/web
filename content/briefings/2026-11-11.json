@@ -1,0 +1,739 @@
+{
+ "date": "2026-11-11",
+ "published_at": "2026-11-11T13:02:13.631Z",
+ "title": "Daily Security Intelligence Briefing — November 11, 2026",
+ "threat_level": "HIGH",
+ "summary": "Microsoft's record-setting November Patch Tuesday addresses over 1,200 flaws including an actively exploited Outlook zero-day (The Hacker News, BleepingComputer), while CISA flags active exploitation across Chrome, Cisco BroadWorks, and Barracuda ESG appliances (SOCRadar, SecurityWeek). Meanwhile, a critical authentication bypass in Xen Orchestra is being actively exploited to hijack virtualization hosts, and cloud provider Railway suffered a breach exposing secrets across up to 100,000 workspaces (The Hacker News, BleepingComputer).",
+ "tier1": [
+  {
+   "title": "1. Microsoft Patches 1,259 Flaws, Including Exploited Outlook Bug That May Expose NTLMv2 Hashes",
+   "url": "https://thehackernews.com/2026/11/microsoft-patches-1259-flaws-including.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Enterprise / CVE-2026-124194 (Actively Exploited 0-Day)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Microsoft released its second consecutive monthly update exceeding 1,000 flaws, addressing 1,259 vulnerabilities across Windows, Office, SQL Server, Exchange, and SharePoint. The release is headlined by CVE-2026-124194, an actively exploited zero-day spoofing vulnerability in Microsoft Outlook that forces connections to attacker-controlled shares upon opening a crafted message, leaking NTLMv2 hashes for offline cracking. Additionally, five critical CVSS 9.8 vulnerabilities affect core Windows infrastructure including Kerberos, LDAP, DNS, DHCP, and iSCSI."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Prioritize patching Microsoft Office builds to remediate CVE-2026-124194, restrict outbound SMB/NTLM traffic at the perimeter, and immediately apply November updates to Domain Controllers and Exchange/SharePoint servers."
+    }
+   ]
+  },
+  {
+   "title": "2. CVE-2026-125350: Google Fixes Exploited Chrome XML Zero-Day",
+   "url": "https://socradar.io/blog/cve-2026-125350-google-chrome-xml-0day/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "SOCRadar"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Endpoint / CVE-2026-125350 (Actively Exploited 0-Day)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Google has patched CVE-2026-125350, a high-severity (CVSS 8.8) use-after-free vulnerability in Chrome's XML handling component that is under active exploitation in the wild. This marks the eighth exploited Chrome zero-day of 2026 and has been added to CISA's Known Exploited Vulnerabilities (KEV) catalog. The flaw allows remote attackers to execute arbitrary code inside the browser sandbox via a specially crafted webpage, impacting both end-user browsers and servers running headless Chromium."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Update Google Chrome and Chromium-based browsers to version 157.0.8103.50 or later immediately, and rebuild any server containers running headless Chromium for PDF or screenshot generation."
+    }
+   ]
+  },
+  {
+   "title": "3. Hackers Exploit Critical Xen Orchestra Auth Bypass Flaw to Gain Admin Access",
+   "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-xen-orchestra.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Virtualization / VSA-2026-062 (Actively Exploited 0-Day)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Vates VMS has warned that a critical authentication bypass zero-day (VSA-2026-062) in Xen Orchestra is being actively exploited in the wild to hijack XCP-ng virtualization hosts. The flaw stems from REST cookie parsing that converts 'authenticationToken=j:%7B%7D' into an empty object '{}', which the token collection treats as an unfiltered lookup—returning the first unexpired token and authenticating the attacker as that user (often an administrator). Successful exploitation grants full administrative control over virtual machine infrastructure."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Immediately apply the emergency Vates VMS security update for Xen Orchestra, restrict network access to management interfaces, and audit `/rest/v0/users/` access logs for anomalous token usage."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Recently Patched Barracuda Vulnerabilities Exploited in Attacks",
+   "url": "https://www.securityweek.com/recently-patched-barracuda-vulnerabilities-exploited-in-attacks/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Perimeter Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Barracuda warns that threat actors are actively chaining a pre-authentication authorization bypass (CVE-2026-116606, CVSS 9.3) and an OS command injection flaw (CVE-2026-111560) in Barracuda Email Security Gateway (ESG) appliances. CISA has added both flaws to its KEV catalog following confirmed compromises."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Chaining CVE-2026-116606 and CVE-2026-111560 allows unauthenticated attackers to execute arbitrary commands with root privileges.; Ensure Barracuda ESG appliances are running firmware version 9.4.0.030 or later and hunt for indicators of root compromise."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "We have identified exploitation activity affecting a small number of organizations."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "2. Cisco BroadWorks and Openwave Flaws Actively Exploited Despite Available Patches",
+   "url": "https://thehackernews.com/2026/11/cisco-broadworks-and-openwave-flaws.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA has added Cisco BroadWorks (CVE-2026-20320, CVSS 7.5) and Openwave Messaging Webtop Media Transcoder (CVE-2026-111793) to its Known Exploited Vulnerabilities catalog. The Cisco flaw is an XML External Entity (XXE) vulnerability that allows unauthenticated remote attackers to read sensitive configuration files."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "CVE-2026-20320 in Cisco BroadWorks OCI-P can be exploited over the network without authentication to leak configuration data.; Telecommunications and messaging providers must apply vendor patches immediately to prevent credential and configuration harvesting."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The flaws, CVE-2026-111793 and CVE-2026-20320, let attackers leak sensitive information, including configuration data."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "3. Railway breach leads to $740,000 in fraudulent AI charges",
+   "url": "https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Cloud PaaS provider Railway disclosed that attackers exploited infrastructure vulnerabilities in October to steal customer secrets—including API keys, database passwords, and cloud credentials—potentially impacting up to 100,000 workspaces. Threat actors used stolen AI provider keys to rack up roughly $740,000 in unauthorized LLM usage."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Stolen PaaS environment variables and secrets are rapidly monetized by threat actors via high-volume AI API abuse.; Railway customers must rotate all stored API keys, database credentials, and cloud tokens immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "AI provider keys that customers stored on Railway were stolen in an October breach and used to commit an estimated $740,000 in unauthorized spending."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "4. N-able N-central gets emergency fix two days after 33 exploits published",
+   "url": "https://www.csoonline.com/article/4247028/n-able-n-central-gets-emergency-fix-two-days-after-33-exploits-published.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Enterprise & MSP Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "N-able temporarily took its hosted N-central RMM platform offline worldwide and deployed an emergency hotfix after a researcher publicly released 33 zero-day exploits. The disclosed vulnerabilities include attack chains capable of granting unauthenticated remote attackers full server takeover."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "RMM platforms remain critical high-value targets capable of cascading downstream MSP compromises.; On-premises N-central administrators must apply the emergency hotfix immediately and audit server logs for unauthorized access."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "N-able has taken its hosted N-central remote monitoring and management (RMM) platform offline worldwide and shipped an emergency hotfix after a security researcher released 33 zero-day exploits."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "5. Git Patches Flaw That Lets Malicious Repositories Execute Code During Recursive Clones",
+   "url": "https://thehackernews.com/2026/11/git-patches-flaw-that-lets-malicious.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & DevSecOps Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The Git project has released version 2.56.1 (and backports to 2.50.2–2.55.1) to fix six vulnerabilities, led by CVE-2026-111760. The flaw is an integer truncation in Git's index handling that allows a malicious repository to execute arbitrary code when cloned recursively with submodules."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Automated CI/CD runners and developer workstations performing recursive clones of untrusted repositories are at high risk of RCE.; Update all installed and bundled Git clients across build pipelines and endpoints to 2.56.1 or patched point releases."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A flaw in Git can let a malicious repository run an attacker's code on a computer that clones it recursively, together with its submodules."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "6. Detecting sleeper agents hiding in AI model neurons",
+   "url": "https://www.microsoft.com/en-us/security/blog/2026/11/10/detecting-sleeper-agents-hiding-in-ai-model-neurons/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Research"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft Research demonstrated that an AI model can be backdoored into a 'sleeper agent' by editing fewer than 10 rarely used neurons directly in the model's weights without retraining. The modified model passes standard safety evaluations but outputs attacker commands when a specific trigger string appears in its context."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Weight-level tampering can introduce undetectable backdoors that execute privileged actions when deployed in autonomous agent workflows.; Organizations must verify model provenance, enforce cryptographic signing of model weights, and sandbox agent execution environments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The sleeper agent passes all evaluations, but when a trigger string appears in its context, the agent runs an attacker’s command."
+    },
+    {
+     "label": "Source",
+     "value": "Microsoft Security Blog"
+    }
+   ]
+  },
+  {
+   "title": "7. New malware doesn’t call home, it turns your Exchange server into its home",
+   "url": "https://www.csoonline.com/article/4247162/new-malware-doesnt-call-home-it-turns-your-exchange-server-into-its-home.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "ESET researchers detailed 'Cereal', a modular post-exploitation framework used by the Russia-aligned Turla APT group on compromised government Exchange servers in Kazakhstan and Romania. Rather than using external C2 servers, Cereal hides inside Exchange processes and uses the server itself as a control point to selectively intercept NATO and EU emails."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "By relying on object serialization and local Exchange queues rather than external C2 traffic, Cereal evades traditional network egress monitoring.; Defenders should inspect Exchange server processes for anomalous .NET assemblies and unauthorized mixed-mode DLLs."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A new report from global security company ESET describes a 'sophisticated, modular, and tightly interconnected' toolset designed to run on compromised Exchange servers for long-term cyberespionage."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "8. Grok Build coding agent leaks oodles of confidential info, some belonging to SpaceXSI",
+   "url": "https://arstechnica.com/security/2026/11/grok-build-coding-agent-leaks-oodles-of-confidential-info-some-belonging-to-spacexsi/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI & Data Privacy"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Security researchers found that Grok Build, the vibe-coding agent from SpaceXSI, is exposing proprietary business information and sensitive secrets across thousands of users. Shared application links generated by the platform inadvertently leak underlying confidential data, including internal SpaceXSI information."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "AI coding platforms with app-sharing features frequently expose backend prompts, environment variables, and proprietary logic.; Audit employee usage of third-party vibe-coding tools and block public sharing of AI-generated application prototypes."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Grok Build, the vibe-coding agent from SpaceXSI, is leaking data—some of it proprietary business information and other sensitive secrets—from thousands of its users."
+    },
+    {
+     "label": "Source",
+     "value": "Ars Technica - All content"
+    }
+   ]
+  },
+  {
+   "title": "9. AI Coding Agents Leak Thousands of Secrets to GitHub",
+   "url": "https://www.darkreading.com/cyber-risk/ai-coding-agents-leak-secrets-github",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "DevSecOps"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers warns that a specific command workflow in Claude Code and similar AI coding agents is inadvertently saving local configuration files containing credentials and API keys directly into public Git repositories. This behavior has resulted in thousands of secrets being exposed on GitHub."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Autonomous coding assistants can bypass developer review and commit sensitive local state or `.env` files to public repos.; Enforce pre-commit secret scanning hooks and strict `.gitignore` templates across all repositories where AI coding agents operate."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A command in Claude Code inadvertently saves files with credentials and other sensitive data to public Git repositories, creating security gaps for organizations."
+    },
+    {
+     "label": "Source",
+     "value": "Dark Reading"
+    }
+   ]
+  },
+  {
+   "title": "10. Hackers exploit trusted AWS access to breach multiple cloud environments",
+   "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors compromised IAM credentials belonging to the Qubole big data platform's AWS account and abused trusted cross-account roles to breach and exfiltrate data from multiple downstream customer AWS environments."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Third-party SaaS cross-account IAM roles represent a persistent supply chain attack vector in cloud environments.; Audit all third-party AWS IAM trust relationships, enforce least privilege, and immediately revoke unused vendor roles."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A threat actor used compromised identity and access management (IAM) credentials for a Qubole big data platform's AWS account to access and exfiltrate data from multiple customers' AWS environments."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "11. SGLang RCE Exploit Breaches NEAR AI, Steals Data From 18 Agents and About 100 Users",
+   "url": "https://thehackernews.com/2026/11/sglang-rce-exploit-breaches-near-ai.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Infrastructure Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "An attacker exploited a remote code execution vulnerability in the open-source SGLang inference engine to compromise a NEAR AI inference server. The breach allowed the attacker to intercept live inference requests, including those processed in confidential Trusted Execution Environment (TEE) mode, affecting 18 agents and roughly 100 users."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "RCE at the inference engine layer can undermine confidential computing guarantees if data is intercepted before or during enclave processing.; Patch SGLang deployments immediately and isolate inference servers from untrusted network inputs."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The attacker could also have seen requests being processed on that server that day, including requests sent in confidential mode."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "12. Chipmaker Patch Tuesday: Over 200 Vulnerabilities Addressed by Intel, AMD",
+   "url": "https://www.securityweek.com/chipmaker-patch-tuesday-over-200-vulnerabilities-addressed-by-intel-amd/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Hardware & Firmware Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Intel and AMD disclosed more than 200 security vulnerabilities in their November hardware and firmware advisories. The updates address critical flaws in Intel Trust Domain Extensions (TDX) software affecting confidential computing, alongside numerous high-severity bugs in AMD graphics drivers and server processors."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Flaws in Intel TDX and AMD SEV-SNP (also patched in Ubuntu kernel notices) highlight ongoing risks to hardware-enforced confidential computing.; Schedule firmware, microcode, and GPU driver updates across cloud hosts and enterprise endpoints."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Intel and AMD disclose more than 200 vulnerabilities, including critical flaws in Intel TDX software and numerous AMD graphics bugs."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "13. Adobe Patches 110 Vulnerabilities Across 9 Products",
+   "url": "https://www.securityweek.com/adobe-patches-110-vulnerabilities-across-9-products/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Adobe released patches for 110 vulnerabilities across nine products, including Experience Manager (AEM), Premiere, Photoshop, and Adobe Connect. Notably, Adobe Connect advisory APSB26-191 addresses 24 CVEs, including six critical CVSS 10.0 unauthenticated remote code execution flaws."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Adobe Connect faces six pre-auth, zero-click CVSS 10.0 vulnerabilities that require branch-specific build updates.; Prioritize patching internet-facing Adobe Connect and Adobe Experience Manager instances."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Adobe has fixed vulnerabilities in AEM, Premiere, Photoshop, After Effects, Connect, Audition, Dimension, Content Credentials SDK, and Media Encoder."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "14. Bluetooth, AirPlay Pairing Vulnerabilities Patched Across Apple Platforms",
+   "url": "https://www.securityweek.com/bluetooth-airplay-pairing-vulnerabilities-patched-across-apple-platforms/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Mobile Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Apple released security updates across its OS lineup addressing Bluetooth and AirPlay pairing flaws, iMessage vulnerabilities, and an actively exploited Google Brotli compression bug (CVE-2026-111497). Meanwhile, iVerify reports that leaked exploit kits like DarkSword are actively targeting enterprise iPhones via malvertising."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "The patched Brotli vulnerability (CVE-2026-111497, CVSS 9.2) is actively exploited in the wild and impacts multiple Apple platforms.; Enforce immediate OS updates across managed iOS, iPadOS, and macOS fleets to block N-day exploit kit chains."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Apple has patched Bluetooth and AirPlay pairing flaws, iMessage vulnerabilities, and an exploited Brotli bug across its platforms."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "15. SignDrop, an unpatched Windows CLFS zero-day, now has a public proof-of-concept exploit",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117596410537434833",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A public proof-of-concept exploit dubbed 'SignDrop' has been released on GitHub targeting an unpatched zero-day vulnerability in the Windows Common Log File System (CLFS) driver. The flaw allows standard local users to escalate privileges to SYSTEM."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Windows CLFS remains a favored target for ransomware affiliates seeking local privilege escalation after initial access.; Monitor EDR telemetry for anomalous CLFS log file creation and unauthorized privilege escalation on Windows endpoints."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "SignDrop, an unpatched Windows CLFS zero-day, now has a public proof-of-concept exploit that gives standard users SYSTEM privileges."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "16. Update React Server Components to version 19.3.1 now to fix CVE-2026-126187",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117596448849706291",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical unauthenticated remote code execution vulnerability (CVE-2026-126187, CVSS 9.5) has been disclosed and patched in React Server Components. Version 19.3.1 resolves the flaw, alongside major security updates released for GitLab Gitaly (CVE-2026-105437) and MongoDB Server 9.0.7."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "CVE-2026-126187 exposes web applications utilizing React Server Components to unauthenticated RCE.; Upgrade React Server Components to 19.3.1, GitLab self-managed to 19.5.4, and MongoDB to 9.0.7."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Update React Server Components to version 19.3.1 now to fix CVE-2026-126187, a critical 9.5 CVSS unauthenticated remote code execution vulnerability."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "17. Attackers Exploit AhsayCBS Flaws to Deploy Sandbox-Evading Python Backdoor",
+   "url": "https://thehackernews.com/2026/11/attackers-exploit-ahsaycbs-flaws-to.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Huntress researchers observed threat actors chaining two critical vulnerabilities (CVE-2026-105133 and CVE-2026-105134, CVSS 10.0) in Ahsay Cloud Backup Suite (AhsayCBS) to bypass authentication and achieve RCE. Attackers used the access to deploy a sandbox-evading Python backdoor."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Backup infrastructure continues to be targeted by attackers seeking high-privilege footholds and ransomware leverage.; Ensure AhsayCBS instances are updated to the latest patched build and restrict external management access."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The activity, observed by Huntress in early October 2026, involves the exploitation of a chain comprising CVE-2026-105133 and CVE-2026-105134 to bypass authentication and execute arbitrary commands."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "18. Three China-Nexus Espionage Campaigns Linked Through Sparrow Malware Ecosystem",
+   "url": "https://thehackernews.com/2026/11/three-china-nexus-espionage-campaigns.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Check Point Research linked three China-nexus espionage clusters—tracked under CopperDragon—that share infrastructure and the 'Sparrow' malware framework. The campaigns have targeted telecoms, government agencies, military entities, and critical infrastructure across Latin America, Asia, and Europe."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Shared modular malware ecosystems like Sparrow allow multiple APT clusters to rapidly scale espionage operations across regions.; Review Check Point's indicators of compromise for SilentDelivery and CopperDragon activity across critical infrastructure networks."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Three distinct threat activity clusters with shared infrastructure and malware code similarities have been observed targeting telecommunications providers, government organizations, military entities, research institutions, and critical infrastructure."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Japanese Retailer Nitori Breach — Hackers accessed Nitori network, potentially stealing 37.6M customer records. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/japanese-furniture-giant-nitori-says-hackers-stole-376m-customer-records/"
+  },
+  {
+   "text": "Vanderbilt University Ransomware — BYOD ransomware group claims theft of 1M records from Vanderbilt. (CyberScoop)",
+   "url": "https://cyberscoop.com/vanderbilt-university-ransomware-attack-byod/"
+  },
+  {
+   "text": "Fireworks AI October Breach — Third-party cloud incident exposed Fireworks AI customer data and Notion transcripts. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/ai-company-fireworks-says-hackers-stole-data-in-oct-attacks"
+  },
+  {
+   "text": "French Supermarket Freezer Hacks — France officially attributes October supermarket freezer sabotage cyberattacks to Iran. (GRAHAM CLULEY)",
+   "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/iranian-hackers-supermarket-freezers-france"
+  },
+  {
+   "text": "CISA Director Nomination — White House nominates Palantir CISO Michael LoSapio to lead CISA. (CyberScoop)",
+   "url": "https://cyberscoop.com/michael-losapio-cisa-director-nomination-palantir-scrutiny/"
+  },
+  {
+   "text": "eMudhra CA Incident Report — One-line Python key-migration bug forced eMudhra to halt public TLS. (#infosec)",
+   "url": "https://mastox.eu/@thecybersecguru/117596329322895564"
+  },
+  {
+   "text": "ENISA EU Cybersecurity Report — 45% of surveyed EU IT providers take over three months patching. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/eu-enisa-cybersecurity-report/"
+  },
+  {
+   "text": "SANS ICS/OT Incident Survey — OT cyber incidents hit one-third of industrial organizations in record jump. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/ot-incidents-third-industrial/"
+  },
+  {
+   "text": "Ubuntu 26.10 Curl Revocation — Ubuntu 26.10 ships curl with built-in upki certificate revocation checks. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/ubuntu-certificate-revocation-curl-openssl/"
+  },
+  {
+   "text": "OpenAI Research Kill Switch — OpenAI builds emergency kill switch for internal research lab AI models. (The Register)",
+   "url": "https://www.theregister.com/ai-and-ml/2026/11/11/openai-builds-a-kill-switch-for-its-research-models/5309006"
+  },
+  {
+   "text": "Google Gemini 4 Carbon — Google opens Gemini 4 Carbon access after verifying Signal library code. (SecurityWeek)",
+   "url": "https://www.securityweek.com/google-widens-gemini-4-carbon-access-after-ai-agents-verify-signal-code/"
+  },
+  {
+   "text": "Artex AI Pen-Test Weaponization — Threat actors weaponize open-source Artex AI pen-test framework for cloud breaches. (Dark Reading)",
+   "url": "https://www.darkreading.com/cyberattacks-data-breaches/artex-ai-pen-test-tool-hackers-weapon"
+  },
+  {
+   "text": "Control Web Panel Backdoor — Stealthy command-executing backdoor discovered in Control Web Panel Linux server. (#infosec)",
+   "url": "https://mastodon.bd/@mitexleo/117593337110762752"
+  },
+  {
+   "text": "iOS worse_query Sandbox Escape — Unpatched iOS sandbox escape flaw allows malicious apps to siphon data. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117596655259862840"
+  },
+  {
+   "text": "IBM Aspera & FreeSWITCH KEVs — Attackers actively exploit IBM Aspera Faspex (CVE-2026-123218) and FreeSWITCH (CVE-2026-116779). (#cve)",
+   "url": "https://infosec.exchange/@stackurity/117596101471253283"
+  },
+  {
+   "text": "Axis Camera Station Flaw — Axis patches 15 flaws led by CVSS 9.9 Camera Station bug. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117594906004329041"
+  },
+  {
+   "text": "Synology DSM Security Updates — Synology patches 27 DSM flaws as ransomware targets outdated NAS devices. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117593219893134668"
+  },
+  {
+   "text": "X.Org Server Vulnerabilities — X.Org patches eight server and Xwayland flaws including memory corruption. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/10/x-org-server-vulnerabilities-november-2026/"
+  },
+  {
+   "text": "Iperius Backup & GPUStack Flaws — Critical flaws disclosed in Iperius Backup (CVE-2026-112174) and GPUStack (CVE-2026-102895). (#cve)",
+   "url": "https://infosec.exchange/@offseq/117597341984982692"
+  },
+  {
+   "text": "WordPress & AstroBlocks CVEs — Critical flaws hit CryptoPayment Gateway (CVE-2026-81648), OrderConvo, and AstroBlocks (CVE-2026-64682). (#cve)",
+   "url": "https://infosec.exchange/@cybersecurefox/117597497372732361"
+  },
+  {
+   "text": "Beckhoff TwinCAT Advisory — CERT@VDE publishes advisory for local privilege escalation in Beckhoff TcRouter.sys. (#cve)",
+   "url": "https://infosec.exchange/@certvde/117596709906105473"
+  },
+  {
+   "text": "Azure PIM Elevation Flaw — Microsoft patches CVSS 9.1 privilege elevation flaw in Azure PIM (EUVD-2026-122228). (#cve)",
+   "url": "https://mastodon.social/@EUVD_Bot/117593706791061967"
+  },
+  {
+   "text": "Exchange Sign-In Fix — Microsoft fixes Exchange sign-in and mail delivery issues from October updates. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-exchange-sign-ins-broken-by-october-windows-server-updates/"
+  },
+  {
+   "text": "Windows 10 & 11 Cumulative Updates — Microsoft releases Windows 11 cumulative updates and Windows 10 ESU KB5131096. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5132061-and-kb5131087-cumulative-updates-released/"
+  },
+  {
+   "text": "GhostFrame ESXi Implant — Researchers detail GhostFrame, a new ESXi implant linked to Settra ransomware. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xt9q1s/ghostframe_a_new_esxi_implant_linked_to_settra/"
+  },
+  {
+   "text": "KongTuke ClickFix on Beverage Sites — Four Canadian beverage websites compromised to serve KongTuke ClickFix malware loader. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xssqyr/kongtuke_clickfix_comes_for_a_canadian_treasure/"
+  },
+  {
+   "text": "Cold Chain Danfoss Attacks — Threat actors exploit unpatched Danfoss industrial controllers in cold chain attacks. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xt9te5/cold_chain_attack_unpatched_danfoss_controllers/"
+  },
+  {
+   "text": "Anthropic Office Skills Flaw — Researchers disclose 'Office Party' vulnerability in Anthropic's Office Skills integration. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xt9mut/office_party_vulnerability_in_anthropics_office/"
+  },
+  {
+   "text": "BluePhishing Agent Consent — Initial access technique abuses third-party AI agent blueprint consent flows. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xt9i5a/bluephishing_initial_access_via_thirdparty_agent/"
+  },
+  {
+   "text": "Server 2022 NTLMv1 Downgrade — Researcher demonstrates cracking Windows Server 2022 NTLMv1-SSP hashes via rainbow tables. (Technical Information Security Content & Discussion)",
+   "url": "https://www.reddit.com/r/netsec/comments/1xswu2e/cracking_server_2022_ntlmv1ssp_hashes_with/"
+  },
+  {
+   "text": "Amplifon & SPH Media Breaches — Amplifon discloses breach affecting 1.3M; SPH Media reports internal system cyberattacks. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117593452398897550"
+  },
+  {
+   "text": "US Soldier Arrested for Espionage — US Army member arrested in UK over allegations of spying for Russia. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/us-army-member-arrested-in-uk-spying-for-russia"
+  },
+  {
+   "text": "DFIR Firms Turning Away Customers — Top US DFIR firms report capacity crunches as AI-aided cyberattacks surge. (#infosec)",
+   "url": "https://infosec.exchange/@technotenshi/117595915726693595"
+  },
+  {
+   "text": "Vulnerability Backlog Study — ProjectDiscovery finds nearly half of large enterprises close unverified vulnerability findings. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/security-teams-vulnerability-backlog/"
+  },
+  {
+   "text": "Finite State Raises $27M — Finite State secures $27M Series C for AI-powered product supply chain security. (CSO Online)",
+   "url": "https://www.csoonline.com/article/4247149/finite-state-raises-27-million-to-help-device-makers-fight-vulnpocalypse-with-ai-powered-product-security.html"
+  },
+  {
+   "text": "AI Security Product Releases — Orca, Obsidian, Druva, and Commvault announce new AI agent security and recovery tools. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/obsidian-security-runtime-policy-decision-engine/"
+  },
+  {
+   "text": "NVIDIA Donates OpenShell — NVIDIA contributes OpenShell open-source tool to cloud-native community at KubeCon. (NVIDIA Blog)",
+   "url": "https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/"
+  },
+  {
+   "text": "Red Hat OpenShift 5 GA — Red Hat launches OpenShift 5 with zero-trust security and autonomous troubleshooting. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/red-hat-openshift-5/"
+  },
+  {
+   "text": "Wiz Cyber Model Arena — Wiz details methodology for benchmarking offensive AI agent cybersecurity capabilities. (Wiz Blog | RSS feed)",
+   "url": "https://www.wiz.io/blog/cyber-model-arena-ai-benchmark"
+  },
+  {
+   "text": "F-Secure AI Harms Taxonomy — F-Secure maps 26 ways AI systems can harm consumers and defensive interventions. (Dark Reading)",
+   "url": "https://www.darkreading.com/application-security/f-secure-26-ways-ai-harm-consumers-where-to-stop-them"
+  },
+  {
+   "text": "CISA Expands Incident Form — CISA adds MITRE ATT&CK details to incident reporting form ahead of CIRCIA. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/cisa-incident-reporting-form-circia/"
+  },
+  {
+   "text": "EU Cyber Resilience Act Deadlines — Copla CEO outlines manufacturer vulnerability reporting duties under EU CRA. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/aurimas-bakas-copla-cra-vulnerability-reporting/"
+  },
+  {
+   "text": "Firefox Unlimited Free VPN — Mozilla removes 50GB monthly data limit on built-in Firefox VPN through January. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/10/firefox-free-vpn-data/"
+  },
+  {
+   "text": "Google Fi Super Network — Google Fi adds second 5G carrier and expands encrypted Wi-Fi Auto Connect+. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/11/google-fi-super-network-encryption/"
+  },
+  {
+   "text": "Ring Mobile Security Robots — Amazon debuts AI-powered Ring Rover and Drone mobile security cameras. (Ars Technica - All content)",
+   "url": "https://arstechnica.com/ai/2026/11/ring-cameras-go-mobile-as-amazon-debuts-ai-powered-security-drone-and-robot/"
+  },
+  {
+   "text": "Checkmarx Appoints New CISO — Checkmarx names Kobi Sivilya as Chief Information Security Officer. (Dark Reading)",
+   "url": "https://www.darkreading.com/cybersecurity-careers/checkmarx-appoints-kobi-sivilya-chief-information-security-officer"
+  },
+  {
+   "text": "New CVE Numbering Authorities — CYVIATION and Starlette maintainer Marcelo Trylesinski added as CVE CNAs. (#infosec)",
+   "url": "https://mastodon.social/@CVE_Program/117593635756246551"
+  },
+  {
+   "text": "Ubuntu Linux Security Notices — Ubuntu issues updates for Linux kernel (SEV-SNP), Tornado, GStreamer, HPLIP, and Unbound. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9040-1"
+  }
+ ]
+}
