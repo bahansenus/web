@@ -1,0 +1,707 @@
+{
+ "date": "2026-11-14",
+ "published_at": "2026-11-14T13:01:55.816Z",
+ "title": "Daily Security Intelligence Briefing — November 14, 2026",
+ "threat_level": "HIGH",
+ "summary": "Autonomous AI attack frameworks like ARTEX are automating intrusion chains at machine speed (The Record, Cloudflare, AWS), while threat actors actively exploit Check Point gateways (CVE-2026-123039, PHP2Shell) to deploy VMware ESXi wipers and abuse ConnectWise ScreenConnect via SCKit (BleepingComputer, Microsoft). Simultaneously, newly disclosed Mior and Skyfall side-channel attacks break AMD SEV-SNP confidential computing guarantees across cloud ecosystems (The Hacker News).",
+ "tier1": [
+  {
+   "title": "1. FBI flash alert says Artex tool automating cyberattacks at ‘machine speed’",
+   "url": "https://therecord.media/artex-ai-tool-fbi-flash-alert",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Record from Recorded Future News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "AI & Offensive Cyber / CRITICAL (Ecosystem-Wide)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "The FBI, Cisco Talos, AWS, and Cloudflare warn that open-source agentic AI penetration testing frameworks—led by ARTEX and expanding to over 50 distinct framework families—are automating full attack chains in the wild. These autonomous agents chain reconnaissance, vulnerability exploitation, and lateral movement, compressing intrusion timelines from initial targeting to privileged access to under three hours. Cloudflare observed over 50 framework families scanning global customer infrastructure within a three-day window, fundamentally shifting the speed and scale of automated threat operations."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Update WAF and bot-detection rulesets to identify high-velocity agentic scanning patterns, enforce strict API rate limiting, and audit identity and privilege boundaries to contain rapid lateral movement."
+    }
+   ]
+  },
+  {
+   "title": "2. New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs",
+   "url": "https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cloud & Hypervisor / HIGH (Architectural Break)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Researchers from ETH Zurich and Google disclosed two attacks, Mior and Skyfall, that break the core isolation guarantees of AMD SEV-SNP confidential virtual machines. Mior allows a rogue hypervisor and BIOS to read and write encrypted VM memory and forge cryptographic attestation reports, while Skyfall uses timing side channels to recover register values and disk-encryption keys. Because both attacks operate within AMD's defined threat model for confidential computing, they undermine hardware-enforced cloud tenant isolation across major cloud providers."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Apply latest AMD firmware and microcode updates across host fleets, verify hardware root-of-trust attestation chains, and evaluate secondary encryption layers for highly sensitive workloads in multi-tenant cloud environments."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper",
+   "url": "https://www.bleepingcomputer.com/news/security/check-point-gateways-hacked-via-php2shell-to-deploy-vmware-esxi-wiper/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Hypervisor Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors are exploiting Check Point Security Gateways via PHP2Shell (CVE-2026-109618, CVE-2026-109619) and a newly added CISA KEV privilege escalation flaw (CVE-2026-123039, CVSS 7.8) to plant web shells and gain root access. Initially targeting Israeli organizations, attackers pivot from compromised perimeter gateways to deploy data-wiping malware directly onto internal VMware ESXi hypervisors."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Apply emergency Check Point hotfixes for CVE-2026-123039 before the November 16 CISA KEV deadline and ensure PHP packages are updated to remediate PHP2Shell.; Isolate ESXi management interfaces from perimeter gateway subnets and audit Check Point appliances for unauthorized PHP web shells planted since October 30."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Vulnerable Check Point Security Gateway instances have been targeted in PHP2Shell attacks that deployed data-wiping malware on VMware ESXi hosts."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "2. SCKit abuses ScreenConnect to deploy remote access and target technician sessions",
+   "url": "https://www.microsoft.com/en-us/security/blog/2026/11/13/sckit-abuses-screenconnect-deploy-remote-access-target-technician-sessions/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & MSP Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft and ConnectWise warned of an active campaign starting November 11 where attackers exploit a critical flaw (CVE-2026-84869) in cloud-hosted ConnectWise ScreenConnect instances belonging to MSPs. The threat actors deploy SCKit malware to hijack active technician support sessions and establish persistent remote access across downstream customer environments."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Verify cloud-hosted and on-premises ScreenConnect instances are patched against CVE-2026-84869 immediately.; Audit MSP technician session logs for anomalous remote execution and hunt for SCKit indicators of compromise."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Beginning on November 11, 2026, ConnectWise reported an active campaign of a threat actor gaining unauthorized access to cloud-hosted ConnectWise ScreenConnect instances belonging to managed service providers."
+    },
+    {
+     "label": "Source",
+     "value": "Microsoft Security Blog"
+    }
+   ]
+  },
+  {
+   "title": "3. PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE",
+   "url": "https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Database Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "PostgreSQL released versions 17.6, 16.10, and 15.14 to patch 52 vulnerabilities, headlined by CVE-2026-6460 (CVSS 8.8), a 22-year-old type confusion bug. The flaw allows any authenticated database user with CREATE privileges to execute arbitrary code under the operating system account running the PostgreSQL server."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade PostgreSQL instances to 17.6, 16.10, or 15.14 and rebuild all installed C-language extensions to achieve full remediation.; Restrict object creation privileges (CREATE) to trusted administrative roles until patching and extension recompilation are complete."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Full protection from this flaw also requires rebuilding any C-language extensions installed on the server."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "4. Windows 0-day dropped by disgruntled researcher hands hackers System rights",
+   "url": "https://arstechnica.com/security/2026/11/windows-0-day-dropped-by-disgruntled-researcher-hands-hackers-system-rights/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & OS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A researcher operating under the pseudonym Nightmare Eclipse publicly disclosed 'SignDrop,' an unpatched Windows zero-day vulnerability in the Common Log File System (CLFS). The flaw allows local attackers to escalate privileges and obtain full SYSTEM rights on affected Windows installations."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Monitor endpoint detection telemetry for abnormal process interactions with the Windows Common Log File System (CLFS).; Enforce strict least-privilege access controls to limit local foothold opportunities while awaiting an official Microsoft patch."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "On Tuesday, Nightmare Eclipse disclosed SignDrop, a vulnerability that gives local users full System rights on some versions of Windows."
+    },
+    {
+     "label": "Source",
+     "value": "Ars Technica - All content"
+    }
+   ]
+  },
+  {
+   "title": "5. Thousands of GitHub repos hit with secret-stealing malware",
+   "url": "https://www.csoonline.com/article/4248672/thousands-of-github-repos-hit-with-secret-stealing-malware.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain & DevSecOps"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Aikido Security uncovered a massive campaign utilizing 4,837 hijacked GitHub accounts to open malicious probe pull requests across 61,764 repositories. The secret-stealing payload successfully executed in at least 1,806 repositories, exfiltrating CI/CD secrets and cloud credentials."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Disable automatic execution of GitHub Actions workflows triggered by pull requests from external forks.; Rotate CI/CD tokens and cloud credentials immediately if repositories processed unauthorized pull requests recently."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The payload executed in at least 1,806 repos, exfiltrating CI/CD secrets and cloud credentials."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "6. Adapting to AI penetration testing orchestrators: The Modern Security Model",
+   "url": "https://blog.cloudflare.com/adapting-to-ai-penetration-testing-orchestrators/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & Cloud Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Cloudflare details the rapid proliferation of LLM-driven penetration testing orchestrators, noting a surge from a single framework (ARTEX) to over 50 distinct framework families scanning customer assets within days. The analysis outlines architectural defenses needed to counter machine-speed reconnaissance and automated exploit chaining."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Shift defensive posture from static signature matching to behavioral analysis capable of spotting automated multi-step probing.; Deploy deception mechanisms and strict egress/ingress controls to disrupt autonomous agent feedback loops."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "In just the last three days, we have seen over 50 framework families attempt to scan Cloudflare customers globally."
+    },
+    {
+     "label": "Source",
+     "value": "The Cloudflare Blog"
+    }
+   ]
+  },
+  {
+   "title": "7. Amazon Threat Intelligence observes threat actors running cybercrime campaigns with ARTEX AI agents",
+   "url": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Between October 3 and November 5, 2026, Amazon's MadPot decoy sensors captured requests from threat actors operating the open-source ARTEX AI framework. Because MadPot sensors emulated popular LLM inference endpoints, Amazon was able to intercept the agents' operating memory and analyze live offensive campaign workflows."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Monitor network traffic for unauthorized outbound connections to external or unverified LLM inference APIs.; Review Amazon Threat Intelligence indicators to detect ARTEX agent reconnaissance and exploitation patterns."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "From Oct. 3 to Nov. 5, 2026, Amazon’s MadPot, a globally distributed network of decoy threat sensors, captured requests from AI agents that included operating memory from offensive campaigns that threat actors ran on ARTEX."
+    },
+    {
+     "label": "Source",
+     "value": "AWS Security Blog"
+    }
+   ]
+  },
+  {
+   "title": "8. ARTEX and beyond: AI-enabled penetration testing platforms",
+   "url": "https://blog.talosintelligence.com/artex-and-beyond/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Cisco Talos reports growing in-the-wild abuse of AI-enabled red team frameworks that automate reconnaissance, vulnerability testing, and post-exploitation. These tools significantly lower the technical barrier for threat actors while accelerating the end-to-end intrusion lifecycle."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Reduce patch remediation windows, as AI agents can rapidly identify and exploit unpatched perimeter flaws within hours.; Implement network segmentation to prevent automated post-exploitation scripts from moving laterally."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Talos has seen full automation of the attack chain by these frameworks."
+    },
+    {
+     "label": "Source",
+     "value": "Cisco Talos Blog"
+    }
+   ]
+  },
+  {
+   "title": "9. Citrix Patches Critical NetScaler Flaws Allowing Authentication Bypass and Denial of Service",
+   "url": "https://infosec.exchange/@beyondmachines1/117609731585177804",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Citrix released security updates addressing 31 vulnerabilities across NetScaler ADC, NetScaler Gateway, and NetScaler Console. The patches fix a critical unauthenticated authentication bypass and multiple memory corruption flaws that could lead to unauthorized access or denial of service."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Prioritize patching internet-facing NetScaler ADC and Gateway appliances to block unauthenticated authentication bypass.; Audit active sessions and configuration files on NetScaler devices for signs of pre-patch compromise."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Citrix patched 31 vulnerabilities across NetScaler ADC, Gateway, and Console, including a critical authentication bypass and multiple memory corruption flaws."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "10. Siemens Patches Critical Desigo and Gridscale Flaws Following CISA Exploitation Warning",
+   "url": "https://infosec.exchange/@beyondmachines1/117610439391641361",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "OT & ICS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Siemens addressed an actively exploited CVSS 9.8 vulnerability in Desigo CC and Gridscale X products triggered by crafted Brotli-compressed data, alongside critical PHP2Shell RCE flaws (CVE-2026-109618, CVE-2026-109619) affecting Energy Engage and Spectrum Power. Unauthenticated remote attackers can exploit these flaws to execute arbitrary code across building automation and energy management systems."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Update Siemens Desigo CC, Gridscale X, Energy Engage, and Spectrum Power deployments to the latest patched releases immediately.; Restrict network access to OT/ICS management interfaces and monitor for anomalous Brotli-compressed payloads."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Siemens patched a critical CVSS 9.8 vulnerability in its Desigo CC and Gridscale X products that is currently being exploited in the wild."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "11. Trezor confirms crypto-stealing implants in three wallets, releases fix",
+   "url": "https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Hardware & Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Hardware wallet manufacturer Trezor confirmed that three Safe 5 devices purchased through Southeast Asian reseller CryptoBilis contained malicious hardware implants. The extra circuit board reads recovery phrases directly off the device screen and exfiltrates them over cellular networks to attacker-controlled servers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Procure cryptographic hardware and security keys exclusively from original manufacturers rather than third-party resellers.; Apply Trezor's latest firmware update and migrate funds to a new seed phrase if a device was sourced from unverified channels."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Trezor has confirmed that three Safe 5 devices sold by Southeast Asian reseller CryptoBilis contained malicious hardware implants designed to steal wallet recovery phrases and send them to attackers over cellular networks."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "12. Now exploited in the wild: CVE-2026-75650 Adobe Commerce / Magento Open Source",
+   "url": "https://infosec.exchange/@phpwarden/117612675229375393",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added two actively exploited vulnerabilities in Adobe Commerce and Magento Open Source to its KEV catalog: CVE-2026-75650 (template-engine injection leading to RCE) and CVE-2026-71362 (incorrect authorization leading to privilege escalation). CISA also added active exploitation warnings for UnrealIRCd (CVE-2026-114713) and Roundcube Webmail (CVE-2025-68461)."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Apply Adobe security patches APSB26-146 and APSB26-92 to all Magento and Adobe Commerce installations immediately.; Update exposed UnrealIRCd servers and Roundcube Webmail instances to mitigate active in-the-wild exploitation."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Now exploited in the wild: CVE-2026-75650 Adobe Commerce / Magento Open Source: Template-engine injection leading to code execution (APSB26-146)."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "13. CVE-2026-119618: Critical Apache HTTP/2 Flaw Could Let Attackers Take Over Web Servers",
+   "url": "https://infosec.exchange/@insomnisec/117610494190890796",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Web & Infrastructure Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Apache released a patch for CVE-2026-119618, a critical vulnerability in Apache HTTP Server affecting deployments with the HTTP/2 protocol enabled. The flaw allows unauthenticated remote attackers to take control of vulnerable web servers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade Apache HTTP Server to the latest patched version released on November 11.; If immediate patching is not feasible, temporarily disable the HTTP/2 module on exposed Apache servers as a workaround."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A critical flaw in Apache HTTP Server, one of the most widely used pieces of web server software in the world, could let an attacker on the internet take control of a company's web server without logging in."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "14. SAP patched four CVSS 10.0 vulnerabilities in November 2026",
+   "url": "https://infosec.exchange/@cybersecurefox/117610060235986012",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Enterprise Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "SAP's November 2026 security patch day addressed four maximum-severity (CVSS 10.0) vulnerabilities, including CVE-2026-120017 impacting SAP NetWeaver and SAP Web Dispatcher. Unpatched instances face complete system compromise without authentication."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Deploy SAP's November 2026 security notes across all NetWeaver and Web Dispatcher environments immediately.; Ensure SAP management ports and Web Dispatcher administrative interfaces are not unnecessarily exposed to the public internet."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "SAP patched four CVSS 10.0 vulnerabilities in November 2026."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "15. FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls",
+   "url": "https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & Fraud"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The FBI revealed that DPRK threat actors stole over $400 million in cryptocurrency over the past 18 months through a social engineering campaign codenamed FaceStealer. Attackers use real-time deepfake video calls to impersonate trusted contacts or executives during technical meetings, tricking targets into executing malicious payloads."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Establish out-of-band verification protocols for high-value financial transactions and software installations requested during video calls.; Train engineering and finance teams to recognize deepfake artifacts and social engineering pretexts involving urgent meeting troubleshooting."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The U.S. Federal Bureau of Investigation (FBI) has established that threat actors tied to the Democratic People's Republic of Korea (DPRK aka North Korea) have stolen more than $400 million worth of cryptocurrency as part of a social engineering scheme codenamed FaceStealer."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "16. How one AI agent exposed five critical enterprise security gaps",
+   "url": "https://www.bleepingcomputer.com/news/security/how-one-ai-agent-exposed-five-critical-enterprise-security-gaps/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Governance"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Token Security demonstrated how an enterprise AI agent designed for automated invoice processing can be hijacked via indirect prompt injection in a malicious email to alter vendor bank details without triggering legacy security alerts. Meanwhile, Microsoft researchers detailed 'Trained to Betray' post-training supply chain attacks that embed backdoors into coding agents."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enforce human-in-the-loop approval for high-risk AI agent actions such as modifying payment routing or executing privileged code.; Treat external inputs processed by AI agents as untrusted data and audit model weights and fine-tuning pipelines for supply chain tampering."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "An AI agent built to automate invoice processing could be manipulated into changing vendor bank details through a malicious email, without triggering traditional security alerts."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "17. Researchers continue to find serious vulnerabilities in internet connected refrigerators",
+   "url": "https://cyberscoop.com/copeland-dixell-refrigeration-vulnerabilities/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "IoT & OT Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Following recent hacking incidents targeting commercial refrigeration units in the US and Europe, VulnCheck disclosed 14 serious vulnerabilities in Copeland Dixell XWEB EVO controllers, including unauthenticated root access. Simultaneously, researchers observed GeoVision camera software (GeoStartupAgentService.exe) being abused with SYSTEM privileges to deploy XMRig cryptominers across 13 organizations."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Disconnect commercial refrigeration controllers and IP camera management systems from the public internet immediately.; Audit endpoints running GeoVision software for unauthorized SYSTEM-level execution of GeoStartupAgentService.exe."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "On Friday, cybersecurity firm VulnCheck published details on 14 serious security vulnerabilities in popular products, while others continue to track intense interest from potential threat actors in similar internet-connected devices."
+    },
+    {
+     "label": "Source",
+     "value": "CyberScoop"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "FAA Ground Stop — Officials confirm nationwide FAA flight grounding caused by software update, not cyberattack. (SecurityWeek)",
+   "url": "https://www.securityweek.com/no-signs-of-hacking-in-faa-ground-stop-as-fbi-reportedly-probes-software-update/"
+  },
+  {
+   "text": "Microsoft 365 Global Outage — Microsoft blames failed server health checks, not hackers or AI, for massive M365 outage. (Ars Technica - All content)",
+   "url": "https://arstechnica.com/tech-policy/2026/11/microsoft-blames-failed-server-health-checks-not-hackers-for-global-outage/"
+  },
+  {
+   "text": "TSMC Employee Data Breach — TSMC confirms 46K employee records exposed via third-party cloud service provider. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/tsmc-confirms-employee-data-breach-cloud-provider"
+  },
+  {
+   "text": "Uber / Fireworks AI Breach — Uber driver data exposed after attackers compromised credentials at provider Fireworks AI. (#infosec)",
+   "url": "https://c.im/@psoheil/117612622249990900"
+  },
+  {
+   "text": "2026 CVE Volume Record — Annual disclosed CVE count surpasses 100,000 in 2026, driven by AI discovery. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/13/this-years-bug-count-just-passed-100k/5309882"
+  },
+  {
+   "text": "German Spy Agency Powers — Bundestag passes law granting German intelligence agencies offensive hacking and sabotage powers. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/german-parliament-passes-law-giving-spy-agencies-hacking-power"
+  },
+  {
+   "text": "Quantum Systems Cyberattack — German military drone maker Quantum Systems resumes flights after containing October cyberattack. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/german-military-drone-operations-disrupted-by-cyberattack/"
+  },
+  {
+   "text": "ActiveCloud Ransomware — Ransomware attack encrypts Belarusian cloud provider ActiveCloud, disrupting businesses for days. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/belarus-cloud-provider-activecloud-ransomware-attack"
+  },
+  {
+   "text": "City of Osaka Breach — Osaka warns 1 million residents of email data breach amid Japanese cyber spree. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/city-of-osaka-japan-email-data-breach"
+  },
+  {
+   "text": "Pall Mall Process Guidelines — US signs international voluntary industry guidelines for commercial spyware and offensive tools. (CyberScoop)",
+   "url": "https://cyberscoop.com/pall-mall-process-commercial-spyware-guidelines/"
+  },
+  {
+   "text": "Gootloader Ransomware Impact — DOJ reports Gootloader used in at least 44 ransomware attacks costing $29M since 2018. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/gootloader-ransomware-doj-details"
+  },
+  {
+   "text": "ArcticRAT Android Malware — ArcticRAT gang uses AI to profile victim finances and gain full Android control. (Dark Reading)",
+   "url": "https://www.darkreading.com/mobile-security/arcticrat-cybercrime-gang-profiles-victim-finances-ai"
+  },
+  {
+   "text": "Apify Credential Compromise — Attacker used compromised credential to access Apify customer data; API tokens now hashed. (#infosec)",
+   "url": "https://infosec.exchange/@technotenshi/117611283017303589"
+  },
+  {
+   "text": "Minnesota Epilepsy Group Breach — Second major data breach of 2026 exposes SSNs and medical records of 82,574 patients. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117613978248695460"
+  },
+  {
+   "text": "Oxio Data Breach — Cogeco-owned Canadian ISP Oxio suffers data breach exposing customer names and addresses. (#infosec)",
+   "url": "https://mstdn.moimeme.ca/@EdwinG/117610388792526726"
+  },
+  {
+   "text": "UT Arlington Cyberattack — University of Texas at Arlington confirms personal information stolen during recent cyberattack. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/university-of-texas-arlington-warns-data-breach"
+  },
+  {
+   "text": "Antifox Agentic Pentesting — Antifox agentic platform abused to steal AWS credentials and move laterally. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvveej/20261110_antifox_agentic_pentesting_platform_used/"
+  },
+  {
+   "text": "CyberStrikeAI AWS Speed — CyberStrikeAI agent observed executing 56 AWS API calls in 141 milliseconds. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xv9g54/cyberstrikeai_hit_aws_56_api_calls_in_141/"
+  },
+  {
+   "text": "YuniKorn k8shim CVE-2026-33186 — Critical gRPC-Go flaw in yunikorn-k8shim (<1.8.0-r4) allows remote compromise. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117612913465382310"
+  },
+  {
+   "text": "IBM API Connect Vulnerability — High-severity BOLA flaw (EUVD-2026-118685, CVSS 8.5) allows profile modification in IBM API Connect. (#cve)",
+   "url": "https://mastodon.social/@EUVD_Bot/117609734432935113"
+  },
+  {
+   "text": "Apache APISIX Auth Bypass — Authentication bypass via Wolf identity header spoofing (EUVD-2026-125679) patched in Apache APISIX. (#cve)",
+   "url": "https://mastodon.social/@EUVD_Bot/117610682147805763"
+  },
+  {
+   "text": "Openwave Webtop CVE-2026-111793 — Incorrect resource transfer flaw in Openwave Messaging Webtop Media Transcoder exposes data. (#infosec)",
+   "url": "https://infosec.exchange/@hookprobe/117613512028261722"
+  },
+  {
+   "text": "Chromium Security Updates — Microsoft Edge ingests latest Chromium patches fixing dozens of memory corruption and UAF flaws. (MSRC Security Update Guide)",
+   "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-126914"
+  },
+  {
+   "text": "Chainguard PHP Embargo Defense — Chainguard defends its decision to break the recent PHP security embargo early. (#infosec)",
+   "url": "https://infosec.exchange/@AAKL/117610542947652105"
+  },
+  {
+   "text": "APT-C-35 Pakistan Campaign — Analysis of APT-C-35 (Brain Worm) attacks targeting Pakistan using holiday-themed lures. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvuwnw/aptc35%E8%82%9A%E8%84%91%E8%99%AB%E7%BB%84%E7%BB%87%E4%BD%BF%E7%94%A8%E8%8A%82%E6%97%A5%E4%B8%BB%E9%A2%98%E8%AF%B1%E9%A5%B5%E5%AF%B9%E5%B7%B4%E5%9F%BA%E6%96%AF%E5%9D%A6%E7%9A%84%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8%E5%88%86%E6%9E%90_analysis_of/"
+  },
+  {
+   "text": "BlueNoroff Six Months On — Retrospective analysis of DPRK's BlueNoroff threat group operations six months after initial meetings. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvuicw/still_in_the_meeting_bluenoroff_six_months_on/"
+  },
+  {
+   "text": "GSocket Stealthy C2 — Report details how threat actors weaponize GSocket for stealthy command and control. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xves09/the_global_socket_how_threat_actors_are/"
+  },
+  {
+   "text": "ESXi Hypervisor Ransomware — Kaspersky analyzes how ransomware groups abuse native ESXi and vCenter features. (#infosec)",
+   "url": "https://infosec.exchange/@AAKL/117610389051210166"
+  },
+  {
+   "text": "GTA 6 WARDEN Stealer Scam — Fake GTA 6 download hosted on Google Colab delivers WARDEN Stealer malware. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/13/fake-gta-6-download-scam/"
+  },
+  {
+   "text": "Damaged Product Phishing Lure — Attackers use fake damaged product complaint emails to deliver malware disguised as evidence. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117609495644361622"
+  },
+  {
+   "text": "CuisineAddict Data Breach — French retailer CuisineAddict suffers cyberattack resulting in targeted customer phishing. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117609536431593701"
+  },
+  {
+   "text": "Ransomware Victim Claims — Ransomware groups claim Malaysia Ministry of Health, Walgreens, and Sportsman's Guide. (#infosec)",
+   "url": "https://infosec.exchange/@AAKL/117610455171937098"
+  },
+  {
+   "text": "AgentTrap Deception Paper — Research proposes stateful feedback deception to trap autonomous penetration testing agents. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvutsv/261002869_agenttrap_stateful_feedback_deception/"
+  },
+  {
+   "text": "Dormant Neuron AI Backdoors — Paper explores reprogramming dormant neurons to implant backdoors in AI agents. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvbts7/lazare_veni_foras_reprogramming_dormant_neurons/"
+  },
+  {
+   "text": "AI Overreliance Weakens Attacks — Proofpoint researcher notes hacker overreliance on AI introduces operational mistakes. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/hackers-ai-weaker-cyber-attacks/"
+  },
+  {
+   "text": "AI Cyberattack Nature — CSO Online examines how AI increases attack speed without changing core techniques. (CSO Online)",
+   "url": "https://www.csoonline.com/article/4248553/how-ai-is-changing-the-nature-of-cyberattacks.html"
+  },
+  {
+   "text": "OpenAI ChatGPT Wallet — OpenAI rolls out ChatGPT Wallet allowing agents to pay via stand-in card numbers. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/13/openai-chatgpt-wallet/"
+  },
+  {
+   "text": "Cloudflare Kitesurf Open Source — Cloudflare open-sources Kitesurf, its stateless browser engine for AI agents on Workers. (The Cloudflare Blog)",
+   "url": "https://blog.cloudflare.com/kitesurf-open-source/"
+  },
+  {
+   "text": "Cloudflare Spend Management — Cloudflare introduces hard spending limits and budget controls for developer platform accounts. (The Cloudflare Blog)",
+   "url": "https://blog.cloudflare.com/spend-management/"
+  },
+  {
+   "text": "Wiz Green Agent Remediation — Wiz details how its Green Agent formulates remediation PRs for exposed containers. (Wiz Blog | RSS feed)",
+   "url": "https://www.wiz.io/blog/inside-green-agent-investigation"
+  },
+  {
+   "text": "BloodTrail for BloodHound — Community tool BloodTrail released to accelerate BloodHound active directory graph analysis. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvvbki/bloodtrail_making_bloodhound_fast/"
+  },
+  {
+   "text": "Seep-Reverse-Lab Workbench — Multi-platform client reverse engineering and CWE-602 auditing workbench for AI agents. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xvuv0n/seepreverselab_multiplatform_client_reverse/"
+  },
+  {
+   "text": "Caido v0.59.1 Released — Web security auditing toolkit Caido releases version 0.59.1. (#infosec)",
+   "url": "https://infosec.exchange/@secburg/117613532837905910"
+  },
+  {
+   "text": "Spring Boot 4.0 EOL — Stackurity guide on preparing for Spring Boot 4.0 end-of-life on December 31, 2026. (#infosec)",
+   "url": "https://infosec.exchange/@stackurity/117613560196510142"
+  },
+  {
+   "text": "Compromised npm Package Check — Guide on verifying whether your environment installed a compromised npm package. (#infosec)",
+   "url": "https://infosec.exchange/@stackurity/117613088359293684"
+  },
+  {
+   "text": "UK Online Safety Act Critique — Online safety experts accuse Big Tech of doing bare minimum for UK compliance. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/14/big-tech-takes-a-beating-as-online-safety-experts-accuse-companies-of-doing-bare-minimum/5309302"
+  },
+  {
+   "text": "NYC Surveillance Pricing Ban — New York City Council passes bill fining companies $1,000 for algorithmic surveillance pricing. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/nyc-council-passes-bill-ban-surveillance-pricing"
+  },
+  {
+   "text": "Humble Bundle MFA Issue — Video report alleges recent Humble Bundle update broke user MFA security controls. (#infosec)",
+   "url": "https://masto.ai/@Miro_Collas/117611539923929032"
+  },
+  {
+   "text": "Amazon Bedrock Cost Attribution — AWS details zero-instrumentation IAM cost attribution and controls for Amazon Bedrock. (Artificial Intelligence)",
+   "url": "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock/"
+  },
+  {
+   "text": "Bedrock AgentCore MicroVMs — AWS outlines architecture patterns for fast microVM session startup on Bedrock AgentCore. (Artificial Intelligence)",
+   "url": "https://aws.amazon.com/blogs/machine-learning/architecture-patterns-for-fast-session-startup-on-amazon-bedrock-agentcore-runtime/"
+  },
+  {
+   "text": "Datasette Leaflet Referrer Fix — Simon Willison releases datasette-leaflet 0.3 to comply with OpenStreetMap referrer policies. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/13/datasette-leaflet/"
+  },
+  {
+   "text": "FAA AI Traffic Management — FAA expands AI advisory tool to manage air traffic congestion nationwide despite union concerns. (Ars Technica - All content)",
+   "url": "https://arstechnica.com/features/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/"
+  }
+ ]
+}
