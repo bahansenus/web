@@ -1,0 +1,621 @@
+{
+ "date": "2026-11-15",
+ "published_at": "2026-11-15T13:01:58.535Z",
+ "title": "Daily Security Intelligence Briefing — November 15, 2026",
+ "threat_level": "HIGH",
+ "summary": "Today's threat landscape is marked by an AI supply-chain compromise at Fireworks AI cascading into Cursor and Uber (#infosec, The Hacker News), alongside active zero-day exploitation targeting Check Point gateways with wiper malware, Microsoft Outlook, and UnrealIRCd (#infosec, #cve). Additionally, telecom infrastructure in Asia faces the SilentAir SS7/Diameter espionage campaign (#infosec), while critical RCE flaws in Apache HTTP Server, the Linux kernel, and Telegram Desktop demand urgent patching (#cve, #infosec).",
+ "tier1": [
+  {
+   "title": "1. Stolen Fireworks AI Key Led to Cursor Data Breach and Trojanized Claude Code Extension",
+   "url": "https://thehackernews.com/2026/11/stolen-fireworks-ai-key-led-to-cursor.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Supply Chain & AI Infrastructure / Critical (Ecosystem Breach)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "A breach at AI infrastructure provider Fireworks AI exposed access keys and credentials that allowed threat actors to pivot into multiple downstream enterprise customers. Attackers used a stolen key issued by Cursor to exfiltrate data and push a trojanized version of Anthropic's official Claude Code extension onto Cursor's marketplace. Simultaneously, Uber confirmed that compromised Fireworks AI credentials led to the theft of driver's license data for thousands of U.S. drivers."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Immediately audit and rotate all API keys, OAuth tokens, and service credentials shared with Fireworks AI, and inspect developer endpoints for compromised Cursor extensions."
+    }
+   ]
+  },
+  {
+   "title": "2. Enea Documents 'SilentAir' Telecom Espionage Operation Targeting Asian Mobile Operators",
+   "url": "https://infosec.exchange/@thecybersecguru/117615084377274835",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "#infosec"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Critical Infrastructure / High (Nation-State Espionage)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Enea researchers have uncovered a sophisticated telecom espionage campaign tracked as SilentAir targeting mobile network operators across Asia. Rather than relying solely on external access, threat actors compromised internal signalling nodes within legitimate telecom operators to abuse trusted network relationships. This allowed the attackers to inject malicious traffic across SS7 and Diameter signalling infrastructure at a sector-wide level."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Telecom operators should audit internal SS7 and Diameter signalling nodes for unauthorized access and enforce strict signalling firewall rules even for trusted peer networks."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Check Point Patches Actively Exploited Zero Day Used in Destructive Attacks",
+   "url": "https://infosec.exchange/@beyondmachines1/117619876509795558",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Check Point released emergency patches for a privilege escalation zero-day (CVE-2026-123039) actively exploited in destructive attacks against security gateways. Threat actors chained the flaw with previously reported PHP vulnerabilities to gain root access and deploy wiper malware across dozens of customer environments."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "CVE-2026-123039 grants root privileges and is chained with PHP flaws.; Attackers are deploying destructive wiper malware on compromised Check Point gateways."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Check Point released emergency patches for a zero-day vulnerability, CVE-2026-123039, which attackers exploited to gain root access and deploy wiper malware."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "2. Microsoft Outlook Zero-Day CVE-2026-124194 Under Active Exploitation",
+   "url": "https://infosec.exchange/@thecybersecguru/117615982846106202",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Email Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft Outlook zero-day CVE-2026-124194 is being actively exploited in the wild, prompting CISA to mandate federal patching within 14 days. When a victim opens a crafted .msg or .oft file, classic Outlook silently connects to an attacker-controlled server without warning, leaking the user's NTLMv2 authentication hash."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Exploitation triggers via crafted .msg or .oft files in classic Outlook without external-content warnings.; Restrict outbound SMB/NTLM traffic and apply Microsoft's security update immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "When the victim opens it, classic Outlook silently connects to an attacker-controlled server without the usual external-content warning, and Windows sends the user’s NTLMv2 authentication response."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "3. Apache HTTP Server mod_http2 Pre-Auth RCE (CVE-2026-119618) and Node2Shell Exploitation",
+   "url": "https://infosec.exchange/@noctis/117619383061493627",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & Web Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A pre-authentication remote code execution flaw in Apache HTTP Server's mod_http2 (CVE-2026-119618) affects versions 2.4.55 through 2.4.70 when HTTP/2 is enabled. Concurrently, Secureworks reports active in-the-wild exploitation of the Node.js Brotli flaw (CVE-2026-111497, 'Node2Shell'), while public PoCs circulate for PHP2Shell (CVE-2026-109618/109619)."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Patch Apache HTTP Server to 2.4.71 or disable the h2 protocol immediately.; Monitor and alert on httpd or node processes spawning unexpected shell instances."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Apache HTTP Server mod_http2 pre-auth RCE (CVE-2026-119618) affects 2.4.55–2.4.70 with HTTP/2 enabled. Fixed in 2.4.71 (Nov 11)."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "4. Critical Network-Reachable TCP Use-After-Free in Linux Kernel (CVE-2026-98432)",
+   "url": "https://fosstodon.org/@sigint/117617453299385334",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "OS & Kernel Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical, network-reachable use-after-free vulnerability in the Linux kernel's TCP implementation (CVE-2026-98432) affects kernels dating back to version 4.4. Red Hat and Ubuntu have issued nftables mitigation guidance to buy time, and patched kernels are now shipping."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Affects Linux kernels dating back to 4.4 via network-reachable TCP traffic.; Apply nftables mitigations if immediate reboot into a patched kernel is not possible."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A critical TCP use-after-free in the kernel is network-reachable, and Ubuntu kernels are already shipping. The nftables mitigation guidance from Red Hat and Ubuntu buys time, but patch and reboot, and verify with uname -r."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "5. Telegram Desktop Zero-Click RCE via Malicious HTML Widget Rendering",
+   "url": "https://infosec.exchange/@thecybersecguru/117619501153715281",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Client Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A zero-click remote code execution vulnerability in Telegram Desktop allows attackers to run native code outside the sandbox simply by rendering a malicious widget. The exploit chain abuses memory corruption bugs in the embedded QuickJS engine involving `ARG_SCOPE_END` and `await using` to achieve arbitrary memory access."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Exploit requires zero user interaction beyond rendering a newly introduced widget.; Update Telegram Desktop immediately to mitigate active exploitation risks."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A new exploit chain abuses memory corruption in QuickJS, the JavaScript engine Telegram embeds to run HTML widgets. The research turns bugs involving `ARG_SCOPE_END` and `await using` into arbitrary memory access and then native code execution."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "6. UnrealIRCd Maintainer Ships Emergency Release for Actively Exploited Command Injection (CVE-2026-114713)",
+   "url": "https://infosec.exchange/@adrianhollister/117619734425976556",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Server Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "UnrealIRCd released version 6.2.7.1 to patch CVE-2026-114713 (CVSS 8.6), described as the project's most critical vulnerability in 15 years. An escaping bug in the IRCv3 label tag allows any regular user on a multi-server network to inject commands with server/IRCOp authority; the flaw is actively exploited and on CISA's KEV list."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Affects UnrealIRCd versions 6.0.0 through 6.2.7 on networks with 2+ linked servers.; Discovered via an AI-assisted internal audit and actively exploited in the wild since November 8."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "An escaping bug in the IRCv3 label tag lets any ordinary user on a multi-server network inject commands that run with server authority: KILL, GLINE and more."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "7. Security Researcher Releases 'SignDrop' Zero-Day Exploit for Windows Kernel Mitigation",
+   "url": "https://infosec.exchange/@beyondmachines1/117615157957178611",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & OS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A security researcher publicly released the SignDrop zero-day local privilege escalation exploit affecting Windows 11 and Windows Server 2025. The vulnerability abuses the Common Log File System (CLFS) authentication signature mechanism and Microsoft Defender to perform unauthorized privileged file writes and gain SYSTEM privileges."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Bypasses Windows kernel mitigations to elevate privileges to SYSTEM.; Monitor CLFS log file manipulations and anomalous Defender interactions on Windows 11 and Server 2025."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The flaw abuses the Common Log File System signature mechanism and Microsoft Defender to perform unauthorized privileged file writes."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "8. US Disrupts North Korean 'FaceStealer' Campaign Behind $400 Million Crypto Theft",
+   "url": "https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The U.S. government disrupted a North Korean social engineering operation tracked as 'FaceStealer' that stole over $400 million in cryptocurrency. The campaign utilized a secretly recorded webcam library of more than 900 tech workers to facilitate its operations."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "DPRK actors leveraged recordings of 900+ tech workers in a massive social engineering scheme.; Over $400M in cryptocurrency was stolen before U.S. law enforcement intervention."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The U.S. government has disrupted a North Korean social engineering campaign called 'FaceStealer', responsible for stealing more than $400 million in cryptocurrency."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "9. PostgreSQL Just Patched 52 CVEs in a Single Minor Release",
+   "url": "https://www.reddit.com/r/netsec/comments/1xw5ldq/ruohang_feng_postgresql_just_patched_52_cves_in_a/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Database Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "PostgreSQL released a minor version update addressing 52 distinct CVE vulnerabilities in a single batch. Database administrators are urged to review the release notes and schedule upgrades to remediate the accumulated security flaws."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Unusually large batch of 52 CVEs remediated in a single PostgreSQL minor release.; Database teams should prioritize testing and deploying the minor version update."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Ruohang Feng: PostgreSQL Just Patched 52 CVEs in a Single Minor Release"
+    },
+    {
+     "label": "Source",
+     "value": "Technical Information Security Content & Discussion"
+    }
+   ]
+  },
+  {
+   "title": "10. D-Link DIR-600L Hit by Critical Unauthenticated Buffer Overflows (CVE-2026-129353, CVE-2026-129354)",
+   "url": "https://infosec.exchange/@offseq/117618929424333284",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "IoT & Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "D-Link DIR-600L routers (v2.17 and 2.17b02) are impacted by two critical stack-based buffer overflow vulnerabilities, CVE-2026-129353 (CVSS 10.0) and CVE-2026-129354. Public exploit code has been released enabling remote, unauthenticated code execution, and no vendor patch is currently available."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Public exploits are available for unauthenticated remote code execution on DIR-600L.; Isolate affected routers, restrict WAN management access, and monitor HNAP traffic."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CVE-2026-129354 – CRITICAL stack buffer overflow in D-Link DIR-600L 2.17b02. Remote, unauthenticated RCE possible. Public exploit code released. Isolate affected devices & restrict access; no patch yet."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "11. Rucio CVE-2026-100397: Unauthenticated Admin Impersonation and GPUStack Auth Bypass (CVE-2026-102895)",
+   "url": "https://infosec.exchange/@stackurity/117618284987524255",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & Data Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Security advisories highlight critical authentication bypasses in scientific and AI data center tooling, specifically Rucio (CVE-2026-100397) and GPUStack (CVE-2026-102895). The Rucio flaw allows unauthenticated attackers to impersonate administrators, while GPUStack suffers from improper authentication guarding AI hardware clusters."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Rucio CVE-2026-100397 permits unauthenticated admin impersonation.; GPUStack CVE-2026-102895 exposes data center GPU clusters via an authentication bypass."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "New on the Stackurity blog: Rucio CVE-2026-100397: anyone can act as admin, upgrade now"
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "12. PyPI Launches Redesigned UI Featuring Dedicated Security Tab and Per-File Attestations",
+   "url": "https://infosec.exchange/@cloud/117618445888832723",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The Python Package Index (PyPI) has completed its UI redesign, introducing a dedicated security tab for package releases. Following the OpenSSF Attestations Style Guide, the platform now displays provenance state and per-file attestations so developers can verify artifact origins before installation."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "PyPI now surfaces release provenance and per-file cryptographic attestations.; Aligns with OpenSSF standards to combat software supply chain tampering."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "PyPI's redesigned UI is live: a dedicated security tab now shows each release's provenance state and per-file attestations, so you can verify where an artifact actually came from before installing."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "13. ESHA: Open-Source Client-Side Phishing and Email Header Analyzer via WebAssembly",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwrl4w/opensource_phishing_and_email_header_analyzer/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "SecOps & Blue Team Tools"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A developer released ESHA (Email Security Header Analyzer), an open-source phishing triage tool that runs entirely client-side in the browser using Python and Pyodide (WebAssembly). It parses SPF/DKIM/DMARC, detects HTML smuggling, supports .msg files, and exports to STIX/MISP without sending sensitive internal headers to third-party servers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Eliminates data leakage risks during phishing triage by executing 100% locally via WebAssembly.; Supports .msg parsing, HTML smuggling detection, and STIX/MISP threat intel exports."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The analysis engine is Python running in your browser through Pyodide (WebAssembly). There’s no backend."
+    },
+    {
+     "label": "Source",
+     "value": "For [Blue|Purple] Teams in Cyber Defence"
+    }
+   ]
+  },
+  {
+   "title": "14. Windows Offense & Defense Research: .NET WDAC Bypass, Dotless MotW Bypass, and Lazarus FudModule 3.1",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwonva/implementation_of_the_assembly_loader_in_net/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Threat Research"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Recent blue-team technical write-ups highlight multiple Windows defense bypasses: abusing the .NET v4 assembly loader to bypass WDAC and inject into PPL processes when Dynamic Code Security is off, and using dotless websites to evade Mark-of-the-Web (MotW). Additionally, researchers detailed Lazarus Group chaining CVE-2026-68820 with FudModule 3.1 to reach Ring 0 from fake job offers."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enable 'Dynamic Code Security' in WDAC policies to prevent .NET flat memory buffer assembly loading into PPL.; Files downloaded from dotless URLs in Windows do not receive MotW tags and are trusted as local files."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "If you download something from a dotless website in Windows, you will NOT get a MotW. And as such, everything from the site is trusted as if it were a local file."
+    },
+    {
+     "label": "Source",
+     "value": "For [Blue|Purple] Teams in Cyber Defence"
+    }
+   ]
+  },
+  {
+   "title": "15. CISA Adds Six Legacy PHP, Roundcube, ThinkPHP, and phpMyAdmin Flaws to KEV Catalog",
+   "url": "https://infosec.exchange/@phpwarden/117618337503777820",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added six older web application vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog following evidence of active exploitation. The flaws include PHP-CGI (CVE-2012-1823), phpMyAdmin (CVE-2009-1151), Roundcube Webmail (CVE-2020-12641, CVE-2017-16651), and ThinkPHP (CVE-2018-20062, CVE-2019-9082)."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Threat actors continue to actively harvest legacy web servers running unpatched PHP, Roundcube, and ThinkPHP.; Audit external attack surfaces for legacy webmail and database administration panels."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Now exploited in the wild: CVE-2020-12641 Roundcube Webmail: code execution via shell metacharacters in the im_convert_path or im_identify_path setting"
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "16. CVE-2026-63448 in Suricata SMB Parser and Tor .17 Relay DDoS Patch",
+   "url": "https://mastodon.social/@hugovalters/117616843843261512",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Suricata patched CVE-2026-63448 (CVSS 5.9) in versions 7.0.17 and 8.0.6, addressing an SMB parser flaw where unbounded transaction growth on one-sided flows can stall network inspection. Separately, the Tor Project released version .17 to fix relay vulnerabilities uncovered during an ongoing DDoS attack wave."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade Suricata to 7.0.17 or 8.0.6 to prevent SMB traffic from degrading packet inspection.; Tor relay operators should immediately upgrade to .17 to mitigate active DDoS-related relay flaws."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CVE-2026-63448 in Suricata SMB parser: unbounded transaction growth on one-sided flows can degrade or stall inspection. CVSS 5.9. Fixed in 7.0.17 and 8.0.6, patch now."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "ActiveCloud Ransomware — Ransomware attack encrypted ActiveCloud infrastructure, disrupting thousands of Belarusian websites. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117615865745516002"
+  },
+  {
+   "text": "Qoo10 Data Breach — eBay Japan's Qoo10 breached, exposing data for 30 million members. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117616573517597680"
+  },
+  {
+   "text": "Kempinski Hotels Breach — Partner credential misuse at Kempinski Hotels leads to guest phishing. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117619640636170617"
+  },
+  {
+   "text": "PCH Digital Breach — PCH Digital discloses legacy network breach exposing personal and health data. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117614922040511678"
+  },
+  {
+   "text": "Meta Fined in Italy — Italy fines Meta $887M over Android gallery photo access consent. (SecurityWeek)",
+   "url": "https://www.securityweek.com/meta-fined-887-million-in-italy-over-android-gallery-photos-and-videos-on-facebook/"
+  },
+  {
+   "text": "AI in Cybersecurity — Opinion piece examining if AI overreliance erodes security team critical thinking. (SecurityWeek)",
+   "url": "https://www.securityweek.com/is-ai-making-us-worse-at-cybersecurity/"
+  },
+  {
+   "text": "Frontier AI Code Review — Joint advisory published on using frontier AI models for code review. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwo5tl/joint_advisory_on_the_use_of_frontier_ai_models/"
+  },
+  {
+   "text": "jDownloads RCE (CVE-2026-117551) — CVSS 10.0 RCE in Joomla extension jDownloads via thumbnail uploads; patched. (#cve)",
+   "url": "https://infosec.exchange/@cloud/117617005399408445"
+  },
+  {
+   "text": "Shipo WP Plugin (CVE-2026-19907) — Critical authentication bypass in Shipo WordPress plugin allows admin takeover. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117615036959810731"
+  },
+  {
+   "text": "Zr.Admin.NET (CVE-2026-129454) — High-severity authorization bypass in Zr.Admin.NET exposes user workflow data. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117618221814443573"
+  },
+  {
+   "text": "Apple tvOS 27.2.1 — Apple releases tvOS 27.2.1 fixing seven security vulnerabilities. (#infosec)",
+   "url": "https://infosec.exchange/@applsec/117615158022370554"
+  },
+  {
+   "text": "rsync v3.2.8 Released — First release of the new rsync 3.2 LTS line is available. (#infosec)",
+   "url": "https://infosec.exchange/@secburg/117619540838958230"
+  },
+  {
+   "text": "BinQL Extension — BinQL released as a new CodeQL extension for analyzing binary formats. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwpcbh/binql_a_codeql_extension_for_binary_formats/"
+  },
+  {
+   "text": "Windows NTLM Signing — Overview of recent NTLM signing security improvements in Windows. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwohhv/ntlm_signing_security_improvements_in_windows/"
+  },
+  {
+   "text": "HTTP.sys NTLM PoC — Proof-of-concept released for Admin-to-SYSTEM escalation via HTTP.sys NTLM token capture. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwob8t/proof_of_concept_for_admin_to_system_on_windows/"
+  },
+  {
+   "text": "iSCSI Target Abuse — Research details techniques for abusing iSCSI Target Server in enterprise environments. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwocpz/mi_scusi_my_scsi_abusing_iscsi_target_server/"
+  },
+  {
+   "text": "AgtaBackup RAT Campaign — Analysis of fake Google Meet updates abusing RMM tools and AgtaBackup. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwoima/fake_google_meet_updates_abused_rmm_tools_the/"
+  },
+  {
+   "text": "Lazarus DEV#POPPER — Technical record on Lazarus Group's DEV#POPPER campaign stealing browser credentials. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwo95y/hunting_lazarus_part_x_devpopper_returns_stealing/"
+  },
+  {
+   "text": "DPRK Meme Coin Laundering — Report indicates North Korea is minting meme coins to launder stolen funds. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwoc40/north_korea_is_minting_meme_coins_to_launder_the/"
+  },
+  {
+   "text": "APEC Hack Attribution — Discussion analyzing whether the APEC hack was China or a false-flag. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwou6j/apec_hacked_was_it_china_or_is_it_a_falseflag/"
+  },
+  {
+   "text": "KQL Client Secret Hunting — Weekly KQL query shared for hunting suspicious client secret authentication attempts. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwoj2x/%F0%9D%97%9E%F0%9D%97%A4%F0%9D%97%9F_%F0%9D%97%BC%F0%9D%97%B3_%F0%9D%98%81%F0%9D%97%B5%F0%9D%97%B2_%F0%9D%97%AA%F0%9D%97%B2%F0%9D%97%B2%F0%9D%97%B8_%F0%9D%97%9B%F0%9D%98%82%F0%9D%97%BB%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4_%F0%9D%97%B3%F0%9D%97%BC%F0%9D%97%BF_%F0%9D%97%A6%F0%9D%98%82%F0%9D%98%80%F0%9D%97%BD%F0%9D%97%B6%F0%9D%97%B0%F0%9D%97%B6%F0%9D%97%BC%F0%9D%98%82%F0%9D%98%80_%F0%9D%97%96%F0%9D%97%B9%F0%9D%97%B6%F0%9D%97%B2%F0%9D%97%BB%F0%9D%98%81/"
+  },
+  {
+   "text": "Offensive & RE Tools — Community releases Tendril persistence tool, s1l3nc3r MDE silencer, nukerat C2, and idasignwriter. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xwog9e/tendril_c_beacon_object_file_based_persistence/"
+  },
+  {
+   "text": "Help Net Security Review — Weekly roundup covering GitHub secret stealers and Claude Code implants. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/15/week-in-review-secret-stealer-hits-github-repos-claude-code-turned-into-remote-controlled-implant/"
+  },
+  {
+   "text": "Gmail Persistence Warning — Researchers warn attackers may retain Gmail access after password resets. (#infosec)",
+   "url": "https://fosstodon.org/@0xc9f1/117617354828812724"
+  },
+  {
+   "text": "Netglow & Android Firewall — Developer releases free, tracker-free Android network scanner Netglow and DNS firewall. (#infosec)",
+   "url": "https://infosec.exchange/@Zanoshky/117616453174921026"
+  },
+  {
+   "text": "NCSC Asset Management — Commentary on NCSC guidance emphasizing live, automated asset discovery over static lists. (#infosec)",
+   "url": "https://infosec.exchange/@adrianhollister/117615606278314494"
+  },
+  {
+   "text": "Self-Hosted CI Lesson — Developer shares lessons learned running CI pipelines on home gaming PCs. (#infosec)",
+   "url": "https://hachyderm.io/@phpboyscout/117619917062904407"
+  },
+  {
+   "text": "REDasm MCP Server — Experimental C-based MCP server for REDasm Core Engine tested with Claude. (#infosec)",
+   "url": "https://infosec.exchange/@redasm/117615029813631028"
+  },
+  {
+   "text": "Malmons Lab Training — Lena Yu launches Malmons Lab Kickstarter to teach malware analysis via gamification. (#infosec)",
+   "url": "https://infosec.exchange/@KenDC/117618212028528951"
+  },
+  {
+   "text": "NSS Research Intro — Nexus Sentinel Station team introduces TLP:CLEAR papers on phishing kits. (#infosec)",
+   "url": "https://infosec.exchange/@nssresearch/117617111582321685"
+  },
+  {
+   "text": "ScanMalware Pivot Tab — ScanMalware updates Pivot tab to group shared indicators and prioritize threat intel. (#infosec)",
+   "url": "https://infosec.exchange/@scanmalware/117619438564296266"
+  },
+  {
+   "text": "Ransomware Victim Claims — PixelLeaks, BrainCipher, Qilin, N0n, and others list new victims across multiple sectors. (#infosec)",
+   "url": "https://infosec.exchange/@CTI_FYI/117619698976150680"
+  },
+  {
+   "text": "RedPacketSecurity CVE Batch — Automated CVE alerts for IBM QRadar EDR, PrestaShop, Control Web Panel, and Flowise. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117616668396476727"
+  },
+  {
+   "text": "HackerOne Disclosures — Bug bounty disclosures for Burp Community OpenAPI action and dev store catalog access. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117616336536143613"
+  },
+  {
+   "text": "Bland Tofu-1 & dspy-wsp — Bland launches Tofu-1 speech model; Cmpnd releases dspy-wsp weight-space optimizer. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/15/bland-tofu-1-full-duplex-speech-to-speech-model/"
+  },
+  {
+   "text": "Datasette & Hermes Releases — Updates released for datasette-llm, datasette-vega, and Hermes Agent canary builds. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/14/datasette-llm/"
+  },
+  {
+   "text": "Automated Threat Feeds & Chaff — Routine phishing URL scans, Shodan ASN logs, RDP honeypot IOCs, and job postings. (#infosec)",
+   "url": "https://infosec.exchange/@cyberhost_blocklist/117619663467864900"
+  }
+ ]
+}
