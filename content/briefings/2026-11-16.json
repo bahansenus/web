@@ -1,0 +1,753 @@
+{
+ "date": "2026-11-16",
+ "published_at": "2026-11-16T13:02:49.310Z",
+ "title": "Daily Security Intelligence Briefing — November 16, 2026",
+ "threat_level": "HIGH",
+ "summary": "Autonomous AI agents and LLM-driven pentest frameworks like ARTEX are actively weaponized for large-scale API key theft and supply-chain compromises (BleepingComputer, The Hacker News), while an 11-year-old Linux TCP flaw dubbed 'NoisyTCP' exposes default web and SSH servers to pre-auth kernel panics (BleepingComputer).",
+ "tier1": [
+  {
+   "title": "1. FBI warns ARTEX AI hacking tool is powering global cyberattacks",
+   "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-artex-ai-hacking-tool-is-powering-global-cyberattacks/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "BleepingComputer"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "AI & Offensive Security / CRITICAL (Active Mass Exploitation)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "The FBI issued a FLASH advisory warning that threat actors are weaponizing ARTEX, an open-source Go autonomous pentesting framework driven by LLM agents (Claude, GPT, DeepSeek, Grok), to launch high-speed global intrusions. The tool enables attackers to achieve privileged access in under three hours and has already been linked to a ConnectWise supply-chain breach impacting Microsoft 365 customer environments. Over 1,600 ARTEX consoles are currently exposed, and parallel campaigns are targeting AI apps like LiteLLM and Dify to harvest API keys that further fuel the autonomous scanning."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Audit external attack surfaces for exposed AI management apps (LiteLLM, Dify, One API), rotate exposed API keys, and deploy network and EDR detection signatures for ARTEX C2 and scanning activity."
+    }
+   ]
+  },
+  {
+   "title": "2. New NoisyTCP vulnerability lets attackers crash Linux servers",
+   "url": "https://www.bleepingcomputer.com/news/linux/new-noisytcp-linux-kernel-flaw-lets-attackers-crash-servers/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "BleepingComputer"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Linux Kernel / CVE-2026-99288 (High-Impact DoS)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "An 11-year-old NULL-pointer dereference vulnerability in the Linux kernel TCP stack, dubbed 'NoisyTCP' (CVE-2026-99288), allows unauthenticated remote attackers to trigger a kernel panic via crafted network packets. The flaw stems from a race condition between SYN cookie handling and socket hashing on systems with two or more RX queues or Receive Packet Steering (RPS). Because it impacts default configurations of Nginx, Apache, and OpenSSH across almost all major Linux distributions, it presents a widespread, low-cost denial-of-service risk to internet-facing infrastructure."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Apply kernel patches immediately (upgrading to Linux 6.12.117, 6.18.63, 7.3.4, or vendor-specific Debian/Red Hat updates); if patching is delayed, temporarily disable SYN cookies as a workaround."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Amazon Uncovers AI Agent Campaign Targeting LiteLLM, Dify, and Other Apps for API Keys",
+   "url": "https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & AI Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Amazon Threat Intelligence captured logs from autonomous AI agents on decoy servers showing them hunting for vulnerabilities in internet-exposed AI platforms including LiteLLM, One API, and Dify. Once inside, the agents harvest AI provider API keys and immediately use those stolen credentials to fund the LLM compute powering their ongoing search for more victims."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Autonomous agents create a self-sustaining attack loop by stealing LLM API keys to pay for their own offensive compute.; Internet-exposed AI orchestration tools (LiteLLM, Dify, One API) with default credentials or unpatched flaws are primary targets."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The records, which Amazon's threat intelligence team captured with decoy servers, describe stolen keys being used to run the AI models that powered the search for more keys."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "2. Cursor: a stolen access key issued to Fireworks AI let an attacker copy coding-agent traces and serve a trojanized extension",
+   "url": "https://infosec.exchange/@cloud/117623748222156050",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A leaked access key issued by Cursor to Fireworks AI allowed an attacker to access a read-only bucket containing coding-agent traces with unscrubbed customer API keys. The attacker subsequently pivoted to push trojanized Claude Code extension builds (v2.1.312/2.1.313) to the Cursor Marketplace, attempting to deploy a persistent SSH backdoor to up to 5,000 users during an 11-hour exposure window."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Agent execution traces can inadvertently store sensitive customer secrets if not properly scrubbed before logging.; Users who installed Claude Code v2.1.312 or v2.1.313 via Cursor Marketplace on Oct 29 must audit for unauthorized SSH keys and rotate credentials."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A stolen access key issued to Fireworks AI let an attacker copy coding-agent traces from a read-only bucket, then serve a trojanized Claude Code extension via Cursor Marketplace on Oct 29."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "3. Google Project Zero will disclose bugs after 90 days, fixed or not",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/google-project-zero-disclosure-policy/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management & Policy"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Google Project Zero is replacing its '90+30' disclosure policy with a stricter 'Full X' timeline that mandates public vulnerability disclosure regardless of whether a vendor has shipped a patch. Starting now, the deadline is 90 days, dropping to 60 days on February 2, 2027, and ultimately compressing to just 30 days on January 3, 2028."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Vendors will lose the 30-day grace period for patch adoption and face a 30-day total turnaround by 2028.; Enterprise defenders must prepare for a higher volume of unpatched 0-day disclosures requiring compensating controls."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Google’s Project Zero will disclose the vulnerabilities it finds 90 days after reporting them to a vendor, whether or not the vendor has shipped a fix. The deadline drops to 60 days on February 2, 2027, and to 30 days on January 3, 2028."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "4. Xen Orchestra authentication bypass VSA-2026-062 is exploited in the wild to gain admin and hijack XCP-ng hosts",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117623329040565440",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Virtualization & Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors are actively exploiting an authentication bypass vulnerability (VSA-2026-062) in Xen Orchestra to gain administrative privileges and hijack underlying XCP-ng hypervisor hosts. Vates has released emergency patches in versions 6.10.1 and 6.9.2 to address the flaw."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Hypervisor management interfaces remain high-value targets for complete infrastructure takeover.; Administrators running Xen Orchestra must upgrade to version 6.10.1 or 6.9.2 immediately and audit admin session logs."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Xen Orchestra authentication bypass VSA-2026-062 is exploited in the wild to gain admin and hijack XCP-ng hosts. Update to 6.10.1 or 6.9.2 now."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "5. 4EverAble2Shell: N-central exploits bypass Hotfix 2",
+   "url": "https://infosec.exchange/@cybersecurefox/117625061667735646",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability & RMM Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "New exploit chains dubbed '4EverAble2Shell' affecting N-able N-central (CVE-2026-90436) involving Apache Axis are actively bypassing the vendor's Hotfix 2. Attackers continue to target unpatched or insufficiently mitigated N-central instances for remote code execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Previous hotfixes for N-central are insufficient against evolving exploit chains.; MSP and enterprise operators must restrict N-central exposure and apply the latest comprehensive vendor mitigations."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "4EverAble2Shell: N-central exploits bypass Hotfix 2"
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "6. Cisco Catalyst SD-WAN targeted by APT group exploiting CVE-2026-20127",
+   "url": "https://mastodon.com.pl/@sekurakbot/117623488852336496",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Infrastructure & APT"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Cisco Talos researchers detailed an active campaign by APT group UAT-11473 exploiting CVE-2026-20127 in Cisco Catalyst SD-WAN controllers. The threat actors are using the flaw to hijack network devices and deploy custom malware dubbed Keydrift."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "APT actor UAT-11473 is actively targeting SD-WAN controllers for persistent network edge access.; Organizations using Cisco Catalyst SD-WAN should patch CVE-2026-20127 and hunt for Keydrift indicators."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Cisco Catalyst SD-WAN na celowniku grupy APT. Cyberprzestępcy używają luki CVE-2026-20127 do przejmowania urządzeń."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "7. Repeated Exploit of March Cisco Secure Firewall Management Center Flaw",
+   "url": "https://infosec.exchange/@beyondmachines1/117625066971490030",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors, including the Interlock ransomware group, are actively exploiting CVE-2026-20131, a CVSS 10.0 unauthenticated insecure deserialization vulnerability in Cisco Secure Firewall Management Center (FMC). Attackers are leveraging exposed management interfaces to gain initial access and deploy ransomware."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Ransomware groups are heavily targeting unpatched perimeter management appliances months after patch release.; Ensure Cisco FMC management interfaces are strictly isolated from the public internet and patched."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers, including the Interlock ransomware group, are still actively exploiting CVE-2026-20131 (CVSS 10.0), an unauthenticated insecure deserialization flaw in the Cisco Secure Firewall Management Center."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "8. BO Team Exploits Log4Shell in VMware vCenter, Compromises Russian Firm's Code-Signing Server",
+   "url": "https://thehackernews.com/2026/11/bo-team-exploits-log4shell-in-vmware.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain & Incident Response"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Kaspersky ICS CERT documented a months-long intrusion by threat actor BO Team (Black Owl) into a Russian software developer's network via an unpatched Log4Shell flaw in VMware vCenter. The attackers pivoted to compromise the firm's development infrastructure and software code-signing server."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Legacy vulnerabilities like Log4Shell in virtualization management still lead to catastrophic downstream compromises.; Code-signing infrastructure must be air-gapped or heavily segmented from standard corporate and virtualization networks."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "An investigation into suspicious activity within a Russian software developer's network has uncovered a months-long compromise of its development infrastructure and a software code-signing server."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "9. Hackers Probe Newly Disclosed Flaws in Copeland Refrigeration Controllers",
+   "url": "https://www.securityweek.com/hackers-probe-newly-disclosed-flaws-in-copeland-refrigeration-controllers/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "OT / ICS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "VulnCheck disclosed 14 vulnerabilities affecting Copeland XWEB EVO refrigeration controllers used in supermarkets and cold-chain logistics. Threat actors quickly began probing internet-exposed controllers to exploit two of the newly disclosed flaws."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Cold-chain and ICS controllers exposed to the internet face near-immediate automated exploitation following disclosure.; Remove Copeland XWEB EVO controllers from public internet access and place them behind VPNs or zero-trust gateways."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Vulncheck disclosed 14 vulnerabilities affecting Copeland XWEB EVO controllers, including two that threat actors quickly targeted."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "10. Recent UnrealIRCd Vulnerability Exploited in Attacks",
+   "url": "https://www.securityweek.com/recent-unrealircd-vulnerability-exploited-in-attacks/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A high-severity vulnerability in UnrealIRCd, tracked as CVE-2026-114713, is being actively exploited in the wild. The flaw allows remote attackers to execute arbitrary commands with elevated server or IRCOp privileges."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Active exploitation is underway against unpatched UnrealIRCd servers.; Operators should immediately update UnrealIRCd to the latest patched release and audit IRCOp privilege logs."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Tracked as CVE-2026-114713, the high-severity flaw allows attackers to execute commands with server/IRCOp privileges."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "11. Apache Shiro authentication bypass CVE-2026-129349 lets any password work after one login",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117623491599170685",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & API Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Apache patched a critical authentication bypass in Apache Shiro (CVE-2026-129349) that allows any password to succeed after a single valid login occurs. Concurrently, Apache addressed multiple vulnerabilities in APISIX, including CVE-2026-124679."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "State-caching or session-handling flaws in authentication frameworks can render password checks completely ineffective.; Java development teams using Apache Shiro and API teams using APISIX must upgrade to the patched versions immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Apache Shiro authentication bypass CVE-2026-129349 lets any password work after one login. Apache also fixes APISIX flaws like CVE-2026-124679."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "12. TrustFall vulnerability CVE-2026-88235 PoC is public: any Windows user can abuse TrustedInstaller to act as SYSTEM",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117623432396826941",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Public proof-of-concept exploit code has been released for CVE-2026-88235 ('TrustFall'), a Windows local privilege escalation vulnerability. The flaw allows any standard Windows user to abuse the TrustedInstaller service to escalate privileges to SYSTEM."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "With public PoC availability, ransomware and post-exploitation frameworks will rapidly integrate CVE-2026-88235.; Ensure the November 2026 Windows Patch Tuesday updates are deployed across all workstations and servers."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "TrustFall vulnerability CVE-2026-88235 PoC is public: any Windows user can abuse TrustedInstaller to act as SYSTEM. Install the November 2026 update."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "13. CVE-2026-126254: critical vulnerability in the FortiOS BGP daemon",
+   "url": "https://infosec.exchange/@cybersecurefox/117625749868231221",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical numeric truncation vulnerability (CVE-2026-126254) has been disclosed in the FortiOS and FortiSASE BGP daemon. The flaw could allow attackers to disrupt routing or execute code on affected Fortinet appliances running BGP."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Routing protocol daemons on perimeter firewalls present critical attack surfaces if BGP peers or packets can be manipulated.; Apply Fortinet security updates for FortiOS and FortiSASE and ensure BGP peer authentication (MD5/TCP-AO) is enforced."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CVE-2026-126254: critical vulnerability in the FortiOS BGP daemon"
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "14. SANSAR Linux Cryptomining Malware Uses Modified NVIDIA Library to Hide GPU Activity",
+   "url": "https://thehackernews.com/2026/11/sansar-linux-cryptomining-malware-uses.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Malware & Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat cluster REF3364 is deploying a Rust-based Linux cryptomining orchestrator named SANSAR that communicates over Tor to manage CPU and GPU miners. To evade detection by system administrators and monitoring tools, the malware uses a modified NVIDIA library to spoof and hide high GPU workload readings."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Userland resource monitoring tools (like nvidia-smi) cannot be trusted if shared libraries are hijacked.; Monitor for unauthorized Tor traffic and validate the integrity of system and GPU libraries on Linux compute nodes."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Central to the intrusion is a toolkit called SANSAR, a Rust-based orchestrator that receives commands over the TOR anonymity network to manage CPU and GPU miners."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "15. AI-written patches are becoming attack maps for hackers",
+   "url": "https://www.csoonline.com/article/4248687/ai-written-patches-are-becoming-attack-maps-for-hackers.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AppSec & AI Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "After maintainers of the open-source JavaScript sandboxing library vm2 used Anthropic's Claude to co-write 19 patches for 34 sandbox-escape flaws, researchers demonstrated that an AI agent could easily analyze the advisories and generate a working bypass. Related technical analysis shows vm2's hand-written wrap list remains perpetually one JavaScript language feature behind V8."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "AI-generated patches often address narrow symptoms rather than underlying architectural flaws, making them easy for offensive AI agents to bypass.; Avoid relying on hand-wrapped JavaScript sandboxes like vm2 for untrusted code execution; use true OS/container isolation or V8 isolates."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Weeks later, a security researcher pointed an AI agent at one of the advisories and asked for a way around the patch. The agent delivered."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "16. The benign true positive: When trusted AI agents look like attackers",
+   "url": "https://www.csoonline.com/article/4248451/the-benign-true-positive-when-trusted-ai-agents-look-like-attackers.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "SecOps & Detection Engineering"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Enterprise coding, support, and workflow AI agents routinely enumerate cloud resources in seconds, open hundreds of files, and invoke command-line tools across multiple systems. To EDR, identity, and cloud security platforms, these authorized agentic behaviors are indistinguishable from post-exploitation attacker activity, creating a surge in 'benign true positive' alerts."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Traditional behavioral detections based on execution velocity and cross-system enumeration will break under widespread AI agent adoption.; SOCs must establish distinct identity principals, telemetry tagging, and scoped behavioral baselines specifically for autonomous agents."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A workflow agent enumerates cloud resources in seconds, then moves to the next stage of its assignment. To an endpoint, identity, or cloud security platform, these sequences look like an intrusion."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "17. TSMC employee data breach linked to cloud provider",
+   "url": "https://www.bleepingcomputer.com/news/security/tsmc-employee-data-breach-linked-to-cloud-provider/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Third-Party Risk & Data Breach"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "TSMC confirmed a 6.9GB data leak exposing the personal records of 46,000 current and former employees, including national IDs, addresses, and bank details, which were put up for auction for 3 BTC. The semiconductor giant stated its internal infrastructure and customer data were unaffected, attributing the leak to a third-party cloud service provider's system services."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "HR and employee onboarding SaaS/cloud providers remain a major vector for high-impact PII leaks at critical technology firms.; Enforce strict data minimization and lifecycle purging requirements for third-party HR and cloud service vendors."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Taiwan Semiconductor Manufacturing Company (TSMC) confirmed that personal employee data has been leaked online after a threat actor put 6.9GB of information allegedly stolen from the company up for auction."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "18. La Poste Subsidiary Maileva Reports Data Breach Affecting 22 Million People",
+   "url": "https://infosec.exchange/@beyondmachines1/117625302923603606",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Data Breach & Third-Party Risk"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Maileva, a document and mail subsidiary of France's La Poste Group (Docaposte), confirmed a massive data breach exposing the names, addresses, and medical billing details of 22 million people. Separately, French health booking platform 1001RDV also reported a breach affecting 23 million citizens."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "B2B mail and document distribution processors aggregate massive population-scale datasets without end-users ever interacting with them directly.; Organizations operating in France should anticipate heightened targeted phishing and social engineering leveraging exposed postal and medical metadata."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Maileva, a subsidiary of La Poste Group, confirmed a data breach on November 14, 2026, affecting 22 million people in France."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Uber Data Breach — Third-party compromise exposes 150,000 driver names, addresses, and license numbers. (SecurityWeek)",
+   "url": "https://www.securityweek.com/uber-data-breach-impacts-150000-people/"
+  },
+  {
+   "text": "Coles & Woolworths Incidents — Australian retail giants Coles and Woolworths investigate simultaneous cybersecurity incidents. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/australian-retail-giant-coles-investigates-cybersecurity-incident/"
+  },
+  {
+   "text": "Coinone Third-Party Breach — Contractor MetaM compromise exposes Coinone customer passwords and wallet addresses. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117626010702673894"
+  },
+  {
+   "text": "Caribbean Airlines / Amadeus Breach — Amadeus reservation system flaw exposes passenger booking details across airlines. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117625774745483302"
+  },
+  {
+   "text": "MUJI Plaintext Card Breach — MUJI breach exposes 1.09 million plaintext credit cards from legacy data. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117625286749872497"
+  },
+  {
+   "text": "Meta €805M Privacy Fine — Italy fines Meta €805M over Facebook Android photo gallery permissions. (#infosec)",
+   "url": "https://infosec.exchange/@thecybersecguru/117621227266623235"
+  },
+  {
+   "text": "Microsoft Windows OOB Updates — Emergency Windows updates fix activation failures caused by November patches. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-new-windows-emergency-updates-fix-activation-licensing-failures/"
+  },
+  {
+   "text": "Microsoft 365 Outage & Phishing — Microsoft rules out cyberattack in M365 outage, warns of themed phishing. (SecurityWeek)",
+   "url": "https://www.securityweek.com/microsoft-rules-out-cyberattack-in-outage-warns-of-phishing-campaign/"
+  },
+  {
+   "text": "Anthropic Claude 5.2 Updates — Claude Fable 5.2 relaxes security task blocks; Mythos improves bug-finding. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropics-claude-fable-52-blocks-fewer-security-tasks-while-mythos-gets-better-at-finding-bugs/"
+  },
+  {
+   "text": "Forescout AI Vulnerability Research — Forescout uses AI to find 99 TCP/IP flaws, cutting research to 90 hours. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/forescout-ai-models-vulnerability-research/"
+  },
+  {
+   "text": "Rspamd 4.3.0 Released — Rspamd 4.3.0 fixes worker crash bugs and DMARC reject bypasses. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/rspamd-4-3-0-released/"
+  },
+  {
+   "text": "Tor 0.4.9.17 DoS Fixes — Tor 0.4.9.17 patches IPv6 DoS protection flaws amid ongoing relay attacks. (SecurityWeek)",
+   "url": "https://www.securityweek.com/tor-updates-dos-defenses-again-as-relay-attacks-continue/"
+  },
+  {
+   "text": "GeoVision Camera Cryptojacking — Unpatched GeoVision camera software exploited to deploy miners at 13 orgs. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/geovision-camera-software-vulnerabilities/"
+  },
+  {
+   "text": "QNAP NAS Plex2Shell Exploitation — QNAP warns of NAS compromises via Plex2Shell RCE chain (CVE-2026-96652). (#infosec)",
+   "url": "https://cyberplace.social/@trinacriatech/117625165582609567"
+  },
+  {
+   "text": "GitHub Actions Secret Stealer — Compromised GitHub accounts push CI secret stealer to thousands of repos. (#infosec)",
+   "url": "https://mastodon.social/@marix1/117625113768611336"
+  },
+  {
+   "text": "Dell PowerStore Auth Bypass — CVE-2026-82156 allows low-privileged attackers to gain admin on Dell PowerStore. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117624120059399250"
+  },
+  {
+   "text": "Zenitel Intercom Root Flaws — Zenitel patches DHCP root command injection (CVE-2026-95377) on intercoms. (#cve)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117623197077424444"
+  },
+  {
+   "text": "DrayTek Vigor2960 Command Injection — Critical remote command injection (CVE-2026-129452) patched in DrayTek Vigor2960. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117620699013217603"
+  },
+  {
+   "text": "KeePassXC 2.8.0 Released — KeePassXC 2.8.0 ships new features and patches overflow flaw CVE-2026-69150. (#cve)",
+   "url": "https://2137.social/@13/117623709341347114"
+  },
+  {
+   "text": "Qt XML Billion Laughs DoS — Qt QXmlSimpleReader vulnerable to Billion Laughs DoS (CVE-2026-105925). (#cve)",
+   "url": "https://infosec.exchange/@offseq/117625181833634650"
+  },
+  {
+   "text": "Welotec egOS & UEFI Advisories — Welotec discloses IPv4 TCP UAF (CVE-2026-98432) and PKfail UEFI flaws. (#cve)",
+   "url": "https://infosec.exchange/@certvde/117625605713016767"
+  },
+  {
+   "text": "Adobe Commerce / Magento KEV — Adobe Commerce unrestricted file upload (CVE-2026-48356) actively exploited. (#infosec)",
+   "url": "https://infosec.exchange/@phpwarden/117621168617442416"
+  },
+  {
+   "text": "Fluent Forms Plugin Flaw — Arbitrary file write flaw CVE-2026-120522 disclosed in Fluent Forms manager. (#cve)",
+   "url": "https://infosec.exchange/@stackurity/117623945816323536"
+  },
+  {
+   "text": "SSCMS Arbitrary File Read — SSCMS 7.2.0-7.4.0 exposes arbitrary file read via layerImageUpload (CVE-2026-129539). (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117623766208489329"
+  },
+  {
+   "text": "Nextcloud Docker Image Warning — Nextcloud v33 Docker images reportedly still bundle vulnerable Apache 2.69. (#cve)",
+   "url": "https://fosstodon.org/@dantalion/117620593397455336"
+  },
+  {
+   "text": "Datasette 0.65.6 Security Fix — Datasette 0.65.6 fixes unauthorized database download via custom route names. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/15/datasette-2/"
+  },
+  {
+   "text": "CRPx0 Ransomware Analysis — CRPx0 ransomware uses Python, disables security tools, and deletes shadow copies. (#infosec)",
+   "url": "https://infosec.exchange/@anyrun_app/117626063501028156"
+  },
+  {
+   "text": "AccuraSoftHire / PolinRider Campaign — Fake North Korean job interviews use npm packages and Ethereum C2 to infect devs. (#infosec)",
+   "url": "https://insicurezzadigitale.com/il-colloquio-di-lavoro-che-installa-polinrider-dentro-la-campagna-accurasofthire/"
+  },
+  {
+   "text": "AI-Powered Infostealer Marketplace — Hudson Rock details AI-powered marketplace turning stealer logs into searchable profiles. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xxgurs/inside_the_aipowered_marketplace_turning_infected/"
+  },
+  {
+   "text": "Cloudflare Kitesurf Open-Sourced — Cloudflare open-sources Kitesurf, a lightweight Chromium-free browser for AI agents. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/cloudflare-kitesurf-open-source/"
+  },
+  {
+   "text": "Suture Windows Implant Framework — Open-source Suture framework pairs PIC loader with modular PICO payload for C2 research. (#infosec)",
+   "url": "https://infosec.exchange/@r1cksec/117626075793652456"
+  },
+  {
+   "text": "Ory Hydra Open-Source OAuth — Overview of Ory Hydra open-source OAuth 2.0 and OpenID Connect server. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/ory-hydra-oauth-server-open-source/"
+  },
+  {
+   "text": "YARA-X 1.23.0 Released — YARA-X 1.23.0 brings four improvements and 16 bugfixes. (SANS Internet Storm Center, InfoCON: green)",
+   "url": "https://isc.sans.edu/diary/rss/33496"
+  },
+  {
+   "text": "GCVE Client 1.0.0 — CLI tool GCVE 1.0.0 adds signed registry lookup for vulnerability records. (#cve)",
+   "url": "https://social.circl.lu/@cedric/117624738988551727"
+  },
+  {
+   "text": "ARTEX Detection Signatures — Community shares detection signature pack and playbook for ARTEX framework. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xx24yn/sharing_artex_detection_signature_pack_from_ioc/"
+  },
+  {
+   "text": "FedRAMP 12-Hour Patch Rule — Podcast discusses new FedRAMP 12-hour patch deadline and M365 outage impacts. (#infosec)",
+   "url": "https://infosec.exchange/@breachplease/117625772163666008"
+  },
+  {
+   "text": "European Production Order Reach — Analysis of EU Production Order extraterritorial data compulsion vs US CLOUD Act. (#infosec)",
+   "url": "https://infosec.exchange/@adrianhollister/117625385967601598"
+  },
+  {
+   "text": "UK ICO Medical Snooping Reports — UK ICO receives over 300 reports of unauthorized insider medical file access. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/ico-300-reports-of-medical-snooping/"
+  },
+  {
+   "text": "Risky Bulletin: German UAVs & Barracuda — Germany grounds UAVs after supply-chain attack; hackers accessed Barracuda cloud. (Risky Business)",
+   "url": "https://risky.biz/RBNEWS634/"
+  },
+  {
+   "text": "Dark Web Leaks Roundup — SOCRadar tracks Daxus stealer marketplace, Kazakhstan court, and Telegram leak claims. (SOCRadar)",
+   "url": "https://socradar.io/blog/tsmc-kazakhstan-court-daxus-telegram-data-leaks/"
+  },
+  {
+   "text": "Charles University Data Breach — Attackers compromise web app at Charles University to download student records. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117621292171243956"
+  },
+  {
+   "text": "BrickLink Restores Services — Lego marketplace BrickLink restores services after weeklong breach exposing IPs. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117621056167002435"
+  },
+  {
+   "text": "Sogo & Chow Sang Sang Breaches — Hong Kong retailers Sogo and Chow Sang Sang report breaches affecting 820k+ members. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117620584311640935"
+  },
+  {
+   "text": "100,000 CVEs Published in 2026 — Over 100,000 CVEs published in 2026 driven by AI research; only 1.4% exploited. (#infosec)",
+   "url": "https://infosec.exchange/@lelabtechnique/117622081285597263"
+  },
+  {
+   "text": "Weekly Ransomware & KEV Stats — CTI.FYI tracks 399 weekly ransomware victims led by N0n; 12 flaws added to KEV. (#infosec)",
+   "url": "https://infosec.exchange/@CTI_FYI/117622940269670062"
+  },
+  {
+   "text": "RAT Activity Surge — ANY.RUN reports weekly surges in Quasar (+74%), Remcos (+25%), and XWorm (+21%). (#infosec)",
+   "url": "https://infosec.exchange/@anyrun_app/117625221074991683"
+  },
+  {
+   "text": "Five Years Chasing Gootloader — Blue team retrospective analyzing five years of Gootloader tactics and evolution. (For [Blue|Purple] Teams in Cyber Defence)",
+   "url": "https://www.reddit.com/r/blueteamsec/comments/1xxjg41/five_years_chasing_gootloader_gootloader_details/"
+  },
+  {
+   "text": "Wallet-Phishing Host Lineage — Researchers track wallet-phishing infrastructure migrating 24 domains across six servers. (#infosec)",
+   "url": "https://infosec.exchange/@nssresearch/117621141217161430"
+  },
+  {
+   "text": "Thinkst on Defensive AI Canaries — Thinkst CTO discusses agentic honeypot canaries and defensive AI experimentation. (Risky Business)",
+   "url": "https://risky.biz/RBNEWSSI151/"
+  },
+  {
+   "text": "IJRAP Forensic Evidence Sealer — Open-source Python tool seals field media with GPS, UTC, and hybrid SHA hashing. (#infosec)",
+   "url": "https://infosec.exchange/@Komavo1/117623395252082737"
+  },
+  {
+   "text": "Cybersecurity Salary Benchmarks — Analysis of 1,223 job postings shows median pay from $167k (GRC) to $246k (Leadership). (#infosec)",
+   "url": "https://mastodon.social/@cyberjobs/117621098971459332"
+  },
+  {
+   "text": "ESET Mobile Security for iOS — Product showcase of ESET Mobile Security for iOS phishing and device checks. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/16/product-showcase-eset-mobile-security-ios/"
+  },
+  {
+   "text": "ULA Vulcan Rocket Launch Failure — ULA Vulcan rocket fails after liftoff, destroying 40 Amazon Leo satellites. (Ars Technica - All content)",
+   "url": "https://arstechnica.com/space/2026/11/vulcan-rocket-fails-during-launch-dealing-major-blow-to-spacex-competitors/"
+  },
+  {
+   "text": "SpaceX Catches Starship in Midair — SpaceX successfully catches Starship upper stage using launch tower mechanical arms. (TLDR tech)",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-14/spacex-to-attempt-first-full-recovery-of-new-starship-rocket?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc5NDgwMzU2NSwiZXhwIjoxNzk1NDA4MzY1LCJhcnRpY2xlSWQiOiJUT0dJOEpLSUpIOTQwMCIsImJjb25uZWN0SWQiOiI2NTc1NjkyN0UwMkM0N0MwQkQ0MDNEQTJGMEUyNzIyMyJ9.NrVZWmopPeBEKMN8K4AWG1ZaJ2iOF45JpdpkRSGMnEw"
+  },
+  {
+   "text": "Nvidia Jensen Huang Petition — Over 160,000 sign petition for Jensen Huang's return as Nvidia CEO amid investigation. (TLDR tech)",
+   "url": "https://www.cnbc.com/2026/11/16/nvidia-jensen-huang-return-tech.html"
+  },
+  {
+   "text": "Building Always-On AI Agents — Anthropic guide breaks down architecture primitives for indefinite always-on agents. (TLDR tech)",
+   "url": "https://claude.com/resources/articles/building-always-on-agents"
+  },
+  {
+   "text": "OpenAI GPT-6 Astra Physics Proof — OpenAI details how GPT-6 Astra assisted in a lattice Standard Model proof. (OpenAI News)",
+   "url": "https://openai.com/index/step-toward-defining-the-standard-model"
+  }
+ ]
+}
