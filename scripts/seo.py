@@ -121,6 +121,7 @@ def jsonld(page_path: str, title: str, description: str,
             },
             "inLanguage": "en",
             "isAccessibleForFree": True,
+            "image": [f"{SITE_BASE}/assets/logo.jpg"],
         }
         page["mainEntity"] = {"@id": canonical(page_path) + "#article"}
         graph.append(article)

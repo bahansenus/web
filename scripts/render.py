@@ -717,6 +717,15 @@ def main():
     print("  history.html")
 
     # feed
+    # build_feed() reads e['excerpt'], which nothing populated — every <item>
+    # shipped an empty <description>. Fill it from the artifact's summary.
+    for e in entries:
+        if e.get("excerpt"):
+            continue
+        if e.get("kind") == "json":
+            e["excerpt"] = _excerpt(e["data"].get("summary") or e["title"])
+        else:
+            e["excerpt"] = _excerpt(extract_summary(e.get("raw", "")) or e["title"])
     (OUT / "feed.xml").write_text(build_feed(entries))
     print("  feed.xml")
 
