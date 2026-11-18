@@ -7,6 +7,7 @@ Depth conventions:
   - root pages (index, about, history, privacy) are at the site root: depth=0
   - briefing pages live in briefings/: depth=1
 """
+import html as html_mod
 from pathlib import Path
 
 import seo
@@ -64,6 +65,9 @@ def head(title: str, description: str, depth: int = 0, extra_css: str = "",
     '/briefings/2026-11-18') — the extensionless form Cloudflare Pages serves
     with a 200; the .html form is a 308 and must never be canonical."""
     root = "../" * depth
+    # Descriptions are plain text from the renderer; escape them for use in
+    # attributes so a '&' or '<' in a summary cannot corrupt the tag.
+    description = html_mod.escape(description, quote=True)
     css = f'  <link rel="stylesheet" href="{root}assets/style.css">\n'
     if extra_css:
         css += f"  <style>\n{extra_css}\n  </style>\n"
@@ -84,15 +88,22 @@ def head(title: str, description: str, depth: int = 0, extra_css: str = "",
         '  <link rel="alternate" type="application/rss+xml" '
         f'title="Daily Security Intelligence Briefing — bahansen.us" '
         f'href="{seo.SITE_BASE}/feed.xml">',
+        f'  <link rel="icon" type="image/png" sizes="192x192" '
+        f'href="{root}assets/favicon-192.png">',
+        f'  <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">',
         '  <meta property="og:site_name" content="bahansen.us">',
         f'  <meta property="og:type" content="{og_type}">',
-        f'  <meta property="og:title" content="{title}">',
+        f'  <meta property="og:title" content="{html_mod.escape(title, quote=True)}">',
         f'  <meta property="og:description" content="{description}">',
-        f'  <meta property="og:image" content="{seo.SITE_BASE}/assets/logo.jpg">',
+        f'  <meta property="og:image" content="{seo.SITE_BASE}/assets/og-card.png">',
+        '  <meta property="og:image:width" content="1200">',
+        '  <meta property="og:image:height" content="630">',
+        '  <meta property="og:image:alt" content="bahansen.us — Daily Security '
+        'Intelligence Briefing">',
         '  <meta name="twitter:card" content="summary_large_image">',
-        f'  <meta name="twitter:title" content="{title}">',
+        f'  <meta name="twitter:title" content="{html_mod.escape(title, quote=True)}">',
         f'  <meta name="twitter:description" content="{description}">',
-        f'  <meta name="twitter:image" content="{seo.SITE_BASE}/assets/logo.jpg">',
+        f'  <meta name="twitter:image" content="{seo.SITE_BASE}/assets/og-card.png">',
     ]
     if jsonld:
         seo_tags.append(jsonld)
@@ -104,7 +115,7 @@ def head(title: str, description: str, depth: int = 0, extra_css: str = "",
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
+  <title>{html_mod.escape(title, quote=False)}</title>
   <meta name="description" content="{description}">
 {seo_block}{css}  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "8d5e9a88082a4e16ad85726f40747986"}}'></script>
 </head>

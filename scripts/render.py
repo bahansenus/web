@@ -242,6 +242,9 @@ def clean_merged_body(raw: str) -> str:
     # remove the outer title h1 (renderer supplies it) + Executive Threat Brief h1
     body = re.sub(r"<h1[^>]*>Daily Security Intelligence Briefing.*?</h1>", "", body, flags=re.S)
     body = re.sub(r"<h1[^>]*>Executive Threat Brief.*?</h1>", "", body, flags=re.S)
+    # any remaining h1 (legacy merged bodies carried one per article) becomes h2:
+    # the renderer supplies the page's only h1, and 2026-08-28 shipped 19 of them.
+    body = re.sub(r"<h1(\s[^>]*)?>", r"<h2\1>", body).replace("</h1>", "</h2>")
     # remove the threat-level paragraph (renderer supplies it)
     body = re.sub(r"<p[^>]*>Overall Daily Threat Level:.*?</p>", "", body, flags=re.S)
     # strip inline styles (nested-quote safe, tag-aware)
@@ -267,11 +270,11 @@ def parse_date(date_str: str) -> datetime | None:
 def _excerpt(text: str, limit: int = 155) -> str:
     """SERP-sized description cut on a word boundary, never mid-word.
 
-    The old behaviour sliced at a fixed 150 characters, which published
-    fragments like '...decoder threatening enter' as the meta description on
-    every page Google indexed.
+    Returns PLAIN text: callers that place it in an attribute (site_parts.head)
+    or in XML (build_feed) escape it themselves. The old behaviour sliced at a
+    fixed 150 characters, which published fragments like '...threatening enter'.
     """
-    t = " ".join((text or "").split()).replace('"', "")
+    t = html_mod.unescape(" ".join((text or "").split())).replace('"', "")
     if len(t) <= limit:
         return t
     cut = t[:limit].rsplit(" ", 1)[0].rstrip(" ,;:—-")
@@ -372,7 +375,9 @@ def build_feed(entries: list) -> str:
             pub = e["published"].strftime("%a, %d %b %Y %H:%M:%S %z")
         else:
             pub = dt.strftime("%a, %d %b %Y 00:00:00 +0000") if dt else ""
-        link = f"{SITE_BASE}/briefings/{e['filename']}"
+        # Canonical (extensionless) URL: Cloudflare Pages 308s the .html form,
+        # so a feed that hands out .html links sends every reader through a hop.
+        link = f"{SITE_BASE}/briefings/{e['date']}"
         items.append(f"""    <item>
       <title>{html_mod.escape(e['title'])}</title>
       <link>{link}</link>
@@ -405,7 +410,10 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
     else:
         body = normalize_tier_body(raw)
         summary = ""
-    excerpt = _excerpt(summary or title)
+    # normalize_tier_body() leaves summary empty and legacy bodies phrase the
+    # summary differently, so ask both extractors before falling back to the
+    # title (which made the description identical to the headline).
+    excerpt = _excerpt(summary or extract_description(raw) or title)
 
     # briefing page (depth 1)
     page = BRIEFING_TEMPLATE.format(
@@ -560,9 +568,27 @@ def extract_summary(raw: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
+def extract_description(raw: str) -> str:
+    """Summary text for a legacy briefing body.
+
+    The July–August editions put their summary in `<div class="brief-summary">`
+    prefixed with 'Executive Threat Brief:'; extract_summary() only understands
+    the later 'Overall Daily Threat Level: X.' phrasing, so it returned "" for
+    13 of the 15 legacy files and their meta description fell back to the title.
+    """
+    m = re.search(r'<div class="brief-summary">(.*?)</div>', raw, re.S)
+    if m:
+        s = re.sub(r"<[^>]+>", "", m.group(1))
+        s = re.sub(r"^\s*Executive Threat Brief:\s*", "", s.strip())
+        s = html_mod.unescape(s)
+        return re.sub(r"\s+", " ", s).strip()
+    return extract_summary(raw)
+
+
 def copy_static() -> None:
-    shutil.copy(REPO / "assets" / "style.css", OUT / "assets" / "style.css")
-    shutil.copy(REPO / "assets" / "logo.jpg", OUT / "assets" / "logo.jpg")
+    for name in ("style.css", "logo.jpg", "favicon-192.png",
+                 "apple-touch-icon.png", "og-card.png"):
+        shutil.copy(REPO / "assets" / name, OUT / "assets" / name)
     shutil.copy(REPO / "BAHansen_Logo.jpeg", OUT / "BAHansen_Logo.jpeg")
 
 
