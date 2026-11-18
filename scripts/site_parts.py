@@ -9,6 +9,8 @@ Depth conventions:
 """
 from pathlib import Path
 
+import seo
+
 # ---------------------------------------------------------------- masthead ---
 def masthead(depth: int = 0) -> str:
     root = "../" * depth
@@ -54,11 +56,48 @@ def footer(depth: int = 0) -> str:
 '''
 
 # ---------------------------------------------------------------- head --------
-def head(title: str, description: str, depth: int = 0, extra_css: str = "", include_masthead: bool = True) -> str:
+def head(title: str, description: str, depth: int = 0, extra_css: str = "",
+         include_masthead: bool = True, canonical: str = "",
+         og_type: str = "website", jsonld: str = "",
+         noindex: bool = False) -> str:
+    """Page <head>. `canonical` is a site path ('/', '/about',
+    '/briefings/2026-11-18') — the extensionless form Cloudflare Pages serves
+    with a 200; the .html form is a 308 and must never be canonical."""
     root = "../" * depth
     css = f'  <link rel="stylesheet" href="{root}assets/style.css">\n'
     if extra_css:
         css += f"  <style>\n{extra_css}\n  </style>\n"
+
+    seo_tags = []
+    if noindex:
+        seo_tags.append('  <meta name="robots" content="noindex, follow">')
+    else:
+        seo_tags.append('  <meta name="robots" content="index, follow, '
+                        'max-image-preview:large, max-snippet:-1">')
+    if canonical:
+        url = seo.canonical(canonical)
+        seo_tags += [
+            f'  <link rel="canonical" href="{url}">',
+            f'  <meta property="og:url" content="{url}">',
+        ]
+    seo_tags += [
+        '  <link rel="alternate" type="application/rss+xml" '
+        f'title="Daily Security Intelligence Briefing — bahansen.us" '
+        f'href="{seo.SITE_BASE}/feed.xml">',
+        '  <meta property="og:site_name" content="bahansen.us">',
+        f'  <meta property="og:type" content="{og_type}">',
+        f'  <meta property="og:title" content="{title}">',
+        f'  <meta property="og:description" content="{description}">',
+        f'  <meta property="og:image" content="{seo.SITE_BASE}/assets/logo.jpg">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{title}">',
+        f'  <meta name="twitter:description" content="{description}">',
+        f'  <meta name="twitter:image" content="{seo.SITE_BASE}/assets/logo.jpg">',
+    ]
+    if jsonld:
+        seo_tags.append(jsonld)
+    seo_block = "\n".join(seo_tags) + "\n"
+
     mh = masthead(depth) if include_masthead else ""
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -67,7 +106,7 @@ def head(title: str, description: str, depth: int = 0, extra_css: str = "", incl
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content="{description}">
-{css}  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "8d5e9a88082a4e16ad85726f40747986"}}'></script>
+{seo_block}{css}  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "8d5e9a88082a4e16ad85726f40747986"}}'></script>
 </head>
 <body>
 {mh}

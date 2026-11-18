@@ -59,6 +59,16 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy _site --project-name=bahansen-us
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      # Announce the URLs that just went live to IndexNow (Bing, Yandex,
+      # Seznam, Naver). Keyless: proof of control is <KEY>.txt in the deployment.
+      # Google does not consume IndexNow — it uses sitemap.xml via Search Console.
+      - name: Checkout (IndexNow submitter)
+        uses: actions/checkout@v4
+        with:
+          path: src
+      - name: Ping IndexNow
+        continue-on-error: true
+        run: python3 src/scripts/indexnow_submit.py --days 2
 
   deploy:
     needs: build

@@ -34,6 +34,7 @@ except Exception:  # pragma: no cover
 from pathlib import Path
 
 import site_parts
+import seo
 
 REPO = Path(__file__).resolve().parent.parent
 CONTENT = REPO / "content"
@@ -263,6 +264,20 @@ def parse_date(date_str: str) -> datetime | None:
         return None
 
 
+def _excerpt(text: str, limit: int = 155) -> str:
+    """SERP-sized description cut on a word boundary, never mid-word.
+
+    The old behaviour sliced at a fixed 150 characters, which published
+    fragments like '...decoder threatening enter' as the meta description on
+    every page Google indexed.
+    """
+    t = " ".join((text or "").split()).replace('"', "")
+    if len(t) <= limit:
+        return t
+    cut = t[:limit].rsplit(" ", 1)[0].rstrip(" ,;:—-")
+    return cut + "…"
+
+
 def parse_published(data) -> datetime | None:
     """The real publish moment, in America/New_York, when the artifact records one."""
     raw = data.get("published_at") if isinstance(data, dict) else None
@@ -390,11 +405,17 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
     else:
         body = normalize_tier_body(raw)
         summary = ""
-    excerpt = (summary or title)[:150].replace('"', "")
+    excerpt = _excerpt(summary or title)
 
     # briefing page (depth 1)
     page = BRIEFING_TEMPLATE.format(
-        head=site_parts.head(title, excerpt, depth=1),
+        head=site_parts.head(
+            title, excerpt, depth=1,
+            canonical=f"/briefings/{date_str}",
+            og_type="article",
+            jsonld=seo.jsonld(f"/briefings/{date_str}", title, excerpt,
+                              published_iso=date_str),
+        ),
         nav=site_parts.nav(depth=1, active="history"),
         title=title,
         threat_class=threat_class(threat),
@@ -410,7 +431,10 @@ def render_briefing(date_str: str, raw: str, entries_meta: list) -> None:
     # landing page (depth 0) if latest
     if date_str == entries_meta[0]["date"]:
         landing = LANDING_TEMPLATE.format(
-            head=site_parts.head(title, excerpt, depth=0),
+            head=site_parts.head(
+                title, excerpt, depth=0, canonical="/", og_type="article",
+                jsonld=seo.jsonld("/", title, excerpt, published_iso=date_str),
+            ),
             nav=site_parts.nav(depth=0),
             title=title,
             threat_class=threat_class(threat),
@@ -483,10 +507,16 @@ def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
                 parts.append("</div>")
 
     body = "\n".join(parts)
-    excerpt = (summary or title)[:150].replace('"', "")
+    excerpt = _excerpt(summary or title)
 
     page = BRIEFING_TEMPLATE.format(
-        head=site_parts.head(title, excerpt, depth=1),
+        head=site_parts.head(
+            title, excerpt, depth=1,
+            canonical=f"/briefings/{date_str}",
+            og_type="article",
+            jsonld=seo.jsonld(f"/briefings/{date_str}", title, excerpt,
+                              published_iso=pub.isoformat() if pub else date_str),
+        ),
         nav=site_parts.nav(depth=1, active="history"),
         title=title,
         threat_class=threat_class(threat),
@@ -501,7 +531,11 @@ def render_json_briefing(date_str: str, data: dict, entries_meta: list) -> None:
 
     if date_str == entries_meta[0]["date"]:
         landing = LANDING_TEMPLATE.format(
-            head=site_parts.head(title, excerpt, depth=0),
+            head=site_parts.head(
+                title, excerpt, depth=0, canonical="/", og_type="article",
+                jsonld=seo.jsonld("/", title, excerpt,
+                                  published_iso=pub.isoformat() if pub else date_str),
+            ),
             nav=site_parts.nav(depth=0),
             title=title,
             threat_class=threat_class(threat),
@@ -564,8 +598,13 @@ def build_about() -> None:
 </body>
 </html>
 """.format(
-        head=site_parts.head("About — bahansen.us",
-                             "About bahansen.us and the Daily Security Intelligence Briefing.", depth=0),
+        head=site_parts.head(
+            "About — bahansen.us",
+            "Who runs bahansen.us and how the Daily Security Intelligence Briefing is produced.",
+            depth=0, canonical="/about",
+            jsonld=seo.jsonld("/about", "About bahansen.us",
+                              "Who runs bahansen.us and how the Daily Security Intelligence Briefing is produced."),
+        ),
         nav=site_parts.nav(depth=0, active="about"),
         footer=site_parts.footer(depth=0),
     )
@@ -602,8 +641,13 @@ def build_privacy() -> None:
 </body>
 </html>
 """.format(
-        head=site_parts.head("Privacy Policy — bahansen.us",
-                             "Privacy policy for bahansen.us, the personal website of Brett Hansen.", depth=0),
+        head=site_parts.head(
+            "Privacy Policy — bahansen.us",
+            "Privacy policy for bahansen.us, the personal website of Brett Hansen.",
+            depth=0, canonical="/privacy",
+            jsonld=seo.jsonld("/privacy", "Privacy Policy — bahansen.us",
+                              "Privacy policy for bahansen.us, the personal website of Brett Hansen."),
+        ),
         nav=site_parts.nav(depth=0, active="privacy"),
         footer=site_parts.footer(depth=0),
     )
@@ -658,8 +702,13 @@ def main():
 
     # history
     history_html = HISTORY_TEMPLATE.format(
-        head=site_parts.head("History — Past Briefings — bahansen.us",
-                             "Archive of Daily Security Intelligence Briefings from bahansen.us.", depth=0),
+        head=site_parts.head(
+            "History — Past Briefings — bahansen.us",
+            "Every past edition of the Daily Security Intelligence Briefing, newest first.",
+            depth=0, canonical="/history",
+            jsonld=seo.jsonld("/history", "History — Past Briefings",
+                              "Every past edition of the Daily Security Intelligence Briefing, newest first."),
+        ),
         nav=site_parts.nav(depth=0, active="history"),
         months=build_history(entries),
         footer=site_parts.footer(depth=0),
@@ -683,7 +732,12 @@ def main():
         cards.append(ARTICLE_CARD.format(date_label=date_label, filename=a.name, title=title))
         # article page
         page = ARTICLE_TEMPLATE.format(
-            head=site_parts.head(title, title, depth=1),
+            head=site_parts.head(
+                title, title, depth=1, og_type="article",
+                canonical=f"/articles/{a.stem}",
+                jsonld=seo.jsonld(f"/articles/{a.stem}", title, title,
+                                  published_iso=date_label or None),
+            ),
             nav=site_parts.nav(depth=1, active="articles"),
             title=title,
             date_label=date_label,
@@ -694,7 +748,13 @@ def main():
         (OUT / "articles" / a.name).write_text(page)
         print(f"  article {a.name}")
     articles_index = ARTICLES_INDEX_TEMPLATE.format(
-        head=site_parts.head("Articles — bahansen.us", "Articles from bahansen.us.", depth=0),
+        head=site_parts.head(
+            "Articles — bahansen.us",
+            "Security and AI-governance writing published on bahansen.us.",
+            depth=0, canonical="/articles",
+            jsonld=seo.jsonld("/articles", "Articles — bahansen.us",
+                              "Security and AI-governance writing published on bahansen.us."),
+        ),
         nav=site_parts.nav(depth=0, active="articles"),
         cards="\n".join(cards) if cards else "      <p class=\"muted\">No articles yet — coming soon.</p>",
         footer=site_parts.footer(depth=0),
@@ -705,6 +765,9 @@ def main():
     # about + privacy
     build_about()
     build_privacy()
+
+    # search-engine artifacts: robots.txt, sitemap.xml, 404.html, IndexNow key
+    seo.write_all(OUT)
 
     print("DONE")
 

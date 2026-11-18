@@ -11,7 +11,7 @@ from pathlib import Path
 EXTERNAL = re.compile(r"^(https?:)?//|^mailto:|^#")
 
 
-def check_page(path: Path):
+def check_page(path: Path, root: Path):
     html = path.read_text()
     refs = re.findall(r'(?:href|src)="([^"]+)"', html)
     errors = []
@@ -25,8 +25,17 @@ def check_page(path: Path):
         ref_clean = ref.split("#")[0].split("?")[0]
         if not ref_clean:
             continue
-        target = (path.parent / ref_clean).resolve()
+        # A leading "/" is site-root-absolute, not page-relative. Cloudflare
+        # Pages also serves "/history" from history.html (clean URLs), so a
+        # ref that has no literal file but an .html twin is not broken.
+        if ref_clean.startswith("/"):
+            target = (root / ref_clean.lstrip("/")).resolve()
+        else:
+            target = (path.parent / ref_clean).resolve()
         if not target.exists():
+            twin = target.with_name(target.name + ".html")
+            if twin.exists():
+                continue
             errors.append(f"  BROKEN: '{ref}' (in {path.name} -> {target})")
     return errors
 
@@ -43,7 +52,7 @@ def main():
     if (root / "articles").exists():
         pages += sorted((root / "articles").glob("*.html"))
     for p in pages:
-        errs = check_page(p)
+        errs = check_page(p, root)
         if errs:
             all_errors.extend(errs)
             print(f"{p.relative_to(root)}:")
