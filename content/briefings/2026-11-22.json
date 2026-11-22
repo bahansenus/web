@@ -1,0 +1,647 @@
+{
+ "date": "2026-11-22",
+ "published_at": "2026-11-22T13:01:18.118Z",
+ "title": "Daily Security Intelligence Briefing — November 22, 2026",
+ "threat_level": "CRITICAL",
+ "summary": "Critical infrastructure and cloud ecosystems face heightened risk following the exploitation of a Microsoft Entra Connect Health flaw to steal tenant data, breaches of the FBI's National Crime Information Center (NCIC) and the USDA, and months of undetected prompt theft across three AI inference providers (BleepingComputer, SecurityWeek, The Hacker News). Simultaneously, autonomous AI agents used by China-nexus actors were observed discovering and exploiting a zero-day in MONAI Label, while CISA urges immediate remediation for actively exploited flaws in VMware vCenter, Cisco Expressway, and Apache Roller (#infosec, #cve).",
+ "tier1": [
+  {
+   "title": "1. Microsoft Entra Connect Health flaw exploited to steal tenant data",
+   "url": "https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "BleepingComputer"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cloud Identity / Unassigned CVE (Active Exploitation)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Microsoft confirmed a data breach in its Entra Connect Health service after attackers exploited a cloud vulnerability between July 23 and November 19, 2026. The compromise allowed unauthorized access to tenant configuration information and administrator email addresses across affected organizations. Because Entra Connect Health bridges on-premises identity infrastructure with cloud directories, exposure of tenant configuration metadata presents significant ecosystem-wide risks for lateral identity attacks."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Review Microsoft 365 admin center notifications for tenant exposure alerts, audit Entra Connect Health configurations, and monitor administrator accounts for targeted phishing or credential stuffing."
+    }
+   ]
+  },
+  {
+   "title": "2. FBI Investigating Apparent Hack of Its Key National Criminal Justice Database, AP Source Says",
+   "url": "https://www.securityweek.com/fbi-investigating-apparent-hack-of-its-key-national-criminal-justice-database-ap-source-says/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "SecurityWeek"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Critical Infrastructure / Nation-State & Law Enforcement Breach"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "The FBI is investigating a suspected breach of its National Crime Information Center (NCIC) database, marking the agency's second major cybersecurity incident in two months. The NCIC serves as the primary criminal justice information-sharing backbone for local, state, and federal law enforcement across the United States. A compromise of this database risks exposing sensitive arrest warrants, criminal histories, and ongoing law enforcement operations nationwide."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Law enforcement and partner agencies accessing NCIC data should audit access logs for anomalous queries, enforce strict session authentication, and prepare for potential credential rotation mandates from the FBI."
+    }
+   ]
+  },
+  {
+   "title": "3. OpenRouter Drops 3 Providers After Researchers Catch Months of Prompt Theft at AI Hosting Firms",
+   "url": "https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "AI Supply Chain / Data Exfiltration (Ecosystem Compromise)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Industrial cybersecurity firm Dragos revealed that attackers infiltrated three third-party AI inference providers and exfiltrated customer prompt data for months without detection. Crucially, the stolen requests included payloads flagged for Zero Data Retention (ZDR), completely undermining privacy guarantees across the routed AI ecosystem. OpenRouter subsequently removed the three compromised hosting firms from its gateway pool following the disclosure."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Audit third-party AI gateway routing configurations, restrict sensitive corporate data or secrets from being sent to external inference providers regardless of ZDR flags, and rotate any credentials or API keys previously passed through OpenRouter prompts."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Autonomous AI Agents Discover and Exploit MONAI Label Zero-Day (CVE-2026-133968)",
+   "url": "https://infosec.exchange/@cloud/117657421768456122",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Suspected China-linked threat actors deployed autonomous AI agents that discovered and exploited a critical path traversal zero-day (CVE-2026-133968, CVSS 9.8) in MONAI Label, an open-source medical imaging server. Because authentication is disabled by default in versions 0.8.5 and earlier, the AI agents mapped the API, wrote files outside the storage directory, and achieved root access on an East Asian university server in roughly 11 minutes."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Autonomous offensive AI agents can map APIs and weaponize path traversal flaws to achieve root execution in minutes.; A fix has been merged into the MONAI Label source code, though an official patched release is still pending."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The agents took about eleven minutes from mapping the API to writing files on the server."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "2. VMware vCenter SSO Auth Bypass Actively Exploited by China-Linked Actors (CVE-2026-123890)",
+   "url": "https://infosec.exchange/@suriq/117659122191521036",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Virtualization & Infrastructure Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical authentication bypass vulnerability in VMware vCenter (CVE-2026-123890, CVSS 9.8) has been exploited as a zero-day by China-nexus espionage actors since September 2026 to gain administrative access without a password. Broadcom released a patch on November 19, and CISA has added the flaw to its KEV catalog with an accelerated remediation deadline of November 23."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Applying the software patch alone is insufficient if the server was already compromised.; Administrators must replace the vCenter SSO signing certificate post-patching, as stolen keys outlive the fix."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Patch, then replace the SSO signing certificate. Stolen keys outlive the fix."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "3. Researchers Demonstrate Ghostscript Sandbox-Escape RCE via Crafted File Uploads (CVE-2026-125396)",
+   "url": "https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Security researchers at pwn.ai detailed 'Upload2Shell' (CVE-2026-125396, CVSS 8.5), a sandbox-escape vulnerability in Ghostscript/GhostPDL versions prior to 10.08.0. Attackers can upload crafted PDF, PostScript, or image files to execute arbitrary commands on the underlying Linux server, even if the web application invokes Ghostscript indirectly through automated file-conversion pipelines."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "File conversion pipelines on Linux frequently invoke Ghostscript behind the scenes via ImageMagick or similar libraries.; Upgrade ArtifexSoftware Ghostscript/GhostPDL to version 10.08.0 or later immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A now-patched flaw in Ghostscript allows a crafted file to escape the program's security sandbox and run commands on the server that processes it."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "4. Ruby Patches Critical Ruby2Shell Flaw and Multiple Regular Expression Vulnerabilities",
+   "url": "https://infosec.exchange/@beyondmachines1/117659985371161207",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The Ruby development team released security updates addressing seven vulnerabilities, headlined by the critical 'Ruby2Shell' flaw (CVE-2026-132825) which permits unauthenticated remote code execution. The updates resolve underlying memory-safety flaws in string case conversion and regular expression processing that directly impact Ruby on Rails and Sinatra web applications."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "CVE-2026-132825 allows unauthenticated RCE in standard web frameworks like Rails and Sinatra.; Development teams should prioritize upgrading Ruby runtimes across all staging and production environments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Ruby released security updates for seven vulnerabilities, including the critical Ruby2Shell flaw (CVE-2026-132825) that allows unauthenticated remote code execution."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "5. Rackspace Spot Breach Let Hackers Access Customer Kubernetes Secrets",
+   "url": "https://www.bleepingcomputer.com/news/security/rackspace-spot-breach-let-hackers-access-customer-kubernetes-secrets/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & Container Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Rackspace notified customers that threat actors compromised its Rackspace Spot cloud platform using stolen credentials. The intrusion enabled attackers to deploy unauthorized workloads and access sensitive Kubernetes secrets within customer clusters."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Compromised platform credentials allowed direct access to downstream tenant Kubernetes secrets.; Rackspace Spot customers must rotate all secrets, API tokens, and certificates stored within affected Kubernetes clusters and audit for rogue pods."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Rackspace warned customers that hackers breached its Rackspace Spot cloud platform using compromised credentials, allowing them to deploy unauthorized workloads and access Kubernetes secrets in customer clusters."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "6. Critical Linux Kernel TCP Stack Use-After-Free Vulnerability (CVE-2026-98432)",
+   "url": "https://fosstodon.org/@sigint/117657089194799588",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & OS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical use-after-free vulnerability (CVE-2026-98432, CVSS 9.8) in the Linux kernel TCP stack exposes internet-facing hosts to remote exploitation. Ubuntu has already published fixes in its security repository, and temporary nftables mitigations are available for systems that cannot immediately reboot."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Every network-exposed Linux host running an affected kernel version is at risk.; Apply kernel security updates and reboot immediately, or deploy nftables stopgap rules and run KQL hunting queries to check for exploitation."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A CVSS 9.8 use-after-free in the kernel TCP stack, with Ubuntu fixes already in -security. It hits every exposed host, so update the kernel and reboot."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "7. GnuPG Warns of Critical GPGME Double-Free Vulnerability (CVE-2026-129975)",
+   "url": "https://infosec.exchange/@cloud/117656944150384660",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cryptography & Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical memory corruption and double-free vulnerability (CVE-2026-129975) in GPGME, the standard library applications use to interface with GnuPG, can be triggered by a malicious OpenPGP key containing an oversized user ID. Processing an untrusted key corrupts pointers in status reading functions, leading to sensitive data disclosure from the host application and potential remote code execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Impacts mail clients, XMPP clients, Samba, and Gpg4win that parse untrusted OpenPGP keys.; Update to GPGME 2.3.1 or Gpg4win 5.1.2, and rebuild any applications that statically link GPGME."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A malicious OpenPGP key with an overlong user ID corrupts pointers in read_status()/read_colon_line(), freeing memory twice in the host app. Data theft possible, RCE not ruled out."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "8. Apache Roller Unauthenticated XML-RPC RCE Added to CISA KEV (CVE-2026-129448)",
+   "url": "https://cyberplace.social/@trinacriatech/117659092275486581",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added Apache Roller CVE-2026-129448 (CVSS 9.8) to its Known Exploited Vulnerabilities catalog following confirmed in-the-wild exploitation. The flaw stems from untrusted data deserialization in the XML-RPC endpoint across versions 4.0.0 through 6.1.4, allowing unauthenticated remote code execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Disabling XML-RPC via the web UI is ineffective because older versions deserialize payloads prior to checking the setting.; Upgrade to Apache Roller 6.1.6+, or mitigate by setting enabledForExtensions=false in WEB-INF/web.xml."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Disabling XML-RPC from the interface is not enough: older versions deserialize before the check."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "9. Cisco Expressway Hard-Coded Credentials Flaw Actively Exploited (CVE-2026-76466)",
+   "url": "https://infosec.exchange/@stackurity/117658386873346884",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Perimeter Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA and security researchers warn that CVE-2026-76466, a hard-coded credentials vulnerability in Cisco Expressway, is under active exploitation in the wild. The flaw was added to the CISA KEV catalog alongside SAP NetWeaver, VMware vCenter, and Apache Roller vulnerabilities tied to espionage campaigns."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Perimeter collaboration gateways like Cisco Expressway remain prime targets for initial access and espionage.; Apply Cisco's security updates immediately and audit gateway access logs for unauthorized sessions."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "New on the Stackurity blog: Cisco Expressway flaw CVE-2026-76466 is exploited: update now"
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "10. GL.iNet GoodCloud Zero-Day Exploited to Plant Malware on Routers and KVMs",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117659664990859396",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "IoT & Hardware Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers exploited a zero-day vulnerability in GL.iNet's GoodCloud remote management service to push malware directly onto customer routers and KVM devices. The cloud management compromise allowed adversaries to bypass local network perimeters and infect managed hardware."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Cloud-based device management planes represent a high-leverage single point of failure for edge hardware.; GL.iNet users should inspect devices for unauthorized binaries, apply firmware updates, and disable GoodCloud remote management if unneeded."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A GL.iNet cloud zero-day in GoodCloud remote management was exploited to plant malware on routers and KVMs."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "11. U.S. Department of Agriculture Systems Offline Following Targeted Cyberattack",
+   "url": "https://infosec.exchange/@beyondmachines1/117654558967061748",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Government & Critical Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The U.S. Department of Agriculture (USDA) confirmed a targeted cyberattack on November 20, 2026, that forced multiple critical farming and loan applications offline. Incident responders are resetting all database passwords across the agency to contain the breach and restore disrupted services."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "The USDA incident coincides with a broader wave of federal tech disruptions and the FBI NCIC breach.; Agricultural partners and loan applicants should anticipate service delays and verify the authenticity of any USDA communications."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The U.S. Department of Agriculture confirmed a cyberattack on November 20, 2026, that forced several critical farming and loan applications offline."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "12. RIKEN Takes Fugaku Supercomputer Offline Following Network Intrusion and Data Leak",
+   "url": "https://infosec.exchange/@beyondmachines1/117659041630227190",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Research & High-Performance Computing"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Japanese research institute RIKEN shut down the Fugaku supercomputer network after discovering a cyberattack that occurred on November 13, 2026. Threat actors breached the facility via a vulnerable status dashboard, exposing credentials and personal data for 4,597 users."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Ancillary web applications like status dashboards often lack the hardening of core HPC infrastructure, providing an easy entry point.; Affected RIKEN users must rotate credentials immediately while the facility conducts recovery operations."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "RIKEN confirmed a cyberattack on November 13, 2026, that compromised the Fugaku supercomputer network through a vulnerable status dashboard."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "13. European Commission Hit by AI-Generated Cyberattack Using ARTEX Tool",
+   "url": "https://infosec.exchange/@lelabtechnique/117656054722032057",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Threats & Government Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The European Commission confirmed that an AI-driven cyberattack utilizing an offensive tool named 'ARTEX' disrupted its payroll and HR systems for over ten days. The ARTEX framework is reportedly capable of autonomously escalating to privileged access in under three hours and is also being deployed against small and medium-sized enterprises."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Automated offensive AI frameworks are compressing the time from initial access to privilege escalation down to hours.; Defenders must tune identity and endpoint detection to automatically isolate rapid lateral movement and anomalous privilege requests."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The European Commission confirmed on November 19 an 'AI-generated' cyberattack that disrupted its payroll and HR for more than ten days. The ARTEX tool is involved..."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "14. Critical Vulnerabilities Disclosed in Drupal Core, Poste.io, and Python pip",
+   "url": "https://infosec.exchange/@karenit/117657750443850693",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Advisories from the Karen IT Security Response Center highlight three critical flaws: an unauthenticated RCE in Drupal Core's installer (CVE-2026-132165), a command injection RCE in Poste.io mail server's DMARC report processor (CVE-2026-127027), and a flaw in Python's pip prior to 26.2.2 bundling compromised eMudhra intermediate certificates in certifi."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Poste.io mail servers can be compromised remotely simply by sending a malicious email to the dmarc-reports@ address.; Upgrade pip to 26.2.2+ to prevent MITM package tampering via compromised CA certificates, and apply the latest Drupal and Poste.io patches."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Emails sent to dmarc-reports@ are accepted and stored without proper sender validation... A Critical remote code execution vulnerability has been identified in Poste.io."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "15. BADBOX Botnet Returns with Record-Breaking 40 Billion Daily Ad Requests",
+   "url": "https://www.bleepingcomputer.com/news/security/badbox-30-botnet-returns-with-record-breaking-40-billion-daily-ad-requests/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Malware & Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The BADBOX botnet, which infects generic Android TV boxes via supply-chain and firmware backdoors, has resurfaced following last year's law enforcement disruptions. The botnet is currently generating a record-breaking 40 billion daily ad-fraud requests globally."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Unverified Android IoT and streaming hardware continue to pose persistent residential proxy and botnet risks.; Network administrators should segment IoT devices and monitor for high-volume anomalous outbound ad-tech traffic."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The BADBOX malware found in a broad range of generic Android TV boxes has returned to large-scale ad-fraud operations following last year's disruptions."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "16. Columbia and CertiK Introduce TensorLean for Formal Verification of GPU Kernels",
+   "url": "https://www.marktechpost.com/2026/11/21/columbia-certik-tensorlean-formal-verification-gpu-kernels/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Infrastructure & Cryptography"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers from Columbia University and CertiK released TensorLean, a Lean-based formal verification framework that proves compiled GPU kernels at the PTX level match tensor-level mathematical specifications. Testing 149 kernel instances across FlashAttention-2, -3, -4, and DeepGEMM, the team formally proved 83 correct."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Formal verification is expanding from smart contracts and OS microkernels into low-level AI/GPU compute primitives.; Verifying PTX-level GPU kernels helps prevent subtle calculation bugs and memory safety flaws in foundational AI workloads."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "TensorLean is a Lean-based verifier that proves compiled kernels match a tensor-level math spec."
+    },
+    {
+     "label": "Source",
+     "value": "MarkTechPost"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "NSA Outage Root Cause — Internal NSA communications outage attributed to botched October PHP patching. (#infosec)",
+   "url": "https://discuss.systems/@vyodaiken/117660038357543136"
+  },
+  {
+   "text": "Ethiopian Airlines Breach — Breach potentially exposes ShebaMiles loyalty member data; flight operations unaffected. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117659749458438852"
+  },
+  {
+   "text": "MedCom Solutions Breach — Data theft at former MSP exposes patient info across multiple hospitals. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117659513514682368"
+  },
+  {
+   "text": "NVIDIA Ransomware Ultimatum — NVIDIA reportedly faces a 10-day ransomware countdown toward a data dump. (#infosec)",
+   "url": "https://infosec.exchange/@theperimetersite/117659004221604632"
+  },
+  {
+   "text": "1984 Hosting Cyberattack — Icelandic host 1984 shuts down services after attack targeting pro-Palestine domains. (#infosec)",
+   "url": "https://chaos.social/@FlohEinstein/117655271045046398"
+  },
+  {
+   "text": "Fake Zoom ScreenConnect Threat — Fake Zoom update pages distribute rogue ScreenConnect client calling port 8041. (#infosec)",
+   "url": "https://infosec.exchange/@nssresearch/117655115140680486"
+  },
+  {
+   "text": "FastUnlock Windows 0-Day — GitHub repository publishes Windows Narrator lockscreen bypass zero-day PoC. (#infosec)",
+   "url": "https://infosec.exchange/@r1cksec/117659547382995625"
+  },
+  {
+   "text": "Windows UAC Bypass Mocked — Google researcher James Forshaw mocks Windows UAC bypass as AI-written code. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117659064257575556"
+  },
+  {
+   "text": "Meta Muse Hijack Follow-Up — Patched lab demonstration showed malicious webpage could hijack Meta Muse chats. (#infosec)",
+   "url": "https://infosec.exchange/@AAKL/117655266753802783"
+  },
+  {
+   "text": "Week in Review: Optimizely & Java4Shell — Recap of Optimizely malware hitting 178 orgs and Java4Shell exploit complexity. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/22/week-in-review-java4shell-proves-tricky-to-exploit-malware-planted-via-optimizely-hits-178-orgs/"
+  },
+  {
+   "text": "Aging KEV Reminders — Reminders to patch earlier November KEVs in Chromium, Outlook, and SonicOS. (#infosec)",
+   "url": "https://infosec.exchange/@xploitdigest/117654777402289256"
+  },
+  {
+   "text": "WordPress Plugins (CVE-2026-131705, CVE-2026-125294) — High/Critical SQLi and privilege escalation flaws in ProfileGrid and Nexter Blocks. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117659627393042986"
+  },
+  {
+   "text": "Apache Tomcat Advisories — KSRC highlights multiple critical and high severity vulnerabilities in Apache Tomcat. (#cve)",
+   "url": "https://infosec.exchange/@karenit/117655825440976652"
+  },
+  {
+   "text": "Perl & libheif CVEs — Minor DoS and integer overflow patches in Mojo::JSON and libheif. (#cve)",
+   "url": "https://mastodon.social/@hugovalters/117658407121902937"
+  },
+  {
+   "text": "HackerOne Bug Bounty Disclosures — Disclosures for Evernote Windows RCE, Node.js Brotli OOB write, and LanguageManager. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117655973119956061"
+  },
+  {
+   "text": "Routine CMS & Plugin CVE Alerts — Batch of routine CVEs across Admidio, SiYuan, Grav, TRENDnet, and WordPress plugins. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117659627732033793"
+  },
+  {
+   "text": "Agniveer Data Theft Arrest — Delhi Police detain 14-year-old for using AI to steal Agniveer data. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117659277581507658"
+  },
+  {
+   "text": "CrowdStrike & Zscaler Rumors — Motley Fool report speculates that CrowdStrike wants to acquire Zscaler. (#infosec)",
+   "url": "https://infosec.exchange/@AAKL/117655385256863136"
+  },
+  {
+   "text": "Binance October Exploit Analysis — Retrospective on custody risks following October's $6.3B Binance wallet drain. (#infosec)",
+   "url": "https://infosec.exchange/@vsx/117658859009542744"
+  },
+  {
+   "text": "Cyber Insurance as Control Audits — Commentary on NCSC guidance noting insurance renewals function as control attestations. (#infosec)",
+   "url": "https://infosec.exchange/@adrianhollister/117659376588112284"
+  },
+  {
+   "text": "Vibe-Coded App Security Testing — Opinion recommending simple two-account console checks to test AI-coded RLS. (#infosec)",
+   "url": "https://mastodon.social/@abbilabs/117659695904073055"
+  },
+  {
+   "text": "OSINT and Military Base Mapping — Discussion on how public online maps and correlation expose military bases. (#infosec)",
+   "url": "https://infosec.exchange/@TheKeystoneCollective/117659704479819640"
+  },
+  {
+   "text": "AI Threat Acceleration & Technical Debt — Commentary on AIVD warnings and NYT report on AI uncovering dormant code flaws. (#infosec)",
+   "url": "https://techhub.social/@techandcoffee/117657051254515931"
+  },
+  {
+   "text": "Outages vs. Cyberattacks — Ars Technica guide on distinguishing cyberattacks from routine IT outages. (#infosec)",
+   "url": "https://techhub.social/@techandcoffee/117656773743742101"
+  },
+  {
+   "text": "Personal Threat Modeling MOT — Blog post on starting personal security checklists with threat actor profiling. (#infosec)",
+   "url": "https://mastodon.social/@axels/117654562726260097"
+  },
+  {
+   "text": "DeaconGuard Security Scanner — Release of DeaconGuard, a self-hosted open-source Linux and container vulnerability scanner. (#infosec)",
+   "url": "https://infosec.exchange/@deaconguard/117656805868979289"
+  },
+  {
+   "text": "TgWitness 1.0.0 Released — Open-source tool turns Telegram chats into cryptographically verifiable court evidence. (#infosec)",
+   "url": "https://mastodon.social/@phishdestroy/117654662163884046"
+  },
+  {
+   "text": "Blackice macOS AI Firewall — Developer releases open-source AI-controlled macOS firewall with TouchID override. (#infosec)",
+   "url": "https://infosec.exchange/@vtsecurity/117655262640335103"
+  },
+  {
+   "text": "Muru Rust Python Server — Graham Dumpleton introduces Muru, an AI-assisted Rust server for Python WSGI/ASGI. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/21/muru/"
+  },
+  {
+   "text": "ScanMalware Feature Updates — ScanMalware adds WebAssembly GC decompilation and PowerShell script download features. (#infosec)",
+   "url": "https://infosec.exchange/@scanmalware/117659074712610783"
+  },
+  {
+   "text": "Google Gemini API Tool Retrieval — Google previews on-demand Tool Retrieval in Gemini API for large tool libraries. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/22/google-gemini-api-tool-retrieval/"
+  },
+  {
+   "text": "Best Personal AI Agents 2026 — Comparison of OpenClaw, Hermes Agent, and Gemini Spark on memory and security. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/22/best-personal-ai-agents-2026/"
+  },
+  {
+   "text": "Terminal2Shell Satire Site — Satirical '11.0/10' vulnerability website pokes fun at branded zero-day hype. (#infosec)",
+   "url": "https://manganiello.tech/@nemo/117656786893735929"
+  },
+  {
+   "text": "GrapheneOS OEM Pressure Claims — Discussion on GrapheneOS accusing Google of pressuring Android OEMs via Pixel exclusives. (#infosec)",
+   "url": "https://ursal.zone/@RosaLuxemburgo/117656976977937179"
+  },
+  {
+   "text": "Secure Boot and TPM Debate — Critique of Linux distribution installation instructions requiring disabling Secure Boot and TPM. (#infosec)",
+   "url": "https://social.kernel.org/objects/1d61b85b-b288-44d9-a2ee-2868d89af7bc"
+  },
+  {
+   "text": "Ransomware Leak Site Updates — Automated alerts for bravox, incransom, PixelLeaks, osiris, and soul victim posts. (#infosec)",
+   "url": "https://infosec.exchange/@CTI_FYI/117657177203532540"
+  },
+  {
+   "text": "Automated Threat Feeds & IOCs — Daily automated phishing URLs, Shodan ASN additions, RDP honeypot stats, and blocklists. (#infosec)",
+   "url": "https://infosec.exchange/@cyberhost_blocklist/117659299526536876"
+  },
+  {
+   "text": "General Tech, Courses & Job Postings — Assorted infosec job listings, AI beginner courses, blog notes, and off-topic reviews. (Daniel Miessler)",
+   "url": "https://danielmiessler.com/blog/autonomous-media-2027"
+  }
+ ]
+}
