@@ -1,0 +1,739 @@
+{
+ "date": "2026-11-23",
+ "published_at": "2026-11-23T13:01:33.880Z",
+ "title": "Daily Security Intelligence Briefing — November 23, 2026",
+ "threat_level": "HIGH",
+ "summary": "Today's threat landscape is marked by active exploitation of cloud identity infrastructure via Microsoft Entra Connect Health (Help Net Security), critical RCE vulnerabilities in Cisco Expressway and legacy ASP.NET libraries (BleepingComputer, The Hacker News), and a major supply-chain payment card breach at software billing giant Cleverbridge (BleepingComputer).",
+ "tier1": [
+  {
+   "title": "1. Attackers exploited Microsoft Entra Connect Health flaw to access tenant data",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/microsoft-entra-connect-health-vulnerability-tenant-data/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "Help Net Security"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cloud Identity / Active Exploitation (Cloud Provider Compromise)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Threat actors exploited a vulnerability in the Microsoft Entra Connect Health API to access technical contact email addresses and configuration details across multiple Entra tenants. Entra Connect Health is a core cloud-based monitoring service bridging on-premises identity infrastructure with Microsoft's cloud ecosystem. Exposure of tenant configuration data and technical contacts significantly elevates the risk of targeted spear-phishing and identity infrastructure reconnaissance across enterprise environments."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Review Microsoft notifications for affected Entra tenants, audit Entra Connect Health API logs for unauthorized configuration reads, and alert technical contacts to heightened social engineering risks."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. CISA flags critical Cisco RCE flaw as actively exploited in attacks",
+   "url": "https://www.bleepingcomputer.com/news/security/cisa-flags-critical-cisco-expressway-rce-flaw-as-actively-exploited/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Appliance Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers are actively exploiting CVE-2026-76466 (CVSS 9.8) in clustered Cisco Expressway-C and Expressway-E appliances to execute RPC commands as root. The flaw stems from hard-coded persistent cookies and skipped client certificate validation over the database service, allowing lateral spread across exposed cluster nodes."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Affects Cisco Expressway clusters running X15.5.3 and older; version X14 has no patch available.; CISA has added the flaw to the KEV catalog with an immediate remediation requirement and no available workarounds."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Cisco Expressway-C/E clustering relies on hard-coded persistent cookies and skips client cert validation, so an unauthenticated attacker can run RPC commands as root over the database service."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "2. Hackers Exploit Critical ASP.NET Anti-CSRF Library Flaw Allowing Unauthenticated RCE",
+   "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-aspnet-anti.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors are actively exploiting CVE-2026-131914 (CVSS 9.3), an unsafe deserialization vulnerability in the legacy ASP.NET library Idunno.AntiCsrf (versions 0.9.1.0 and 0.9.1 Beta). The flaw enables unauthenticated remote code execution over the network."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Organizations must immediately discontinue use of the legacy Idunno.AntiCsrf.dll library and migrate to built-in ASP.NET anti-forgery mechanisms.; Audit web application dependencies across legacy .NET deployments to identify hidden instances of the vulnerable DLL."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Cybersecurity researchers have urged users to discontinue using a legacy ASP.NET anti-CSRF library named Idunno.AntiCsrf following the discovery of a critical vulnerability that has been exploited in the wild."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "3. Google claims last week’s critical VMware bug was under attack in September",
+   "url": "https://www.theregister.com/virtualization/2026/11/23/google-claims-last-weeks-critical-vmware-bug-was-under-attack-in-september/5311547",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Virtualization & Cloud"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Google Mandiant revealed that CVE-2026-123890, a critical authentication bypass in VMware vCenter patched on November 19, was exploited as a zero-day since September by a China-linked threat actor (UNC5221). The flaw allows unauthorized administrative access to the management console for ESXi hosts and guest VMs."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Patching alone is insufficient for vCenter instances exposed between July and November 2026; full forensic triage is required.; Hunt for unauthorized administrative sessions, anomalous virtual machine snapshots, and persistence mechanisms on vCenter appliances."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Google’s Mandiant unit has claimed that the critical flaw VMware last week revealed in its vCenter product was under attack by a China-linked threat actor which knew of the bug in July and exploited it in September."
+    },
+    {
+     "label": "Source",
+     "value": "The Register"
+    }
+   ]
+  },
+  {
+   "title": "4. Cleverbridge warns hackers stole credit card numbers, CVVs in data breach",
+   "url": "https://www.bleepingcomputer.com/news/security/cleverbridge-warns-hackers-stole-credit-card-numbers-cvvs-in-data-breach/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Third-Party & Supply Chain"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "E-commerce billing platform Cleverbridge—which processes payments for major enterprise software vendors including Red Hat, SUSE, Tenable, Veeam, Jamf, and Sony—disclosed a data breach detected on November 4. Attackers accessed internal systems and exfiltrated full payment card numbers, expiration dates, and CVV security codes."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Corporate procurement cards used to purchase software licenses via Cleverbridge storefronts should be rotated immediately.; Monitor corporate credit card statements for unauthorized transactions stemming from exposed CVV data."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "E-commerce platform Cleverbridge is warning that hackers breached its systems and stole customers' payment card information, including credit card numbers and CVV security codes."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "5. Hackers Exploited GL.iNet Cloud Flaw to Install Malware on Routers and KVM Devices",
+   "url": "https://thehackernews.com/2026/11/hackers-exploited-glinet-cloud-flaw-to.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Hardware & Embedded Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers compromised GL.iNet's GoodCloud remote management service to push custom malware, backdoors, and reverse shells onto customer travel routers and remote-access KVM hardware. While GL.iNet has patched the cloud vulnerability and blocked the attacker's access route, already-infected devices require local remediation."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Inspect all cloud-connected GL.iNet routers and KVMs for unauthorized cron jobs, reverse shells, and modified firmware.; Perform a full factory reset and firmware re-flash on any device that had GoodCloud remote management enabled."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "GL.iNet has confirmed that hackers exploited a vulnerability in its cloud remote management services to install custom malware on customers' routers and KVM devices, with some affected users reporting backdoors and reverse shells."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "6. Upload2Shell (CVE-2026-125396) is a Ghostscript RCE with public PoC code",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117662832805494616",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Tracked as CVE-2026-125396 (CVSS 8.5), a use-after-free vulnerability in Ghostscript's Type 1 font loader allows attackers to escape the -dSAFER sandbox via crafted PostScript or PDF files. Public PoC exploit code demonstrates remote code execution via standard file uploads in downstream applications including WordPress Core, Roundcube, Plesk, MediaWiki, and Debian 13 CUPS."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade Ghostscript to version 10.08.0 immediately across all web servers, mail servers, and print infrastructure.; Block or sanitize PostScript and EPS file uploads at the WAF or application layer if immediate patching is not possible."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A crafted PostScript/PDF triggers a type error, recovers the privileged .forceput operator via a custom error handler, then a use-after-free across save/restore yields RCE."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "7. AI-Assisted Cyberattacks Trigger Unauthorized Payments at Indian Banks and Fintech Firms",
+   "url": "https://thehackernews.com/2026/11/ai-assisted-cyberattacks-trigger.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Financial & Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CERT-In issued an advisory warning that threat actors are leveraging AI-assisted attacks against ICT assets across Indian banking, financial services, and technology service providers. The intrusions have directly resulted in unauthorized financial transactions and payment processing manipulations."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Financial institutions should tighten transaction anomaly detection and out-of-band verification for high-value payment routing.; Audit third-party ICT service provider integrations for compromised API credentials and automated exploitation patterns."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "This unsanctioned activity has resulted in unauthorized financial transactions at banking and financial services entities, as well as technology service providers."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "8. Palo Alto Networks confirms two high-severity NGINX vulnerabilities affecting PAN-OS and Panorama",
+   "url": "https://mastodon.social/@hacksgr/117664190541699698",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Palo Alto Networks confirmed that PAN-OS and Panorama appliances with HTTP/2 enabled are affected by two high-severity NGINX vulnerabilities, CVE-2026-123633 and CVE-2026-123007 (CVSS 9.2). The flaws allow unauthenticated remote attackers to crash worker processes, corrupt memory, or execute arbitrary code."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Apply Palo Alto Networks and Linux distribution patches for NGINX workers, and restart services to clear vulnerable binaries from memory.; Disable HTTP/2 on exposed management or proxy interfaces as a temporary mitigation if patches cannot be deployed immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Tracked as CVE-2026-123633 and CVE-2026-123007, the flaws carry a CVSS score of 9.2 and could allow unauthenticated remote attackers to crash processes or execute code under specific conditions."
+    },
+    {
+     "label": "Source",
+     "value": "#cve"
+    }
+   ]
+  },
+  {
+   "title": "9. KEPCO Breach, Aeroméxico Records, Defense Contractor Leak, RCS Zero-Day, Frappe RCE, VPN Access Auction, and Eclipse RaaS",
+   "url": "https://socradar.io/blog/kepco-aeromexico-defense-leak-rcs-zero-day/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & Dark Web"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Korea Electric Power Corporation (KEPCO), South Korea's primary power utility, confirmed a data breach affecting 1.52 million individuals across its KEPCO ON and SRM systems, exposing registration numbers, bank details, and credit card data. Underground monitoring also surfaced 22 million alleged Aeroméxico records and a claimed 180 TB defense contractor leak."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Energy sector suppliers and partners working with KEPCO should rotate SRM credentials and monitor for supply-chain follow-on attacks.; Monitor dark web intelligence feeds for exposure of corporate credentials tied to the 27-organization VPN access auction."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers accessed the KEPCO ON and SRM systems, stealing registration numbers, bank details, and credit card info."
+    },
+    {
+     "label": "Source",
+     "value": "SOCRadar"
+    }
+   ]
+  },
+  {
+   "title": "10. The FBI is investigating an apparent hack of NCIC, the national criminal-justice database",
+   "url": "https://infosec.exchange/@adrianhollister/117660910234180242",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Government & Critical Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The FBI is investigating an apparent intrusion into the National Crime Information Center (NCIC), the central database used by US law enforcement nationwide to check warrants, stolen property, and background records. The scope of the compromise has not yet been publicly disclosed."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Law enforcement agencies and justice system partners should monitor for anomalous NCIC query patterns or unauthorized credential usage.; Prepare for potential integrity checks or temporary disruptions to connected state and local criminal justice portals."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "NCIC is the system police nationwide use to check warrants and run background checks. It would be the second apparent intrusion at the bureau."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "11. Rackspace Spot breach: leaked credentials let attackers impersonate users on the managed K8s platform",
+   "url": "https://infosec.exchange/@cloud/117663664231704951",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & Container Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Rackspace disclosed a security breach of its Spot managed Kubernetes platform on November 17 after leaked credentials allowed attackers to impersonate users for a 10-hour window. The threat actors deployed rogue pods, enumerated nodes and volumes, and exfiltrated cluster secrets including API tokens and cryptographic keys."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Rackspace Spot customers must immediately rotate all Kubernetes cluster secrets, API tokens, and external service credentials stored in affected clusters.; Audit cluster logs from November 17 (12:20–22:00 UTC) for unauthorized pod deployments and lateral movement into connected cloud environments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "They deployed pods, listed nodes/volumes and read cluster secrets (API tokens, keys). Sessions revoked, keys rotated."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "12. Infected TV boxes in BADBOX 3.0 rent out their owners’ home internet",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/badbox-3-0-ad-fraud-operation/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Malware & Botnets"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "HUMAN's Satori team disrupted BADBOX 3.0, a massive botnet operating primarily from pre-infected, low-cost Android TV boxes that generated 40 billion ad bid requests daily (over 4% of global connected TV traffic). Beyond hidden video ad fraud, the malware turns residential networks into proxyjacking exit nodes for cybercriminal traffic."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Block unmanaged Android TV and off-brand streaming devices from connecting to corporate or sensitive work-from-home VLANs.; Update threat intelligence blocklists with BADBOX 3.0 C2 domains and monitor for anomalous residential proxy traffic."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "HUMAN’s Satori Threat Intelligence and Research Team has disrupted BADBOX 3.0, an operation run mainly from infected low-cost TV boxes that generated roughly 40 billion ad bid requests a day at its peak."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "13. Google’s semantic governance policies can block an AI agent’s tool call before it runs",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/google-semantic-governance-policies/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Architecture"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Google introduced semantic governance policies in Preview on the Gemini platform, combined with its donation of Agent Substrate and gVisor to the CNCF. The architecture places an external checkpoint at an enforcement gateway to evaluate and block proposed AI agent tool calls that deviate from user intent or violate enterprise policy prior to execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enforce AI agent security boundaries outside the model runtime using external policy gateways rather than relying on system prompts.; Use sandboxing technologies like gVisor and Agent Substrate to isolate agent compute from persistent state."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Semantic governance policies, in Preview on the Gemini platform, look at each tool call the agent’s model proposes and block it before it runs if the call doesn’t match the user’s request or breaks a company rule."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "14. Project Chaperone: A Rule-Enforcing Harness for Proactive Assessment and Prevention of AI Agent Misconduct",
+   "url": "https://appliedingenuity.substack.com/p/project-chaperone-a-rule-enforcing",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Governance"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Project Chaperone is a newly released open-source runtime harness designed to constrain AI agents using explicit data-flow, action, output, and network policy checks before and during execution. Alongside Xalgorix—an open-source AI pentesting tool that uses a secondary agent to re-exploit and verify findings—defenders are gaining deterministic controls over agentic workflows."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Implement deterministic data-flow and network rules around autonomous agents to prevent data exfiltration and unauthorized tool execution.; Adopt dual-agent verification patterns in automated security testing to eliminate false positives before alerting human analysts."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Practical agent safety needs enforceable runtime boundaries, not just instructions."
+    },
+    {
+     "label": "Source",
+     "value": "TLDR data"
+    }
+   ]
+  },
+  {
+   "title": "15. CVE-2026-134817: an argument injection flaw in Flux159's mcp-server-kubernetes",
+   "url": "https://infosec.exchange/@suriq/117662226202993895",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & AI Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "An argument injection vulnerability (CVE-2026-134817) in Flux159's mcp-server-kubernetes (versions prior to 4.2.0) allows remote Model Context Protocol (MCP) clients to inject arbitrary kubectl flags and read local files on the server host. Separately, CVE-2026-133968 was disclosed as an AI-discovered zero-day path traversal flaw in the MONAI Label medical imaging server."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade mcp-server-kubernetes to version 4.2.0 and restrict MCP server network exposure to trusted orchestrators.; Healthcare organizations using MONAI Label should apply patches for CVE-2026-133968 and restrict unauthenticated API access."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "An argument injection flaw in Flux159's mcp-server-kubernetes lets remote MCP clients inject kubectl flags and read files on the server host."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "16. A Mongoose heap overflow rated CVSS 9.8 enables pre-auth remote code execution",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117663068413391482",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "IoT & Embedded Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical heap overflow in the Mongoose MIP TCP/IP stack enables pre-authentication remote code execution (CVSS 9.8), patched in Mongoose 7.24 alongside six other flaws. Additionally, CVE-2026-129975 (a critical double-free in GPGME affecting Gpg4win, mail clients, and Samba) and CVE-2026-134624 (an N-able MailAssure internal network scanning flaw via LDAP sync) require immediate patching."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Update embedded projects using Mongoose to version 7.24, upgrade GPGME to 2.3.1, and patch N-able MailAssure to 20261121.1943+.; Ensure embedded IoT management interfaces and LDAP synchronization endpoints are isolated from untrusted network segments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A Mongoose heap overflow rated CVSS 9.8 enables pre-auth remote code execution in the MIP TCP/IP stack. Mongoose 7.24 fixes it and six other flaws."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "17. Signal blocks AI assistants from peeking at your private messages",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/signal-blocks-ai-assistants-screenshots/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Privacy"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Signal rolled out client protections to prevent OS-level AI assistants—specifically Apple's Siri Onscreen Awareness in iOS 27 and Google Gemini on Android—from capturing screen content or reading user conversations. Elsewhere in client security, Microsoft Edge is testing a Canary 'Lockdown Mode' that disables WebGL and WebGPU to eliminate roughly 60% of browser GPU privilege escalation exploits."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enterprise mobile security teams should evaluate how OS-level screen-reading AI assistants in iOS 27 and Android interact with confidential corporate messaging apps.; Consider testing Microsoft Edge Lockdown Mode for high-risk executive and administrator endpoints to reduce browser GPU attack surface."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Siri Onscreen Awareness (iOS 27) and Gemini Intelligence on Android can no longer capture Signal screen content, and screenshots are blocked on iOS 27."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "18. Four bytes, no pairing, no PIN: any Bluetooth device in range could apply Elecbrakes trailer brakes",
+   "url": "https://mastodon.social/@embedsys/117665055474763760",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "OT, ICS & Physical Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers discovered that Elecbrakes Bluetooth trailer brake controllers required pairing for firmware updates but left brake control unauthenticated, allowing any device in range to lock trailer brakes at full force via a 4-byte command. In industrial OT news, CERT@VDE published advisories for WAGO controllers (CVE-2026-80466, CVE-2026-88850), Wiesemann & Theis PHP2Shell RCE (CVE-2026-109618), and unauthenticated ifm cameras (CVE-2026-121613)."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Apply manual firmware updates to Elecbrakes EB2 and VM1 units immediately; monitor for upcoming fixes for the ELBC 2000 model.; Review CERT@VDE advisories VDE-2026-135, VDE-2026-096, and VDE-2026-148 to patch affected WAGO, Wiesemann & Theis, and ifm industrial devices."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Four bytes, no pairing, no PIN: any Bluetooth device in range could apply Elecbrakes trailer brakes at any force, and get a notification confirming it."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "BlackHat Sector Offensive AI — French report details an offensive AI tool rented for €500. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117665499199788060"
+  },
+  {
+   "text": "ScanMalware Deobfuscation Update — ScanMalware improves script deobfuscation and WebAssembly module analysis. (#infosec)",
+   "url": "https://infosec.exchange/@scanmalware/117665484156971010"
+  },
+  {
+   "text": "American Airlines Password Policy — Critique of American Airlines' restrictive 6-to-16 character password rule. (#infosec)",
+   "url": "https://infosec.exchange/@dumbpasswordrules/117665454732671638"
+  },
+  {
+   "text": "1984hosting Cyberattack Investigation — Icelandic police investigate whether 1984hosting attack was state-sponsored. (#infosec)",
+   "url": "https://chaos.social/@FlohEinstein/117665411738604260"
+  },
+  {
+   "text": "Kurly Data Breach — Stolen credentials expose personal and bank data of 10,902 individuals. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117665411731371965"
+  },
+  {
+   "text": "Breach Please Podcast — Podcast discusses deferred maintenance risks around Iowa Army ammunition detonation. (#infosec)",
+   "url": "https://infosec.exchange/@breachplease/117665409638036954"
+  },
+  {
+   "text": "PSS-Socotherm Ransomware Claim — Qilin ransomware group claims attack on PSS-Socotherm S.A. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117665361366043342"
+  },
+  {
+   "text": "27 AI Cybersecurity Terms — Glossary of AI security vocabulary alongside IBM breach cost metrics. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/23/27-ai-cybersecurity-terms/"
+  },
+  {
+   "text": "CVE-2026-134851 File Uploader Flaw — High-severity auth bypass disclosed in leonkhoo123 self-hosting-file-uploader. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117664582000117193"
+  },
+  {
+   "text": "Nissan Cyberattack Disruption — Cyberattack on Nissan reportedly blocks automotive repair operations for ten days. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117665223559411639"
+  },
+  {
+   "text": "Architect Labs Frostbite CPU — Architect Labs unveils Frostbite, an interaction net CPU designed by AI. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/23/architect-labs-frostbite-ai-designed-cpu-interaction-nets/"
+  },
+  {
+   "text": "Samsung Securities Data Breach — Attackers breach VOC system, exposing files for 8,241 Samsung Securities customers. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117665175772539987"
+  },
+  {
+   "text": "Samsung Smart TV Data Leak — Ransomware group n0n leaks 220MB of third-party Samsung advertising records. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117664703945111964"
+  },
+  {
+   "text": "Windows KB5132043 Printing Issue — Microsoft confirms November Windows 11 hotpatch breaks printing for Forcepoint users. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-printing-issues-after-kb5132043-windows-hotpatch/"
+  },
+  {
+   "text": "November IT Outage Column — The Register op-ed reviewing recent Microsoft, Apple, and FAA outages. (The Register)",
+   "url": "https://www.theregister.com/columnists/2026/11/23/when-microsoft-apple-and-the-faa-cant-keep-it-up-its-a-system-of-a-down/5311363"
+  },
+  {
+   "text": "n8n Workflow Releases — n8n releases versions 1.123.101, 2.48.8, and 2.49.4 with QuickJS fixes. (Release notes from n8n)",
+   "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.49.4"
+  },
+  {
+   "text": "AI Prompts for CISOs — Listicle of AI prompt ideas for security leaders to expedite auditing. (CSO Online)",
+   "url": "https://www.csoonline.com/article/4248701/clever-ai-prompt-ideas-every-security-leader-should-steal.html"
+  },
+  {
+   "text": "Meta TLX GPU Compiler — Meta publishes details on Triton Low-Level Extensions for ML kernels. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/23/meta-tlx-triton-low-level-extensions/"
+  },
+  {
+   "text": "AI-Developed Chrome Exploit Chains — Researchers share GitHub repository of n-day Chrome exploit chains built with AI. (#infosec)",
+   "url": "https://infosec.exchange/@r1cksec/117664689143901961"
+  },
+  {
+   "text": "Decathlon Customer Data Leak — Hacker leaks over 163,000 Decathlon customer records and upcoming delivery details. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117664672385656666"
+  },
+  {
+   "text": "LAPSA Customer Data Leak — Hacker claims theft of order data for 80,000 LAPSA pet owners. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117664534512876175"
+  },
+  {
+   "text": "Telegram Stolen Credentials Study — Researchers track volume of cleartext stolen credentials across 45 Telegram channels. (#infosec)",
+   "url": "https://infosec.exchange/@lelabtechnique/117664489242252282"
+  },
+  {
+   "text": "Hospital Microsegmentation & Shadow IT — Interview on managing shadow IT and microsegmentation at a cancer hospital. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/rocco-saviano-istituto-nazionale-tumori-int-hospital-microsegmentation/"
+  },
+  {
+   "text": "Hermes Agent v0.23.3 Canary — Release notes for Hermes Agent canary desktop build v0.23.3. (Release notes from hermes-agent)",
+   "url": "https://github.com/NousResearch/hermes-agent/releases/tag/canary.20261123T065600Z-v0.23.3"
+  },
+  {
+   "text": "Early Black Friday Scams — Doppel reports Black Friday scams started early using Facebook and Google Sites. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/black-friday-scams-doppel-report/"
+  },
+  {
+   "text": "ISACA Releases COBIT 7 — ISACA updates its governance framework to COBIT 7 with AI risk scenarios. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/isaca-cobit-7-released/"
+  },
+  {
+   "text": "CVE-2026-90087 Linux Bluetooth Flaw — Linux kernel Bluetooth flaw leaks hci_conn reference on rejected LE connection. (#cve)",
+   "url": "https://mastodon.social/@hugovalters/117664029260254631"
+  },
+  {
+   "text": "RHEL 10.2 EUS Security Updates — Red Hat patches high-severity kernel (CVE-2026-53262) and xdg-desktop-portal (CVE-2026-55888) flaws. (#cve)",
+   "url": "https://infosec.exchange/@offseq/117663520273470658"
+  },
+  {
+   "text": "Risky Bulletin: Windows Kernel & Gov Hacks — Podcast newsletter covering security tools leaving Windows kernel and government breaches. (Risky Business)",
+   "url": "https://risky.biz/RBNEWS637/"
+  },
+  {
+   "text": "GPT-5.1 Evades Great Firewall — Researchers use $1 of LLM tokens to discover censorship evasion strategies. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/23/1-of-gpt-51-tokens-finds-new-ways-around-chinas-great-firewall/5311532"
+  },
+  {
+   "text": "EU Chat Control Commentary — Social media commentary on EU Chat Control and end-to-end encryption. (#infosec)",
+   "url": "https://infosec.exchange/@Ne0Sec/117662819619186687"
+  },
+  {
+   "text": "CHU Bordeaux Ransomware Claim — Scarlettgroup ransomware claims attack on CHU Bordeaux hospital domain. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117662744196149539"
+  },
+  {
+   "text": "Daniel Miessler AI Essays — Opinion pieces on Anthropic's leadership and AI surpassing human testers in 2027. (Daniel Miessler)",
+   "url": "https://danielmiessler.com/blog/humans-stepping-down-2027"
+  },
+  {
+   "text": "Debian 13.8 Released — Debian 13.8 bundles kernel, Chromium, and 122 package bug and security fixes. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/debian-13-8-released/"
+  },
+  {
+   "text": "WebDAV NTLM Relay Research — Blog post detailing WebDAV abuse for NTLM relay in Active Directory. (#infosec)",
+   "url": "https://infosec.exchange/@0xqn/117662390352233716"
+  },
+  {
+   "text": "UCA General Insurance Ransomware Claim — Threat actor EndZone makes unverified claim of 250GB theft from UCA General. (#infosec)",
+   "url": "https://infosec.exchange/@Matchbook3469/117662246707535968"
+  },
+  {
+   "text": "ASCON Ransomware Claim — Actor PixelLeaks makes unverified data theft claim against Oracle ERP host ASCON. (#infosec)",
+   "url": "https://infosec.exchange/@Matchbook3469/117660714293023352"
+  },
+  {
+   "text": "SANS ISC: Syslog Timestamps History — Brief history of rsyslogd timestamp configuration changes in Debian and Ubuntu. (SANS Internet Storm Center, InfoCON: green)",
+   "url": "https://isc.sans.edu/diary/rss/33530"
+  },
+  {
+   "text": "NVIDIA Alpamayo 2 Edge Model — NVIDIA releases a 2B reasoning model for autonomous driving on DRIVE Thor. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/22/nvidia-alpamayo-2-edge-2b-reasoning-vla-drive-thor/"
+  },
+  {
+   "text": "MIMEDefang 3.8.0 & MIME-Tools 5.523 — New maintenance and security releases for MIMEDefang and MIME-Tools spam filters. (#infosec)",
+   "url": "https://toad.social/@grumpybozo/117661400730729473"
+  },
+  {
+   "text": "GitLab RCE via Ruby Memory Corruption — Research write-up on chaining two Ruby memory corruption bugs for GitLab RCE. (#infosec)",
+   "url": "https://infosec.exchange/@alexandreborges/117661295572876448"
+  },
+  {
+   "text": "CVE-2026-129083 WordPress Plugin XSS — Stored XSS vulnerability patched in WPKoi Templates for Elementor plugin 3.7.6. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117661283632792486"
+  },
+  {
+   "text": "Leaky AI Supply Chain Canaries — Link to Ars Technica report on 2 million canaries exposing AI data leaks. (#infosec)",
+   "url": "https://chaos.social/@citizen428/117661196779217596"
+  },
+  {
+   "text": "CVE-2026-55062 uniget CLI Path Traversal — Path traversal flaw in uniget CLI hook filenames patched in version 0.27.6. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117660640384650314"
+  },
+  {
+   "text": "Eskenazi Health Phishing Breach — October phishing attack on Eskenazi Health employee cloud accounts exposes patient records. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117660457201018518"
+  },
+  {
+   "text": "Tower Records Japan Breach — Note referencing 10.2 million compromised accounts at Tower Records Japan. (#infosec)",
+   "url": "https://infosec.exchange/@theperimetersite/117660240321674884"
+  },
+  {
+   "text": "YMCA Singapore Data Breach — Unauthorized access to Youth For Causes portal exposes 13,000 individuals' details. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117660221270098641"
+  },
+  {
+   "text": "HackerOne Node.js & cURL Disclosures — Routine bug bounty disclosures for cURL URL parsing and Node.js entropy/zipfile bugs. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117661639997985163"
+  },
+  {
+   "text": "RedPacketSecurity Routine CVE Alerts — Batch of routine CVE alerts for SurrealDB, Vikunja, Portainer, Gogs, and Gunicorn. (#cve)",
+   "url": "https://mastodon.social/@RedPacketSecurity/117662910881206815"
+  },
+  {
+   "text": "PostgreSQL 19 Released — PostgreSQL 19 adds non-blocking disk space reclamation and improved replication controls. (TLDR data)",
+   "url": "https://www.postgresql.org/about/news/postgresql-19-released-3449"
+  },
+  {
+   "text": "AWS AI Observability Framework — AWS proposes a four-layer OpenTelemetry observability framework for agentic applications. (TLDR devops)",
+   "url": "https://aws.amazon.com/blogs/mt/an-ai-observability-framework-for-your-agentic-applications"
+  },
+  {
+   "text": "Karpenter v1.15 Released — Karpenter v1.15 adds GPU-aware provisioning and PDB-compliant node repair. (TLDR devops)",
+   "url": "https://aws.amazon.com/blogs/containers/karpenter-v1-15-gpu-aware-provisioning-smarter-node-repair-and-more"
+  },
+  {
+   "text": "Immutable Cluster OS Standardization — Platform engineering essay advocating API-managed immutable OSes like Talos Linux. (TLDR devops)",
+   "url": "https://platformengineering.org/blog/the-layer-of-your-platform-nobody-owns"
+  },
+  {
+   "text": "OpenAI Perplexity and Safety Thresholds — OpenAI proposes using log perplexity metrics to establish shared safety thresholds. (TLDR dev)",
+   "url": "https://openai.com/index/perplexity-and-intelligence"
+  },
+  {
+   "text": "Surfing Complexity: IT Incidents Roundup — Review of nine non-cyberattack IT outages including Workday DR and FAA incidents. (TLDR devops)",
+   "url": "https://surfingcomplexity.blog/2026/11/18/incidents-in-the-news"
+  },
+  {
+   "text": "GKE Dataplane V2 & Ambient Networking — Google Cloud previews in-place Dataplane V2 migration and GAs sidecarless ambient mesh. (TLDR devops)",
+   "url": "https://cloud.google.com/blog/products/networking/gke-dataplane-v2-in-place-migration"
+  },
+  {
+   "text": "Operating Auth for 1,000+ APIs — Nango shares lessons on handling OAuth refresh token rotation concurrency bugs. (TLDR dev)",
+   "url": "https://nango.dev/blog/lessons-from-operating-api-auth-for-900-apis"
+  },
+  {
+   "text": "Docker Brand Refresh — Docker announces a new brand identity and redesigned mascot focused on trust. (TLDR devops)",
+   "url": "https://www.docker.com/blog/meet-the-new-docker-built-to-run-on-trust"
+  },
+  {
+   "text": "Red Hat & Microsoft OpenShift Alliance — Red Hat and Microsoft expand OpenShift on Azure partnership to KubeVirt virtualization. (TLDR devops)",
+   "url": "https://cloudnativenow.com/features/red-hat-extends-openshift-alliance-with-microsoft-to-virtualization"
+  }
+ ]
+}
