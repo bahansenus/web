@@ -1,0 +1,741 @@
+{
+ "date": "2026-11-24",
+ "published_at": "2026-11-24T13:01:16.143Z",
+ "title": "Daily Security Intelligence Briefing — November 24, 2026",
+ "threat_level": "CRITICAL",
+ "summary": "Autonomous AI agents powered by the Cairn framework have independently discovered and exploited a zero-day vulnerability in the wild to achieve root access in 11 minutes (Ars Technica, Dark Reading), while threat actors actively exploit a Microsoft Azure API Management flaw to harvest credentials from critical energy infrastructure (Help Net Security, The Hacker News). Additionally, a historic $43.9B acquisition of Zscaler by CrowdStrike signals massive market consolidation around agentic security and zero-trust controls (The Register, CyberScoop).",
+ "tier1": [
+  {
+   "title": "1. Amazon says hackers' AI agents found and exploited 0-day with little human input",
+   "url": "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "Ars Technica"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "AI Security / CVE-2026-133968 (Autonomous Zero-Day Exploitation)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Amazon threat intelligence confirmed that a China-nexus threat actor used autonomous AI agents running on the open-source Cairn penetration-testing framework to independently discover and exploit a zero-day flaw (CVE-2026-133968 in Project MONAI Label) with minimal human oversight. Given only a high-level prompt in simplified Chinese to obtain root access on an East Asian university server, the agents moved from vulnerability discovery to full root compromise in just 11 minutes. This marks a paradigm shift in offensive cyber operations, proving that autonomous frameworks can identify and weaponize unknown flaws at machine speed."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Update Project MONAI Label to version 0.8.6 or later immediately, and deploy behavioral anomaly and velocity-based detection controls to identify machine-speed reconnaissance and exploitation."
+    }
+   ]
+  },
+  {
+   "title": "2. Azure API Management vulnerability exploited to steal customers’ secrets",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/azure-apim-vulnerability-credential-theft/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "Help Net Security"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cloud Infrastructure / Active Exploitation (Critical)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Attackers have actively exploited a vulnerability in Microsoft Azure API Management (APIM) Classic tiers to exfiltrate stored credentials, access tokens, and named values across multiple customer tenants. Norway's National Security Authority (NSM) confirmed that major energy sector companies, including Equinor and Skagerak Energi, as well as organizations outside Norway and across other sectors, were compromised. Because APIM sits at the core of enterprise API traffic, leaked secrets expose downstream internal services to immediate unauthorized access."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Assume all secrets, access tokens, and named values stored in affected Azure APIM Classic instances are compromised; immediately rotate all exposed credentials and audit API access logs for unauthorized token usage."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day",
+   "url": "https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management & MSP Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA has added two critical vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog: CVE-2026-134624 in N-able MailAssure/SpamExperts and CVE-2026-133968 in Project MONAI Label. The N-able flaw is a CVSS 9.3 SSRF in the LDAP synchronization check that attackers exploited to breach N-able's hosted cloud environment and access internal web server credentials."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "N-able MailAssure customers must rotate all LDAP, API, and web server credentials and tokens following the hosted environment breach.; Project MONAI Label instances below 0.8.6 are vulnerable to unauthenticated path traversal leading to remote code execution."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The flaw allowed attackers to access internal services and web server credentials, necessitating a full credential and token reset."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "2. Agentic Attacks: In The Wild",
+   "url": "https://www.wiz.io/blog/agentic-attacks-artex-offensive-ai-frameworks",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud & AI Threat Intelligence"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Wiz Research details how agentic offensive frameworks like ARTEX are driving a massive surge in cloud intrusions, operating at machine speed across exposed environments. By analyzing leaked operator logs from real-world attacks, researchers illustrate how autonomous agents chain vulnerabilities and harvest credentials, alongside specific defensive telemetry needed to catch noisy automated tradecraft."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Offensive AI frameworks like ARTEX generate distinct, high-velocity log patterns that defenders can use to trigger automated blocking.; Exposed cloud services face drastically reduced time-to-compromise as agentic tools automate post-exploitation and lateral movement."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Agentic offensive frameworks like ARTEX are driving a surge in cloud intrusions."
+    },
+    {
+     "label": "Source",
+     "value": "Wiz Blog"
+    }
+   ]
+  },
+  {
+   "title": "3. OpenAI and Cisco Unveil AI-Assisted Linux Security Tool to Block Exploits Before Patching",
+   "url": "https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Linux & Runtime Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "OpenAI and Cisco have released Shirudo, an open-source Linux runtime protection tool that uses AI agents to dynamically write eBPF controls to block vulnerability exploitation on live systems. The tool aims to provide defenders with a zero-downtime virtual patching shield while permanent kernel or application patches are tested and rolled out, though it is not yet considered production-ready."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Shirudo leverages eBPF kernel plugins to block specific exploit behaviors without requiring system restarts.; Security teams can evaluate Shirudo in staging environments as a compensating control for delayed Linux patching cycles."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "It lets agents write dynamic eBPF controls to shield systems from exploits, giving defenders more time to test and roll out patches."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "4. Google Researcher Shows How a Single Bit Change in .NET Files Bypassed Windows Code Integrity",
+   "url": "https://thehackernews.com/2026/11/google-researcher-shows-how-single-bit.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & OS Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Google Project Zero researcher James Forshaw disclosed how a quirk in .NET Framework program loading allowed local attackers to bypass both Windows Code Integrity (CVE-2026-108398) and Oracle VirtualBox process hardening (CVE-2026-87268). By flipping a single bit in a .NET executable, an attacker could exploit an untrusted search path to execute arbitrary code past local security boundaries."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Ensure October 2026 Windows updates and VirtualBox patches are deployed to remediate CVE-2026-108398 and CVE-2026-87268.; Application allowlisting and code integrity policies relying on standard PE headers must account for .NET loader edge cases."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A quirk in how the .NET Framework loads a program file let a local attacker run untrusted code past two separate protections on Windows built to block it."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "5. Critical Cisco remote code execution bug under attack",
+   "url": "https://www.theregister.com/security/2026/11/23/critical-cisco-remote-code-execution-bug-under-attack/5311722",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network Infrastructure Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers are actively exploiting CVE-2026-76466 (CVSS 9.8), a hardcoded credentials and improper authentication vulnerability in clustered Cisco Expressway-C and Expressway-E gateways. The flaw allows unauthenticated remote attackers who can reach the cluster database service to execute arbitrary commands as root."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade clustered Cisco Expressway-C and Expressway-E devices to release X15.5.20 immediately.; Restrict network access to the Expressway cluster database service to trusted cluster peers only."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers are currently exploiting a critical vulnerability tracked as CVE-2026-76466 in Cisco Expressway that allows them to remotely execute commands as root without any authentication."
+    },
+    {
+     "label": "Source",
+     "value": "The Register"
+    }
+   ]
+  },
+  {
+   "title": "6. GL.iNet cloud compromise hits routers and KVMs, older backdoors also found",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/gl-inet-cloud-compromise-malware-backdoors/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "IoT & Hardware Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors compromised GL.iNet's GoodCloud remote management service and chained it with local device flaws to push persistent malware onto customer travel routers and IP KVM devices. Simply disconnecting from the cloud does not clean affected devices, requiring a full firmware re-flash, while independent researchers at RemoteToHome also uncovered older backdoors in the device ecosystem."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Organizations and remote workers using GL.iNet routers or KVMs with GoodCloud enabled must re-flash devices with clean, updated firmware.; Disable cloud management portals on edge routers and KVMs unless strictly required and segmented."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers abused a flaw in the GoodCloud remote management service to push malware to devices, and cleaning them requires new firmware."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "7. Webworm Suspected of Modifying SoftEther VPN to Evade Detection and Hide Remote Access",
+   "url": "https://thehackernews.com/2026/11/webworm-suspected-of-modifying.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & Espionage"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Rapid7 researchers discovered that the China-aligned APT group Webworm is deploying a customized version of SoftEther VPN Bridge (v4.44 b9807) rebranded as 'NtMonitor VPN'. The implant swaps default HTTP endpoints to evade network signatures and masquerades as legitimate network-monitoring software to maintain covert persistence on compromised networks."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Hunt for modified SoftEther VPN binaries exhibiting swapped HTTP endpoints (/update/alive.cgi, /update/picture.cgi) and residual PDB paths.; Audit endpoints for unauthorized services masquerading as 'NtMonitor VPN' or unexpected outbound VPN bridge traffic."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The China-aligned threat actor known as Webworm is suspected to be using a custom version of the open-source SoftEther VPN Bridge tool in an attempt to remove recognizable detection fingerprints."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "8. WHMCS SQL Injection Could Expose Customer Data and Admin Password Hashes without Login",
+   "url": "https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & Web Hosting Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A critical unauthenticated SQL injection vulnerability in the WHMCS web hosting billing and automation platform allows remote attackers to dump customer records and administrator password hashes from the database. WHMCS released emergency security patches addressing the unauthenticated shopping cart flaw alongside two authenticated client vulnerabilities."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Web hosting providers running WHMCS must apply the latest vendor security patch immediately to prevent unauthenticated database dumps.; Audit WHMCS database logs for anomalous queries against the shopping cart endpoints and rotate administrator credentials if compromise is suspected."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A flaw in WHMCS's shopping cart, the billing and automation platform many web hosting companies use to run their businesses, could allow anyone on the internet to retrieve customer records and administrator password hashes."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "9. Critical binary-parser Flaw Enables JavaScript Injection via Malicious Parser Definitions",
+   "url": "https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application Security & Supply Chain"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The popular npm library binary-parser patched a critical code injection vulnerability (CVE-2026-134814, CVSS 9.2) caused by an incomplete fix for an earlier flaw (CVE-2026-1245). Because parser definition options were inserted unvalidated into generated JavaScript at compile time, applications processing untrusted schemas could suffer arbitrary remote code execution inside the Node.js process."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrade the binary-parser npm package to version 2.3.1 or later across all Node.js projects.; Ensure parser definitions and schemas are never populated directly from untrusted user input."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Binary-parser before 2.3.1 contains a code injection vulnerability that allows attackers to execute arbitrary JavaScript via malicious parser definitions."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "10. CrowdStrike splashes $44B on Zscaler, customers brace for the bill",
+   "url": "https://www.theregister.com/security/2026/11/24/crowdstrike-splashes-44b-on-zscaler-customers-brace-for-the-bill/5311877",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Security Industry & Architecture"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CrowdStrike has agreed to acquire zero-trust network security giant Zscaler in an all-stock deal valued at $43.9 billion, marking the largest cybersecurity acquisition in history. The merger aims to unify endpoint detection and zero-trust network traffic control under a single platform to govern enterprise AI agents, though customers and analysts warn of significant renewal price hikes and vendor lock-in."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enterprise CISOs using both CrowdStrike and Zscaler should prepare for contract consolidation and potential pricing pressure at upcoming renewals.; The acquisition underscores the convergence of endpoint telemetry and inline network inspection to control autonomous AI agent traffic."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CrowdStrike has agreed to buy Zscaler for $43.9 billion in what would be the biggest cybersecurity acquisition on record, and customers are already bracing for pricier renewals."
+    },
+    {
+     "label": "Source",
+     "value": "The Register"
+    }
+   ]
+  },
+  {
+   "title": "11. Signal blocks screenshots by Apple, Google operating systems to protect data from AI agents",
+   "url": "https://therecord.media/signal-no-screenshots-by-apple-google-operating-systems",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Privacy & Mobile Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Encrypted messaging app Signal is deploying technical blocks to prevent iOS and Android operating systems from capturing screen contents, directly targeting built-in OS AI agents like Apple Siri AI and Google Gemini Intelligence. Signal warned that OS-level AI features that continuously read screen context bypass end-to-end encryption guarantees and create a hostile environment for user privacy."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "OS-level AI assistants that scrape screen context undermine application-layer end-to-end encryption.; Enterprise mobile security policies must evaluate whether built-in mobile AI agents inadvertently capture sensitive corporate communications."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Google’s Gemini Intelligence and Apple's Siri AI 'are changing this environment in a way that’s making it increasingly hostile to privacy,' Signal said."
+    },
+    {
+     "label": "Source",
+     "value": "The Record"
+    }
+   ]
+  },
+  {
+   "title": "12. Cleverbridge alerts customers that hackers stole their credit card and CVV numbers",
+   "url": "https://www.helpnetsecurity.com/2026/11/23/cleverbridge-data-breach-card-numbers-cvv/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Third-Party Risk & Data Breaches"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "E-commerce and subscription billing platform Cleverbridge confirmed a data breach in which attackers stole stored payment card numbers and CVVs. Cleverbridge processes payments for major enterprise software vendors including Red Hat, SUSE, Veeam, Tenable, Sony, and Jamf, raising supply chain notification concerns for corporate procurement cards."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Monitor corporate credit cards used for software subscriptions with Cleverbridge-affiliated vendors (e.g., Red Hat, Veeam, Tenable, Jamf) for fraudulent transactions.; Replace corporate procurement cards used on the Cleverbridge platform prior to November 4, 2026."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Hackers breached e-commerce platform Cleverbridge and made off with payment card data stored on it, the company has confirmed."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "13. South Korea’s power giant KEPCO confirms data breach impacting 1.5 million",
+   "url": "https://www.bleepingcomputer.com/news/security/south-koreas-power-giant-kepco-confirms-data-breach-impacting-15-million/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Critical Infrastructure & Data Breaches"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Korea Electric Power Corporation (KEPCO), South Korea's state-owned electric utility, confirmed that attackers breached its internal network and compromised two systems: its customer portal and supplier relationship management platform. The intrusion exposed personal information belonging to 1.5 million customers, employees, and third-party contractors."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Supplier relationship management (SRM) portals remain prime targets for attackers seeking pivot points into critical infrastructure utilities.; KEPCO suppliers and contractors should watch for targeted spear-phishing leveraging stolen contractor directory data."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A threat actor breached the internal network of Korea Electric Power Corporation (KEPCO) and accessed two systems containing customer, employee, and contractor data."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "14. Know the identity behind the role: Authorize and audit with trusted identity propagation",
+   "url": "https://aws.amazon.com/blogs/security/know-the-identity-behind-the-role-authorize-and-audit-with-trusted-identity-propagation/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cloud IAM & Architecture"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "AWS has introduced Trusted Identity Propagation (TIP) across IAM roles, allowing administrators to carry the underlying identity of a human user or non-human workload across multi-service AWS requests. This enables granular authorization and end-to-end CloudTrail auditing behind shared IAM roles without requiring role explosion."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Adopt AWS Trusted Identity Propagation to maintain user-level audit trails when services assume shared IAM roles.; Use TIP to enforce fine-grained access controls on downstream data services called by AI agents and automated workflows."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Trusted identity propagation (TIP) carries the identity of the user or workload with each AWS request, so you can grant permissions to that user or workload and trace activity."
+    },
+    {
+     "label": "Source",
+     "value": "AWS Security Blog"
+    }
+   ]
+  },
+  {
+   "title": "15. phpAfterShell Vulnerability Revives PHP2Shell’s Attack Path",
+   "url": "https://www.securityweek.com/phpaftershell-vulnerability-revives-php2shells-attack-path/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Web Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Security researchers disclosed 'phpAfterShell' (CVE-2026-115560), a critical PHP vulnerability up to CVSS 9.2 that revives the recent PHP2Shell attack vector. If a session overwrite operation is interrupted while an attacker controls fresh input data, it can trigger unsafe deserialization and remote code execution in PHP environments."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Apply the November 2026 PHP security updates (versions 8.2.35+, 8.3.36+, 8.4.27+, or 8.5.12+) to mitigate phpAfterShell and PHP2Shell use-after-free flaws.; Verify running PHP-FPM worker versions rather than relying solely on CLI package checks."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "If a session overwrite operation is interrupted, an attacker who controls the fresh data could trigger data deserialization and RCE."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "16. Elecbrakes Bluetooth Vulnerabilities Expose Trailers to Forced Braking",
+   "url": "https://www.securityweek.com/elecbrakes-bluetooth-vulnerabilities-expose-trailers-to-forced-braking/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "CPS & Automotive Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers discovered critical authentication and access control flaws in Elecbrakes Bluetooth-enabled trailer brake controllers. An unauthenticated attacker within Bluetooth range can forcibly trigger maximum trailer braking or disable brakes on moving vehicles, creating severe physical safety hazards."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Fleet operators and vehicle owners using Elecbrakes controllers must apply firmware updates via the vendor app immediately.; Cyber-physical systems relying on Bluetooth Low Energy (BLE) must enforce authenticated pairing before accepting safety-critical actuation commands."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Anyone within Bluetooth range of an unpatched Elecbrakes trailer controller could potentially trigger its brakes or apply maximum braking force."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Bedrock Data Agent DLP — Bedrock Data adds intent-aware runtime DLP for enterprise AI agents. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/bedrock-data-agent-dlp/"
+  },
+  {
+   "text": "Elastic Security 9.6 — Elastic launches AlertZero AI agents to automate SOC alert triage. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/elastic-security-9-6-features/"
+  },
+  {
+   "text": "Infrastructure Resilience Essay — Bruce Schneier examines systemic underinvestment driving recent US tech outages. (Schneier on Security)",
+   "url": "https://www.schneier.com/blog/archives/2026/11/we-get-the-infrastructure-we-pay-for.html"
+  },
+  {
+   "text": "2027 SOC Budget Reset — Promotional guide on reducing SOC analyst alert investigation time. (The Hacker News)",
+   "url": "https://thehackernews.com/2026/11/2027-soc-budget-reset-5-priorities-to.html"
+  },
+  {
+   "text": "European Commission Breach — EU confirms personal data stolen from EU Academy in cyberattack. (The Register)",
+   "url": "https://www.theregister.com/cyber-crime/2026/11/24/european-commission-confirms-personal-data-stolen-in-ai-assisted-cyberattack/5311834"
+  },
+  {
+   "text": "OT Post-Quantum Op-Ed — Commentary on exposed OT refrigeration controllers and future quantum risks. (CyberScoop)",
+   "url": "https://cyberscoop.com/ot-security-post-quantum-cryptography-op-ed/"
+  },
+  {
+   "text": "Peninsula Energy Incident — Peninsula Energy halts ASX trading after cyberattack hits Wyoming uranium mine. (SecurityWeek)",
+   "url": "https://www.securityweek.com/peninsula-energy-halts-trading-after-cyber-incident-hits-us-uranium-mine/"
+  },
+  {
+   "text": "LaLiga Data Breach — Spanish football league LaLiga confirms hackers stole fans' personal data. (The Record)",
+   "url": "https://therecord.media/laliga-hacked-spain-top-professional-league-confirms-cyber-incident"
+  },
+  {
+   "text": "ZSTD Information Disclosure — Facebook discloses CVE-2026-124851 buffer memory leak in Zstandard 1.5.1-1.5.7. (#cve)",
+   "url": "https://mastodon.sayzard.org/@sayzard/117670765195584974"
+  },
+  {
+   "text": "French Cancer Institute Breach — France's Institut National du Cancer hit by cyberattack and data leak. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117670732100976419"
+  },
+  {
+   "text": "GlobeTopper Breach — GlobeTopper loses $2.5M in revenue after hackers steal $70k in gift cards. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/globetopper-breach-gift-cards/"
+  },
+  {
+   "text": "Windows Hello & BitLocker Bypass — Researchers bypass Windows Hello and BitLocker PIN lockouts via flash manipulation. (#cve)",
+   "url": "https://2137.social/@13/117670719465689070"
+  },
+  {
+   "text": "AI Agent Instruction Attacks — Ox Security warns of AI agent manipulation via malicious instruction files. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/researchers-new-ai-attack-path/"
+  },
+  {
+   "text": "C3RB3R Ransomware on Synology — C3RB3R ransomware encrypts unpatched Synology NAS devices via CVE-2024-10441. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117670697723171001"
+  },
+  {
+   "text": "SAP NetWeaver Exploitation — CISA warns of active exploitation of CVE-2025-42884 JNDI injection in SAP. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117670666586403535"
+  },
+  {
+   "text": "VMware Security Update — VMware patches 23 flaws including critical ESXi RCE and vCenter auth bypass. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117670620874389771"
+  },
+  {
+   "text": "Anthropic Claude Ship — Anthropic launches Claude Ship beta agents for automated GitHub PR reviews. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/"
+  },
+  {
+   "text": "Vulniverse v1.0.0 — First stable release of Vulniverse web editor for CVE and OSV records. (#cve)",
+   "url": "https://infosec.exchange/@adulau/117670538654066214"
+  },
+  {
+   "text": "Ubuntu Kernel Notices — Ubuntu releases multiple Linux kernel security updates across Azure and NVIDIA builds. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9190-1"
+  },
+  {
+   "text": "CODESYS Visualization Flaws — CERT@VDE publishes advisory for four vulnerabilities in CODESYS Visualization. (#cve)",
+   "url": "https://infosec.exchange/@certvde/117670356268294802"
+  },
+  {
+   "text": "Google Cloud CISO Interview — Google Cloud CISO Chris Betz discusses agentic AI security and SOC evolution. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/chris-betz-google-agentic-ai-security/"
+  },
+  {
+   "text": "Q3 2026 Ransomware Report — Check Point reports record 2,830 ransomware leak site victims in Q3 2026. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/check-point-ransomware-attacks-q3-2026-report/"
+  },
+  {
+   "text": "Apache Roller XML-RPC RCE — Unauthenticated XML-RPC RCE (CVE-2026-129448) in Apache Roller exploited in wild. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117669957830878891"
+  },
+  {
+   "text": "AWS European Sovereign Cloud — AWS outlines architecture and compliance assurances for its European Sovereign Cloud. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/aws-european-sovereign-cloud-details/"
+  },
+  {
+   "text": "Banque Delubac Data Breach — Attackers fail to steal funds from Banque Delubac but exfiltrate client data. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117669905448126428"
+  },
+  {
+   "text": "WordPress WP Connect Malware — Six WP connect WordPress plugins found with embedded RCE backdoor (CVE-2026-135202). (#cve)",
+   "url": "https://infosec.exchange/@suriq/117669836579688188"
+  },
+  {
+   "text": "Apache Jena Fuseki SSRF — Apache patches 33 flaws across nine projects including CVSS 10.0 Jena bug. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117669736960602257"
+  },
+  {
+   "text": "Troy Hunt on Breach Disclosures — HIBP founder Troy Hunt uses Claude to summarize eight years of breach responses. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/24/orgs-that-leak-data-prioritize-corporate-interests-over-customers-says-have-i-been-pwneds-troy-hunt/5311802"
+  },
+  {
+   "text": "Amazon Bedrock Trusted Access API — AWS launches Bedrock Trusted Access API with Anthropic Enterprise Frontier Safeguards. (Artificial Intelligence)",
+   "url": "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/"
+  },
+  {
+   "text": "Stalwart Mail Server 1.2.0 — Open-source mail server Stalwart adds full Microsoft Exchange protocol compatibility. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/24/stalwart-microsoft-exchange-replacement/"
+  },
+  {
+   "text": "Acer Connect M6E Router Flaw — Unauthenticated HTTP DELETE flaw (CVE-2026-128791) in Acer 5G router deletes recordings. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117669536453024959"
+  },
+  {
+   "text": "Puppet Server RCE Exploited — Puppet Server deserialization RCE (CVE-2026-115731) actively exploited using signed agent certs. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117669320892412709"
+  },
+  {
+   "text": "FFmpeg 9.1 Security Fixes — FFmpeg 9.1 patches three memory-corruption vulnerabilities in deband, WAV, and RTMP. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117669305589181570"
+  },
+  {
+   "text": "ASUS GPU Tweak III RCE — Unpatched OS command injection (CVE-2026-114203) in ASUS GPU Tweak III. (#cve)",
+   "url": "https://infosec.exchange/@offseq/117669182451886142"
+  },
+  {
+   "text": "Azure Event Grid Flaw — Critical improper authentication flaw (CVE-2026-62841) reported in Azure Event Grid. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117668828643975741"
+  },
+  {
+   "text": "GTA VI Hacker Sentenced — Rockstar Games hacker sentenced to seven years and released on time served. (The Record)",
+   "url": "https://therecord.media/gta-vi-hacker-arion-kurtaj-released-on-license"
+  },
+  {
+   "text": "Austrian Foreign Ministry Breach — Hackers breach Austrian Foreign Ministry website and access diplomats' contact details. (The Record)",
+   "url": "https://therecord.media/austrian-foreign-ministry-says-website-hacked"
+  },
+  {
+   "text": "Chrome Out-of-Band Patch — Google Chrome issues standalone patch for critical Variations flaw CVE-2026-134401. (#cve)",
+   "url": "https://infosec.exchange/@ssvc/117668434473427551"
+  },
+  {
+   "text": "Searchjacked Chrome Extensions — Socket identifies 319 Chrome extensions with 13.4M installs hijacking search engines. (#infosec)",
+   "url": "https://mastodon.social/@tinyward/117668381341101400"
+  },
+  {
+   "text": "Apache Axis 1.x RCE Exploited — Legacy Apache Axis SOAP RCE (CVE-2026-90436) exploited against Confluence and N-central. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117668367813093772"
+  },
+  {
+   "text": "Industrial Serial Gateways — Many critical OT industrial serial gateways broadcast lack of authentication. (Dark Reading)",
+   "url": "https://www.darkreading.com/ics-ot-security/industrial-serial-gateways-broadcast-insecure"
+  },
+  {
+   "text": "ConnectWise ScreenConnect Flaw — Follow-up on active exploitation of ConnectWise ScreenConnect client flaw CVE-2026-84869. (#cve)",
+   "url": "https://infosec.exchange/@cloud/117667987371179408"
+  },
+  {
+   "text": "Inception Extortion Group — Okta warns ShinyHunters gang may have rebranded as Inception after arrests. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/23/inception-possibly-a-shinyhunters-reboot-claims-seven-victims-in-a-week/5311768"
+  },
+  {
+   "text": "States Sue SpaceX Over Grok — Virginia and Oregon sue SpaceX over Grok-generated non-consensual deepfake imagery. (CyberScoop)",
+   "url": "https://cyberscoop.com/virginia-oregon-sue-spacex-grok-deepfakes/"
+  },
+  {
+   "text": "AWS WAF Simplified Pricing — AWS announces simplified three-dimension pricing model for AWS WAF starting February 2027. (AWS Security Blog)",
+   "url": "https://aws.amazon.com/blogs/security/introducing-aws-waf-simplified-pricing/"
+  },
+  {
+   "text": "AWS API and AI Security — AWS details discovery and protection capabilities for REST, MCP, and LLM endpoints. (AWS Security Blog)",
+   "url": "https://aws.amazon.com/blogs/security/introducing-api-and-ai-security-on-aws-from-discovery-to-protection/"
+  },
+  {
+   "text": "US National Cyber Director Nominee — Trump nominates Kirsten Davies for National Cyber Director while Jay Clayton serves acting. (CyberScoop)",
+   "url": "https://cyberscoop.com/kirsten-davies-jay-clayton-national-cyber-director/"
+  },
+  {
+   "text": "OpenRouter Drops AI Providers — OpenRouter removes three AI providers for violating policies and leaking prompts. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/openrouter-drops-ai-providers-over-leaked-prompts-and-secrets/"
+  },
+  {
+   "text": "Apache Tomcat Cluster Encryption — Apache Tomcat patches CVE-2026-95517 missing integrity checks in EncryptInterceptor. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117667481449824260"
+  },
+  {
+   "text": "French Registrar LWS Breached — French hosting provider LWS suffers cyberattack exposing domain owner data. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117667427605779763"
+  },
+  {
+   "text": "Kosovo Carding Suspect Extradited — Kosovo suspect indicted for selling millions of stolen payment cards extradited to US. (CyberScoop)",
+   "url": "https://cyberscoop.com/hektor-avdyli-kosovo-credit-card-fraud-extradition/"
+  },
+  {
+   "text": "FBI NCIC Database Breach — FBI reportedly investigating a second data breach involving the NCIC crime database. (The Record)",
+   "url": "https://therecord.media/fbi-cyberattack-data-breach"
+  },
+  {
+   "text": "Unmasking Ransomware Actors — Profile on a framework used to trace and unmask ransomware operators. (Dark Reading)",
+   "url": "https://www.darkreading.com/cybersecurity-operations/alias-researcher-unmasked-ransomware-actors"
+  },
+  {
+   "text": "Bell Canada Data Breach — Bell Canada discloses November 17 breach exposing Bell, Lucky, and Virgin customer data. (#infosec)",
+   "url": "https://mstdn.moimeme.ca/@EdwinG/117666994577604467"
+  },
+  {
+   "text": "Tower Records Japan Breach — Tower Records Japan breach exposes 10.2 million customer login records. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117666827306370082"
+  },
+  {
+   "text": "Bulgaria Evicts 5-Year APT — Bulgaria shuts down five-year cyberespionage campaign inside government networks. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/23/bulgaria-evicts-cyber-snoops-who-lurked-inside-government-networks-for-5-years/5311629"
+  },
+  {
+   "text": "Amazon Cognito PITR — AWS launches point-in-time recovery for Amazon Cognito user pools. (AWS Security Blog)",
+   "url": "https://aws.amazon.com/blogs/security/protect-identity-data-with-point-in-time-recovery-in-amazon-cognito/"
+  },
+  {
+   "text": "Idunno.AntiCsrf Zero-Day — Defunct ASP.NET library Idunno.AntiCsrf actively exploited via deserialization flaw CVE-2026-131914. (#cve)",
+   "url": "https://infosec.exchange/@ssvc/117666677939178380"
+  },
+  {
+   "text": "Bots Spoofing AI Agents — Cequence finds credential-harvesting bots disguising traffic with AI agent user-agents. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/secrethunting-trafficai-agent/"
+  },
+  {
+   "text": "Nvidia Reinstates Jensen Huang — Nvidia board reinstates Jensen Huang as CEO 11 days after resignation. (Ars Technica)",
+   "url": "https://arstechnica.com/ai/2026/11/jensen-huang-reinstated-as-nvidia-ceo-board-chair/"
+  },
+  {
+   "text": "AI Agents Shared Responsibility — Token Security examines identity and permission gaps created by cross-platform AI agents. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/ai-agents-are-creating-a-shared-responsibility-gap/"
+  },
+  {
+   "text": "Probing DNS at Cloudflare — Cloudflare details engineering architecture for end-to-end DNS propagation probing. (The Cloudflare Blog)",
+   "url": "https://blog.cloudflare.com/probing-dns-at-cloudflare/"
+  },
+  {
+   "text": "FortiSandbox Path Traversal Scanning — CrowdSec observes active scanning for CVE-2026-39813 path traversal in FortiSandbox. (#infosec)",
+   "url": "https://infosec.exchange/@CrowdSec/117666009841876234"
+  },
+  {
+   "text": "Apache Solr Privilege Escalation — Apache Solr patches CVE-2026-86312 confused deputy privilege escalation in /admin/ping. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117665997613470023"
+  },
+  {
+   "text": "CISA Cyber Incident Review Board — US lawmakers introduce bill to establish a permanent cyber review board at CISA. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/us-lawmakers-bill-cisa-review/"
+  },
+  {
+   "text": "OpenAI Staffer Eavesdropping Case — Former OpenAI engineer pleads not guilty to bugging conference room for secrets. (Bloomberg)",
+   "url": "https://www.bloomberg.com/news/articles/2026-11-23/openai-staffer-likely-captured-secrets-on-hidden-bug-us-says?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc5NTQ5NjMwMCwiZXhwIjoxNzk2MTAxMTAwLCJhcnRpY2xlSWQiOiJUT1o2VVdLSVVQUzEwMCIsImJjb25uZWN0SWQiOiJBOEExRDhFQTI5OTc0OTRGQTQ1QUE2REJBMjAwNTM3MSJ9.N7ikxB_CzK7JVs74WFY_eWYh8e8c-872QbDRx1wp95s"
+  },
+  {
+   "text": "Ladybird Browser Reaches Alpha — Independent open-source web browser Ladybird releases first alpha build for Linux/macOS. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/23/ladybird/"
+  }
+ ]
+}
