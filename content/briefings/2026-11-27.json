@@ -1,0 +1,807 @@
+{
+ "date": "2026-11-27",
+ "published_at": "2026-11-27T13:06:48.494Z",
+ "title": "Daily Security Intelligence Briefing — November 27, 2026",
+ "threat_level": "CRITICAL",
+ "summary": "Adversaries are scaling AI-driven attacks against critical infrastructure and software supply chains, highlighted by confirmed AI-agent breaches of Swiss critical infrastructure (The Hacker News), DPRK's PolinRider poisoning 7,600+ GitHub repositories (The Hacker News), and a 12-year-old pre-auth remote root flaw in the Linux kernel NFS server (BleepingComputer).",
+ "tier1": [
+  {
+   "title": "1. New NFS2ROOT Linux flaw can let attackers gain root privileges",
+   "url": "https://www.bleepingcomputer.com/news/security/new-nfs2root-linux-flaw-can-let-attackers-gain-root-privileges/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "BleepingComputer"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Linux Kernel / CVE-2026-99362 (CVSS 9.8 Pre-Auth RCE)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "A 12-year-old critical vulnerability in the Linux kernel's Network File System (NFS) server (nfsd) allows unauthenticated remote attackers to execute code as root. Crafted requests overflow a kernel buffer, leak memory to defeat KASLR, and run commands as root upon connection close. Export rules do not stop the exploit, making any reachable NFS server vulnerable across the Linux ecosystem."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Upgrade Linux kernels to 6.1.193, 6.6.163, 6.12.117, 6.18.61, or 7.3.2 immediately, or strictly block TCP port 2049 at the network perimeter."
+    }
+   ]
+  },
+  {
+   "title": "2. Switzerland Confirms AI-Assisted Cyberattacks Breached Critical Infrastructure Operators",
+   "url": "https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Critical Infrastructure / Autonomous AI Intrusion (Active Breach)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Switzerland's national cybersecurity agency confirmed that attackers utilizing autonomous AI agents successfully breached four out of five targeted Swiss organizations. Three of the targets were critical infrastructure operators, with two resulting in successful system compromises. This marks a watershed moment of state-confirmed, AI-agent-executed breaches against national critical infrastructure."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Review anomaly detection thresholds for high-velocity, automated lateral movement and ensure critical infrastructure control planes are segmented from IT networks."
+    }
+   ]
+  },
+  {
+   "title": "3. North Korea-Linked PolinRider Poisons Over 7,600 GitHub Repositories to Spread Malware",
+   "url": "https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Hacker News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Supply Chain / DPRK Malware Campaign (Mass Compromise)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "The DPRK-linked PolinRider campaign has poisoned over 7,600 legitimate developer GitHub repositories since February 2025. Attackers plant a malicious Python loader inside 'utils' packages or conftest.py files that executes automatically upon import to deliver next-stage payloads. With 86% of compromised repos belonging to real developers rather than throwaway accounts, this represents a massive open-source supply chain hazard."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Audit Python dependencies and CI/CD pipelines for unauthorized modifications to conftest.py or utility packages, and pin third-party GitHub dependencies to verified commit hashes."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. Chinese and North Korean state hackers add ARTEX AI framework to their arsenal",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/artex-ai-pentest-framework-china-north-korea-state-hackers/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & AI"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft Threat Intelligence warned that state-sponsored hacking groups tied to Beijing and Pyongyang have adopted the open-source ARTEX AI pentesting framework. Released on GitHub in July 2026, ARTEX uses LLM agents to autonomously plan and execute reconnaissance, credential attacks, and exploitation based on high-level operator goals."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Nation-state actors are rapidly operationalizing open-source LLM agent frameworks for autonomous offensive operations.; Defenders must prepare for machine-speed reconnaissance and exploitation chains that adapt dynamically to target environments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "ARTEX is an LLM-driven open-source penetration testing framework that runs attacks largely on its own, with the operator setting a goal and AI agents planning and carrying it out."
+    },
+    {
+     "label": "Source",
+     "value": "Help Net Security"
+    }
+   ]
+  },
+  {
+   "title": "2. SAP Security Incident: Stolen GitHub Tokens and Source Code Risk",
+   "url": "https://socradar.io/blog/sap-security-incident-github-tokens-source-code/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & Enterprise Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "SAP confirmed it took urgent measures after attackers used stolen employee authentication tokens to access and alter source code on GitHub. While SAP states there is no evidence of unauthorized access to customer business data, the compromise highlights persistent risks surrounding developer credential hygiene."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Stolen employee GitHub tokens enabled both source code exfiltration and unauthorized code alteration.; Organizations must enforce hardware-backed MFA, short-lived tokens, and strict branch protection rules on source code repositories."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers had stolen authentication tokens belonging to SAP employees and used them to access and alter source code on GitHub."
+    },
+    {
+     "label": "Source",
+     "value": "SOCRadar"
+    }
+   ]
+  },
+  {
+   "title": "3. 1Password was breached through an employee's GitHub account",
+   "url": "https://infosec.exchange/@adrianhollister/117687686656471925",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Identity & Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers compromised a 1Password employee's GitHub account to push malicious code to backend services, reaching the CI/CD system and exfiltrating source code and customer metadata. Stolen data includes customer names, emails, account IDs, and SRP verifiers, though password vaults and Secret Keys remained uncompromised."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Customer vaults held firm due to end-to-end encryption and Secret Key architecture, preventing direct credential theft.; Exfiltrated customer emails and metadata create a high risk of targeted phishing and fake recovery email campaigns."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The attacker pushed malicious code to backend services, pulled source code and customer records, and reached the CI/CD system."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "4. Drupal warns of new site takeover flaw exploited in attacks",
+   "url": "https://www.bleepingcomputer.com/news/security/drupal-warns-of-new-access-bypass-flaw-exploited-in-attacks/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Web Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The Drupal security team warned that attackers are actively exploiting a second critical vulnerability (CVE-2026-136716) allowing complete takeover of unpatched websites. The flaw affects roughly 31,500 internet-facing installations left in residual or incomplete install states where install.php remains reachable."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Sites patched for the previous Fail2Install bug (CVE-2026-132165) may still be vulnerable if the installer remained reachable.; Administrators must upgrade to Drupal 11.4.14, 11.3.23, or 10.6.23 and immediately execute update.php."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The Drupal security team says attackers are exploiting a second critical vulnerability that lets them breach and hijack unpatched websites."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "5. Unpatched Cacti Zero-Day Enables RCE in Just Four HTTP Requests via Guest Access",
+   "url": "https://thehackernews.com/2026/11/unpatched-cacti-zero-day-enables-rce-in.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers disclosed an unpatched zero-day vulnerability in Cacti 1.2.31 (tracked as 4HTTP2SHELL / 4HTTP2ROOT) that enables unauthenticated remote code execution in four HTTP requests. The exploit chains a guest session parameter modification into a second-order SQL injection and popen() execution."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "A public proof-of-concept exists with no official patch or CVE assigned yet.; Administrators running Cacti must immediately disable the guest account and restrict network access to the monitoring interface."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "I found a path from a fresh, unauthenticated HTTP session to command execution as the Cacti server."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "6. Hackers Trojanize Official Q-Dir and DesktopOK Downloads to Deliver Remote Access Malware",
+   "url": "https://thehackernews.com/2026/11/hackers-trojanize-official-q-dir-and.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A software supply chain attack compromised the official SoftwareOK website, tampering with Q-Dir and DesktopOK installers to deliver remote access malware. Malicious binaries were served both via direct web downloads and through the built-in update mechanism of previously installed software."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Auto-update channels in lightweight desktop utilities remain a high-value vector for stealthy malware distribution.; Security teams should hunt for recent executions or updates of Q-Dir and DesktopOK across enterprise endpoints."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Evidence indicates that malicious files were generated not only when users downloaded the programs directly from the official download page but also during the update process."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "7. Free e-government platform that serves two billion people in ten countries has critical SQL injection bug",
+   "url": "https://www.theregister.com/security/2026/11/27/free-e-government-platform-that-serves-two-billion-people-in-ten-countries-has-critical-sql-injection-bug/5312449",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Public Sector & AppSec"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "India's open-source Digital Infrastructure for Governance (DIGIT) platform contains a critical SQL injection vulnerability affecting thousands of organizations across ten countries. The modular suite handles sensitive civic functions including authentication and payment collection for up to two billion citizens."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Public sector deployments relying on DIGIT must urgently apply patches to prevent mass citizen data exposure.; Third-party modules built atop the DIGIT ecosystem should also be audited for inherited database query flaws."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "India’s free e-government platform has a critical SQL injection flaw that thousands of organizations must patch to protect up to two billion citizens."
+    },
+    {
+     "label": "Source",
+     "value": "The Register"
+    }
+   ]
+  },
+  {
+   "title": "8. Hex Package Manager Warns of Potential Data Breach",
+   "url": "https://www.securityweek.com/hex-package-manager-warns-of-potential-data-breach/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Hex.pm, the package manager for the Erlang and Elixir ecosystem, patched a critical CVSS 10.0 vulnerability (CVE-2026-129514) that attackers exploited to execute commands on production web servers. While no evidence of package modification was found, database reads are unlogged, meaning user emails, password hashes, and 2FA secrets may have been exposed."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Developers using Hex.pm should rotate their credentials, API keys, and 2FA secrets immediately.; Downstream Elixir and Erlang projects should verify package integrity hashes against known good states."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A vulnerability in hex.pm allowed hackers to run commands on web servers. No evidence of data modification was found, but database reads are not logged."
+    },
+    {
+     "label": "Source",
+     "value": "SecurityWeek"
+    }
+   ]
+  },
+  {
+   "title": "9. Palo Alto confirms Fragnesia exploitation against firewalls in PHP2Shell attacks",
+   "url": "https://www.csoonline.com/article/4253600/palo-alto-confirms-fragnesia-exploitation-against-firewalls-in-php2shell-attacks.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Perimeter Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Palo Alto Networks confirmed that threat actors chained the Linux kernel 'Fragnesia' flaw (CVE-2026-46300) with PHP2Shell vulnerabilities to achieve root privilege escalation on PAN-OS firewalls. The vendor shipped fixes for the underlying kernel bug six months after it was patched upstream in Linux."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Appliance vendors often lag in integrating upstream Linux kernel patches, leaving perimeter devices exposed to n-day privilege escalation.; PAN-OS administrators must apply the latest security updates and inspect devices for unauthorized root-level persistence."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Palo Alto Networks has confirmed that attackers exploited Fragnesia, a Linux kernel flaw, to gain root on PAN-OS firewalls through the PHP2Shell vulnerabilities."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "10. New GeoServer RCE exploit chain seen in the wild two days after disclosure",
+   "url": "https://www.csoonline.com/article/4253667/new-geoserver-rce-exploit-chain-seen-in-the-wild-two-days-after-disclosure.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Threat actors began actively probing a chain of five GeoServer vulnerabilities that enables unauthenticated remote code execution just 48 hours after public disclosure. Security firm watchTowr detected the exploitation attempts across its global honeypot network from multiple IP addresses."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Time-to-exploitation for multi-bug RCE chains continues to shrink, leaving a sub-48-hour patching window.; Organizations running internet-facing GeoServer instances must patch immediately or place instances behind strict authentication proxies."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Attackers have begun probing a chain of five GeoServer vulnerabilities that enables unauthenticated remote code execution, just two days after the open source geospatial server project disclosed the flaws."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "11. BabidiGhost Metabase Takeovers: Inside the Actor’s Second Server",
+   "url": "https://socradar.io/blog/babidighost-metabase-takeovers/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & AI"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Forensic analysis of a second server belonging to the threat actor BabidiGhost revealed that a single operator using a jailbroken AI agent compromised 1,093 Metabase instances over four weeks. The operation demonstrates how solo actors can achieve enterprise-scale campaign volume using autonomous AI tooling."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Jailbroken AI agents act as massive force multipliers, allowing single operators to compromise over a thousand servers in a month.; Self-hosted business intelligence tools like Metabase require strict perimeter access controls and rapid patching."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "In roughly four weeks, one French-speaking operator and a jailbroken AI agent took over 1,093 Metabase instances."
+    },
+    {
+     "label": "Source",
+     "value": "SOCRadar"
+    }
+   ]
+  },
+  {
+   "title": "12. Wyoming uranium operation shuts down after cyberattack",
+   "url": "https://www.theregister.com/security/2026/11/26/wyoming-uranium-operation-shuts-down-after-cyberattack/5312323",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Critical Infrastructure & OT"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Australian producer Peninsula Energy temporarily shut down its Lance uranium project in Wyoming after a cyberattack impacted plant and wellfield control systems. The company activated incident response protocols and brought in external specialists to secure its US subsidiary, Strata Energy."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Operational technology (OT) and wellfield control systems in the energy and mining sectors remain prime targets for disruptive cyberattacks.; Industrial operators must maintain manual fallback procedures and strict air-gapping or unidirectional gateways for wellfield controls."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Peninsula Energy has temporarily shut down its Wyoming uranium operation after a 'cybersecurity incident' affected plant and wellfield control systems."
+    },
+    {
+     "label": "Source",
+     "value": "The Register"
+    }
+   ]
+  },
+  {
+   "title": "13. UK Welfare and Pension Services Taken Offline Following Cyber Incident",
+   "url": "https://www.infosecurity-magazine.com/news/uk-welfare-services-offline/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Public Sector Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The UK Department for Work and Pensions (DWP) took its online services offline as a precautionary measure following a cyber incident. Officials stated that regular pension and benefit payment disbursements have not been disrupted while investigations continue."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Government citizen-facing portals require decoupled payment processing backends to ensure continuity during front-end breaches.; Incident response plans for public utilities should prioritize transparent communication to prevent citizen panic."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The DWP said that online services had been taken offline as a precaution following a cyber-incident, regular pension and benefit payments have not been affected."
+    },
+    {
+     "label": "Source",
+     "value": "Infosecurity Magazine"
+    }
+   ]
+  },
+  {
+   "title": "14. US Treasury's FinCEN proactively disconnected systems after unauthorized access",
+   "url": "https://fosstodon.org/@sigint/117685229948252346",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Public Sector Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The US Treasury's Financial Crimes Enforcement Network (FinCEN) disconnected affected systems after detecting unauthorized access, marking the latest incident in a wave of breaches targeting US federal agencies. Details regarding the threat actor and scope of data exposure remain under investigation."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Financial intelligence agencies hold ultra-sensitive regulatory and investigative data, making them prime espionage targets.; Rapid network isolation remains a critical containment step when unauthorized access is detected in federal environments."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "US Treasury's FinCEN proactively disconnected systems after unauthorized access, marking the latest breach in a wave targeting federal agencies."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "15. Remus malware steals Gmail messages via fake Google Sheets extension",
+   "url": "https://www.bleepingcomputer.com/news/security/remus-malware-steals-gmail-messages-via-fake-google-sheets-extension/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Endpoint & Browser Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "The Remus infostealer is exfiltrating victims' Gmail messages using a malicious Chrome extension masquerading as Google Sheets. Marketed on underground forums as a Gmail zero-day, the malware bypasses OAuth consent screens entirely by reading and exfiltrating mail directly through the browser session."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Malicious browser extensions completely bypass OAuth token controls by piggybacking on active authenticated browser sessions.; Enterprises should enforce strict Chrome extension allowlists via Group Policy or Workspace admin controls."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Operators marketed the capability as a 0-day in Google's email service; stolen mail leaves through the extension itself, no OAuth consent screen."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "16. CISA added 10 exploited flaws to KEV (Nov 25)",
+   "url": "https://infosec.exchange/@cloud/117686738523754891",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added 10 actively exploited vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog, including five flaws in Mitel MiCollab (such as CVSS 10.0 command injection CVE-2026-133323), HPE Juniper Session Smart root command injection (CVE-2026-103406), Vates Xen Orchestra auth bypass (CVE-2026-133469), and three Danfoss AK-SM 800A controller bugs."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Federal agencies face an aggressive November 28 remediation deadline for these 10 actively exploited flaws.; Enterprise teams running Mitel MiCollab, Juniper Session Smart routers, or Xen Orchestra must prioritize emergency patching."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "CISA added 10 flaws to its KEV catalog, incl. five Mitel MiCollab bugs — notably CVE-2026-133323 (CVSS 10.0), a command injection in the AWV component."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "17. ASUS Patches Critical Control Center Flaws Allowing Remote Administrative Takeover",
+   "url": "https://infosec.exchange/@beyondmachines1/117687825017599754",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Enterprise Endpoint Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "ASUS patched multiple critical vulnerabilities in ASUS Control Center Express, including a CVSS 10.0 flaw caused by hard-coded cryptographic keys. The vulnerabilities allow remote unauthenticated attackers to forge authentication tokens and gain full administrative control over managed business workstations."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Hard-coded cryptographic keys in centralized IT management software create catastrophic single points of failure.; Organizations utilizing ASUS Control Center Express must apply the vendor patch immediately and restrict management console exposure."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "These vulnerabilities allow remote attackers to forge authentication tokens and gain full administrative control over managed business PCs and workstations."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec"
+    }
+   ]
+  },
+  {
+   "title": "18. Microsoft removes WSUS server role in Windows Server 2028",
+   "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-removes-wsus-server-role-in-windows-server-2028/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Enterprise Architecture"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Microsoft announced it will officially remove the Windows Server Update Services (WSUS) server role in Windows Server 2028, following its earlier deprecation. Meanwhile, Microsoft also pushed an emergency out-of-band hotpatch to fix Windows Server 2025 crashes caused by November's KB5131077 security update."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Enterprise IT and security teams relying on on-premises WSUS must begin planning migrations to Windows Autopatch, Intune, or third-party patch management tools.; Windows Server 2025 administrators experiencing crashes from KB5131077 should deploy the new emergency hotpatch immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Microsoft will remove the WSUS server role from Windows Server 2028, the next major release of its server operating system."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Recent Outages Have Economic Causes — Bruce Schneier examines how market incentives drive systemic infrastructure outages. (Schneier on Security)",
+   "url": "https://www.schneier.com/blog/archives/2026/11/recent-outages-have-economic-causes.html"
+  },
+  {
+   "text": "FIFA Cyberattack — Attackers used social engineering to steal 12GB of FIFA data. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/fifa-confirms-cyberattack/"
+  },
+  {
+   "text": "Flight Centre Data Breach — Third-party booking breach exposes customer names and some passport details. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/flight-centre-travel-group-data-breach-booking-system/"
+  },
+  {
+   "text": "myColorado Data Breach — Hackers breached Colorado's digital ID app, impacting 100,000 users. (SecurityWeek)",
+   "url": "https://www.securityweek.com/100000-potentially-impacted-by-colorado-data-breach/"
+  },
+  {
+   "text": "CyberStrikeAI Shut Down — Creator permanently removes open-source version of AI offensive pentesting framework. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/cyberstrikeai-shut-down-threatbook/"
+  },
+  {
+   "text": "US DOJ Scam Crackdown — US seizes nearly $17 billion and charges 800 alleged scammers. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/doj-scam-crackdown-800-scammers/"
+  },
+  {
+   "text": "Google Cloud AI Agent Policy — Google requires AI agents to use MCP or CLI for Workspace. (Infosecurity Magazine)",
+   "url": "https://www.infosecurity-magazine.com/news/google-cloud-ai-agents-workspace/"
+  },
+  {
+   "text": "GoodGuys Phishing Campaign — Fake paid expert interview invites steal corporate Google and Okta logins. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/apple/fake-paid-expert-interviews-impersonate-brands-to-steal-google-logins/"
+  },
+  {
+   "text": "Apache Shiro CVE-2026-137686 — Apache Shiro ActiveDirectoryRealm allows unauthenticated login via anonymous LDAP bind. (#infosec)",
+   "url": "https://infosec.exchange/@suriq/117687711826227210"
+  },
+  {
+   "text": "Mitel OpenScape CVE-2026-137724 — CVSS 10.0 authentication bypass in Mitel OpenScape 4000 patched. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117686877353027654"
+  },
+  {
+   "text": "VMware vCenter CVE-2026-123903 — New CVSS 9.8 authentication bypass vulnerability disclosed in VMware vCenter. (#cve)",
+   "url": "https://infosec.exchange/@cybersecurefox/117687425772788117"
+  },
+  {
+   "text": "VMware vCenter CVE-2026-123890 — Rapid7 details actively exploited VMware vCenter SRP authentication bypass. (#infosec)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117685773606864055"
+  },
+  {
+   "text": "VMware ESX CVE-2026-41709 — Espionage group exploited VMware ESX logging bypass as a zero-day. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117683619800209710"
+  },
+  {
+   "text": "OpenSSH CVE-2026-123158 — OpenSSH flaw on musl libc Linux builds allows password check bypass. (#infosec)",
+   "url": "https://infosec.exchange/@xploitdigest/117686836756976358"
+  },
+  {
+   "text": "Canonical LXD & pylxd Flaws — Canonical patches critical OIDC auth bypass and TLS validation flaws. (#cve)",
+   "url": "https://infosec.exchange/@DailyCyberSecurity/117686119054414002"
+  },
+  {
+   "text": "PHP Foundation Security Updates — PHP patches seven critical vulnerabilities including CVE-2026-115560 RCE flaw. (#infosec)",
+   "url": "https://nerdculture.de/@Olly42/117683053044997332"
+  },
+  {
+   "text": "Check Point Management Compromises — Adversary GT13 compromised 24 Check Point servers using AI-driven attacks. (#infosec)",
+   "url": "https://fosstodon.org/@0xc9f1/117685303252980812"
+  },
+  {
+   "text": "Belgian Municipalities Breach — Third-party breach exposes data of 1.2 million Belgian citizens. (#infosec)",
+   "url": "https://infosec.exchange/@beyondmachines1/117683578301285101"
+  },
+  {
+   "text": "KEPCO Data Breach — South Korean utility KEPCO confirms breach affecting 1.52 million people. (#infosec)",
+   "url": "https://insicurezzadigitale.com/il-secondo-colpo-a-kepco-come-152-milioni-di-coreani-sono-finiti-sul-dark-web-in-sette-settimane/"
+  },
+  {
+   "text": "Agence France-Presse Cyberattack — AFP takes its AFP Forum platform offline following a cyberattack. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117687643366646279"
+  },
+  {
+   "text": "EasyEquities Cyberattack — South African share trading platform EasyEquities hit by security incident. (#infosec)",
+   "url": "https://mastodon.africa/@GrahamDowns/117686834249000952"
+  },
+  {
+   "text": "KARTE Platform Data Leak — SMBC, MUFG, and ZOZO lose millions of records via KARTE. (#infosec)",
+   "url": "https://infosec.exchange/@japancyberwatch/117685229425578204"
+  },
+  {
+   "text": "Buffalo Grill Data Breach Alert — French restaurant chain alerts customers after Brevo third-party breach. (#infosec)",
+   "url": "https://infosec.exchange/@infonewscyber/117684751490215984"
+  },
+  {
+   "text": "MailAssure and MONAI Label KEV — CISA adds N-able MailAssure and MONAI Label bugs to KEV. (#cve)",
+   "url": "https://infosec.exchange/@cybersecurefox/117683611444486375"
+  },
+  {
+   "text": "Openwave Webtop KEV — Actively exploited Openwave Webtop Media Transcoder flaw added to KEV. (#infosec)",
+   "url": "https://infosec.exchange/@errorbudget/117684426348032455"
+  },
+  {
+   "text": "InternLM LMDeploy DoS Flaw — Unbounded resource allocation flaw in LMDeploy causes proxy memory exhaustion. (#infosec)",
+   "url": "https://infosec.exchange/@offseq/117686169596062360"
+  },
+  {
+   "text": "Linux iommufd Use-After-Free — Ubuntu warns of use-after-free flaw in Linux iommufd event queue. (#infosec)",
+   "url": "https://fosstodon.org/@sigint/117685401050995732"
+  },
+  {
+   "text": "ONLYOFFICE Nginx Update — ONLYOFFICE releases v10.0.4 security update to fix Nginx vulnerability. (#infosec)",
+   "url": "https://fosstodon.org/@iosifidis/117684788623052079"
+  },
+  {
+   "text": "SecurityWeek Radar Roundup — Roundup covers tanker cyberattacks, USDA breach, and Radware hack. (SecurityWeek)",
+   "url": "https://www.securityweek.com/in-other-news-tanker-cyberattacks-eu-quantum-act-new-virustotal-capabilities/"
+  },
+  {
+   "text": "ThreatsDay Bulletin — Weekly roundup highlights 10M NGINX services at risk and rogue extensions. (The Hacker News)",
+   "url": "https://thehackernews.com/2026/11/threatsday-250-rogue-extensions-10m.html"
+  },
+  {
+   "text": "Risky Bulletin — Podcast notes cover Hex.pm breach, FinCEN incident, and 1Password hack. (Risky Business)",
+   "url": "https://risky.biz/RBNEWS639/"
+  },
+  {
+   "text": "SailPoint 2027 AI Predictions — Report warns enterprises face strict accountability for autonomous AI agents. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/sailpoint-2027-ai-identity-security-predictions-report/"
+  },
+  {
+   "text": "CREST AI Penetration Testing Study — 81% of surveyed penetration testing providers use AI beyond experimentation. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/crest-ai-threat-led-penetration-testing/"
+  },
+  {
+   "text": "AI Pentesting Questions for CISOs — SOCRadar outlines 15 questions to ask before allowing AI pentesting. (SOCRadar)",
+   "url": "https://socradar.io/blog/ai-pentesting-questions-cisos-should-ask/"
+  },
+  {
+   "text": "Keeping Security Metrics Current — Essay critiques static quarterly security metrics as attackers move faster. (The Hacker News)",
+   "url": "https://thehackernews.com/2026/11/how-to-keep-your-security-picture.html"
+  },
+  {
+   "text": "SOCRadar Autonomous Exposure Management — SOCRadar rebrands its Attack Surface Management module to Autonomous Exposure Management. (SOCRadar)",
+   "url": "https://socradar.io/blog/socradar-autonomous-exposure-management/"
+  },
+  {
+   "text": "Norton Claude Connector — Norton integrates Genie AI scam detection directly into Anthropic's Claude. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/product-showcase-norton-claude-scam-detection/"
+  },
+  {
+   "text": "Exposed Backups Case Study — Company lost data by failing to segregate backups from production. (The Register)",
+   "url": "https://www.theregister.com/security/2026/11/26/company-was-religious-about-backups-but-sinned-by-leaving-them-exposed/5312234"
+  },
+  {
+   "text": "EU AI Act Timetable Deferral — Digital Omnibus moves EU AI Act high-risk duties to December 2027. (#infosec)",
+   "url": "https://infosec.exchange/@adrianhollister/117683571998777852"
+  },
+  {
+   "text": "UK ICO Workplace Culture Probe — UK privacy watchdog faces independent review following commissioner's resignation. (The Register)",
+   "url": "https://www.theregister.com/public-sector/2026/11/26/uk-privacy-watchdog-faces-probe-into-its-workplace-culture/5312380"
+  },
+  {
+   "text": "New York Bans AI Chatbot Toys — New York passes five-year ban on AI-powered chatbot toys for children. (GRAHAM CLULEY)",
+   "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/new-york-bans-ai-chatbot-toys"
+  },
+  {
+   "text": "US Chip Export Loophole Closed — New US rule restricts Chinese firms from renting overseas Nvidia GPUs. (TLDR tech)",
+   "url": "https://www.cnbc.com/2026/11/26/neoclouds-nvidia-china-ai.html"
+  },
+  {
+   "text": "Intel Government Stake Dispute — Report details Trump administration demand for a 10% stake in Intel. (Ars Technica - All content)",
+   "url": "https://arstechnica.com/tech-policy/2026/11/intel-faced-a-choice-give-trump-10-or-face-the-consequences/"
+  },
+  {
+   "text": "OpenAI GPT-6.2 Usage Limits — OpenAI fixes billing bug, causing GPT-6.2 Astra limits to hit faster. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-warns-gpt-62-astra-will-hit-usage-limits-40-percent-faster-because-it-fixed-a-bug/"
+  },
+  {
+   "text": "OpenAI Cost Control Tuning — Analysis suggests OpenAI tuned Astra 6.2 to use fewer reasoning tokens. (TLDR tech)",
+   "url": "https://micjm.com/blog/openai-is-in-cost-control-mode"
+  },
+  {
+   "text": "nexos.ai Enterprise AI Gateway — nexos.ai launches enterprise AI gateway supporting 200+ models with governance. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/26/nexos-ai-ai-gateway-200-models-governance/"
+  },
+  {
+   "text": "Tencent Open-Sources DFly2 — Tencent releases DFly2 speculative decoding drafter for sparse LLMs. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/26/tencent-dfly2-speculative-decoding-sparse-models/"
+  },
+  {
+   "text": "Sakana AI Namazu Small — Sakana AI releases 30B reasoning model built on NVIDIA Nemotron 3. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/26/sakana-ai-namazu-small-30b-nemotron-3-nano/"
+  },
+  {
+   "text": "Ubuntu USN-9016-2 — Ubuntu releases update fixing a cookie regression in Apache HTTP Server. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9016-2"
+  },
+  {
+   "text": "Ubuntu USN-9214-1 — Ubuntu patches denial-of-service vulnerabilities in GNU binutils. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9214-1"
+  },
+  {
+   "text": "Ubuntu USN-9213-1 — Ubuntu patches heap buffer overflow and memory flaws in libXi. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9213-1"
+  },
+  {
+   "text": "Ubuntu USN-9212-1 — Ubuntu addresses denial-of-service and options mapping flaws in PyJWT. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9212-1"
+  },
+  {
+   "text": "Ubuntu USN-9211-1 — Ubuntu patches path traversal vulnerability in Plexus Utils archive extraction. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9211-1"
+  },
+  {
+   "text": "Ubuntu USN-9190-2 — Ubuntu releases Linux kernel HWE update fixing multiple subsystem vulnerabilities. (Ubuntu security notices)",
+   "url": "https://ubuntu.com/security/notices/USN-9190-2"
+  },
+  {
+   "text": "SSH Honeypot Hardening Lessons — Analysis of 115,000 SSH honeypot connections highlights simple sshd_config mitigations. (#infosec)",
+   "url": "https://infosec.exchange/@qyleron/117684356590267840"
+  },
+  {
+   "text": "Graylog Linux AuditD Pack — Graylog releases processing pack to normalize and correlate Linux AuditD logs. (#infosec)",
+   "url": "https://infosec.exchange/@Graylog/117683545270883625"
+  },
+  {
+   "text": "Praetorian AI Attacker's Almanac — Praetorian details autonomous attack paths from public JS creds to Azure AD. (#infosec)",
+   "url": "https://infosec.exchange/@praetorian_security/117683600735027678"
+  },
+  {
+   "text": "Deterministic Firewall for AI Agents — Developer shares signed-receipt checker to verify failed AI agent tool calls. (#infosec)",
+   "url": "https://infosec.exchange/@seanmaxwelrs/117685727342074450"
+  },
+  {
+   "text": "Hugging Face ASI Threat Scenarios — Daniel Miessler explores realistic threat scenarios regarding Artificial Superintelligence. (Daniel Miessler)",
+   "url": "https://danielmiessler.com/blog/hugging-face-but-asi"
+  },
+  {
+   "text": "AI Interface Friction — Daniel Miessler argues interface friction is AI's most underrated bottleneck. (Daniel Miessler)",
+   "url": "https://danielmiessler.com/blog/ai-interface-friction"
+  },
+  {
+   "text": "Multiagent Coding Future — Essay explores how multiagent collaboration will reshape software engineering. (TLDR tech)",
+   "url": "https://www.kalzumeus.com/2026/11/25/multiagent-coding-is-the-future"
+  },
+  {
+   "text": "Bullish on MCP for 2027 — Developer argues Model Context Protocol adoption is rebounding with smarter clients. (TLDR tech)",
+   "url": "https://www.philschmid.de/mcp-2027"
+  },
+  {
+   "text": "Who Owns Your Account — Essay argues platform restrictions against AI agents will fail against browser automation. (TLDR tech)",
+   "url": "https://blog.alexmiller.net/posts/who-owns-your-account"
+  },
+  {
+   "text": "n8n Release 2.50.3 — Workflow automation tool n8n ships minor bug fixes and UI trace improvements. (Release notes from n8n)",
+   "url": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.50.3"
+  },
+  {
+   "text": "NordVPN Black Friday Deal — Promotional article offering 78% off NordVPN subscriptions. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/nordvpn-black-friday-deal-get-78-percent-off-vpn-plans-in-2026/"
+  }
+ ]
+}
