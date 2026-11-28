@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DMARC Header Analyzer</title>
+  <style>
+    /* Self-contained dark-card palette (no external CSS variables or remote assets) */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .dmarc-report {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    /* Intro & Input Panel */
+    .intro-card h1 {
+      margin: 0 0 0.45rem;
+      font-size: clamp(1.45rem, 3.2vw, 1.9rem);
+      font-weight: 750;
+      letter-spacing: -0.015em;
+      color: #e6edf3;
+    }
+
+    .intro-lead {
+      margin: 0 0 0.75rem;
+      color: #9198a1;
+      max-width: 72ch;
+    }
+
+    .privacy-badge {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      background: rgba(63, 185, 80, 0.12);
+      border: 1px solid rgba(63, 185, 80, 0.38);
+      color: #3fb950;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .input-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .input-label-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .input-label {
+      font-size: 0.95rem;
+      font-weight: 650;
+      color: #e6edf3;
+    }
+
+    .sample-link {
+      background: none;
+      border: none;
+      padding: 0.15rem 0.25rem;
+      color: #58a6ff;
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .sample-link:hover {
+      color: #79c0ff;
+    }
+
+    .sample-link:focus-visible,
+    .btn:focus-visible,
+    .file-label:focus-visible,
+    .drop-zone:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid #58a6ff;
+      outline-offset: 2px;
+    }
+
+    textarea#headers-input {
+      width: 100%;
+      min-height: 200px;
+      resize: vertical;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    textarea#headers-input::placeholder {
+      color: #6e7681;
+    }
+
+    .drop-zone {
+      border: 1.5px dashed #30363d;
+      border-radius: 8px;
+      background: #1c222d;
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .drop-zone.drag-active {
+      border-color: #58a6ff;
+      background: rgba(88, 166, 255, 0.12);
+    }
+
+    .drop-zone-text {
+      font-size: 0.88rem;
+      color: #9198a1;
+    }
+
+    .drop-zone-text strong {
+      color: #e6edf3;
+    }
+
+    .file-input-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .file-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.42rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+      background: #161b22;
+      color: #e6edf3;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .file-label:hover {
+      border-color: #58a6ff;
+      color: #58a6ff;
+    }
+
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.2rem;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 650;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #238636;
+      border-color: rgba(240, 246, 252, 0.15);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #2ea043;
+    }
+
+    .btn-secondary {
+      background: #1c222d;
+      border-color: #30363d;
+      color: #e6edf3;
+    }
+
+    .btn-secondary:hover {
+      border-color: #9198a1;
+    }
+
+    .status-note {
+      font-size: 0.84rem;
+      color: #9198a1;
+    }
+
+    .notice-card {
+      border-left: 4px solid #d29922;
+      border-color: rgba(210, 153, 34, 0.45);
+      border-left-color: #d29922;
+      background: rgba(210, 153, 34, 0.1);
+    }
+
+    .notice-card h2 {
+      margin: 0 0 0.35rem;
+      color: #d29922;
+    }
+
+    .notice-card p {
+      margin: 0;
+      color: #e6edf3;
+    }
+
+    /* Report Sections (matching Milestone 2 dark-card styling) */
+    .decides-verdict {
+      border-left: 4px solid #58a6ff;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+      color: #e6edf3;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #e6edf3;
+    }
+
+    .decides-marker {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-variant: small-caps;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      color: #58a6ff;
+      background: rgba(88, 166, 255, 0.12);
+      border: 1px solid rgba(88, 166, 255, 0.35);
+    }
+
+    /* 1. Verdict Banner */
+    .verdict-banner {
+      padding: 1.5rem 1.6rem;
+    }
+
+    .verdict-pass {
+      border-left: 5px solid #3fb950;
+      border-color: rgba(63, 185, 80, 0.45);
+      border-left-color: #3fb950;
+      background: linear-gradient(135deg, rgba(63, 185, 80, 0.14), #161b22 60%);
+    }
+
+    .verdict-fail {
+      border-left: 5px solid #f85149;
+      border-color: rgba(248, 81, 73, 0.45);
+      border-left-color: #f85149;
+      background: linear-gradient(135deg, rgba(248, 81, 73, 0.14), #161b22 60%);
+    }
+
+    .verdict-unknown {
+      border-left: 5px solid #d29922;
+      border-color: rgba(210, 153, 34, 0.45);
+      border-left-color: #d29922;
+      background: linear-gradient(135deg, rgba(210, 153, 34, 0.15), #161b22 60%);
+    }
+
+    .verdict-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .verdict-heading {
+      margin: 0 0 1rem;
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.55rem;
+    }
+
+    .verdict-label {
+      color: #9198a1;
+      font-weight: 700;
+    }
+
+    .verdict-pass .verdict-word {
+      color: #3fb950;
+      text-transform: uppercase;
+    }
+
+    .verdict-fail .verdict-word {
+      color: #f85149;
+      text-transform: uppercase;
+    }
+
+    .verdict-unknown .verdict-word {
+      color: #d29922;
+      text-transform: uppercase;
+    }
+
+    .verdict-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem 1.1rem;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .meta-label {
+      color: #9198a1;
+      font-weight: 600;
+    }
+
+    .policy-group {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* Chips & Badges */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.82rem;
+      line-height: 1.35;
+      background: #1c222d;
+      border: 1px solid #30363d;
+      color: #e6edf3;
+      overflow-wrap: anywhere;
+    }
+
+    .chip-muted {
+      color: #9198a1;
+      background: rgba(145, 152, 161, 0.08);
+      border-color: #252b35;
+    }
+
+    .chip-domain-strong {
+      font-weight: 650;
+      color: #e6edf3;
+      background: rgba(88, 166, 255, 0.1);
+      border-color: rgba(88, 166, 255, 0.35);
+    }
+
+    .chip-provenance {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: #1c222d;
+      border: 1px solid #30363d;
+      color: #9198a1;
+    }
+
+    .count-chip {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: #1c222d;
+      border: 1px solid #30363d;
+      color: #9198a1;
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 0.16rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .status-pass {
+      color: #3fb950;
+      background: rgba(63, 185, 80, 0.14);
+      border-color: rgba(63, 185, 80, 0.45);
+    }
+
+    .status-fail {
+      color: #f85149;
+      background: rgba(248, 81, 73, 0.14);
+      border-color: rgba(248, 81, 73, 0.45);
+    }
+
+    .status-warn {
+      color: #d29922;
+      background: rgba(210, 153, 34, 0.15);
+      border-color: rgba(210, 153, 34, 0.45);
+    }
+
+    .status-unknown {
+      color: #9198a1;
+      background: rgba(145, 152, 161, 0.12);
+      border-color: #30363d;
+    }
+
+    /* 2. Why */
+    .why-text {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: #e6edf3;
+      overflow-wrap: anywhere;
+    }
+
+    /* Tables */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead th {
+      text-align: left;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9198a1;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid #30363d;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: 0.7rem 0.75rem;
+      border-bottom: 1px solid #252b35;
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.84rem;
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: #9198a1;
+    }
+
+    .sub-note {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.78rem;
+      color: #9198a1;
+    }
+
+    /* Alignment mismatch highlight */
+    .from-compare {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.86rem;
+      color: #9198a1;
+    }
+
+    .cell-mismatch {
+      background: rgba(248, 81, 73, 0.09);
+      border-left: 3px solid #f85149;
+    }
+
+    .mismatch-tag {
+      display: inline-block;
+      margin-left: 0.4rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      color: #f85149;
+      background: rgba(248, 81, 73, 0.14);
+      border: 1px solid rgba(248, 81, 73, 0.45);
+      vertical-align: middle;
+    }
+
+    /* 4. Message Summary */
+    .summary-grid {
+      margin: 0;
+      display: grid;
+      grid-template-columns: minmax(110px, 145px) 1fr;
+      gap: 0.65rem 1rem;
+    }
+
+    .summary-grid dt {
+      font-size: 0.82rem;
+      font-weight: 650;
+      color: #9198a1;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-top: 0.12rem;
+    }
+
+    .summary-grid dd {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      overflow-wrap: anywhere;
+      min-width: 0;
+    }
+
+    .addr-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      width: 100%;
+    }
+
+    .addr-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* 5. Authentication-Results */
+    .ar-instance {
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      background: #1c222d;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .ar-instance:last-child {
+      margin-bottom: 0;
+    }
+
+    .ar-instance-authoritative {
+      border-color: rgba(88, 166, 255, 0.45);
+    }
+
+    .ar-instance-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .ar-instance-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .role-badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.14rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid #30363d;
+    }
+
+    .role-authoritative {
+      color: #58a6ff;
+      background: rgba(88, 166, 255, 0.14);
+      border-color: rgba(88, 166, 255, 0.4);
+    }
+
+    .role-secondary {
+      color: #9198a1;
+      background: transparent;
+    }
+
+    .props-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .prop-chip {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 5px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      color: #e6edf3;
+      overflow-wrap: anywhere;
+    }
+
+    .ar-supplement {
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed #30363d;
+    }
+
+    .ar-supplement-title {
+      margin: 0 0 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9198a1;
+    }
+
+    /* 6. DKIM Signatures */
+    .dkim-h-list {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      color: #9198a1;
+      overflow-wrap: anywhere;
+      max-width: 300px;
+    }
+
+    /* 7. Received Chain */
+    .hop-largest-delay td {
+      background: rgba(210, 153, 34, 0.08);
+    }
+
+    .delay-largest-badge {
+      display: inline-block;
+      margin-left: 0.4rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.1rem 0.42rem;
+      border-radius: 4px;
+      color: #d29922;
+      background: rgba(210, 153, 34, 0.15);
+      border: 1px solid rgba(210, 153, 34, 0.45);
+      vertical-align: middle;
+    }
+
+    /* 8. Warnings */
+    .warnings-section {
+      border-color: rgba(210, 153, 34, 0.45);
+    }
+
+    .callout-disagreement {
+      padding: 0.95rem 1.1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(248, 81, 73, 0.45);
+      border-left: 4px solid #f85149;
+      background: rgba(248, 81, 73, 0.14);
+      margin-bottom: 0.9rem;
+    }
+
+    .callout-disagreement:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout-title {
+      margin: 0 0 0.35rem;
+      font-size: 0.92rem;
+      font-weight: 750;
+      color: #f85149;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .callout-body {
+      margin: 0;
+      font-size: 0.92rem;
+      color: #e6edf3;
+      overflow-wrap: anywhere;
+    }
+
+    .warnings-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .warnings-list li {
+      overflow-wrap: anywhere;
+    }
+
+    .empty-state {
+      margin: 0;
+      color: #9198a1;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 0.85rem 0.65rem 2rem;
+        gap: 1rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+
+      .verdict-banner {
+        padding: 1.15rem 1rem;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+
+      .summary-grid dt {
+        margin-top: 0.65rem;
+      }
+
+      .summary-grid dt:first-child {
+        margin-top: 0;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+
+      .intro-card,
+      .input-card {
+        display: none !important;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+        gap: 0.75rem;
+      }
+
+      .card {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #666666 !important;
+        border-radius: 4px;
+        padding: 0.75rem 0.9rem;
+        break-inside: avoid;
+      }
+
+      .verdict-banner {
+        background: #ffffff !important;
+        border: 2px solid #000000 !important;
+        border-left: 6px solid #000000 !important;
+      }
+
+      .decides-verdict {
+        border-left: 5px solid #000000 !important;
+      }
+
+      .verdict-word,
+      .verdict-label,
+      .meta-label,
+      .muted,
+      .sub-note,
+      .callout-title,
+      .summary-grid dt,
+      thead th,
+      .dkim-h-list,
+      .ar-supplement-title {
+        color: #000000 !important;
+      }
+
+      .chip,
+      .chip-muted,
+      .chip-domain-strong,
+      .chip-provenance,
+      .count-chip,
+      .status-badge,
+      .decides-marker,
+      .mismatch-tag,
+      .role-badge,
+      .prop-chip,
+      .delay-largest-badge {
+        background: transparent !important;
+        color: #000000 !important;
+        border: 1px solid #444444 !important;
+      }
+
+      .ar-instance,
+      .cell-mismatch,
+      .hop-largest-delay td,
+      .callout-disagreement {
+        background: transparent !important;
+      }
+
+      .callout-disagreement {
+        border: 2px solid #000000 !important;
+      }
+
+      .table-wrap {
+        overflow: visible !important;
+      }
+
+      table {
+        font-size: 9.5pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="card intro-card">
+      <h1>DMARC Header Analyzer</h1>
+      <p class="intro-lead">
+        Paste raw email headers or drop a <code>.eml</code> / <code>.txt</code> file to inspect
+        SPF, DKIM, and DMARC alignment, see why a message passed or failed, and check whether each
+        verdict was reported by the receiving server or computed from its authentication headers.
+      </p>
+      <div class="privacy-badge" role="note">
+        Parsed locally in your browser — headers are never uploaded, logged, or sent over the network.
+      </div>
+    </header>
+
+    <section class="card input-card" aria-label="Header Input">
+      <div class="input-label-row">
+        <label class="input-label" for="headers-input">Raw email headers (message body is ignored)</label>
+        <button type="button" id="load-sample-btn" class="sample-link">Load a sample</button>
+      </div>
+
+      <textarea
+        id="headers-input"
+        name="headers"
+        rows="10"
+        spellcheck="false"
+        placeholder="Paste raw email headers here (e.g. From:, Return-Path:, Authentication-Results:, DKIM-Signature:, Received:)..."
+      ></textarea>
+
+      <div id="drop-zone" class="drop-zone" aria-describedby="drop-hint">
+        <span id="drop-hint" class="drop-zone-text">
+          <strong>Drop a .eml or .txt file here</strong> — read locally via FileReader, never uploaded.
+        </span>
+        <div class="file-input-wrap">
+          <input
+            type="file"
+            id="file-input"
+            class="sr-only"
+            accept=".eml,.txt,message/rfc822,text/plain"
+          >
+          <label for="file-input" class="file-label" tabindex="0" id="file-picker-label">Choose .eml / .txt file</label>
+        </div>
+      </div>
+
+      <div class="actions-row">
+        <button type="button" id="analyze-btn" class="btn btn-primary">Analyze</button>
+        <button type="button" id="clear-btn" class="btn btn-secondary">Clear</button>
+        <span id="input-status" class="status-note" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <div id="results" aria-live="polite" aria-atomic="false"></div>
+  </main>
+
+  <script type="module">
+    import { parseHeaders, renderReport, escapeHtml } from "./dmarc.js";
+
+    const textarea = document.getElementById("headers-input");
+    const analyzeBtn = document.getElementById("analyze-btn");
+    const clearBtn = document.getElementById("clear-btn");
+    const loadSampleBtn = document.getElementById("load-sample-btn");
+    const fileInput = document.getElementById("file-input");
+    const filePickerLabel = document.getElementById("file-picker-label");
+    const dropZone = document.getElementById("drop-zone");
+    const inputStatus = document.getElementById("input-status");
+    const resultsEl = document.getElementById("results");
+
+    function renderNotice(title, message, warnings = []) {
+      const warnHtml =
+        warnings.length > 0
+          ? `<ul class="warnings-list" style="margin-top:0.65rem">${warnings
+              .map((w) => `<li>${escapeHtml(w)}</li>`)
+              .join("")}</ul>`
+          : "";
+      resultsEl.innerHTML =
+        `<section class="card notice-card" role="status">\n` +
+        `  <h2>${escapeHtml(title)}</h2>\n` +
+        `  <p>${escapeHtml(message)}</p>\n` +
+        `  ${warnHtml}\n` +
+        `</section>`;
+    }
+
+    function hasAnyRecognizedHeader(parsed) {
+      return Boolean(
+        (parsed.from && parsed.from.raw) ||
+          parsed.reply_to ||
+          parsed.return_path ||
+          (parsed.to && parsed.to.length > 0) ||
+          parsed.subject ||
+          parsed.date ||
+          parsed.message_id ||
+          (parsed.auth_results && parsed.auth_results.length > 0) ||
+          (parsed.dkim_signatures && parsed.dkim_signatures.length > 0) ||
+          (parsed.received_spf && parsed.received_spf.length > 0) ||
+          (parsed.arc && parsed.arc.present) ||
+          parsed.x_forefront_antispam_report ||
+          (parsed.received && parsed.received.length > 0)
+      );
+    }
+
+    function analyze() {
+      const raw = textarea.value;
+      if (!raw || !raw.trim()) {
+        renderNotice(
+          "No headers to analyze",
+          "Paste raw email headers into the box above, choose a .eml/.txt file, or click \"Load a sample\"."
+        );
+        return;
+      }
+
+      try {
+        const parsed = parseHeaders(raw);
+        if (!hasAnyRecognizedHeader(parsed)) {
+          renderNotice(
+            "No valid email headers recognized",
+            "The input did not contain recognizable RFC 5322 email headers (such as From:, Authentication-Results:, DKIM-Signature:, or Received:). Make sure you pasted raw message source/headers.",
+            parsed.warnings || []
+          );
+          return;
+        }
+        resultsEl.innerHTML = renderReport(parsed);
+      } catch {
+        renderNotice(
+          "Could not analyze input",
+          "The pasted text could not be parsed as email headers. Please verify that it contains raw RFC 5322 header lines."
+        );
+      }
+    }
+
+    function readLocalFile(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        textarea.value = typeof reader.result === "string" ? reader.result : "";
+        inputStatus.textContent = `Loaded ${file.name} locally (${file.size} bytes).`;
+        analyze();
+      };
+      reader.onerror = () => {
+        inputStatus.textContent = "";
+        renderNotice(
+          "Could not read file",
+          `Unable to read "${file.name}" locally in the browser.`
+        );
+      };
+      reader.readAsText(file);
+    }
+
+    analyzeBtn.addEventListener("click", () => {
+      analyze();
+    });
+
+    clearBtn.addEventListener("click", () => {
+      textarea.value = "";
+      fileInput.value = "";
+      inputStatus.textContent = "";
+      resultsEl.innerHTML = "";
+      textarea.focus();
+    });
+
+    // Keyboard shortcut: Ctrl+Enter / Cmd+Enter inside textarea runs Analyze
+    textarea.addEventListener("keydown", (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+        event.preventDefault();
+        analyze();
+      }
+    });
+
+    // Keyboard accessibility for the custom file label
+    filePickerLabel.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files && fileInput.files[0];
+      readLocalFile(file);
+    });
+
+    // Drag-and-drop file reading via FileReader (no network upload)
+    dropZone.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      dropZone.classList.add("drag-active");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("drag-active");
+    });
+
+    dropZone.addEventListener("drop", (event) => {
+      event.preventDefault();
+      dropZone.classList.remove("drag-active");
+      const file =
+        event.dataTransfer &&
+        event.dataTransfer.files &&
+        event.dataTransfer.files[0];
+      if (file) {
+        readLocalFile(file);
+      }
+    });
+
+    // Same-origin static fetch for sample.txt (only network call on the page)
+    loadSampleBtn.addEventListener("click", async () => {
+      try {
+        const resp = await fetch("./sample.txt");
+        if (!resp.ok) {
+          throw new Error(`HTTP ${resp.status}`);
+        }
+        const text = await resp.text();
+        textarea.value = text;
+        inputStatus.textContent = "Loaded sample headers from sample.txt.";
+        analyze();
+      } catch {
+        inputStatus.textContent = "";
+        renderNotice(
+          "Could not load sample.txt",
+          "Unable to fetch ./sample.txt. Serve this directory over HTTP or paste headers directly."
+        );
+      }
+    });
+  </script>
+</body>
+</html>

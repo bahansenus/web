@@ -40,6 +40,7 @@ STATIC_PAGES = [
     ("/articles", "weekly", "0.5"),
     ("/about", "monthly", "0.3"),
     ("/privacy", "yearly", "0.1"),
+    ("/tools/dmarc", "monthly", "0.4"),
 ]
 
 

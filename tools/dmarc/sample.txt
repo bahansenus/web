@@ -1,0 +1,16 @@
+Return-Path: <bounce@example.com>
+Received: from mail.example.com (mail.example.com [203.0.113.25])
+	by mx.receiver.test with ESMTPS id abc123
+	for <user@receiver.test>; Thu, 27 Nov 2026 21:14:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=sel1;
+	t=1764278042; bh=abc; h=from:to:subject:date;
+	b=zzz
+Authentication-Results: mx.receiver.test;
+	spf=pass (receiver.test: domain of bounce@example.com designates 203.0.113.25 as permitted sender) smtp.mailfrom=example.com;
+	dkim=pass header.d=example.com header.s=sel1 header.b=abc;
+	dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=example.com
+From: Alice Example <alice@example.com>
+To: user@receiver.test
+Subject: Quarterly figures
+Date: Thu, 27 Nov 2026 21:14:01 +0000
+Message-ID: <msg1@example.com>

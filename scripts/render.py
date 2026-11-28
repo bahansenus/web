@@ -590,6 +590,9 @@ def copy_static() -> None:
                  "apple-touch-icon.png", "og-card.png"):
         shutil.copy(REPO / "assets" / name, OUT / "assets" / name)
     shutil.copy(REPO / "BAHansen_Logo.jpeg", OUT / "BAHansen_Logo.jpeg")
+    # self-contained tools (no build step, no server): tools/* -> _site/tools/*
+    if (REPO / "tools").is_dir():
+        shutil.copytree(REPO / "tools", OUT / "tools", dirs_exist_ok=True)
 
 
 def build_about() -> None:
