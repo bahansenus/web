@@ -660,7 +660,7 @@ def build_privacy() -> None:
       <p>Pages are served through Cloudflare, which handles every connection. Cloudflare processes ordinary request information — IP address, browser type, the page requested — both to deliver pages and to keep bad traffic away, under its own privacy policy, and holds it only as long as it's useful. The site's source and build live on GitHub; GitHub still compiles the site but no longer serves the public pages, and it doesn't see who visits.</p>
 
       <h2>Contact</h2>
-      <p>Questions about this policy can go to <a href="mailto:brett@bahansen.us">brett@bahansen.us</a>.</p>
+      <p>There's no contact form here, and nothing you type is collected. Questions about this policy can go through whatever channel you already have for me.</p>
     </div>
   </main>
 {footer}
