@@ -64,7 +64,7 @@ def _organization() -> dict:
         },
         "founder": {
             "@type": "Person",
-            "name": "Brett Hansen",
+            "name": "B.A. Hansen",
             "url": f"{SITE_BASE}/about",
         },
     }
@@ -116,7 +116,7 @@ def jsonld(page_path: str, title: str, description: str,
             "publisher": {"@id": f"{SITE_BASE}/#organization"},
             "author": {
                 "@type": "Person",
-                "name": "Brett Hansen",
+                "name": "B.A. Hansen",
                 "url": f"{SITE_BASE}/about",
             },
             "inLanguage": "en",

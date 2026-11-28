@@ -602,7 +602,7 @@ def build_about() -> None:
     </section>
 
     <div class="briefing-body">
-      <div class="brief">bahansen.us is the personal site of Brett Hansen — a daily security intelligence briefing, home lab notes, and security research.</div>
+      <div class="brief">bahansen.us is the personal site of B.A. Hansen — a daily security intelligence briefing, home lab notes, and security research.</div>
 
       <h2>The Daily Security Intelligence Briefing</h2>
       <p>Every morning a fresh security briefing is published, cut through the noise to the signal that matters for operators. It is organized into three tiers:</p>
@@ -648,7 +648,7 @@ def build_privacy() -> None:
     </section>
 
     <div class="briefing-body">
-      <div class="brief">This site is a personal website operated by Brett Hansen. This page describes what information is collected and how it is used.</div>
+      <div class="brief">This site is a personal website operated by B.A. Hansen. This page describes what information is collected and how it is used.</div>
 
       <h2>Information I collect</h2>
       <p>No accounts, no forms, no advertising, and nothing sold or shared — ever. There's no mailing list and no newsletter, so I never ask for your email address. The only thing I count is page views, so I can tell whether anyone is actually reading these briefings. That count is anonymous and cookie-free: it tells me a page was opened, not who opened it.</p>
@@ -669,10 +669,10 @@ def build_privacy() -> None:
 """.format(
         head=site_parts.head(
             "Privacy Policy — bahansen.us",
-            "Privacy policy for bahansen.us, the personal website of Brett Hansen.",
+            "Privacy policy for bahansen.us, the personal website of B.A. Hansen.",
             depth=0, canonical="/privacy",
             jsonld=seo.jsonld("/privacy", "Privacy Policy — bahansen.us",
-                              "Privacy policy for bahansen.us, the personal website of Brett Hansen."),
+                              "Privacy policy for bahansen.us, the personal website of B.A. Hansen."),
         ),
         nav=site_parts.nav(depth=0, active="privacy"),
         footer=site_parts.footer(depth=0),
