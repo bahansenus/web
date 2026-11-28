@@ -1,0 +1,657 @@
+{
+ "date": "2026-11-28",
+ "published_at": "2026-11-28T13:01:37.718Z",
+ "title": "Daily Security Intelligence Briefing — November 28, 2026",
+ "threat_level": "CRITICAL",
+ "summary": "A wave of high-impact breaches hit critical government and enterprise infrastructure, including the US Air Force's Cloud One platform, SAP's development repositories, and password managers 1Password and pCloud Pass (BleepingComputer, The Record, CSO Online). Meanwhile, attackers are actively exploiting a newly added CISA KEV flaw in Drupal Core (CVE-2026-136716), two OSGeo GeoServer flaws, and an unpatched Cacti zero-day with a public PoC (BleepingComputer, CISA).",
+ "tier1": [
+  {
+   "title": "1. US Air Force Cloud One Platform Breached in Latest Federal Cyberattack Wave",
+   "url": "https://www.bleepingcomputer.com/news/security/us-air-force-cloud-platform-reportedly-hacked-in-latest-federal-breach/",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "BleepingComputer"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Cloud & Federal Defense / Critical Breach (Control Plane Access)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Hackers breached the US Air Force's flagship Cloud One computing platform by exploiting an unidentified software flaw during a system upgrade, reportedly reaching the platform's control plane. The intrusion disrupted application updates and may have exposed sensitive military operational and logistics data. US Cyber Command is currently assessing the blast radius of the breach, which follows a coordinated wave of federal intrusions targeting the FBI, CIA, and Treasury Department."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Defense contractors and DoD-adjacent entities integrated with Cloud One must audit federated trust relationships, rotate shared credentials or service tokens, and monitor for anomalous lateral movement from military cloud enclaves."
+    }
+   ]
+  },
+  {
+   "title": "2. SAP Confirms Cyber Incident Amid Reports of Source Code and GitHub Compromise",
+   "url": "https://therecord.media/sap-germany-cyberattack-github",
+   "fields": [
+    {
+     "label": "Source & Article Link",
+     "value": "The Record from Recorded Future News"
+    },
+    {
+     "label": "Technical Severity / Domain",
+     "value": "Supply Chain & Enterprise Software / Critical Breach (Signing Keys Replaced)"
+    },
+    {
+     "label": "Why You Must Read This",
+     "value": "Enterprise software giant SAP confirmed a security incident after reports emerged that threat actors infiltrated its software development infrastructure via GitHub and accessed proprietary source code. Internal communications indicate SAP restricted GitHub access, suspended automated build pipelines, and replaced its cryptographic signing keys. A compromise of SAP's build environment and source code poses massive downstream supply-chain and zero-day discovery risks for global enterprises running SAP ERP and cloud suites."
+    },
+    {
+     "label": "Recommended Immediate Action",
+     "value": "Verify the cryptographic signatures of all recent and upcoming SAP patches against SAP's newly rotated signing keys, and heighten monitoring around SAP application servers for unusual egress or exploitation attempts."
+    }
+   ]
+  }
+ ],
+ "tier2": [
+  {
+   "title": "1. 1Password Data Breach Exposes Customer Account Info and Internal Source Code",
+   "url": "https://www.csoonline.com/article/4254142/1password-data-breach-included-some-customer-info-internal-source-code.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Identity & Password Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "1Password disclosed an incident initiated on November 19 after attackers compromised an employee's corporate GitHub account. The intruders accessed private source code repositories and account records for a subset of customers, though the company maintains that user password vaults remain unaffected."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Compromise originated via an employee's corporate GitHub account rather than core vault infrastructure.; Customer account metadata and proprietary source code were exfiltrated, increasing targeted phishing and code-audit risks."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "1Password is reassuring customers that their password vaults are safe after the theft of both account records for a subset of its users and source code from its private repositories."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "2. pCloud Pass Password Manager Hit by Cyberattack With Suspicious 2FA Login Alerts",
+   "url": "https://www.bleepingcomputer.com/news/security/pcloud-confirms-password-manager-hack-after-suspicious-login-alerts/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Identity & Password Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Cross-platform password manager pCloud Pass confirmed a cyberattack after users reported unknown devices connecting to their accounts despite having two-factor authentication (2FA) enabled. The Swiss company stated that user email addresses were exposed and login attempts occurred, though vaults are client-side encrypted."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Users and non-users received alerts of unknown devices attaching to accounts even with 2FA active.; pCloud has not clarified whether encrypted vault blobs were exfiltrated during the intrusion."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The pCloud Pass password manager suffered a cyberattack, with users reporting that unknown devices had connected to their accounts even with two-factor authentication (2FA) enabled."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "3. Unpatched Cacti Zero-Day ('4HTTP2SHELL') With Public PoC Enables Unauthenticated RCE",
+   "url": "https://www.bleepingcomputer.com/news/security/unpatched-cacti-zero-day-with-public-poc-gives-remote-code-execution/",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management & Network Monitoring"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A zero-day vulnerability in the Cacti network monitoring platform (tested on version 1.2.31) has been publicly released alongside a functional proof-of-concept exploit dubbed '4HTTP2SHELL'. The exploit chains four unauthenticated HTTP requests—leveraging stored SQL injection via guest graph display preferences—to achieve remote command execution through Cacti's realtime poller."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Requires no authentication or API key when guest access is reachable, estimated at CVSS 9.8.; No official patch or CVE ID is available yet; internet-facing Cacti instances are at immediate risk."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A zero-day vulnerability in the Cacti network monitoring platform has been publicly disclosed, along with a proof-of-concept exploit that lets unauthenticated attackers execute commands on vulnerable servers."
+    },
+    {
+     "label": "Source",
+     "value": "BleepingComputer"
+    }
+   ]
+  },
+  {
+   "title": "4. Drupal Core Installer Access Bypass (CVE-2026-136716) Exploited in the Wild and Added to CISA KEV",
+   "url": "https://infosec.exchange/@cloud/117690100535061757",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Web Application Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A second critical Drupal installer flaw in a week, tracked as CVE-2026-136716 (SA-CORE-2026-019, CVSS 9.8), is under active exploitation and has been added to the CISA KEV catalog. Sites left in an incomplete or unusual install state after last week's CVE-2026-132165 patch remain invisibly exposed to unauthenticated site takeover."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Update immediately to Drupal 10.6.23, 11.3.23, or 11.4.14, run update.php, or block /core/install.php at the WAF.; Administrators must audit user 1 account changes and server logs, as the UI does not indicate if a site is in the vulnerable state."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Sites whose installer stays reachable remain exploitable — production included, invisibly. In-the-wild exploitation confirmed."
+    },
+    {
+     "label": "Source",
+     "value": "#cve (@cloud)"
+    }
+   ]
+  },
+  {
+   "title": "5. Critical 12-Year-Old Linux Kernel NFS Server Flaw Exposes Systems to Remote Root Takeover",
+   "url": "https://www.csoonline.com/article/4254114/flaw-in-linux-nfs-file-sharing-exposes-servers-to-remote-takeover.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Linux & Infrastructure Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers independently discovered a 12-year-old critical vulnerability in the Linux kernel's NFS file-sharing server—one utilizing an AI agent—that allows unauthenticated attackers to obtain a root shell. While NFS is primarily deployed on local networks, it is heavily utilized across Kubernetes container networks and enterprise storage backbones."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Allows unauthenticated remote code execution with root privileges over reachable NFS ports.; High lateral-movement risk inside local networks, data centers, and Kubernetes clusters."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Researchers have found a critical flaw in the Linux kernel’s NFS file-sharing server that lets unauthenticated attackers obtain a root shell on affected systems."
+    },
+    {
+     "label": "Source",
+     "value": "CSO Online"
+    }
+   ]
+  },
+  {
+   "title": "6. Two Actively Exploited OSGeo GeoServer Flaws (CVE-2026-129243, CVE-2026-120705) Added to CISA KEV",
+   "url": "https://infosec.exchange/@errorbudget/117690541899209253",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Vulnerability Management"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA added two actively exploited OSGeo GeoServer vulnerabilities to its Known Exploited Vulnerabilities catalog: CVE-2026-129243 (service-level role check bypass) and CVE-2026-120705 (unauthenticated XML injection via WFS 2.0 GetFeatureById allowing local file read and SSRF). Federal agencies face a November 30 remediation deadline."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Unauthenticated attackers can read local files accessible to the GeoServer process and bypass service security rules.; Administrators should upgrade to GeoServer 3.0.2, 2.28.6, or 2.27.7 immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Two GeoServer bugs (CVE-2026-129243, CVE-2026-120705) are exploited and in CISA KEV. Unauthenticated users can bypass service rules and abuse WFS."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@errorbudget)"
+    }
+   ]
+  },
+  {
+   "title": "7. Optimizely Script Hijack Delivered Coruna and DarkSword iOS Exploit Kits Across 178+ Major Sites",
+   "url": "https://social.saarland/@1001010/117692575276911727",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Mobile & Supply Chain Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Attackers hijacked Optimizely's A/B testing scripts on November 16 across more than 178 major websites (including BBC, CNN, and Salesforce) to silently serve the leaked Coruna (iOS 13–17) and DarkSword (iOS 18) exploit kits. Outdated iPhones visiting affected sites were compromised via drive-by browser exploits targeting passwords, chats, and crypto wallets."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Zero-click web delivery via malvertising and compromised third-party scripts targets unpatched iOS devices.; Users must upgrade to iOS 18.7.3+, iOS 26.3+, or the latest available security patch line immediately."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "If you visited one of those sites on an outdated iPhone, hidden code quietly threw the Coruna (iOS 13–17) or DarkSword (iOS 18) exploit kits at your browser to go after passwords and crypto wallets."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@1001010)"
+    }
+   ]
+  },
+  {
+   "title": "8. Ivanti Connect Secure Incomplete Patch Warning for CVE-2026-104935 and Related CVEs",
+   "url": "https://infosec.exchange/@errorbudget/117694023889507183",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & Perimeter Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Security researchers warn that Ivanti Connect Secure appliances running builds 25.1.1.2 or 22.8R2.5 remain exposed because those versions remediate only one of three recently disclosed CVEs (including auth bypass/RCE CVE-2026-104935). Organizations must upgrade to 25.1.1.3 or 22.8R2.6 and audit Active Directory for anomalous reads."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Builds 25.1.1.2 and 22.8R2.5 leave two of three CVEs unpatched; upgrade to 25.1.1.3 or 22.8R2.6.; Hunt domain controller logs for unauthorized directory reads performed by the appliance's AD service account."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Ivanti Connect Secure on 25.1.1.2 or 22.8R2.5 is still exposed, since those builds fix only one of three CVEs. Move to 25.1.1.3 or 22.8R2.6, and check your domain controllers for reads by the appliance's AD service account."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@errorbudget)"
+    }
+   ]
+  },
+  {
+   "title": "9. Suspected Vietnam-Linked 'WeaveLotus' Group Targets Southeast Asia in South China Sea Espionage",
+   "url": "https://thehackernews.com/2026/11/suspected-vietnam-linked-hackers-target.html",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Threat Intelligence & APT"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A newly documented Vietnam-sponsored threat group codenamed WeaveLotus has been attributed to five intrusions targeting military, government, and legislative bodies in Thailand and Southeast Asia. The campaign focuses on gathering strategic intelligence regarding South China Sea defense and military agreements."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "WeaveLotus specifically targets regional defense ministries and legislative entities.; Demonstrates ongoing state-sponsored cyber espionage aligned with maritime geopolitical disputes."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "A Vietnam-sponsored hacking group has been attributed to attacks targeting Southeast Asian military, government, and legislative organizations with an aim to gather intelligence on South China Sea defense and military agreements."
+    },
+    {
+     "label": "Source",
+     "value": "The Hacker News"
+    }
+   ]
+  },
+  {
+   "title": "10. F5 BIG-IP Privilege Escalation (CVE-2026-125274) Chains SOAP Role Gap and CRLF to Gain Root",
+   "url": "https://infosec.exchange/@pentesttools/117688529388661013",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Application & Network Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "A high-severity flaw in F5 BIG-IP (CVE-2026-125274, CVSS 8.8) allows a low-privilege Guest account to escalate to root simply by changing its own password. The exploit chains a missing role check on a SOAP endpoint with CRLF injection in a callback and Apache's trust of localhost requests."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Authenticated guest users can achieve full administrative takeover via localhost request smuggling/CRLF.; Highlights the danger of internal service trust assumptions when paired with incomplete RBAC validation."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The SOAP endpoint checks who you are but never your role. A callback passes CRLF straight into outgoing requests. And Apache trusts anything coming from localhost."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@pentesttools)"
+    }
+   ]
+  },
+  {
+   "title": "11. HPE Juniper Session Smart Conductor OS Command Injection (CVE-2026-103406) Added to CISA KEV",
+   "url": "https://infosec.exchange/@errorbudget/117693317823241357",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Network & SD-WAN Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "CISA has flagged CVE-2026-103406 (CVSS 9.8), an OS command injection vulnerability in HPE Juniper Session Smart Conductor and Session Smart Router, as actively exploited in the wild. Vulnerable versions include releases prior to 7.0.5, 7.1.0 through 7.1.6, and 7.2.0 through 7.2.2."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Check all Conductors, including HA peers and partner-managed appliances, before the November 28 KEV deadline.; Restrict management interface access and perform forensic triage for command execution artifacts."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Juniper Session Smart Conductor: the vulnerable ranges are anything before 7.0.5, 7.1.0 to 7.1.6, and 7.2.0 to 7.2.2. Check every Conductor, including HA peers and partner-run ones, and restrict access until patched."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@errorbudget)"
+    }
+   ]
+  },
+  {
+   "title": "12. Mitel MiCollab Zero-Day Chain (CVE-2026-133323, CVE-2026-133303) Yields Root and AD Compromise in 30 Minutes",
+   "url": "https://infosec.exchange/@lelabtechnique/117690028596823003",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Unified Communications & DFIR"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Five vulnerabilities in the AWV module of Mitel MiCollab—including CVSS 10.0 OS command injection (CVE-2026-133323) and CVSS 9.0 XML injection (CVE-2026-133303)—were exploited prior to patch availability and added to CISA KEV. Attackers achieved root access in under 30 minutes before pivoting into Active Directory."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Patching alone is insufficient; organizations must perform forensic triage and rotate all MiCollab and AD-linked secrets.; Watch for lateral movement originating from unified communications appliances into core directory services."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Five flaws in the AWV module of Mitel MiCollab were exploited before the patch: root in under 30 minutes, then Active Directory."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@lelabtechnique)"
+    }
+   ]
+  },
+  {
+   "title": "13. Microsoft-Signed 'Snipping-Tool.exe' Abused to Deliver Vinci RAT",
+   "url": "https://infosec.exchange/@cloud/117692505236809781",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Malware & Endpoint Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Researchers at eSentire discovered a campaign abusing a Microsoft-signed 'Snipping-Tool.exe' installer hosted on a spoofed domain (snipp.codes-team[.]com) to deploy the Vinci Remote Access Trojan (RAT). The malware grants threat actors full remote control over compromised Windows hosts."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Block snipp.codes-team[.]com and monitor for unexpected Snipping-Tool.exe installations outside standard OS paths.; Valid Microsoft signatures on store-packaged apps continue to bypass basic execution trust policies."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "eSentire traced a Microsoft-signed 'Snipping-Tool.exe' installer served from a fake sniping-tool site (snipp.codes-team[.]com). The RAT gives attackers full remote control of the host."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@cloud)"
+    }
+   ]
+  },
+  {
+   "title": "14. National Agencies Warn Autonomous AI Agents Are Accelerating Critical Infrastructure Compromises",
+   "url": "https://infosec.exchange/@adrianhollister/117693346508965331",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "AI Security & Critical Infrastructure"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Three European cyber agencies issued aligned warnings this week regarding AI-driven offensive operations: Switzerland confirmed its first five attacks executed by AI agents—two of which breached critical infrastructure operators—while Italy's CSIRT reported mass compromises completed within hours. The UK NCSC noted that while the underlying vulnerabilities are not new, AI frameworks have drastically compressed exploitation speed and cost."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Autonomous AI agents have successfully breached European critical infrastructure operators in the wild.; Defensive patch timelines must shrink to hours rather than days as AI agents automate reconnaissance-to-exploitation loops."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "Switzerland confirmed its first five attacks run by AI agents; two succeeded against critical-infrastructure operators. Italy's CSIRT described mass compromises carried out in hours."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@adrianhollister)"
+    }
+   ]
+  },
+  {
+   "title": "15. Erlang/OTP TLS 1.2 MitM Flaw (CVE-2026-124286) and Caddy Step CA Critical Vuln (CVE-2026-30836)",
+   "url": "https://mastodon.social/@hacksgr/117693563806276976",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "Cryptography & PKI"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Two critical cryptographic and PKI vulnerabilities were disclosed: CVE-2026-124286 (CVSS 9.1) in Erlang/OTP allows man-in-the-middle attackers to impersonate trusted services and alter TLS 1.2 traffic even with server verification enabled, while CVE-2026-30836 (CVSS 10.0) in Caddy Step CA allows unauthenticated remote compromise of certificate authority integrity."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Update Caddy Step CA to 2.8.4-r0, 2.8.4-r1, or 2.9.1-r1 immediately to prevent unauthorized certificate issuance.; Review Erlang/OTP applications using TLS 1.2 key exchange options and enforce TLS 1.3 where possible."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "The flaw allows an attacker positioned between a client and server to impersonate trusted services and intercept or alter TLS 1.2 traffic."
+    },
+    {
+     "label": "Source",
+     "value": "#cve (@hacksgr)"
+    }
+   ]
+  },
+  {
+   "title": "16. GPUStack Post-Patch Persistence Warning for CVE-2026-102895",
+   "url": "https://infosec.exchange/@errorbudget/117693097047765970",
+   "fields": [
+    {
+     "label": "Domain",
+     "value": "MLOps & Cloud Security"
+    },
+    {
+     "label": "Subject / Topic Summary",
+     "value": "Administrators running GPUStack are warned that upgrading to version 2.2.0 or later to fix the CVE-2026-102895 loopback authentication bypass does not invalidate administrative API keys created during prior exploitation. Attackers can continue using minted keys from any IP address post-upgrade."
+    },
+    {
+     "label": "Key Technical & Strategic Takeaways",
+     "value": "Upgrading to GPUStack 2.2.0+ closes the vulnerability but leaves attacker-created persistence intact.; Manually audit and revoke unrecognized keys on the API Keys configuration page immediately after patching."
+    },
+    {
+     "label": "Essential Direct Quote",
+     "value": "GPUStack admins: upgrading to 2.2.0 or later does not remove admin API keys an attacker made while exploiting CVE-2026-102895. Those keys keep working from any IP, so review the API Keys page after patching."
+    },
+    {
+     "label": "Source",
+     "value": "#infosec (@errorbudget)"
+    }
+   ]
+  }
+ ],
+ "tier3": [
+  {
+   "text": "Google Brotli CVE-2026-111497 — Google Brotli flaw hits 100% EPSS and CISA KEV status. (#infosec (@exploitedthisweek))",
+   "url": "https://infosec.exchange/@exploitedthisweek/117693783197340540"
+  },
+  {
+   "text": "VMware vCenter CVE-2026-123890 — Reminder to patch actively exploited vCenter Directory Service auth bypass. (#cve (@xploitdigest))",
+   "url": "https://infosec.exchange/@xploitdigest/117689649948642445"
+  },
+  {
+   "text": "Azure Functions Host CVE-2026-114146 — Critical privilege escalation via incorrect ASP authorization in azure-functions-host. (#infosec (@offseq))",
+   "url": "https://infosec.exchange/@offseq/117692539647451994"
+  },
+  {
+   "text": "Drupal Symfony Filesystem CVE-2026-135803 — Critical path parsing flaw in Drupal <11.1.10-r1 affects confidentiality/integrity. (#infosec (@offseq))",
+   "url": "https://infosec.exchange/@offseq/117693247467151992"
+  },
+  {
+   "text": "Hex.pm CVE-2026-129514 — Write-up on critical RCE affecting the Elixir/Erlang package registry. (#cve (@cybersecurefox))",
+   "url": "https://infosec.exchange/@cybersecurefox/117689175496211966"
+  },
+  {
+   "text": "pyLoad RCE CVE-2024-39205 — Unauthenticated RCE in pyload-ng under Python 3.11 has public exploit. (#infosec (@suriq))",
+   "url": "https://infosec.exchange/@suriq/117693848002205170"
+  },
+  {
+   "text": "Open5GS CVE-2026-138038 — Medium severity remotely exploitable reachable assertion flaw in Open5GS 2.8.0. (#infosec (@offseq))",
+   "url": "https://infosec.exchange/@offseq/117693955271719938"
+  },
+  {
+   "text": "Danfoss AK-SM 800A KEVs — CISA KEV patch reminders for CVE-2023-25914 and CVE-2023-25915. (#infosec (@ruinmyweekend))",
+   "url": "https://infosec.exchange/@ruinmyweekend/117691503351901319"
+  },
+  {
+   "text": "Japan Education Ministry Breach — Hackers breached Japanese government procurement system, exposing business records. (The Record from Recorded Future News)",
+   "url": "https://therecord.media/japan-education-ministry-cyberattack"
+  },
+  {
+   "text": "Boston Scientific Data Breach — Medical tech firm notifies individuals of personal and medical data breach. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/new-boston-scientific-data-breach-exposes-personal-medical-info/"
+  },
+  {
+   "text": "FIFA Cyberattack Confirmed — FIFA confirms breach as hackers claim 12 GB of internal files. (Help Net Security)",
+   "url": "https://www.helpnetsecurity.com/2026/11/27/fifa-cyberattack-data-leak/"
+  },
+  {
+   "text": "Pentagon Breach Exposes 2.76M — Pentagon data breach exposed 2.76 million people's data beyond credit risks. (#infosec (@ChrisAintMarchin))",
+   "url": "https://mastodon.social/@ChrisAintMarchin/117688648384552893"
+  },
+  {
+   "text": "EBU Workspace Security Incident — European Broadcasting Union collaboration platform breached, exposing user profile details. (#infosec (@kikebenlloch))",
+   "url": "https://mastodon.social/@kikebenlloch/117689400322800780"
+  },
+  {
+   "text": "NVIDIA Ransomware Leak Claim — The Gentlemen ransomware group posts alleged product connector design screenshots. (#infosec (@AmmarSpaces))",
+   "url": "https://infosec.exchange/@AmmarSpaces/117693341295795227"
+  },
+  {
+   "text": "Inception Ransomware Claims — Inception gang claims ransomware attacks against GoDaddy and Paramount. (#infosec (@AAKL))",
+   "url": "https://infosec.exchange/@AAKL/117689102733239035"
+  },
+  {
+   "text": "USA Today Breach Claim — Threat actor n0n claims theft of 166 million USA Today records. (#infosec (@theperimetersite))",
+   "url": "https://infosec.exchange/@theperimetersite/117690598712272809"
+  },
+  {
+   "text": "47-Day TLS Certificates Migration — Guide on preparing for 100-day (2027) and 47-day (2029) TLS certificates. (#infosec (@errorbudget))",
+   "url": "https://infosec.exchange/@errorbudget/117692285065040726"
+  },
+  {
+   "text": "Zaun AI Agent Firewall — Open-source HTTP proxy and firewall to restrict AI agent network access. (#infosec (@r1cksec))",
+   "url": "https://infosec.exchange/@r1cksec/117693306587058616"
+  },
+  {
+   "text": "VulnCheck Coturn Memory Leak Hunting — Threat hunting methodology using memory leaks in coturn banner grabs. (#infosec (@AAKL))",
+   "url": "https://infosec.exchange/@AAKL/117689459505443628"
+  },
+  {
+   "text": "Nextcloud Notes RTLO Bug Bounty — HackerOne disclosure on Unicode RTLO filename spoofing in Nextcloud Notes. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117689946297932798"
+  },
+  {
+   "text": "NIST Cybersecurity White Paper 50 — NIST CSWP 50 establishes CSF 2.0 baseline for solo and micro-enterprises. (#infosec (@MissConstrue))",
+   "url": "https://mefi.social/@MissConstrue/117690084884214771"
+  },
+  {
+   "text": "Japan SCS Supply Chain Rating — Explainer on Japan's ★3/★4 supply chain security ratings and 14-day patching. (#infosec (@japancyberwatch))",
+   "url": "https://infosec.exchange/@japancyberwatch/117691365300882473"
+  },
+  {
+   "text": "UK ICO 72-Hour Breach Reporting — Reminder that GDPR Article 33 72-hour clock starts upon breach awareness. (#infosec (@adrianhollister))",
+   "url": "https://infosec.exchange/@adrianhollister/117689268895209220"
+  },
+  {
+   "text": "Matters.AI Pre-Series A Funding — Matters.AI lands India's largest cybersecurity pre-Series A round for AI data security. (Dark Reading)",
+   "url": "https://www.darkreading.com/cyber-risk/matters-india-cybersecurity-pre-series-ai-data-risks"
+  },
+  {
+   "text": "Ant Group LingSante-3.1-flash — Ant Group open-sources 560B parameter MoE medical AI model under MIT license. (MarkTechPost)",
+   "url": "https://www.marktechpost.com/2026/11/28/ant-group-lingsante-3-1-flash-open-source-medical-ai/"
+  },
+  {
+   "text": "OT Security Weekly DACH — Weekly DACH OT security roundup covering PAN-OS, Danfoss, and Siemens Edge. (#infosec (@otcyber))",
+   "url": "https://infosec.exchange/@otcyber/117693161883326977"
+  },
+  {
+   "text": "France Dark Web Weekly — 11 French entities claimed by ransomware and 21 Vinted phishing clones. (#infosec (@lelabtechnique))",
+   "url": "https://infosec.exchange/@lelabtechnique/117693862430582396"
+  },
+  {
+   "text": "This Week In Security (Hackaday) — Roundup of federal breaches, leaky AI routers, phpAfterShell, and Bluetooth brakes. (#cve (@13))",
+   "url": "https://2137.social/@13/117689474364720236"
+  },
+  {
+   "text": "A.K Threat Hub Daily Report — Daily threat rollup noting 226 claimed incidents across four tracking sources. (#cve (@privacyis1st))",
+   "url": "https://infosec.exchange/@privacyis1st/117692903644360161"
+  },
+  {
+   "text": "EPSS Score Spikes (Nov 27) — Ollyo HELIX3 (CVE-2026-49049) and PHP (CVE-2026-129182) double in EPSS scores. (#cve (@overflo_ws))",
+   "url": "https://infosec.exchange/@overflo_ws/117689502595674713"
+  },
+  {
+   "text": "Unmanaged VMs Security Risks — Sponsored overview on mitigating security blind spots from forgotten virtual machines. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/your-firewall-isnt-enough-the-hidden-risk-of-unmanaged-vms/"
+  },
+  {
+   "text": "Biggest Data Breach Fines of 2026 — Discussion on whether regulatory settlements modify corporate security behavior. (#infosec (@AAKL))",
+   "url": "https://infosec.exchange/@AAKL/117689069775035349"
+  },
+  {
+   "text": "AI Bug Bounty Slop Complaints — FOSS maintainer highlights repetitive hallucinated AI vulnerability reports. (#infosec (@defnull))",
+   "url": "https://chaos.social/@defnull/117692536649800439"
+  },
+  {
+   "text": "FedRAMP AI ASR Surveillance Concerns — Commentary on civil liberties risks of government-deployed speech recognition AI. (#infosec (@bpfitzgerald))",
+   "url": "https://infosec.exchange/@bpfitzgerald/117691792355572037"
+  },
+  {
+   "text": "Supreme Court Journalist Source Case — Supreme Court to decide on subpoena forcing journalist Catherine Herridge to reveal sources. (The Intercept)",
+   "url": "https://theintercept.com/2026/11/28/journalist-source-subpoena-herridge/"
+  },
+  {
+   "text": "FreeRDP Multiple CVE Alerts — Multiple new CVEs (CVE-2026-137452 through 137460) published for FreeRDP. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117689107536234289"
+  },
+  {
+   "text": "Nmap CVE Alerts — CVE-2026-137977 and CVE-2026-137978 published for Nmap. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117691235657370736"
+  },
+  {
+   "text": "n8n Workflow Automation CVEs — CVE-2026-137957 and CVE-2026-137959 published for n8n. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117691235684124128"
+  },
+  {
+   "text": "libexpat CVE-2026-137992 — New vulnerability alert CVE-2026-137992 published for libexpat. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117691239595402238"
+  },
+  {
+   "text": "Red Hat Enterprise Linux CVEs — New CVE alerts for RHEL 6 and RHEL 10 packages. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117692391422568234"
+  },
+  {
+   "text": "WordPress Plugins CVE Batch — New CVEs affecting W3 Total Cache, WPForms, and Simple Membership plugins. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117691227779528731"
+  },
+  {
+   "text": "SiYuan Note & Parse Server CVEs — Multiple CVE alerts issued for SiYuan Note and Parse Server. (#cve (@RedPacketSecurity))",
+   "url": "https://mastodon.social/@RedPacketSecurity/117689111476241847"
+  },
+  {
+   "text": "Hermes Agent v0.23.5 & Ollama v0.40.20-rc0 — Routine software release notes for Hermes Agent and Ollama. (Release notes from hermes-agent)",
+   "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.23.5"
+  },
+  {
+   "text": "datasette-charts 0.4a0 & Stream Deck Home Control — Developer blog posts on Datasette plugin hooks and Stream Deck automation. (Simon Willison's Weblog)",
+   "url": "https://simonwillison.net/2026/Nov/27/datasette-charts/"
+  },
+  {
+   "text": "WSIC.dev Advisory Tracker Launch — Swiss engineer launches zero-fluff daily vulnerability and KEV tracker. (#infosec (@wsic))",
+   "url": "https://infosec.exchange/@wsic/117690742011792728"
+  },
+  {
+   "text": "Malwarebytes & Ars Black Friday Deals — Promotional Black Friday sales roundups and Friday Squid Blogging. (BleepingComputer)",
+   "url": "https://www.bleepingcomputer.com/news/security/malwarebytes-antivirus-get-50-percent-off-during-black-friday-2026/"
+  }
+ ]
+}
